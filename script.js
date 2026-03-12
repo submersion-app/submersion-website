@@ -5,13 +5,14 @@
   const REPO = 'submersion-app/submersion';
   const RELEASES_URL = 'https://github.com/' + REPO + '/releases';
   const API_URL = 'https://api.github.com/repos/' + REPO + '/releases';
+  const APP_STORE_URL = 'https://apps.apple.com/us/app/submersion-dive-log/id6757456915';
 
   const PLATFORMS = {
     macos:   { suffix: '-macOS.dmg',    label: 'macOS',   icon: 'apple' },
     windows: { suffix: '-Windows.zip',  label: 'Windows', icon: 'windows' },
     linux:   { suffix: '-Linux.tar.gz', label: 'Linux',   icon: 'linux' },
     android: { suffix: '-Android.apk',  label: 'Android', icon: 'android' },
-    ios:     { suffix: '-iOS.ipa',      label: 'iOS',     icon: 'apple' },
+    ios:     { label: 'iOS', icon: 'apple', storeUrl: APP_STORE_URL },
   };
 
   var ICONS = {};
@@ -72,7 +73,18 @@
 
     if (!primaryBtn || !platformsContainer) return;
 
-    if (detectedPlatform && assetMap[detectedPlatform]) {
+    if (detectedPlatform === 'ios') {
+      primaryBtn.href = APP_STORE_URL;
+      primaryBtn.target = '_blank';
+      primaryBtn.rel = 'noreferrer';
+      var appleIcon = createIconElement('apple');
+      if (appleIcon) {
+        primaryIcon.textContent = '';
+        primaryIcon.appendChild(appleIcon);
+      }
+      primaryLabel.textContent = 'Download on the App Store';
+      primaryMeta.textContent = '';
+    } else if (detectedPlatform && assetMap[detectedPlatform]) {
       var config = PLATFORMS[detectedPlatform];
       var asset = assetMap[detectedPlatform];
       primaryBtn.href = asset.url;
@@ -103,15 +115,23 @@
       var pAsset = assetMap[key];
       var a = document.createElement('a');
       a.className = 'download__platform' + (key === detectedPlatform ? ' download__platform--active' : '');
-      a.href = pAsset ? pAsset.url : RELEASES_URL;
-      if (!pAsset) {
+
+      if (pConfig.storeUrl) {
+        a.href = pConfig.storeUrl;
         a.target = '_blank';
         a.rel = 'noreferrer';
+      } else {
+        a.href = pAsset ? pAsset.url : RELEASES_URL;
+        if (!pAsset) {
+          a.target = '_blank';
+          a.rel = 'noreferrer';
+        }
       }
+
       var icon = createIconElement(pConfig.icon);
       if (icon) a.appendChild(icon);
       a.appendChild(document.createTextNode(' ' + pConfig.label));
-      if (pAsset) {
+      if (!pConfig.storeUrl && pAsset) {
         a.title = pAsset.name + ' (' + formatSize(pAsset.size) + ')';
       }
       fragment.appendChild(a);

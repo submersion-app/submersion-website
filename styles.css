@@ -483,7 +483,6 @@ h1 {
 
 /* Download section */
 .download {
-  text-align: center;
   padding: 20px 0;
 }
 
@@ -492,7 +491,7 @@ h1 {
 }
 
 .download .section__head p {
-  margin-inline: auto;
+  margin: 0;
 }
 
 .download__primary {
@@ -516,6 +515,27 @@ h1 {
   margin-top: 2px;
 }
 
+.download__stores {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.download__store {
+  display: inline-block;
+  border-radius: 8px;
+  transition: opacity 150ms ease;
+}
+
+.download__store:hover {
+  opacity: 0.8;
+  text-decoration: none;
+}
+
+.download__store img {
+  display: block;
+}
+
 .download__secondary {
   margin-top: 20px;
 }
@@ -528,7 +548,6 @@ h1 {
 
 .download__platforms {
   display: flex;
-  justify-content: center;
   gap: 8px;
   flex-wrap: wrap;
 }
@@ -566,7 +585,6 @@ h1 {
 
 .download__fallback {
   display: flex;
-  justify-content: center;
   gap: 16px;
   margin-top: 20px;
   color: var(--faint);
@@ -620,12 +638,8 @@ h1 {
     font-size: 32px;
   }
 
-  .download__primary {
-    width: 100%;
-  }
-
   .download__platforms {
-    justify-content: center;
+    flex-wrap: wrap;
   }
 }
 
