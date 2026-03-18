@@ -155,7 +155,7 @@
       var releases = await res.json();
       var release = null;
       for (var i = 0; i < releases.length; i++) {
-        if (!releases[i].draft) { release = releases[i]; break; }
+        if (!releases[i].draft && !releases[i].prerelease) { release = releases[i]; break; }
       }
       if (!release) throw new Error('No published release found');
 
