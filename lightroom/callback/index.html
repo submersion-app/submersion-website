@@ -302,15 +302,20 @@
                 var sel = window.getSelection();
                 sel.removeAllRanges();
                 sel.addRange(r);
-                document.execCommand("copy");
-                done();
+                if (document.execCommand("copy")) {
+                  done();
+                } else {
+                  fail();
+                }
               } catch (e) {
                 fail();
               }
             }
           });
         } else if (error) {
-          var msg = errorDesc ? decodeURIComponent(errorDesc.replace(/\+/g, " ")) : error;
+          // URLSearchParams.get() already percent-decodes and maps "+" to
+          // space; decoding again can throw URIError on a literal "%".
+          var msg = errorDesc || error;
           document.getElementById("errMsg").textContent = "Adobe reported: " + msg;
           show("err");
         } else {
