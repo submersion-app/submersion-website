@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="robots" content="noindex" />
+
+    <title>Connect Lightroom - Submersion</title>
+    <meta
+      name="description"
+      content="Completes the Adobe Lightroom sign-in for the Submersion dive logging app. Copy the authorization code shown here back into Submersion to finish connecting."
+    />
+
+    <link rel="icon" type="image/png" href="../../assets/favicon.png" />
+
+    <style>
+      :root {
+        --bg: #0a2438;
+        --bg2: #071c2e;
+        --text: rgba(255, 255, 255, 0.92);
+        --muted: rgba(255, 255, 255, 0.7);
+        --faint: rgba(255, 255, 255, 0.55);
+        --line: rgba(255, 255, 255, 0.1);
+        --card: rgba(255, 255, 255, 0.06);
+        --card2: rgba(255, 255, 255, 0.08);
+        --accent: rgba(210, 55, 55, 1);
+        --accent2: rgba(40, 130, 195, 1);
+        --ok: rgba(60, 190, 130, 1);
+        --shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
+        --radius: 18px;
+        --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+          "Apple Color Emoji", "Segoe UI Emoji";
+        --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      }
+
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #f0f4f8;
+          --bg2: #ffffff;
+          --text: rgba(6, 16, 28, 0.92);
+          --muted: rgba(6, 16, 28, 0.7);
+          --faint: rgba(6, 16, 28, 0.55);
+          --line: rgba(6, 16, 28, 0.12);
+          --card: rgba(6, 16, 28, 0.04);
+          --card2: rgba(6, 16, 28, 0.06);
+          --accent: rgba(190, 40, 40, 1);
+          --accent2: rgba(20, 90, 150, 1);
+          --ok: rgba(30, 150, 100, 1);
+          --shadow: 0 18px 60px rgba(6, 20, 42, 0.14);
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--font);
+        background:
+          radial-gradient(1200px 600px at 15% -10%, rgba(50, 160, 170, 0.18), transparent 60%),
+          radial-gradient(900px 520px at 90% 15%, rgba(40, 150, 160, 0.12), transparent 55%),
+          linear-gradient(180deg, var(--bg), var(--bg2));
+        background-attachment: fixed;
+        color: var(--text);
+        line-height: 1.5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        text-rendering: optimizeLegibility;
+      }
+
+      .card {
+        width: 100%;
+        max-width: 560px;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: clamp(24px, 5vw, 40px);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 28px;
+      }
+
+      .brand img {
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+      }
+
+      .brand span {
+        font-weight: 650;
+        font-size: 1.15rem;
+        letter-spacing: 0.2px;
+      }
+
+      h1 {
+        font-size: clamp(1.35rem, 4vw, 1.7rem);
+        margin: 0 0 8px;
+        line-height: 1.2;
+      }
+
+      p {
+        margin: 0 0 14px;
+        color: var(--muted);
+      }
+
+      p.lead {
+        color: var(--text);
+      }
+
+      ol {
+        color: var(--muted);
+        margin: 0 0 18px;
+        padding-left: 20px;
+      }
+
+      ol li {
+        margin-bottom: 6px;
+      }
+
+      .codebox {
+        display: flex;
+        gap: 10px;
+        align-items: stretch;
+        margin: 18px 0 8px;
+      }
+
+      .code {
+        flex: 1;
+        min-width: 0;
+        font-family: var(--mono);
+        font-size: 0.95rem;
+        background: var(--card2);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 14px 16px;
+        color: var(--text);
+        overflow-wrap: anywhere;
+        user-select: all;
+      }
+
+      button.copy {
+        flex: 0 0 auto;
+        border: 0;
+        border-radius: 12px;
+        padding: 0 20px;
+        font: inherit;
+        font-weight: 600;
+        color: #fff;
+        background: var(--accent2);
+        cursor: pointer;
+        transition: filter 0.15s ease;
+      }
+
+      button.copy:hover {
+        filter: brightness(1.08);
+      }
+
+      button.copy:active {
+        filter: brightness(0.94);
+      }
+
+      .status {
+        min-height: 1.3em;
+        font-size: 0.9rem;
+        color: var(--ok);
+        margin: 0 0 8px;
+      }
+
+      .pill {
+        display: inline-block;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        padding: 5px 12px;
+        border-radius: 999px;
+        margin-bottom: 18px;
+      }
+
+      .pill--ok {
+        color: var(--ok);
+        background: color-mix(in srgb, var(--ok) 16%, transparent);
+      }
+
+      .pill--err {
+        color: var(--accent);
+        background: color-mix(in srgb, var(--accent) 16%, transparent);
+      }
+
+      .foot {
+        margin-top: 26px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+        font-size: 0.85rem;
+        color: var(--faint);
+      }
+
+      .foot a {
+        color: var(--accent2);
+        text-decoration: none;
+      }
+
+      .foot a:hover {
+        text-decoration: underline;
+      }
+
+      [hidden] {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card" role="main">
+      <div class="brand">
+        <img src="../../assets/icon.png" alt="" width="44" height="44" decoding="async" />
+        <span>Submersion</span>
+      </div>
+
+      <!-- State: authorization code received -->
+      <section id="ok" hidden>
+        <div class="pill pill--ok">Signed in</div>
+        <h1>Finish connecting Lightroom</h1>
+        <p class="lead">Copy the code below and paste it into Submersion to complete the connection.</p>
+        <div class="codebox">
+          <div class="code" id="code" aria-label="Authorization code"></div>
+          <button class="copy" id="copyBtn" type="button">Copy</button>
+        </div>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+        <ol>
+          <li>Return to the Submersion app.</li>
+          <li>Paste this code into the Lightroom connect dialog.</li>
+          <li>You can then close this browser tab.</li>
+        </ol>
+      </section>
+
+      <!-- State: Adobe returned an error / user declined -->
+      <section id="err" hidden>
+        <div class="pill pill--err">Not connected</div>
+        <h1>Sign-in didn't complete</h1>
+        <p class="lead" id="errMsg">Adobe reported an error during sign-in.</p>
+        <p>Return to Submersion and start the Lightroom connection again. If it keeps failing, double-check the client ID entered in the app.</p>
+      </section>
+
+      <!-- State: opened directly, no parameters -->
+      <section id="info" hidden>
+        <h1>Lightroom sign-in for Submersion</h1>
+        <p class="lead">This page completes the Adobe Lightroom connection for the Submersion dive logging app.</p>
+        <p>Start the connection from inside Submersion (Settings &rarr; Lightroom). After you sign in with Adobe, your browser returns here with a one-time code to paste back into the app.</p>
+      </section>
+
+      <div class="foot">
+        Submersion &mdash; open-source dive logging.
+        <a href="../../">Home</a> &middot;
+        <a href="https://github.com/submersion-app/submersion" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </main>
+
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var code = params.get("code");
+        var error = params.get("error");
+        var errorDesc = params.get("error_description");
+
+        function show(id) {
+          var el = document.getElementById(id);
+          if (el) el.hidden = false;
+        }
+
+        if (code) {
+          document.getElementById("code").textContent = code;
+          show("ok");
+
+          var copyBtn = document.getElementById("copyBtn");
+          var status = document.getElementById("status");
+          copyBtn.addEventListener("click", function () {
+            var done = function () {
+              status.textContent = "Copied. Paste it into Submersion.";
+            };
+            var fail = function () {
+              status.textContent = "Select the code above and copy it manually.";
+            };
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(code).then(done, fail);
+            } else {
+              try {
+                var r = document.createRange();
+                r.selectNodeContents(document.getElementById("code"));
+                var sel = window.getSelection();
+                sel.removeAllRanges();
+                sel.addRange(r);
+                if (document.execCommand("copy")) {
+                  done();
+                } else {
+                  fail();
+                }
+              } catch (e) {
+                fail();
+              }
+            }
+          });
+        } else if (error) {
+          // URLSearchParams.get() already percent-decodes and maps "+" to
+          // space; decoding again can throw URIError on a literal "%".
+          var msg = errorDesc || error;
+          document.getElementById("errMsg").textContent = "Adobe reported: " + msg;
+          show("err");
+        } else {
+          show("info");
+        }
+      })();
+    </script>
+  </body>
+</html>
