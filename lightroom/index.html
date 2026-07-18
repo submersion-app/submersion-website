@@ -7,10 +7,9 @@
   https://submersion.app/lightroom - set that URL as the submission's
   "App Website" field.
 
-  BEFORE SUBMITTING:
-   - Replace each figure slot (.shot) with a real screenshot from the app.
-   - Replace [VIDEO URL] (two places) with the demo-video link.
-  Everything else (steps, scopes, endpoints, client id, contact) is filled in.
+  STATUS: complete. Demo video embedded; steps, scopes, endpoints, client id,
+  and contact are all filled in. Ready to merge (goes live at /lightroom on
+  merge) and to set as the submission's "App Website" field.
 -->
 <html lang="en">
   <head>
@@ -198,19 +197,23 @@
         padding: 1px 6px;
       }
 
-      .figures {
-        display: grid;
-        gap: 14px;
-        margin: 18px 0 6px;
+      .video {
+        position: relative;
+        aspect-ratio: 16 / 9;
+        margin: 14px 0 10px;
       }
 
-      .shot {
-        border: 1px dashed var(--line);
+      .video iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
         border-radius: var(--radius);
-        background: var(--card);
-        padding: 1.4rem 1rem;
-        text-align: center;
-        color: var(--faint);
+        box-shadow: var(--shadow);
+      }
+
+      .video-link {
         font-size: 0.92rem;
       }
 
@@ -288,19 +291,26 @@
         </li>
       </ol>
 
-      <div class="figures">
-        <div class="shot">
-          Screenshot: Settings &rarr; Photos &amp; Media &rarr; Photo library
-          &amp; sources &rarr; Adobe Lightroom, showing "Connect with Adobe".
-        </div>
-        <div class="shot">
-          Screenshot: Adobe sign-in and consent screen, opened from the app.
-        </div>
-        <div class="shot">
-          Screenshot: a dive with Lightroom photos attached and the "Open in
-          Lightroom" action.
-        </div>
+      <h2>Demonstration video</h2>
+      <p>
+        A full end-to-end recording - connect, sign in with Adobe, scan a trip,
+        confirm a match, view the photo on the dive, and open the original in
+        Adobe Lightroom.
+      </p>
+      <div class="video">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/t6KmyynfuG8"
+          title="Submersion + Adobe Lightroom integration demonstration"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="fullscreen"
+          allowfullscreen
+        ></iframe>
       </div>
+      <p class="video-link">
+        Direct link:
+        <a href="https://youtu.be/t6KmyynfuG8">https://youtu.be/t6KmyynfuG8</a>
+      </p>
 
       <h2>What it accesses, and why</h2>
       <table>
@@ -353,13 +363,6 @@
           <td>Read-only. Renditions are cached on the user's own device or the user's own cloud storage. Submersion operates no server that stores Adobe tokens or user photos.</td>
         </tr>
       </table>
-
-      <h2>Demonstration video</h2>
-      <p>
-        A full end-to-end recording - connect, scan a trip, confirm a match,
-        view the photo on the dive, and open the original in Lightroom:
-        <a href="[VIDEO URL]">[VIDEO URL]</a>
-      </p>
 
       <p class="disclaimer">
         Adobe, Adobe Lightroom, Adobe ID, and Creative Cloud are trademarks of
