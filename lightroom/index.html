@@ -1,16 +1,5 @@
 <!doctype html>
-<!--
-  Submersion x Adobe Lightroom - integration walkthrough.
-
-  PURPOSE: the "proper web URL with complete end-to-end workflow" the Adobe
-  Creative Cloud Integrations Review team asked for. This file serves at
-  https://submersion.app/lightroom - set that URL as the submission's
-  "App Website" field.
-
-  STATUS: complete. Demo video embedded; steps, scopes, endpoints, client id,
-  and contact are all filled in. Ready to merge (goes live at /lightroom on
-  merge) and to set as the submission's "App Website" field.
--->
+<!-- Submersion + Adobe Lightroom integration overview. -->
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -315,8 +304,8 @@
       <h2>What it accesses, and why</h2>
       <table>
         <tr>
-          <th>Scope</th>
-          <th>Why Submersion requests it</th>
+          <th scope="col">Scope</th>
+          <th scope="col">Why Submersion requests it</th>
         </tr>
         <tr>
           <td><code>openid</code>, <code>AdobeID</code></td>
@@ -339,27 +328,27 @@
       <h2>Technical summary (for the review team)</h2>
       <table>
         <tr>
-          <th>Integration type</th>
+          <th scope="row">Integration type</th>
           <td>Adobe <strong>Lightroom Services API</strong> (Creative Cloud), via Adobe IMS OAuth 2.0. This integration does <strong>not</strong> use the Adobe Express Embed SDK.</td>
         </tr>
         <tr>
-          <th>Credential</th>
+          <th scope="row">Credential</th>
           <td>OAuth <strong>Native App</strong> (public client, PKCE, no client secret). Client ID <code>00f3c953c816414db32d7ee98873040d</code>.</td>
         </tr>
         <tr>
-          <th>Authorization</th>
+          <th scope="row">Authorization</th>
           <td>Three-legged and user-consented. Authorize endpoint <code>ims-na1.adobelogin.com/ims/authorize/v2</code>; token endpoint <code>ims-na1.adobelogin.com/ims/token/v3</code>.</td>
         </tr>
         <tr>
-          <th>API base</th>
+          <th scope="row">API base</th>
           <td><code>lr.adobe.io</code> - <code>/v2/account</code>, <code>/v2/catalog</code>, <code>/v2/catalogs/{id}/albums</code>, <code>/v2/catalogs/{id}/assets</code>, <code>/v2/catalogs/{id}/assets/{id}/renditions/{size}</code>.</td>
         </tr>
         <tr>
-          <th>Platform</th>
+          <th scope="row">Platform</th>
           <td>Native app (Flutter) for macOS, Windows, Linux, iOS, and Android. Because it is a native app rather than a hosted web app, the workflow is documented here and shown in the demo video.</td>
         </tr>
         <tr>
-          <th>Data handling</th>
+          <th scope="row">Data handling</th>
           <td>Read-only. Renditions are cached on the user's own device or the user's own cloud storage. Submersion operates no server that stores Adobe tokens or user photos.</td>
         </tr>
       </table>
