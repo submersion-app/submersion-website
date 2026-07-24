@@ -122,11 +122,11 @@ img { max-width: 100%; height: auto; display: block; }
   max-width: calc(var(--max) + 160px); margin: 0 auto;
 }
 .nav__brand {
-  display: flex; align-items: center; gap: 10px;
-  color: var(--ink); font-size: 14px; letter-spacing: 0.22em; font-weight: 500;
+  display: flex; align-items: center; gap: 14px;
+  color: var(--ink); font-size: 21px; letter-spacing: 0.22em; font-weight: 500;
 }
 .nav__brand:hover { text-decoration: none; color: var(--cyan); }
-.nav__brand img { border-radius: 8px; }
+.nav__brand img { border-radius: 10px; }
 .nav__links { display: flex; gap: clamp(14px, 2vw, 26px); font-size: 13px; }
 .nav__links a { color: var(--ink-muted); }
 .nav__links a:hover { color: var(--cyan); text-decoration: none; }
