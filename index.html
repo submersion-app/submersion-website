@@ -3,311 +3,274 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="color-scheme" content="dark light" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0a3049" />
 
     <title>Submersion Dive Log</title>
     <meta
       name="description"
-      content="Submersion is a comprehensive, open-source dive logging application for recreational and technical divers. Cross-platform. No subscriptions. No vendor lock-in."
+      content="Submersion is a free, open-source dive log for recreational and technical divers. Your dives stay on your device, in open formats, forever. iOS, Android, macOS, Windows, Linux."
     />
 
-    <meta property="og:title" content="Submersion" />
+    <meta property="og:title" content="Submersion — the logbook that goes deeper" />
     <meta
       property="og:description"
-      content="Dive logging software with complete data ownership. Open-source, cross-platform, and built for serious divers."
+      content="Free, open-source dive logging with complete data ownership. 300+ dive computers, UDDF 3.2, full decompression modelling. No accounts, no subscriptions."
     />
     <meta property="og:type" content="website" />
 
     <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body id="top">
     <a class="skip" href="#content">Skip to content</a>
 
-    <header class="top">
-      <nav class="nav" aria-label="Primary">
-        <a class="brand" href="#top">
-          <img
-            class="brand__mark"
-            src="assets/icon.png"
-            alt="Submersion"
-            width="72"
-            height="72"
-            decoding="async"
-          />
-          <span class="brand__name">Submersion</span>
-        </a>
+    <!-- Fixed decorative water column (JS-enhanced; harmless without JS) -->
+    <div class="ocean" aria-hidden="true">
+      <div class="ocean__haze" data-speed="0.04"></div>
+      <!-- Parallax lives on the wrapper; the sway animation on the rays themselves.
+           Both set transform, so they must be on different elements. -->
+      <div class="ocean__rays" data-speed="0.2">
+        <div class="ocean__ray ocean__ray--1"></div>
+        <div class="ocean__ray ocean__ray--2"></div>
+        <div class="ocean__ray ocean__ray--3"></div>
+      </div>
+      <div class="ocean__bubbles" data-speed="-0.08">
+        <span class="ocean__bubble" style="left: 12%; width: 10px; height: 10px; animation-duration: 16s"></span>
+        <span class="ocean__bubble" style="left: 23%; width: 5px; height: 5px; animation-duration: 21s; animation-delay: 4s"></span>
+        <span class="ocean__bubble" style="left: 47%; width: 7px; height: 7px; animation-duration: 18s; animation-delay: 9s"></span>
+        <span class="ocean__bubble" style="left: 63%; width: 4px; height: 4px; animation-duration: 24s; animation-delay: 2s"></span>
+        <span class="ocean__bubble" style="left: 78%; width: 9px; height: 9px; animation-duration: 17s; animation-delay: 12s"></span>
+        <span class="ocean__bubble" style="left: 90%; width: 6px; height: 6px; animation-duration: 22s; animation-delay: 6s"></span>
+      </div>
+      <canvas id="ocean-snow" class="ocean__snow"></canvas>
+    </div>
 
+    <!-- Fixed depth gauge -->
+    <div class="gauge" id="depth-gauge" aria-hidden="true">
+      <div class="gauge__ticks">
+        <span class="gauge__tick" data-depth="0">0 m —</span>
+        <span class="gauge__tick" data-depth="5">5 —</span>
+        <span class="gauge__tick" data-depth="10">10 —</span>
+        <span class="gauge__tick" data-depth="15">15 —</span>
+        <span class="gauge__tick" data-depth="20">20 —</span>
+        <span class="gauge__tick" data-depth="25">25 —</span>
+        <span class="gauge__tick" data-depth="30">30 —</span>
+        <span class="gauge__tick" data-depth="35">35 —</span>
+        <span class="gauge__tick" data-depth="40">40 m —</span>
+      </div>
+      <div class="gauge__readout" id="depth-readout">0.0 m</div>
+    </div>
+
+    <header>
+      <nav class="nav" aria-label="Primary">
+        <a class="nav__brand" href="#top">
+          <img src="assets/icon.png" alt="" width="30" height="30" decoding="async" />
+          SUBMERSION
+        </a>
         <div class="nav__links">
           <a href="#why">Why</a>
-          <a href="#features">Features</a>
           <a href="#screens">Screens</a>
+          <a href="#features">Features</a>
           <a href="#support">Support</a>
           <a href="#download">Download</a>
-          <a class="btn btn--small" href="https://github.com/submersion-app/submersion" target="_blank" rel="noreferrer">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-            </svg>
-            GitHub
-          </a>
+          <a href="https://github.com/submersion-app/submersion" target="_blank" rel="noreferrer">GitHub</a>
         </div>
       </nav>
 
-      <section class="hero" id="top">
-        <div class="hero__grid">
-          <div class="hero__copy">
-            <p class="eyebrow">Open-Source • Cross-Platform • Free Forever</p>
-            <h1>Dive deeper.</h1>
-            <p class="lead">
-              Submersion is a comprehensive dive log that works on all your devices. No mandatory accounts. No subscription fees. No vendor lock-in. Your data stays yours.
-            </p>
-
-            <ul class="hero__stats" aria-label="Highlights">
-              <li>
-                <strong>Comprehensive Logging</strong>
-                <span>Capture every detail with deep analytics</span>
-              </li>
-              <li>
-                <strong>Open Standards</strong>
-                <span>UDDF 3.2 import and export</span>
-              </li>
-              <li>
-                <strong>300+ Dive Computers</strong>
-                <span>USB and Bluetooth connectivity</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="hero__visual" aria-hidden="true">
-            <div class="frame">
-              <img
-                class="frame__img"
-                src="screenshots/dive_details_1.png"
-                alt=""
-                loading="eager"
-                decoding="async"
-              />
-              <div class="frame__glow"></div>
-            </div>
+      <section class="hero">
+        <div class="zone__inner wrap">
+          <p class="eyebrow">Free · Open Source · Yours</p>
+          <h1>The logbook that goes <em>deeper</em>.</h1>
+          <p class="lead">
+            Every dive tells a story — the wall that dropped into blue, the current that surprised
+            you, the turtle at your safety stop. Submersion keeps those stories on your device, in
+            open formats, forever. No accounts. No subscriptions. No lock-in.
+          </p>
+          <div class="cta-row">
+            <a class="btn" href="#why">Begin descent ↓</a>
+            <a class="btn btn--ghost" href="https://github.com/submersion-app/submersion" target="_blank" rel="noreferrer">View on GitHub</a>
           </div>
         </div>
       </section>
     </header>
 
     <main id="content">
-      <section class="section" id="why">
-        <div class="container">
-          <div class="section__head">
-            <h2>Full control over your dive data.</h2>
-            <p>
-              Traditional dive logging solutions either rely on outdated desktop software or mobile applications that restrict data access behind mandatory accounts and proprietary cloud infrastructure. Submersion offers a different approach.
-            </p>
-          </div>
-
-          <div class="cards" role="list">
-            <article class="card" role="listitem">
-              <h3>Complete Data Ownership</h3>
-              <p>
-                Your dives stay on your device. Sync to the cloud only if you want to. Export your logbook whenever you want.
-              </p>
-            </article>
-            <article class="card" role="listitem">
-              <h3>Vendor Independence</h3>
-              <p>
-                Full UDDF 3.2 import and export capability, plus CSV support. Your dive history remains portable, both now and for years to come.
-              </p>
-            </article>
-            <article class="card" role="listitem">
-              <h3>Unified Cross-Platform Experience</h3>
-              <p>Available for iOS, Android, macOS, Windows, and Linux. Consistent logbook functionality and analytics across all devices.</p>
-            </article>
-            <article class="card" role="listitem">
+      <section class="zone" id="why">
+        <div class="zone__inner wrap">
+          <p class="zone__tag">— 10 m · The Shallows</p>
+          <h2>Your dive data belongs to <em>you</em>.</h2>
+          <p class="zone__intro">
+            Most dive logs hold your history hostage — locked behind accounts, subscriptions, and
+            proprietary clouds. Submersion works differently, on principle.
+          </p>
+          <div class="pillars">
+            <div class="pillar">
+              <h3>Yours, on your device</h3>
+              <p>Your dives live locally. Sync to a cloud only if you choose to. Export everything, any time — no questions asked.</p>
+            </div>
+            <div class="pillar">
+              <h3>Open formats</h3>
+              <p>Full UDDF 3.2 import and export, plus CSV. Your logbook stays portable for the rest of your diving life.</p>
+            </div>
+            <div class="pillar">
+              <h3>Every device you own</h3>
+              <p>iOS, Android, macOS, Windows, Linux. One logbook, the same on all of them.</p>
+            </div>
+            <div class="pillar">
               <h3>Free, forever</h3>
-              <p>Open-source software licensed under GPL‑3.0. No advertisements. No premium feature restrictions.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section--tight" id="features">
-        <div class="container">
-          <div class="section__head">
-            <h2>For recreational and technical divers.</h2>
-            <p>Simple by default. Advanced when needed.</p>
-          </div>
-
-          <div class="featureGrid">
-            <div class="feature">
-              <h3>Dive Documentation</h3>
-              <ul>
-                <li>Complete dive records including conditions, timestamps, and temperatures</li>
-                <li>Trip organization with tags, favorites, and detailed notes</li>
-                <li>Multi-cylinder configurations with gas mix tracking (air, nitrox, trimix)</li>
-              </ul>
-            </div>
-
-            <div class="feature">
-              <h3>Site Management</h3>
-              <ul>
-                <li>GPS coordinate recording with interactive map visualization</li>
-                <li>Comprehensive site data: depth ranges, difficulty ratings, hazard documentation</li>
-                <li>Automatic location capture with reverse geocoding</li>
-              </ul>
-            </div>
-
-            <div class="feature">
-              <h3>Dive Computer Integration</h3>
-              <ul>
-                <li>Direct USB and Bluetooth connectivity</li>
-                <li>Incremental download with intelligent duplicate detection</li>
-                <li>Support for 300+ models via libdivecomputer</li>
-              </ul>
-            </div>
-
-            <div class="feature">
-              <h3>Technical Diving Support</h3>
-              <ul>
-                <li>Bühlmann ZH‑L16C decompression algorithm with gradient factor configuration</li>
-                <li>Real-time NDL, ceiling, TTS, CNS, and OTU calculations</li>
-                <li>Complete multi-gas dive planning and tracking</li>
-              </ul>
+              <p>GPL-3.0 open source. No ads, no premium tier, no upsells at 30 metres.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="section" id="screens">
-        <div class="container">
-          <div class="section__head">
-            <h2>A closer look.</h2>
-            <p>A clean interface for comprehensive dive logging.</p>
+      <section class="zone" id="screens">
+        <div class="zone__inner wrap">
+          <p class="zone__tag">— 20 m · The Reef</p>
+          <h2>A closer <em>look</em>.</h2>
+          <p class="zone__intro">Clean on the surface, thorough underneath — like any good dive plan.</p>
+          <div class="shots">
+            <figure>
+              <img src="screenshots/home_screen.png" alt="Submersion dashboard showing recent dives and lifetime statistics" loading="lazy" decoding="async" />
+              <figcaption>Your logbook at a glance — recent dives, lifetime stats, and where you're headed next.</figcaption>
+            </figure>
+            <figure>
+              <img src="screenshots/dive_details_1.png" alt="Dive detail view with conditions, cylinders, gases and profile" loading="lazy" decoding="async" />
+              <figcaption>The whole story of a dive: conditions, cylinders, gases, and profile in one place.</figcaption>
+            </figure>
+            <figure>
+              <img src="screenshots/sites_map.png" alt="Interactive map of dive sites with clustered markers" loading="lazy" decoding="async" />
+              <figcaption>Every site you've splashed, mapped — with clustering when your logbook outgrows the coastline.</figcaption>
+            </figure>
           </div>
-
-          <div class="gallery">
-            <article class="tile">
-              <img src="screenshots/home_screen.png" alt="Dashboard Overview" loading="lazy" decoding="async" />
-              <h3>Dashboard Overview</h3>
-              <p>Recent dives, statistics, and navigation. Local data storage with complete offline functionality.</p>
-            </article>
-
-            <article class="tile">
-              <img src="screenshots/dive_log.png" alt="Efficient Dive Entry" loading="lazy" decoding="async" />
-              <h3>Efficient Dive Entry</h3>
-              <p>Depth, duration, temperature, conditions, and annotations. Automated numbering and surface intervals.</p>
-            </article>
-
-            <article class="tile">
-              <img src="screenshots/dive_details_1.png" alt="Comprehensive Dive Records" loading="lazy" decoding="async" />
-              <h3>Comprehensive Records</h3>
-              <p>Location, environmental conditions, and multi-cylinder gas configurations in one view.</p>
-            </article>
-
-            <article class="tile">
-              <img src="screenshots/dive_sites.png" alt="Site Database" loading="lazy" decoding="async" />
-              <h3>Site Database</h3>
-              <p>GPS coordinates, regional data, and automatic reverse geocoding for every dive site.</p>
-            </article>
-
-            <article class="tile">
-              <img src="screenshots/sites_map.png" alt="Interactive Map View" loading="lazy" decoding="async" />
-              <h3>Interactive Map</h3>
-              <p>All dive sites on an interactive map with intelligent marker clustering.</p>
-            </article>
-
-            <article class="tile">
-              <img src="screenshots/equipment.png" alt="Equipment Management" loading="lazy" decoding="async" />
-              <h3>Equipment Management</h3>
-              <p>Service intervals, gear configurations, and per-dive assignments with reminders.</p>
-            </article>
-
-            <article class="tile">
-              <img src="screenshots/statistics.png" alt="Dive Statistics" loading="lazy" decoding="async" />
-              <h3>Dive Statistics</h3>
-              <p>Total dives, bottom time, depth records, and lifetime trends at a glance.</p>
-            </article>
+          <div class="thumbs">
+            <figure class="thumb">
+              <img src="screenshots/statistics.png" alt="Dive statistics screen" loading="lazy" decoding="async" />
+              <figcaption>Lifetime trends</figcaption>
+            </figure>
+            <figure class="thumb">
+              <img src="screenshots/equipment.png" alt="Equipment management screen" loading="lazy" decoding="async" />
+              <figcaption>Gear &amp; service</figcaption>
+            </figure>
+            <figure class="thumb">
+              <img src="screenshots/dive_log.png" alt="Dive entry screen" loading="lazy" decoding="async" />
+              <figcaption>Fast entry</figcaption>
+            </figure>
+            <figure class="thumb">
+              <img src="screenshots/dive_sites.png" alt="Dive site database screen" loading="lazy" decoding="async" />
+              <figcaption>Site database</figcaption>
+            </figure>
           </div>
         </div>
       </section>
 
-      <section class="section" id="support">
-        <div class="container">
-          <div class="section__head">
-            <h2>Support</h2>
-            <p>
-              Found a bug or have a feature idea? <a href="https://github.com/submersion-app/submersion/issues" target="_blank" rel="noreferrer">Open an issue on GitHub</a>.<br />
-              For other inquiries, email <a href="mailto:support@submersion.app">support@submersion.app</a>.
-            </p>
+      <section class="zone" id="features">
+        <div class="zone__inner wrap">
+          <p class="zone__tag">— 30 m · The Wall</p>
+          <h2>Built for divers who read the <em>fine print</em>.</h2>
+          <p class="zone__intro">
+            Under the calm interface: a complete decompression toolset that takes your diving as
+            seriously as you do.
+          </p>
+          <div class="specs">
+            <div class="spec"><strong>ZH-L16C</strong><span>Bühlmann, with gradient factors</span></div>
+            <div class="spec"><strong>300+</strong><span>dive computers, USB &amp; Bluetooth</span></div>
+            <div class="spec"><strong>NDL · TTS · CNS · OTU</strong><span>computed in real time</span></div>
+            <div class="spec"><strong>Air · Nitrox · Trimix</strong><span>multi-cylinder, multi-gas</span></div>
           </div>
-        </div>
-      </section>
-
-      <section class="section section--cta" id="download">
-        <div class="container">
-          <div class="download">
-            <div class="section__head">
-              <h2>Download Submersion</h2>
-              <p>
-                Comprehensive and open-source. You own your data. No accounts required.
-              </p>
+          <div class="detail">
+            <div>
+              <h3>Dive documentation</h3>
+              <p>Complete records — conditions, timestamps, temperatures. Trips, tags, favorites, and notes. Multi-cylinder configurations with gas mixes from air to trimix.</p>
             </div>
+            <div>
+              <h3>Site management</h3>
+              <p>GPS capture with reverse geocoding. Depth ranges, difficulty ratings, hazard documentation. An interactive map of everywhere you've been.</p>
+            </div>
+            <div>
+              <h3>Computer integration</h3>
+              <p>Direct USB and Bluetooth downloads. Incremental sync with duplicate detection. Support for 300+ models via libdivecomputer.</p>
+            </div>
+            <div>
+              <h3>Planning &amp; analysis</h3>
+              <p>Complete multi-gas dive planning. Real-time NDL, ceiling, TTS, CNS and OTU. Gradient factors you set yourself.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      <section class="zone" id="support">
+        <div class="zone__inner wrap">
+          <p class="zone__tag">— 38 m · Buddy Check</p>
+          <h2>Buddy <em>check</em>.</h2>
+          <p class="zone__intro">
+            Found a bug? Have an idea? Surface it —
+            <a href="https://github.com/submersion-app/submersion/issues" target="_blank" rel="noreferrer">open an issue on GitHub</a>.
+            For everything else: <a href="mailto:support@submersion.app">support@submersion.app</a>.
+          </p>
+        </div>
+      </section>
+
+      <section class="zone abyss" id="download">
+        <div class="zone__inner wrap">
+          <p class="zone__tag">— 40 m · The Abyss</p>
+          <div class="orb" aria-hidden="true"></div>
+          <h2>Ready to <em>descend</em>?</h2>
+          <p class="zone__intro">
+            Free and open source on every platform. No account. No subscription. Just your logbook,
+            the way it should be.
+          </p>
+
+          <a
+            id="download-primary"
+            class="btn download__primary"
+            href="https://github.com/submersion-app/submersion/releases"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span id="download-primary-icon"></span>
+            <span>
+              <span id="download-primary-label">Download</span>
+              <small id="download-primary-meta" class="download__version"></small>
+            </span>
+          </a>
+
+          <div class="download__stores" id="download-stores">
             <a
-              id="download-primary"
-              class="download__primary btn"
-              href="https://github.com/submersion-app/submersion/releases"
+              class="download__store"
+              href="https://apps.apple.com/us/app/submersion-dive-log/id6757456915"
               target="_blank"
               rel="noreferrer"
             >
-              <span id="download-primary-icon"></span>
-              <span>
-                <span id="download-primary-label">Download</span>
-                <small id="download-primary-meta" class="download__version"></small>
-              </span>
+              <img src="assets/app-store-badge.svg" alt="Download on the App Store" width="120" height="40" />
             </a>
+          </div>
 
-            <div class="download__stores" id="download-stores">
-              <a
-                class="download__store"
-                href="https://apps.apple.com/us/app/submersion-dive-log/id6757456915"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <img
-                  src="assets/app-store-badge.svg"
-                  alt="Download on the App Store"
-                  width="120"
-                  height="40"
-                />
-              </a>
-            </div>
+          <div class="download__secondary" id="download-secondary">
+            <p class="download__secondary-label">All platforms</p>
+            <div class="download__platforms" id="download-platforms"></div>
+          </div>
 
-            <div class="download__secondary" id="download-secondary">
-              <p class="download__secondary-label">All platforms:</p>
-              <div class="download__platforms" id="download-platforms"></div>
-            </div>
-
-            <div class="download__fallback">
-              <a href="https://github.com/submersion-app/submersion" target="_blank" rel="noreferrer">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-                </svg>
-                View on GitHub
-              </a>
-              <a href="https://github.com/submersion-app/submersion#quick-start" target="_blank" rel="noreferrer">
-                Build Instructions
-              </a>
-            </div>
+          <div class="download__fallback">
+            <a href="https://github.com/submersion-app/submersion" target="_blank" rel="noreferrer">View on GitHub</a>
+            <a href="https://github.com/submersion-app/submersion#quick-start" target="_blank" rel="noreferrer">Build instructions</a>
           </div>
 
           <footer class="footer">
-            <p>
-              &copy; <span data-year></span> Submersion. Open-source software licensed under GPL&#8209;3.0.
-            </p>
+            © <span data-year></span> Submersion · GPL-3.0 · See you down there
           </footer>
         </div>
       </section>
     </main>
 
     <script src="script.js" defer></script>
+    <script src="ocean.js" defer></script>
   </body>
 </html>
