@@ -4,9 +4,10 @@
   --water: #14506e; /* live water color; ocean.js interpolates this on scroll */
   --ink: #eaf6fa;
   --ink-muted: rgba(234, 246, 250, 0.72);
-  --ink-faint: rgba(234, 246, 250, 0.6);
+  --ink-faint: rgba(234, 246, 250, 0.68);
   --cyan: #8fdcec;
-  --cyan-dim: rgba(143, 220, 236, 0.55);
+  --cyan-dim: rgba(143, 220, 236, 0.55); /* borders/decoration only — fails AA as text */
+  --cyan-text: rgba(143, 220, 236, 0.85); /* dimmed cyan that still passes AA on surface teal */
   --line: rgba(234, 246, 250, 0.16);
   --panel: #04182a;
   --max: 1080px;
@@ -106,7 +107,7 @@ img { max-width: 100%; height: auto; display: block; }
 .gauge__tick--passed { color: var(--cyan); }
 .gauge__readout {
   position: absolute; top: 50%; right: 10px; transform: translateY(-50%);
-  font-size: 14px; font-weight: 600; color: var(--cyan);
+  font-size: 14px; font-weight: 600; color: var(--cyan); white-space: nowrap;
   background: rgba(2, 12, 22, 0.82); border: 1px solid var(--cyan-dim);
   border-radius: 8px; padding: 6px 9px;
 }
@@ -163,7 +164,7 @@ h1 em, h2 em { font-style: italic; font-weight: 400; color: var(--cyan); }
 .zone { padding: clamp(72px, 10vh, 120px) 0; }
 .zone__tag {
   font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.3em;
-  text-transform: uppercase; color: var(--cyan-dim); margin: 0 0 14px;
+  text-transform: uppercase; color: var(--cyan-text); margin: 0 0 14px;
 }
 h2 {
   font-family: var(--font-display); font-weight: 300;
@@ -220,7 +221,7 @@ h2 {
 .detail { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 40px; margin-top: 52px; }
 .detail h3 {
   font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.22em;
-  text-transform: uppercase; color: var(--cyan-dim); margin: 0 0 8px; font-weight: 500;
+  text-transform: uppercase; color: var(--cyan-text); margin: 0 0 8px; font-weight: 500;
 }
 .detail p { margin: 0; color: var(--ink-muted); font-size: 14.5px; }
 @media (max-width: 700px) { .detail { grid-template-columns: 1fr; } }
