@@ -650,3 +650,139 @@ h1 {
     animation: none !important;
   }
 }
+
+/* Footer legal links (index + subpages) */
+.footer__links {
+  margin: 6px 0 0;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.footer__links a:hover {
+  color: var(--text);
+}
+
+/* Legal pages (privacy/, terms/) */
+.legal .section__head h1 {
+  margin: 0 0 8px;
+  font-size: clamp(30px, 3.6vw, 44px);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.legal__meta {
+  margin: 10px 0 0 !important;
+  color: var(--faint);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.legal__body {
+  max-width: 72ch;
+  margin-top: 28px;
+}
+
+.legal__body h2 {
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  margin: 36px 0 10px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+
+.legal__body h2:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.legal__body p,
+.legal__body li {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.legal__body p {
+  margin: 0 0 14px;
+}
+
+.legal__body ul {
+  margin: 0 0 14px;
+  padding-left: 20px;
+}
+
+.legal__body li {
+  margin: 6px 0;
+}
+
+.legal__body strong {
+  color: var(--text);
+  font-weight: 620;
+}
+
+.legal__body a {
+  color: var(--accent2);
+}
+
+.legal__body .callout {
+  padding: 16px 18px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent2);
+  background: var(--card);
+  color: var(--text);
+}
+
+.legal__table {
+  overflow-x: auto;
+  margin: 0 0 14px;
+}
+
+.legal__body table {
+  border-collapse: collapse;
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  font-size: 15px;
+}
+
+.legal__body th,
+.legal__body td {
+  text-align: left;
+  vertical-align: top;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.legal__body tr:last-child td {
+  border-bottom: 0;
+}
+
+.legal__body th {
+  color: var(--text);
+  font-weight: 620;
+  white-space: nowrap;
+}
+
+.legal__body td {
+  color: var(--muted);
+}
+
+.legal__body td:first-child {
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.legal__back {
+  margin-top: 32px;
+  color: var(--faint);
+  font-size: 14px;
+}
+
+.legal__back a:hover {
+  color: var(--text);
+}

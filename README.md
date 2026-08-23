@@ -16,6 +16,7 @@ Then visit `http://localhost:5173`.
 ## Structure
 
 - `index.html` — page markup/content
+- `privacy/`, `terms/` — Privacy Policy and Terms of Service (mirrors of `PRIVACY.md` / `TERMS.md` in the app repo; linked from the footer)
 - `styles.css` — styling
 - `script.js` — scroll-driven screenshot swapping + progressive expansion
 - `screenshots/` — UI screenshots used on the page
