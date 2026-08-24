@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0a3049" />
+
+    <title>Privacy Policy · Submersion Dive Log</title>
+    <meta
+      name="description"
+      content="Submersion's privacy policy. Your dive data stays on your device. No analytics, no tracking, no accounts, no data sent to servers we operate."
+    />
+    <link rel="canonical" href="https://submersion.app/privacy.html" />
+
+    <meta property="og:title" content="Privacy Policy · Submersion" />
+    <meta property="og:description" content="Your dive data stays on your device. No analytics, no tracking, no accounts." />
+    <meta property="og:type" content="website" />
+
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body id="top">
+    <a class="skip" href="#content">Skip to content</a>
+
+    <!-- Fixed decorative water column (JS-enhanced; harmless without JS) -->
+    <div class="ocean" aria-hidden="true">
+      <div class="ocean__haze" data-speed="0.04"></div>
+      <div class="ocean__rays" data-speed="0.2">
+        <div class="ocean__ray ocean__ray--1"></div>
+        <div class="ocean__ray ocean__ray--2"></div>
+        <div class="ocean__ray ocean__ray--3"></div>
+      </div>
+      <canvas id="ocean-snow" class="ocean__snow"></canvas>
+    </div>
+
+    <header>
+      <nav class="nav" aria-label="Primary">
+        <a class="nav__brand" href="index.html">
+          <img src="assets/icon.png" alt="" width="46" height="46" decoding="async" />
+          SUBMERSION
+        </a>
+        <div class="nav__links">
+          <a href="index.html#why">Why</a>
+          <a href="index.html#screens">Screens</a>
+          <a href="index.html#features">Features</a>
+          <a href="index.html#support">Support</a>
+          <a href="index.html#download">Download</a>
+          <a href="https://github.com/submersion-app/submersion" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="content">
+      <section class="zone legal">
+        <div class="zone__inner wrap">
+          <p class="zone__tag">Legal · Privacy</p>
+          <h2>Privacy <em>Policy</em>.</h2>
+          <p class="zone__intro">
+            Submersion is a local-first dive log. Your data stays on your device unless you choose
+            to back it up to a service you control.
+          </p>
+          <p class="legal__meta">App: Submersion · Last updated: 2026-03-06</p>
+
+          <div class="legal__body">
+            <h2 id="data-collection">Data Collection</h2>
+            <p>
+              Submersion is a local-first dive logging application. All data you enter is stored on
+              your device. The app may collect and store the following types of information based on
+              your usage:
+            </p>
+            <ul>
+              <li><strong>Dive logs:</strong> date, time, depth, duration, temperature, notes, and other dive parameters</li>
+              <li><strong>Dive sites:</strong> location names, GPS coordinates, descriptions, and conditions</li>
+              <li><strong>Diver profile:</strong> name, certification information, and dive preferences</li>
+              <li><strong>Gear inventory:</strong> equipment names, serial numbers, purchase dates, and service records</li>
+              <li><strong>Buddies:</strong> names and contact information for dive partners</li>
+              <li><strong>Photos and videos:</strong> media attached to dive entries, selected from your device library</li>
+              <li><strong>Dive computer data:</strong> depth profiles, tank information, and telemetry downloaded via Bluetooth</li>
+            </ul>
+
+            <h2 id="data-storage">Data Storage</h2>
+            <p>
+              All data is stored locally on your device in a SQLite database. Submersion does not
+              operate any remote servers, and your data is not transmitted to any server owned or
+              operated by Submersion.
+            </p>
+
+            <h2 id="cloud-backup">Cloud Backup</h2>
+            <p>Submersion offers an optional backup feature using Google Drive. This backup is:</p>
+            <ul>
+              <li><strong>User-initiated:</strong> backups only occur when you explicitly choose to create one</li>
+              <li><strong>Stored in your own Google Drive:</strong> the backup file is saved to your personal Google Drive account</li>
+              <li><strong>Transmitted over HTTPS:</strong> all communication with Google Drive uses encrypted connections</li>
+            </ul>
+            <p>
+              Submersion does not have access to your Google Drive beyond the backup files you
+              explicitly create through the app.
+            </p>
+
+            <h2 id="health-data">Health Data</h2>
+            <p>On iOS, Submersion can optionally read dive workout data from Apple HealthKit. This data is:</p>
+            <ul>
+              <li><strong>Read-only:</strong> Submersion reads existing dive workouts but does not write to HealthKit</li>
+              <li><strong>Never transmitted off device:</strong> HealthKit data stays on your device</li>
+              <li><strong>Never shared with third parties</strong></li>
+            </ul>
+            <p>This feature is not currently available on Android.</p>
+
+            <h2 id="data-sharing">Data Sharing</h2>
+            <p>Submersion does <strong>not</strong> share your data with third parties. Specifically:</p>
+            <ul>
+              <li>No analytics or tracking services</li>
+              <li>No advertising networks</li>
+              <li>No account creation required</li>
+              <li>No data transmitted to remote servers (except the optional Google Drive backup to your own account)</li>
+              <li>No third-party SDKs that collect user data</li>
+            </ul>
+
+            <h2 id="device-permissions">Device Permissions</h2>
+            <p>Submersion requests the following permissions only as needed for specific features:</p>
+            <div class="legal__table">
+              <table>
+                <thead>
+                  <tr><th scope="col">Permission</th><th scope="col">Purpose</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Bluetooth</td><td>Discover and communicate with BLE dive computers</td></tr>
+                  <tr><td>Location</td><td>Tag dive sites with GPS coordinates; required for BLE scanning on Android 11 and below</td></tr>
+                  <tr><td>Photos and media</td><td>Attach photos and videos to dive entries</td></tr>
+                  <tr><td>Media location</td><td>Read GPS data from photo EXIF metadata to suggest dive site locations</td></tr>
+                  <tr><td>Contacts</td><td>Select dive buddies from your device contacts</td></tr>
+                  <tr><td>Notifications</td><td>Send gear maintenance service reminders</td></tr>
+                  <tr><td>Exact alarms</td><td>Schedule precise gear maintenance reminders</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              All permissions are optional. The app will function without them, though related
+              features will be unavailable.
+            </p>
+
+            <h2 id="data-deletion">Data Deletion</h2>
+            <ul>
+              <li>You can delete any or all of your data from within the app at any time.</li>
+              <li>Uninstalling Submersion removes all locally stored data from your device.</li>
+              <li>Google Drive backups can be deleted directly from your Google Drive account.</li>
+            </ul>
+
+            <h2 id="children">Children</h2>
+            <p>
+              Submersion is not directed at children under the age of 13. We do not knowingly collect
+              personal information from children under 13. If you believe a child under 13 has
+              provided data through the app, please contact us so we can take appropriate action.
+            </p>
+
+            <h2 id="changes">Changes to This Policy</h2>
+            <p>
+              This privacy policy may be updated from time to time. Changes will be reflected by
+              updating the "Last Updated" date at the top of this document.
+            </p>
+
+            <h2 id="contact">Contact</h2>
+            <p>If you have questions or concerns about this privacy policy, you can reach us at:</p>
+            <ul>
+              <li><strong>Email:</strong> <a href="mailto:privacy@submersion.app">privacy@submersion.app</a></li>
+              <li><strong>GitHub:</strong> Open an issue at <a href="https://github.com/submersion-app/submersion" target="_blank" rel="noreferrer">github.com/submersion-app/submersion</a></li>
+            </ul>
+
+            <h2 id="open-source">Open Source</h2>
+            <p>Submersion is open-source software. The full source code is available at:</p>
+            <p><a href="https://github.com/submersion-app/submersion" target="_blank" rel="noreferrer">https://github.com/submersion-app/submersion</a></p>
+          </div>
+
+          <p class="legal__back">
+            <a href="index.html">← Back to the surface</a> · <a href="terms.html">Terms of Service</a>
+          </p>
+
+          <footer class="footer">
+            © <span data-year></span> Submersion · GPL-3.0 · See you down there
+            <div class="footer__links">
+              <a href="privacy.html" aria-current="page">Privacy Policy</a>
+              <a href="terms.html">Terms of Service</a>
+            </div>
+          </footer>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      (function () {
+        var y = document.querySelector('[data-year]');
+        if (y) y.textContent = String(new Date().getFullYear());
+      })();
+    </script>
+    <script src="ocean.js" defer></script>
+  </body>
+</html>

@@ -276,3 +276,46 @@ h2 {
   .gauge__tick { transition: none; }
   .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
 }
+
+/* ---------- Legal pages (privacy.html, terms.html) ---------- */
+.legal { padding: clamp(40px, 6vh, 72px) 0 clamp(72px, 10vh, 120px); }
+.legal__meta {
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-faint); margin: 18px 0 0;
+}
+.legal__body { max-width: 68ch; margin-top: 48px; }
+.legal__body h2 {
+  font-size: clamp(22px, 2.4vw, 28px); margin: 48px 0 12px;
+  padding-top: 24px; border-top: 1px solid var(--line);
+}
+.legal__body h2:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+.legal__body p, .legal__body li { color: var(--ink-muted); font-size: 15.5px; }
+.legal__body p { margin: 0 0 16px; }
+.legal__body ul { margin: 0 0 16px; padding-left: 22px; }
+.legal__body li { margin-bottom: 8px; }
+.legal__body li::marker { color: var(--cyan-dim); }
+.legal__body strong { color: var(--ink); font-weight: 500; }
+.legal__body .callout {
+  border-left: 2px solid var(--cyan-dim); background: var(--panel);
+  padding: 18px 22px; margin: 0 0 20px; color: var(--ink);
+}
+.legal__body table {
+  width: 100%; border-collapse: collapse; margin: 0 0 20px;
+  font-size: 14.5px; color: var(--ink-muted);
+}
+.legal__body th, .legal__body td {
+  text-align: left; vertical-align: top; padding: 12px 14px 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+.legal__body th {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--cyan-text); font-weight: 500;
+}
+.legal__body td:first-child { color: var(--ink); white-space: nowrap; }
+.legal__table { overflow-x: auto; }
+.legal__back { margin-top: 56px; font-size: 13px; }
+.legal__back a { color: var(--ink-faint); }
+.legal__back a:hover { color: var(--cyan); }
+.footer__links { margin-top: 12px; display: flex; gap: 18px; justify-content: center; }
+.footer__links a { color: rgba(234, 246, 250, 0.55); }
+.footer__links a:hover { color: var(--cyan); }
