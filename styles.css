@@ -152,7 +152,7 @@ h1 {
 }
 .cta-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 36px; }
 
-/* Hero: copy beside a tilted app screenshot at desktop, stacked below it on narrow screens */
+/* Hero: copy beside the app screenshot at desktop, stacked below it on narrow screens */
 .hero__inner { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; align-items: center; width: 100%; }
 .hero__art { margin: 0; }
 .hero__art img {
@@ -161,11 +161,6 @@ h1 {
 }
 @media (min-width: 1000px) {
   .hero__inner { grid-template-columns: minmax(0, 11fr) minmax(0, 10fr); gap: 48px; }
-  .hero__art { width: 118%; }
-  .hero__art img {
-    transform: perspective(1400px) rotateY(-9deg) rotateX(2deg);
-    transform-origin: left center;
-  }
 }
 
 .btn {
