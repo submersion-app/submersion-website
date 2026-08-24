@@ -110,48 +110,66 @@
     });
   }
 
-  // ---- Main loop: one rAF drives color, parallax, gauge, snow ----
+  // ---- Depth + motion updates ----
   const snow = createSnow(document.getElementById('ocean-snow'));
   let lastY = -1;
   let depthFrac = 0;
 
-  if (!reducedMotion.matches) {
-    root.classList.add('ocean-live');
+  function update() {
+    const y = window.scrollY || 0;
+    lastY = y;
+    const maxScroll = root.scrollHeight - window.innerHeight;
+    depthFrac = maxScroll > 0 ? Math.min(1, Math.max(0, y / maxScroll)) : 0;
+
+    const depth = depthFrac * MAX_DEPTH_M;
+    if (readout) readout.textContent = depth.toFixed(1) + ' m';
+    for (let i = 0; i < ticks.length; i++) {
+      ticks[i].classList.toggle('gauge__tick--passed', Number(ticks[i].dataset.depth) <= depth);
+    }
+
+    if (!reducedMotion.matches) {
+      root.style.setProperty('--water', waterColor(depthFrac));
+      for (let i = 0; i < parallaxEls.length; i++) {
+        const el = parallaxEls[i];
+        el.style.transform =
+          'translate3d(0,' + (-y * Number(el.dataset.speed)).toFixed(1) + 'px,0)';
+      }
+      // Light rays belong to the surface: fade them out by ~45% depth
+      const rayOpacity = Math.max(0, 1 - depthFrac * 2.2);
+      for (let i = 0; i < rays.length; i++) {
+        rays[i].style.opacity = String(rayOpacity * (i === 0 ? 1 : i === 1 ? 0.7 : 0.5));
+      }
+    }
   }
 
+  // Full motion: one continuous rAF loop drives color, parallax, gauge, snow.
   function frame() {
     if (!document.hidden) {
-      const y = window.scrollY || 0;
-      if (y !== lastY) {
-        lastY = y;
-        const maxScroll = root.scrollHeight - window.innerHeight;
-        depthFrac = maxScroll > 0 ? Math.min(1, Math.max(0, y / maxScroll)) : 0;
-
-        const depth = depthFrac * MAX_DEPTH_M;
-        if (readout) readout.textContent = depth.toFixed(1) + ' m';
-        for (let i = 0; i < ticks.length; i++) {
-          ticks[i].classList.toggle('gauge__tick--passed', Number(ticks[i].dataset.depth) <= depth);
-        }
-
-        if (!reducedMotion.matches) {
-          root.style.setProperty('--water', waterColor(depthFrac));
-          for (let i = 0; i < parallaxEls.length; i++) {
-            const el = parallaxEls[i];
-            el.style.transform =
-              'translate3d(0,' + (-y * Number(el.dataset.speed)).toFixed(1) + 'px,0)';
-          }
-          // Light rays belong to the surface: fade them out by ~45% depth
-          const rayOpacity = Math.max(0, 1 - depthFrac * 2.2);
-          for (let i = 0; i < rays.length; i++) {
-            rays[i].style.opacity = String(rayOpacity * (i === 0 ? 1 : i === 1 ? 0.7 : 0.5));
-          }
-        }
-      }
-      if (!reducedMotion.matches) snow.step(depthFrac);
+      if ((window.scrollY || 0) !== lastY) update();
+      snow.step(depthFrac);
     }
     window.requestAnimationFrame(frame);
   }
 
   setupReveals();
-  window.requestAnimationFrame(frame);
+
+  if (reducedMotion.matches) {
+    // Reduced motion: no continuous loop. Keep the depth readout and tick
+    // states current by coalescing scroll/resize events into a single rAF.
+    let queued = false;
+    const schedule = function () {
+      if (queued) return;
+      queued = true;
+      window.requestAnimationFrame(function () {
+        queued = false;
+        update();
+      });
+    };
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    update();
+  } else {
+    root.classList.add('ocean-live');
+    window.requestAnimationFrame(frame);
+  }
 })();
