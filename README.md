@@ -15,9 +15,12 @@ Then visit `http://localhost:5173`.
 
 ## Structure
 
-- `index.html` — page markup/content
-- `privacy/`, `terms/` — Privacy Policy and Terms of Service (mirrors of `PRIVACY.md` / `TERMS.md` in the app repo; linked from the footer)
-- `styles.css` — styling
-- `script.js` — scroll-driven screenshot swapping + progressive expansion
-- `screenshots/` — UI screenshots used on the page
-- `assets/submersion-logo.png` — Submersion logo used in nav + favicon
+- `index.html`: the homepage. Nine zones from 0 to 60 m: hero, dive computer download and import, the log, sites and trips, photos and gear, profile analysis, planning, your data, download. Section ids are `computer`, `log`, `sites`, `media`, `analyze`, `plan`, `data`, `download`; the older `why`, `screens`, `features`, `support` anchors still resolve.
+- `privacy/`, `terms/`: Privacy Policy and Terms of Service (mirrors of `PRIVACY.md` / `TERMS.md` in the app repo; linked from the footer)
+- `styles.css`: the visual system (dark-only, zone layouts, feature grids, gauge)
+- `ocean.js`: scroll-driven water color, parallax, marine snow, the depth gauge, and section reveals
+- `script.js`: release lookup and platform-detecting download button
+- `screenshots/`: window captures of the macOS app at 2400 px wide, used on the page
+- `assets/`: logo, favicon, App Store badge
+- `lightroom/`: Adobe Lightroom integration walkthrough and OAuth callback page (self-contained styles)
+- `docs/superpowers/specs/`: design specs for the site (the copy rules and verified-claims table live in the 2026-08-23 spec)

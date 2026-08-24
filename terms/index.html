@@ -3,66 +3,70 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="color-scheme" content="dark light" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0a3049" />
 
-    <title>Terms of Service - Submersion Dive Log</title>
+    <title>Terms of Service · Submersion Dive Log</title>
     <meta
       name="description"
       content="Terms of Service for the Submersion dive log app. Free, open-source, GPL-3.0. Includes the dive safety disclaimer, third-party service terms, and limitation of liability."
     />
     <link rel="canonical" href="https://submersion.app/terms/" />
 
-    <meta property="og:title" content="Terms of Service - Submersion" />
+    <meta property="og:title" content="Terms of Service · Submersion" />
     <meta property="og:description" content="Terms of Service for the Submersion dive log app." />
     <meta property="og:type" content="website" />
 
-<link rel="icon" type="image/png" href="../assets/favicon.png" />
+    <link rel="icon" type="image/png" href="../assets/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../styles.css" />
   </head>
-  <body>
+  <body id="top">
     <a class="skip" href="#content">Skip to content</a>
 
-    <header class="top">
-      <nav class="nav" aria-label="Primary">
-        <a class="brand" href="../">
-          <img
-            class="brand__mark"
-            src="../assets/icon.png"
-            alt="Submersion"
-            width="72"
-            height="72"
-            decoding="async"
-          />
-          <span class="brand__name">Submersion</span>
-        </a>
+    <!-- Fixed decorative water column (JS-enhanced; harmless without JS) -->
+    <div class="ocean" aria-hidden="true">
+      <div class="ocean__haze" data-speed="0.04"></div>
+      <div class="ocean__rays" data-speed="0.2">
+        <div class="ocean__ray ocean__ray--1"></div>
+        <div class="ocean__ray ocean__ray--2"></div>
+        <div class="ocean__ray ocean__ray--3"></div>
+      </div>
+      <canvas id="ocean-snow" class="ocean__snow"></canvas>
+    </div>
 
+    <header>
+      <nav class="nav" aria-label="Primary">
+        <a class="nav__brand" href="../">
+          <img src="../assets/icon.png" alt="" width="46" height="46" decoding="async" />
+          SUBMERSION
+        </a>
         <div class="nav__links">
           <a href="../#why">Why</a>
-          <a href="../#features">Features</a>
           <a href="../#screens">Screens</a>
+          <a href="../#features">Features</a>
           <a href="../#support">Support</a>
           <a href="../#download">Download</a>
-          <a class="btn btn--small" href="https://github.com/submersion-app/submersion" target="_blank" rel="noreferrer">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-            </svg>
-            GitHub
-          </a>
+          <a href="https://github.com/submersion-app/submersion" target="_blank" rel="noreferrer">GitHub</a>
         </div>
       </nav>
     </header>
 
     <main id="content">
-      <section class="section legal">
-        <div class="container">
-          <div class="section__head">
-            <h1>Terms of Service</h1>
-            <p>
-              The terms that govern your use of the Submersion app. The short version: it is free,
-              it is yours, and it is not a dive computer.
-            </p>
-            <p class="legal__meta">App: Submersion &middot; Last updated: 2026-07-11</p>
-          </div>
+      <section class="zone legal">
+        <div class="zone__inner wrap">
+          <p class="zone__tag">Legal · Terms</p>
+          <h2>Terms of Service.</h2>
+          <p class="zone__intro">
+            The terms that govern your use of the Submersion app. The short version: it is free,
+            it is yours, and it is not a dive computer.
+          </p>
+          <p class="legal__meta">App: Submersion · Last updated: 2026-07-11</p>
 
           <div class="legal__body">
             <h2 id="acceptance">Acceptance of Terms</h2>
@@ -198,16 +202,15 @@
           </div>
 
           <p class="legal__back">
-            <a href="../">&larr; Back to Submersion</a> &middot; <a href="../privacy/">Privacy Policy</a>
+            <a href="../">← Back to the surface</a> · <a href="../privacy/">Privacy Policy</a>
           </p>
 
-<footer class="footer">
-            <p>
-              &copy; <span data-year></span> Submersion. Open-source software licensed under GPL&#8209;3.0.
-            </p>
-            <p class="footer__links">
-              <a href="../privacy/">Privacy Policy</a> &middot; <a href="../terms/">Terms of Service</a>
-            </p>
+          <footer class="footer">
+            © <span data-year></span> Submersion · GPL-3.0 · See you down there
+            <div class="footer__links">
+              <a href="../privacy/">Privacy Policy</a>
+              <a href="../terms/" aria-current="page">Terms of Service</a>
+            </div>
           </footer>
         </div>
       </section>
@@ -219,5 +222,6 @@
         if (y) y.textContent = String(new Date().getFullYear());
       })();
     </script>
+    <script src="../ocean.js" defer></script>
   </body>
 </html>
