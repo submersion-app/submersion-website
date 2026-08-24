@@ -6,16 +6,16 @@
     <meta name="color-scheme" content="dark" />
     <meta name="theme-color" content="#0a3049" />
 
-    <title>Submersion Dive Log</title>
+    <title>Submersion</title>
     <meta
       name="description"
-      content="Submersion is a free, open-source dive log for recreational and technical divers. Your dives stay on your device, in open formats, forever. iOS, Android, macOS, Windows, Linux."
+      content="Submersion is free, open-source dive software for recreational and technical divers: dive computer download, logging, profile analysis with Bühlmann tissue loading, OC and rebreather planning, gas calculators, sites and maps, gear, photos, and encrypted sync through your own cloud. iOS, Android, macOS, Windows, Linux."
     />
 
-    <meta property="og:title" content="Submersion — the logbook that goes deeper" />
+    <meta property="og:title" content="Submersion: dive software for the whole dive" />
     <meta
       property="og:description"
-      content="Free, open-source dive logging with complete data ownership. 300+ dive computers, UDDF 3.2, full decompression modelling. No accounts, no subscriptions."
+      content="Free, open-source dive software. 350+ dive computers, Bühlmann ZH-L16C with gradient factors, OC/CCR/SCR planning, UDDF 3.2 and nine other import formats, end-to-end encrypted sync through your own cloud. No accounts."
     />
     <meta property="og:type" content="website" />
 
@@ -73,10 +73,12 @@
           SUBMERSION
         </a>
         <div class="nav__links">
-          <a href="#why">Why</a>
-          <a href="#screens">Screens</a>
-          <a href="#features">Features</a>
-          <a href="#support">Support</a>
+          <a href="#computer">Computer</a>
+          <a href="#log">Log</a>
+          <a href="#sites">Sites</a>
+          <a href="#analyze">Analyze</a>
+          <a href="#plan">Plan</a>
+          <a href="#data">Data</a>
           <a href="#download">Download</a>
           <a href="https://github.com/submersion-app/submersion" target="_blank" rel="noreferrer">GitHub</a>
         </div>
@@ -84,46 +86,70 @@
 
       <section class="hero">
         <div class="zone__inner wrap">
-          <p class="eyebrow">Free · Open Source · Yours</p>
-          <h1>The logbook that goes <em>deeper</em>.</h1>
+          <p class="eyebrow">Free · Open source · iOS · Android · macOS · Windows · Linux</p>
+          <h1>One app for everything you do around a <em>dive</em>.</h1>
           <p class="lead">
-            Every dive tells a story — the wall that dropped into blue, the current that surprised
-            you, the turtle at your safety stop. Submersion keeps those stories on your device, in
-            open formats, forever. No accounts. No subscriptions. No lock-in.
+            Download your computer, check the deco on the profile, plan tomorrow's dive with the gas
+            you actually have, log who you dove with and what you saw, and keep every bit of it on
+            your own hardware. Rec or tech, single tank or rebreather, it all fits in the same
+            logbook.
           </p>
           <div class="cta-row">
-            <a class="btn" href="#why">Begin descent ↓</a>
-            <a class="btn btn--ghost" href="https://github.com/submersion-app/submersion" target="_blank" rel="noreferrer">View on GitHub</a>
+            <a class="btn" href="#download">Download</a>
+            <a class="btn btn--ghost" href="https://github.com/submersion-app/submersion" target="_blank" rel="noreferrer">Source on GitHub</a>
           </div>
         </div>
       </section>
     </header>
 
     <main id="content">
-      <section class="zone" id="why">
+      <section class="zone" id="computer">
         <div class="zone__inner wrap">
-          <p class="zone__tag">— 10 m · The Shallows</p>
-          <h2>Your dive data belongs to <em>you</em>.</h2>
+          <p class="zone__tag">6 m · From your computer</p>
+          <h2>Start with what your <em>computer</em> recorded.</h2>
           <p class="zone__intro">
-            Most dive logs hold your history hostage — locked behind accounts, subscriptions, and
-            proprietary clouds. Submersion works differently, on principle.
+            Pair over Bluetooth or plug in over USB, download, review what came in, done. After the
+            first time, only new dives come across.
           </p>
-          <div class="pillars">
-            <div class="pillar">
-              <h3>Yours, on your device</h3>
-              <p>Your dives live locally. Sync to a cloud only if you choose to. Export everything, any time — no questions asked.</p>
+          <figure class="shot--wide">
+            <img src="screenshots/computer_import.png" alt="Dive computer download review step showing a 70 percent match against an existing dive, both profiles overlaid, and four resolution actions" width="2400" height="1720" loading="lazy" decoding="async" />
+            <figcaption>The review step of a download: a likely duplicate shown against the existing dive, both profiles overlaid, and the four ways to resolve it.</figcaption>
+          </figure>
+          <div class="features">
+            <div class="feature">
+              <h3>350+ models</h3>
+              <p>Submersion bundles libdivecomputer. That gives it the 350+ models supported by libdivecomputer, from 37 manufacturers, over Bluetooth LE and USB. The project has confirmed the Shearwater Teric and the Aqualung i300C and i330R and is looking for testers for the rest. Bluetooth only on iOS.</p>
             </div>
-            <div class="pillar">
+            <div class="feature">
+              <h3>Incremental downloads</h3>
+              <p>Submersion remembers the last dive it took from each computer and fetches only what is new.</p>
+            </div>
+            <div class="feature">
+              <h3>Duplicate review</h3>
+              <p>A download that looks like a dive you already have is shown next to it. Skip it, import it as a new dive, replace the earlier source, or keep both computers' readings on one dive.</p>
+            </div>
+            <div class="feature">
+              <h3>Two computers, one dive</h3>
+              <p>Wear a backup? Both downloads attach to the same dive, and you can put their profiles on one chart.</p>
+            </div>
+          </div>
+          <h3 class="subhead">Already have a logbook somewhere else?</h3>
+          <div class="features">
+            <div class="feature">
+              <h3>Import files</h3>
+              <p>Subsurface, MacDive, Shearwater Cloud, Garmin FIT, DAN DL7, Ratio and UDDF files import directly. CSV comes with presets for MySSI, Diving Log, DiveMate, Garmin Connect and Shearwater Cloud, or map the columns yourself.</p>
+            </div>
+            <div class="feature">
+              <h3>Apple Health</h3>
+              <p>Underwater workouts recorded by an Apple Watch import on iOS with depth, temperature and heart rate.</p>
+            </div>
+            <div class="feature">
+              <h3>Paper logbooks</h3>
+              <p>Scan the pages and Submersion reads the entries with OCR so you can check them and import them.</p>
+            </div>
+            <div class="feature">
               <h3>Open formats</h3>
-              <p>Full UDDF 3.2 import and export, plus CSV. Your logbook stays portable for the rest of your diving life.</p>
-            </div>
-            <div class="pillar">
-              <h3>Every device you own</h3>
-              <p>iOS, Android, macOS, Windows, Linux. One logbook, the same on all of them.</p>
-            </div>
-            <div class="pillar">
-              <h3>Free, forever</h3>
-              <p>GPL-3.0 open source. No ads, no premium tier, no upsells at 30 metres.</p>
+              <p>Everything you import can leave again as UDDF 3.2, CSV, Excel or PDF.</p>
             </div>
           </div>
         </div>
