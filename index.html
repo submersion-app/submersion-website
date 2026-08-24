@@ -373,15 +373,118 @@
         </div>
       </section>
 
-      <section class="zone" id="support">
+      <section class="zone" id="plan">
         <div class="zone__inner wrap">
-          <p class="zone__tag">— 38 m · Buddy Check</p>
-          <h2>Buddy <em>check</em>.</h2>
+          <p class="zone__tag">40 m · Planning</p>
+          <h2>Plan with the gas, gear and tissues you'll <em>actually</em> have.</h2>
           <p class="zone__intro">
-            Found a bug? Have an idea? Surface it —
-            <a href="https://github.com/submersion-app/submersion/issues" target="_blank" rel="noreferrer">open an issue on GitHub</a>.
-            For everything else: <a href="mailto:support@submersion.app">support@submersion.app</a>.
+            The same decompression model as the analysis, run forward. Recreational divers get an
+            NDL solver. Technical divers get segments, setpoints and bailout.
           </p>
+          <div class="shots shots--2">
+            <figure>
+              <img src="screenshots/planner.png" alt="Dive planner with a multi-segment profile, gas list and decompression schedule" width="WIDTH" height="HEIGHT" loading="lazy" decoding="async" />
+              <figcaption>A plan as segments, with the schedule the model produces.</figcaption>
+            </figure>
+            <figure>
+              <img src="screenshots/gas_blender.png" alt="Gas blending calculator" width="WIDTH" height="HEIGHT" loading="lazy" decoding="async" />
+              <figcaption>The gas blender.</figcaption>
+            </figure>
+          </div>
+          <div class="features">
+            <div class="feature">
+              <h3>The planner</h3>
+              <p>Build the dive as segments, or drag the profile into shape. Cylinders, gases and switches come from your own tank presets and cylinder configurations.</p>
+            </div>
+            <div class="feature">
+              <h3>Open circuit and rebreathers</h3>
+              <p>OC, CCR, SCR and PSCR, with setpoints by depth, and the mode switchable partway through the plan for a bailout.</p>
+            </div>
+            <div class="feature">
+              <h3>Bailout check</h3>
+              <p>For a CCR plan, Submersion works out open-circuit demand along the whole profile and checks your bailout cylinders against the worst moment, with real-gas correction.</p>
+            </div>
+            <div class="feature">
+              <h3>Contingencies</h3>
+              <p>Contingency scenarios next to the main plan, and a range table of depth against time.</p>
+            </div>
+            <div class="feature">
+              <h3>Repetitive dives</h3>
+              <p>Seed the plan with the tissues from the dive you just logged, or use the surface interval tool to see how long to wait.</p>
+            </div>
+            <div class="feature">
+              <h3>Weighting</h3>
+              <p>The weight planner builds a buoyancy model from your logged dives and predicts what to carry for a new suit, cylinder or water type.</p>
+            </div>
+            <div class="feature">
+              <h3>Gas calculators</h3>
+              <p>MOD, best mix, maximum narcotic depth, consumption and rock bottom. The blender works out partial-pressure fills with a real-gas equation and prints the invoice.</p>
+            </div>
+            <div class="feature">
+              <h3>On the slate</h3>
+              <p>Export the plan as a PDF for your wet notes.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="zone" id="data">
+        <span id="why"></span>
+        <div class="zone__inner wrap">
+          <p class="zone__tag">50 m · Your data</p>
+          <h2>On your devices, encrypted, in formats you can <em>leave with</em>.</h2>
+          <p class="zone__intro">
+            Submersion has no server and no accounts. Your logbook is a database on your own
+            hardware. Sync and backup go through cloud storage you already own.
+          </p>
+          <div class="shots">
+            <figure>
+              <img src="screenshots/statistics.png" alt="Dive statistics overview in dark mode with totals, personal records and most visited sites" width="2400" height="1636" loading="lazy" decoding="async" />
+              <figcaption>Statistics: totals, records, and nine more pages behind them.</figcaption>
+            </figure>
+            <figure>
+              <img src="screenshots/sync_settings.png" alt="Sync settings listing the supported cloud storage providers" width="WIDTH" height="HEIGHT" loading="lazy" decoding="async" />
+              <figcaption>Sync through your own cloud storage.</figcaption>
+            </figure>
+            <figure>
+              <img src="screenshots/themes.png" alt="Theme gallery showing the five app themes" width="WIDTH" height="HEIGHT" loading="lazy" decoding="async" />
+              <figcaption>Five themes, each in light and dark.</figcaption>
+            </figure>
+          </div>
+          <div class="features">
+            <div class="feature">
+              <h3>Local and encrypted</h3>
+              <p>An SQLite database encrypted at rest, with Face ID, Touch ID or a passphrase to open the app.</p>
+            </div>
+            <div class="feature">
+              <h3>Sync</h3>
+              <p>End-to-end encrypted sync between your devices through your own iCloud, Google Drive, Dropbox or S3-compatible storage. A recovery code unlocks it on a new device.</p>
+            </div>
+            <div class="feature">
+              <h3>Backups</h3>
+              <p>Encrypted backups to the same places, an automatic backup before every upgrade, and restore from any of them.</p>
+            </div>
+            <div class="feature">
+              <h3>Export</h3>
+              <p>UDDF 3.2, CSV, Excel, KML and GPX, and printable PDF logbooks in Simple, Detailed, Professional, PADI and NAUI layouts.</p>
+            </div>
+            <div class="feature">
+              <h3>Data quality</h3>
+              <p>An assistant that finds duplicates and anomalies across the log and walks you through fixing them.</p>
+            </div>
+            <div class="feature">
+              <h3>Your units, your language</h3>
+              <p>Independent units for depth, temperature, pressure, volume, weight, altitude and SAC. 11 languages. Five themes in light and dark. Keyboard shortcuts on the desktop.</p>
+            </div>
+            <div class="feature">
+              <h3>Statistics</h3>
+              <p>Ten pages: totals and records, progression, conditions, gas, marine life, geography, social, time patterns, equipment and profile analysis.</p>
+            </div>
+            <div class="feature">
+              <h3>Open source</h3>
+              <p>GPL-3.0, with the whole source on GitHub. No ads, no subscription, no in-app purchases.</p>
+            </div>
+          </div>
         </div>
       </section>
 
