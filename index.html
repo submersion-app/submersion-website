@@ -262,36 +262,112 @@
         </div>
       </section>
 
-      <section class="zone" id="features">
+      <section class="zone" id="media">
         <div class="zone__inner wrap">
-          <p class="zone__tag">— 30 m · The Wall</p>
-          <h2>Built for divers who read the <em>fine print</em>.</h2>
+          <p class="zone__tag">24 m · Photos, gear and paperwork</p>
+          <h2>The rest of what a dive <em>leaves behind</em>.</h2>
           <p class="zone__intro">
-            Under the calm interface: a complete decompression toolset that takes your diving as
-            seriously as you do.
+            Photos and video, the gear you wore, and the cards that say you are allowed to.
           </p>
-          <div class="specs">
-            <div class="spec"><strong>ZH-L16C</strong><span>Bühlmann, with gradient factors</span></div>
-            <div class="spec"><strong>300+</strong><span>dive computers, USB &amp; Bluetooth</span></div>
-            <div class="spec"><strong>NDL · TTS · CNS · OTU</strong><span>computed in real time</span></div>
-            <div class="spec"><strong>Air · Nitrox · Trimix</strong><span>multi-cylinder, multi-gas</span></div>
+          <div class="shots">
+            <figure>
+              <img src="screenshots/photo_gallery.png" alt="Photo and video gallery for a dive with each shot placed on the dive profile" width="2400" height="1636" loading="lazy" decoding="async" />
+              <figcaption>A dive's photos and video, each placed on the profile at the moment it was taken.</figcaption>
+            </figure>
+            <figure>
+              <img src="screenshots/equipment_sets.png" alt="Equipment sets screen showing a warm water gear configuration" width="2400" height="1636" loading="lazy" decoding="async" />
+              <figcaption>Equipment sets: build a configuration once, apply it to a dive.</figcaption>
+            </figure>
+            <figure>
+              <img src="screenshots/certifications.png" alt="Certification wallet showing agency and level for each card" width="WIDTH" height="HEIGHT" loading="lazy" decoding="async" />
+              <figcaption>The certification wallet.</figcaption>
+            </figure>
           </div>
-          <div class="detail">
-            <div>
-              <h3>Dive documentation</h3>
-              <p>Complete records — conditions, timestamps, temperatures. Trips, tags, favorites, and notes. Multi-cylinder configurations with gas mixes from air to trimix.</p>
+          <div class="features features--3">
+            <div class="feature">
+              <h3>Photos and video</h3>
+              <p>Import from the device gallery, watched folders, a network share, or your own iCloud, Google Drive, Dropbox or S3 bucket. Each shot is matched to a dive by capture time and shown as a marker at its depth on the profile.</p>
             </div>
-            <div>
-              <h3>Site management</h3>
-              <p>GPS capture with reverse geocoding. Depth ranges, difficulty ratings, hazard documentation. An interactive map of everywhere you've been.</p>
+            <div class="feature">
+              <h3>Equipment</h3>
+              <p>Every item with brand, model, serial, purchase date and cost. Service schedules with reminders, and a service log of what was done and what it cost.</p>
             </div>
-            <div>
-              <h3>Computer integration</h3>
-              <p>Direct USB and Bluetooth downloads. Incremental sync with duplicate detection. Support for 300+ models via libdivecomputer.</p>
+            <div class="feature">
+              <h3>Equipment sets</h3>
+              <p>Warm water, cold water, sidemount: build sets and apply one to a dive. A set can select itself by location.</p>
             </div>
-            <div>
-              <h3>Planning &amp; analysis</h3>
-              <p>Complete multi-gas dive planning. Real-time NDL, ceiling, TTS, CNS and OTU. Gradient factors you set yourself.</p>
+            <div class="feature">
+              <h3>Certifications</h3>
+              <p>A wallet of your cards with photos of front and back, agency, level, number and expiry.</p>
+            </div>
+            <div class="feature">
+              <h3>Courses</h3>
+              <p>Track a course's requirements and link each one to the dive that satisfied it.</p>
+            </div>
+            <div class="feature">
+              <h3>Pre-dive checklists</h3>
+              <p>Run a checklist from a template before the dive and attach the session to the log.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="zone" id="analyze">
+        <span id="features"></span>
+        <div class="zone__inner wrap">
+          <p class="zone__tag">32 m · Reading the profile</p>
+          <h2>Every sample, and what it <em>means</em>.</h2>
+          <p class="zone__intro">
+            Your computer recorded a depth every few seconds. Submersion turns that into
+            decompression state, gas exposure and ascent behaviour, computed from the profile, that
+            you can scrub through second by second.
+          </p>
+          <figure class="shot--wide">
+            <img src="screenshots/profile_player.png" alt="Full-screen dive profile playback with depth, temperature, NDL, ppO2 and tank pressure over time" width="2400" height="1669" loading="lazy" decoding="async" />
+            <figcaption>Full-screen playback with depth, temperature, NDL, ppO₂ and tank pressure on one timeline.</figcaption>
+          </figure>
+          <div class="shots shots--2">
+            <figure>
+              <img src="screenshots/tissue_loading.png" alt="Tissue loading panel with a bar per compartment and a heat map of on-gassing and off-gassing over the dive" width="WIDTH" height="HEIGHT" loading="lazy" decoding="async" />
+              <figcaption>Tissue loading for all 16 compartments, and how each one loaded and unloaded through the dive.</figcaption>
+            </figure>
+            <figure>
+              <img src="screenshots/dive_3d.png" alt="Three-dimensional view of a dive profile" width="WIDTH" height="HEIGHT" loading="lazy" decoding="async" />
+              <figcaption>The dive in three dimensions.</figcaption>
+            </figure>
+          </div>
+          <div class="features">
+            <div class="feature">
+              <h3>Playback</h3>
+              <p>Play or scrub the profile. Overlay temperature, tank pressure, heart rate, SAC, ppO₂, ppN₂ and ppHe, gas density, gradient factor, surface GF, TTS, ceiling, NDL and deco stops, and choose which of them you want to see.</p>
+            </div>
+            <div class="feature">
+              <h3>Bühlmann ZH-L16C</h3>
+              <p>Tissue loading for all 16 compartments, nitrogen and helium, computed from the profile with the gradient factors you set. Watch the leading compartment change as the dive goes on.</p>
+            </div>
+            <div class="feature">
+              <h3>Oxygen exposure</h3>
+              <p>CNS and OTU for the dive, plus running totals for the day and the week, using the calculation method you prefer.</p>
+            </div>
+            <div class="feature">
+              <h3>Computer versus model</h3>
+              <p>Show the NDL, ceiling and TTS your computer reported next to what the model says, and switch between them.</p>
+            </div>
+            <div class="feature">
+              <h3>Two computers</h3>
+              <p>Overlay the profiles from two computers on one chart and see where they disagree.</p>
+            </div>
+            <div class="feature">
+              <h3>Edit</h3>
+              <p>Trim a profile that started on the boat, with undo if you get it wrong.</p>
+            </div>
+            <div class="feature">
+              <h3>3D</h3>
+              <p>Move through the dive in three dimensions, or view the 16 tissue compartments as a surface that rises and falls with the dive.</p>
+            </div>
+            <div class="feature">
+              <h3>Ascent rate</h3>
+              <p>Ascent speed is drawn on the profile and colored where it exceeds the limits.</p>
             </div>
           </div>
         </div>
