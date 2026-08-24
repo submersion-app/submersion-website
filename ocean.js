@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const MAX_DEPTH_M = 40;
+  const MAX_DEPTH_M = 60;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   // Water color stops: [scroll fraction, [r, g, b]] — must mirror the CSS fallback gradient.

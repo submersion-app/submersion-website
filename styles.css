@@ -103,7 +103,11 @@ img { max-width: 100%; height: auto; display: block; }
   display: flex; flex-direction: column; justify-content: space-between; height: 100%;
   padding: 84px 0 24px 10px; font-size: 10px; color: var(--ink-faint);
 }
-.gauge__tick { transition: color 400ms ease; }
+.gauge__tick { transition: color 400ms ease; white-space: nowrap; }
+.gauge__tick::after {
+  content: ""; display: inline-block; width: 10px; margin-left: 6px;
+  border-top: 1px solid currentColor; vertical-align: middle;
+}
 .gauge__tick--passed { color: var(--cyan); }
 .gauge__readout {
   position: absolute; top: 50%; right: 10px; transform: translateY(-50%);
@@ -165,6 +169,10 @@ h1 em, h2 em { font-style: italic; font-weight: 400; color: var(--cyan); }
 .zone__tag {
   font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.3em;
   text-transform: uppercase; color: var(--cyan-text); margin: 0 0 14px;
+}
+.zone__tag::before {
+  content: ""; display: inline-block; width: 22px; margin-right: 12px;
+  border-top: 1px solid currentColor; vertical-align: middle;
 }
 h2 {
   font-family: var(--font-display); font-weight: 300;
