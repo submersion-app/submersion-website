@@ -184,19 +184,6 @@ h2 {
 .reveal { opacity: 0; transform: translateY(12px); transition: opacity 700ms ease, transform 700ms ease; }
 .reveal--in { opacity: 1; transform: none; }
 
-/* ---------- Why: pillars ---------- */
-.pillars {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
-  background: var(--line); border: 1px solid var(--line); margin-top: 44px;
-}
-.pillar { background: var(--panel); padding: 30px; }
-.pillar h3 {
-  font-family: var(--font-display); font-weight: 400; font-size: 20px;
-  margin: 0 0 10px; color: #d8f0f8;
-}
-.pillar p { margin: 0; color: var(--ink-muted); font-size: 14.5px; }
-@media (max-width: 700px) { .pillars { grid-template-columns: 1fr; } }
-
 /* ---------- Screens ---------- */
 .shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 48px; align-items: start; }
 .shots figure { margin: 0; }
@@ -204,17 +191,9 @@ h2 {
 .shots img { border-radius: 14px; border: 1px solid var(--line); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5); }
 .shots figcaption { font-size: 13px; color: var(--ink-faint); margin-top: 12px; line-height: 1.6; }
 
-.thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 76px; }
-.thumb { margin: 0; }
-.thumb img { border-radius: 10px; border: 1px solid var(--line); opacity: 0.85; }
-.thumb figcaption {
-  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--ink-faint); margin-top: 8px;
-}
 @media (max-width: 860px) {
   .shots { grid-template-columns: 1fr; }
   .shots figure:nth-child(2) { transform: none; }
-  .thumbs { grid-template-columns: repeat(2, 1fr); }
 }
 
 .shots--2 { grid-template-columns: repeat(2, 1fr); }
@@ -248,23 +227,6 @@ h2 {
 .subhead + .features { margin-top: 28px; }
 @media (max-width: 900px) { .features--3 { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 700px) { .features, .features--3 { grid-template-columns: 1fr; gap: 24px; } }
-
-/* ---------- Features: specs + detail ---------- */
-.specs { display: flex; gap: clamp(24px, 4vw, 44px); flex-wrap: wrap; margin-top: 44px; }
-.spec { border-left: 1px solid var(--cyan-dim); padding-left: 18px; }
-.spec strong {
-  font-family: var(--font-mono); display: block; color: var(--cyan);
-  font-size: clamp(17px, 1.8vw, 21px); font-weight: 500;
-}
-.spec span { color: var(--ink-faint); font-size: 13px; }
-
-.detail { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 40px; margin-top: 52px; }
-.detail h3 {
-  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.22em;
-  text-transform: uppercase; color: var(--cyan-text); margin: 0 0 8px; font-weight: 500;
-}
-.detail p { margin: 0; color: var(--ink-muted); font-size: 14.5px; }
-@media (max-width: 700px) { .detail { grid-template-columns: 1fr; } }
 
 /* ---------- Abyss / download ---------- */
 .abyss { text-align: center; }
