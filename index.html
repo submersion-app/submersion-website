@@ -155,42 +155,109 @@
         </div>
       </section>
 
-      <section class="zone" id="screens">
+      <section class="zone" id="log">
+        <span id="screens"></span>
         <div class="zone__inner wrap">
-          <p class="zone__tag">— 20 m · The Reef</p>
-          <h2>A closer <em>look</em>.</h2>
-          <p class="zone__intro">Clean on the surface, thorough underneath — like any good dive plan.</p>
-          <div class="shots">
+          <p class="zone__tag">12 m · The log</p>
+          <h2>A record with room for <em>everything</em>.</h2>
+          <p class="zone__intro">
+            Every field is optional. A quick reef dive needs a site, a depth and a time. A staged
+            decompression dive can carry every gas switch, setpoint and signature.
+          </p>
+          <div class="shots shots--2">
             <figure>
-              <img src="screenshots/dives_overview.png" alt="Dive log with detail view showing dive profile, deco status, oxygen toxicity and tissue loading" width="2400" height="1669" loading="lazy" decoding="async" />
-              <figcaption>The whole story of a dive: profile, deco status, tissue loading, and photos pinned to the moment they were taken.</figcaption>
+              <img src="screenshots/dive_detail.png" alt="Dive list beside a dive detail pane with header statistics, the dive profile with events, deco status, oxygen exposure and tissue loading" width="WIDTH" height="HEIGHT" loading="lazy" decoding="async" />
+              <figcaption>A dive's detail pane: header stats, the profile with events, deco status, oxygen exposure and tissue loading.</figcaption>
             </figure>
             <figure>
-              <img src="screenshots/profile_player.png" alt="Full-screen dive profile playback with depth, temperature, NDL, ppO2 and tank pressure over time" width="2400" height="1669" loading="lazy" decoding="async" />
-              <figcaption>Replay any dive minute by minute — depth, temperature, NDL, ppO₂, and tank pressure, all on one timeline.</figcaption>
-            </figure>
-            <figure>
-              <img src="screenshots/sites_map.png" alt="Dive site database beside an interactive map with clustered markers and a dive heatmap" width="2400" height="1477" loading="lazy" decoding="async" />
-              <figcaption>Every site you've splashed, mapped — with clustering and heat when your logbook outgrows the coastline.</figcaption>
+              <img src="screenshots/dive_table.png" alt="Dive log table view with configurable columns" width="WIDTH" height="HEIGHT" loading="lazy" decoding="async" />
+              <figcaption>The table view, with the columns you choose.</figcaption>
             </figure>
           </div>
-          <div class="thumbs">
-            <figure class="thumb">
-              <img src="screenshots/statistics.png" alt="Dive statistics screen in dark mode with totals, personal records and most visited sites" width="2400" height="1636" loading="lazy" decoding="async" />
-              <figcaption>Lifetime trends</figcaption>
+          <div class="features">
+            <div class="feature">
+              <h3>Conditions</h3>
+              <p>Visibility, current, swell, water and air temperature, entry and exit method, altitude. Weather is fetched for the date and place. Tides come from a bundled global model and work offline.</p>
+            </div>
+            <div class="feature">
+              <h3>People</h3>
+              <p>Buddies, divemaster, your own role on the dive, dive center, operator and boat. A buddy or instructor can sign the dive on your screen.</p>
+            </div>
+            <div class="feature">
+              <h3>Gases and cylinders</h3>
+              <p>Any number of cylinders per dive, each with its oxygen and helium fraction, start and end pressure, and the pressure trace from an air-integrated transmitter. Gas switches are marked on the profile.</p>
+            </div>
+            <div class="feature">
+              <h3>Weights</h3>
+              <p>What you carried, where you put it, and whether it felt right. The weight planner learns from this.</p>
+            </div>
+            <div class="feature">
+              <h3>Your own fields</h3>
+              <p>Tags with colors, star ratings, favorites, dive types you define, and custom fields for whatever your agency or your habits call for.</p>
+            </div>
+            <div class="feature">
+              <h3>Views</h3>
+              <p>Cards, or a table with the columns you choose, sortable and saved. Bulk edit fixes a whole trip's entries at once.</p>
+            </div>
+            <div class="feature">
+              <h3>Safety review</h3>
+              <p>After each dive Submersion checks the profile for fast ascents, sawtooth patterns and missed safety stops, and lists what it found.</p>
+            </div>
+            <div class="feature">
+              <h3>Several divers</h3>
+              <p>Separate profiles for each diver who uses the app, each with emergency contacts, medical notes and insurance details.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="zone" id="sites">
+        <div class="zone__inner wrap">
+          <p class="zone__tag">18 m · Where you dove</p>
+          <h2>Sites, trips, and the <em>map</em> between them.</h2>
+          <p class="zone__intro">
+            Submersion ships with 3,600 dive sites and 3,600 dive centers from OpenStreetMap, so most
+            places you dive are already on the map. Add your own with a tap.
+          </p>
+          <div class="shots">
+            <figure>
+              <img src="screenshots/sites_map.png" alt="Dive site list beside an interactive map with clustered markers and a dive heat map" width="2400" height="1477" loading="lazy" decoding="async" />
+              <figcaption>Sites beside the map, with clustering and the heat map on.</figcaption>
             </figure>
-            <figure class="thumb">
-              <img src="screenshots/equipment_sets.png" alt="Equipment sets screen showing a warm water gear configuration" width="2400" height="1636" loading="lazy" decoding="async" />
-              <figcaption>Gear &amp; sets</figcaption>
+            <figure>
+              <img src="screenshots/site_detail.png" alt="Dive site record with map, depth range and difficulty" width="WIDTH" height="HEIGHT" loading="lazy" decoding="async" />
+              <figcaption>A site record with its location, depth range and conditions.</figcaption>
             </figure>
-            <figure class="thumb">
-              <img src="screenshots/computer_import.png" alt="Dive computer import wizard reviewing downloaded dives and duplicates" width="2400" height="1720" loading="lazy" decoding="async" />
-              <figcaption>Computer import</figcaption>
+            <figure>
+              <img src="screenshots/marine_life.png" alt="Marine life statistics with species sightings" width="WIDTH" height="HEIGHT" loading="lazy" decoding="async" />
+              <figcaption>Species sightings across the log.</figcaption>
             </figure>
-            <figure class="thumb">
-              <img src="screenshots/photo_gallery.png" alt="Dive photo and video gallery with depth tags on each shot" width="2400" height="1636" loading="lazy" decoding="async" />
-              <figcaption>Photos &amp; video</figcaption>
-            </figure>
+          </div>
+          <div class="features features--3">
+            <div class="feature">
+              <h3>Site records</h3>
+              <p>GPS with reverse geocoding, depth range, difficulty, water type, hazards, access notes, mooring and parking. Dives logged at the same spot are matched to one site, and duplicates can be merged.</p>
+            </div>
+            <div class="feature">
+              <h3>Maps</h3>
+              <p>Marker clustering, a heat map of where you dive most, and downloadable regions so the map works on the boat without a signal.</p>
+            </div>
+            <div class="feature">
+              <h3>Underwater terrain</h3>
+              <p>Bathymetry overlays on the map, and a 3D terrain view of a site with the features you place on it.</p>
+            </div>
+            <div class="feature">
+              <h3>Reef data</h3>
+              <p>Protection status, habitat, bleaching alerts and reef health for the sites you visit.</p>
+            </div>
+            <div class="feature">
+              <h3>Marine life</h3>
+              <p>511 species built in. Record sightings per dive, see what lives at each site, and tag species in photos.</p>
+            </div>
+            <div class="feature">
+              <h3>Trips</h3>
+              <p>Dates, resort or liveaboard, an itinerary by day, preparation checklists, and a gallery for the whole trip.</p>
+            </div>
           </div>
         </div>
       </section>
