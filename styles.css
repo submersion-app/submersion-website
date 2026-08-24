@@ -301,6 +301,7 @@ h2 {
 .download__fallback { display: flex; gap: 18px; justify-content: center; margin-top: 22px; font-size: 13px; }
 .download__fallback a { color: var(--ink-faint); display: inline-flex; gap: 6px; align-items: center; }
 .download__fallback a:hover { color: var(--cyan); }
+.download__support { margin: 44px auto 0; max-width: 48ch; font-size: 14px; color: var(--ink-muted); }
 
 .footer {
   padding: 64px 0 40px; text-align: center;
