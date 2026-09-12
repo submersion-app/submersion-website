@@ -1,7 +1,6 @@
 /* Submersion — "The Descent". Dark-only visual system. No external deps beyond Google Fonts. */
 
 :root {
-  --water: #14506e; /* live water color; ocean.js interpolates this on scroll */
   --ink: #eaf6fa;
   --ink-muted: rgba(234, 246, 250, 0.72);
   --ink-faint: rgba(234, 246, 250, 0.68);
@@ -12,9 +11,19 @@
   --panel: #04182a;
   --max: 1080px;
   --gauge-w: 74px;
-  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  /* The water column: one straight gradient from the app icon's cyan at the top
+     of the page to the abyss at the bottom. ocean.js reads these two to know the
+     water behind any text, so they are the only place the column is defined. */
+  --water-top: #49e8ff;
+  --water-bottom: #01060e;
+  /* The brand lockup's navy inks, for the header on the surface water
+     (9.5:1 and 7.3:1 on --water-top) */
+  --surface-ink: #06303c;
+  --surface-ink-muted: #0b4452;
+  --flag-red: #c80000;
+  /* Inter, as in the brand wordmark. The variable font's optical-size axis turns
+     into Inter Display at heading sizes on its own (font-optical-sizing: auto). */
+  --font: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -24,19 +33,30 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0;
   color: var(--ink);
-  font-family: var(--font-body);
+  font-family: var(--font);
   font-weight: 300;
   line-height: 1.6;
   text-rendering: optimizeLegibility;
-  /* Fallback water column: paints the whole descent even with JS disabled */
-  background: linear-gradient(
-    180deg,
-    #14506e 0%, #0e3f5a 14%, #0a3049 32%, #062033 55%, #031423 78%, #01060e 100%
-  );
+  /* Laid out along the whole page (the root background scrolls with it), so each
+     section sits on its own depth's water */
+  background: linear-gradient(180deg, var(--water-top), var(--water-bottom));
 }
 
-/* ocean.js adds .ocean-live to <html> and drives --water per frame */
-.ocean-live body { background: var(--water); }
+/* ---------- Ink solved from the water ----------
+   The water runs from bright cyan to near black, so no single text color reads
+   everywhere. ocean.js gives each text block in <main> data-ink="dark" or
+   "light" and sets these tokens on it, solved for contrast against the water
+   behind that block. The static values below are the no-JS starting point for
+   the shallow sections (marked in the HTML). */
+[data-ink] { color: var(--ink); }
+[data-ink="dark"] {
+  --ink: #021820; --ink-muted: #062630; --ink-faint: #062630;
+  --cyan: #021820; --cyan-text: #062630; --cyan-dim: rgba(6, 48, 60, 0.45);
+  --line: rgba(6, 48, 60, 0.22);
+}
+/* Links in dark (or twilight, see ocean.js) ink share the text color, so mark them with an underline */
+[data-ink="dark"] a, [data-ink="twilight"] a { text-decoration: underline; text-decoration-color: var(--cyan-dim); }
+[data-ink="dark"] img { box-shadow: 0 30px 80px rgba(6, 48, 60, 0.35); }
 
 a { color: var(--cyan); text-decoration: none; }
 a:hover { text-decoration: underline; text-decoration-color: var(--cyan-dim); }
@@ -67,7 +87,8 @@ img { max-width: 100%; height: auto; display: block; }
 .ocean__rays { position: absolute; inset: 0; }
 .ocean__ray {
   position: absolute; top: -12vh; height: 88vh;
-  background: linear-gradient(180deg, rgba(140, 215, 235, 0.16), transparent 82%);
+  /* White, so the shafts still read as light against the bright surface water */
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.24), transparent 82%);
   filter: blur(10px); transform-origin: top center;
   animation: ray-sway 11s ease-in-out infinite alternate;
 }
@@ -82,7 +103,7 @@ img { max-width: 100%; height: auto; display: block; }
 .ocean__bubbles { position: absolute; inset: 0; }
 .ocean__bubble {
   position: absolute; bottom: -30px;
-  border: 1px solid rgba(234, 246, 250, 0.22); border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 50%;
   animation: bubble-rise linear infinite;
 }
 @keyframes bubble-rise {
@@ -96,14 +117,14 @@ img { max-width: 100%; height: auto; display: block; }
 .gauge {
   position: fixed; top: 0; right: 0; bottom: 0; width: var(--gauge-w); z-index: 50;
   border-left: 1px solid var(--line);
-  background: linear-gradient(90deg, transparent, rgba(1, 8, 16, 0.35));
-  font-family: var(--font-mono); pointer-events: none;
+  font-variant-numeric: tabular-nums; pointer-events: none;
 }
 .gauge__ticks {
   display: flex; flex-direction: column; justify-content: space-between; height: 100%;
-  padding: 84px 0 24px 10px; font-size: 10px; color: var(--ink-faint);
+  padding: 84px 0 24px 10px; font-size: 10px;
 }
-.gauge__tick { transition: color 400ms ease; white-space: nowrap; }
+/* ocean.js re-inks each tick for the water currently behind it */
+.gauge__tick { color: var(--ink-faint); transition: color 400ms ease; white-space: nowrap; }
 .gauge__tick::after {
   content: ""; display: inline-block; width: 10px; margin-left: 6px;
   border-top: 1px solid currentColor; vertical-align: middle;
@@ -119,33 +140,44 @@ img { max-width: 100%; height: auto; display: block; }
 @media (min-width: 901px) { body { padding-right: var(--gauge-w); } }
 @media (max-width: 900px) { .gauge { display: none; } }
 
+/* ---------- Surface: the top of the water column ----------
+   The header (nav, and the hero on the home page) sits in the brightest water,
+   in the brand lockup's navy. */
+.surface { position: relative; color: var(--surface-ink); }
+.surface a:hover { color: var(--surface-ink); text-decoration-color: currentColor; }
+.surface :focus-visible { outline-color: var(--surface-ink); }
+
 /* ---------- Nav ---------- */
 .nav {
   display: flex; justify-content: space-between; align-items: center;
   padding: 22px clamp(20px, 4vw, 48px);
   max-width: calc(var(--max) + 160px); margin: 0 auto;
 }
-.nav__brand {
-  display: flex; align-items: center; gap: 14px;
-  color: var(--ink); font-size: 21px; letter-spacing: 0.22em; font-weight: 500;
-}
-.nav__brand:hover { text-decoration: none; color: var(--cyan); }
-.nav__brand img { border-radius: 10px; }
-.nav__links { display: flex; gap: clamp(14px, 2vw, 26px); font-size: 13px; }
-.nav__links a { color: var(--ink-muted); }
-.nav__links a:hover { color: var(--cyan); text-decoration: none; }
+.nav__brand { display: flex; transition: opacity 150ms ease; }
+.nav__brand:hover { opacity: 0.8; }
+.nav__brand img { width: auto; height: 96px; }
+@media (max-width: 700px) { .nav__brand img { height: 76px; } }
+.nav__links { display: flex; gap: clamp(14px, 2vw, 26px); font-size: 13px; font-weight: 500; }
+.nav__links a { color: var(--surface-ink-muted); }
 @media (max-width: 700px) { .nav__links { display: none; } }
 
 /* ---------- Hero ---------- */
 .hero { min-height: 84vh; display: flex; align-items: center; }
 .eyebrow {
-  font-family: var(--font-mono); color: var(--cyan);
-  font-size: 12px; letter-spacing: 0.42em; text-transform: uppercase; margin: 0 0 22px;
+  color: var(--surface-ink-muted); font-weight: 500;
+  font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; margin: 0 0 22px;
+  text-wrap: balance;
 }
 h1 {
-  font-family: var(--font-display); font-weight: 300;
-  font-size: clamp(42px, 5.2vw, 68px); line-height: 1.04; letter-spacing: 0.005em; margin: 0;
+  font-weight: 800;
+  font-size: clamp(42px, 5.2vw, 68px); line-height: 1.04; letter-spacing: -0.025em; margin: 0;
 }
+/* The dive-flag red rule from the brand lockup, sized in the lockup's proportions to the name */
+.hero h1::after {
+  content: ""; display: block; width: 0.83em; height: 0.075em; margin-top: 0.32em;
+  border-radius: 999px; background: var(--flag-red);
+}
+.hero .lead { color: var(--surface-ink-muted); font-weight: 400; }
 .lead {
   color: var(--ink-muted); font-size: clamp(16px, 1.5vw, 18px);
   line-height: 1.7; max-width: 52ch; margin: 24px 0 0;
@@ -156,8 +188,8 @@ h1 {
 .hero__inner { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; align-items: center; width: 100%; }
 .hero__art { margin: 0; }
 .hero__art img {
-  width: 100%; border-radius: 14px; border: 1px solid var(--line);
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.55);
+  width: 100%; border-radius: 14px; border: 1px solid rgba(6, 48, 60, 0.18);
+  box-shadow: 0 40px 100px rgba(6, 48, 60, 0.4);
 }
 @media (min-width: 1000px) {
   .hero__inner { grid-template-columns: minmax(0, 11fr) minmax(0, 10fr); gap: 48px; }
@@ -173,11 +205,16 @@ h1 {
 .btn:hover { background: rgba(143, 220, 236, 0.22); text-decoration: none; }
 .btn--ghost { border-color: var(--line); background: transparent; color: var(--ink-muted); }
 .btn--ghost:hover { background: rgba(234, 246, 250, 0.06); color: var(--ink); }
+/* On the surface: solid brand navy, like the wordmark */
+.surface .btn { background: var(--surface-ink); border-color: var(--surface-ink); color: #fff; font-weight: 500; }
+.surface .btn:hover { background: var(--surface-ink-muted); color: #fff; }
+.surface .btn--ghost { background: transparent; border-color: rgba(6, 48, 60, 0.45); color: var(--surface-ink); }
+.surface .btn--ghost:hover { background: rgba(6, 48, 60, 0.08); color: var(--surface-ink); }
 
 /* ---------- Zones ---------- */
 .zone { padding: clamp(72px, 10vh, 120px) 0; }
 .zone__tag {
-  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.3em;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.2em; font-variant-numeric: tabular-nums;
   text-transform: uppercase; color: var(--cyan-text); margin: 0 0 14px;
 }
 .zone__tag::before {
@@ -185,7 +222,7 @@ h1 {
   border-top: 1px solid currentColor; vertical-align: middle;
 }
 h2 {
-  font-family: var(--font-display); font-weight: 300;
+  font-weight: 700; letter-spacing: -0.02em;
   font-size: clamp(30px, 3.6vw, 46px); line-height: 1.12; margin: 0;
 }
 .zone__intro { color: var(--ink-muted); max-width: 56ch; margin: 16px 0 0; }
@@ -226,13 +263,13 @@ h2 {
 .features--3 { grid-template-columns: repeat(3, 1fr); }
 .feature { border-top: 1px solid var(--line); padding-top: 16px; }
 .feature h3 {
-  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.22em;
-  text-transform: uppercase; color: var(--cyan-text); margin: 0 0 8px; font-weight: 500;
+  font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--cyan-text); margin: 0 0 8px; font-weight: 600;
 }
 .feature p { margin: 0; color: var(--ink-muted); font-size: 14.5px; }
 .subhead {
-  font-family: var(--font-display); font-weight: 400; font-size: 22px;
-  color: #d8f0f8; margin: 64px 0 0;
+  font-weight: 600; font-size: 22px; letter-spacing: -0.01em;
+  color: var(--ink); margin: 64px 0 0;
 }
 .subhead + .features { margin-top: 28px; }
 @media (max-width: 900px) { .features--3 { grid-template-columns: 1fr 1fr; } }
@@ -250,7 +287,7 @@ h2 {
 
 .download__primary { margin-top: 36px; padding: 16px 40px; font-size: 16px; }
 .download__version {
-  display: block; font-family: var(--font-mono); font-size: 11px;
+  display: block; font-variant-numeric: tabular-nums; font-size: 11px;
   font-weight: 400; color: var(--ink-faint); margin-top: 2px;
 }
 .download__stores { display: flex; justify-content: center; margin-top: 20px; }
@@ -258,8 +295,8 @@ h2 {
 .download__store:hover { opacity: 0.8; }
 .download__secondary { margin-top: 24px; }
 .download__secondary-label {
-  font-family: var(--font-mono); color: var(--ink-faint); font-size: 11px;
-  letter-spacing: 0.18em; text-transform: uppercase; margin: 0 0 12px;
+  color: var(--ink-faint); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase; margin: 0 0 12px;
 }
 .download__platforms { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
 .download__platform {
@@ -277,8 +314,8 @@ h2 {
 
 .footer {
   padding: 64px 0 40px; text-align: center;
-  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em;
-  color: rgba(234, 246, 250, 0.38);
+  font-size: 11px; letter-spacing: 0.1em;
+  color: var(--ink-faint);
 }
 
 /* ---------- Reduced motion: complete static experience ---------- */
@@ -293,7 +330,7 @@ h2 {
 /* ---------- Legal pages (privacy.html, terms.html) ---------- */
 .legal { padding: clamp(40px, 6vh, 72px) 0 clamp(72px, 10vh, 120px); }
 .legal__meta {
-  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em;
+  font-size: 12px; font-weight: 500; letter-spacing: 0.1em; font-variant-numeric: tabular-nums;
   text-transform: uppercase; color: var(--ink-faint); margin: 18px 0 0;
 }
 .legal__body { max-width: 68ch; margin-top: 48px; }
@@ -321,8 +358,8 @@ h2 {
   border-bottom: 1px solid var(--line);
 }
 .legal__body th {
-  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.22em;
-  text-transform: uppercase; color: var(--cyan-text); font-weight: 500;
+  font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--cyan-text); font-weight: 600;
 }
 .legal__body td:first-child { color: var(--ink); white-space: nowrap; }
 .legal__table { overflow-x: auto; }

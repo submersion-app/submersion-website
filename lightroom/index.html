@@ -12,6 +12,12 @@
       content="How Submersion, a scuba dive-logging app, connects to Adobe Lightroom to link a diver's cloud photos and videos to their dive logs by capture time. End-to-end workflow, scopes, and API details for review."
     />
     <link rel="icon" type="image/png" href="../assets/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&display=swap"
+      rel="stylesheet"
+    />
 
     <style>
       :root {
@@ -27,7 +33,7 @@
         --ok: rgba(60, 190, 130, 1);
         --shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
         --radius: 16px;
-        --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+        --font: "Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
           Arial, "Apple Color Emoji", "Segoe UI Emoji";
         --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
       }
@@ -79,15 +85,9 @@
       }
 
       .brand img {
-        width: 44px;
-        height: 44px;
-        border-radius: 10px;
-      }
-
-      .brand span {
-        font-weight: 650;
-        font-size: 1.15rem;
-        letter-spacing: 0.2px;
+        display: block;
+        width: auto;
+        height: 64px;
       }
 
       h1 {
@@ -228,8 +228,10 @@
   <body>
     <main class="wrap">
       <div class="brand">
-        <img src="../assets/icon.png" alt="Submersion" width="44" height="44" />
-        <span>Submersion</span>
+        <picture>
+          <source srcset="../assets/brand/lockup-dark.png" media="(prefers-color-scheme: light)" />
+          <img src="../assets/brand/lockup-light.png" alt="Submersion: Dive safe. Log everything." width="185" height="64" />
+        </picture>
       </div>
 
       <span class="badge">Adobe Lightroom Services API &middot; read-only</span>
