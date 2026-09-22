@@ -1,22 +1,22 @@
 name: Sync legal pages
 
-# The policy text has one home: PRIVACY.md in submersion-app/submersion. This
-# workflow regenerates privacy/index.html from it so the site cannot drift out
-# of step with the app's own policy, which is what happened before: the app
-# repo's policy was rewritten while the published page kept serving a version
-# months out of date. A store listing that links a policy contradicting the
-# app's Data safety declaration is a policy violation, so the drift was not
-# cosmetic.
+# The legal text has one home: PRIVACY.md and TERMS.md in
+# submersion-app/submersion. This workflow regenerates the pages here from
+# them so the site cannot drift out of step with the app's own policies,
+# which is what happened before: the app repo's privacy policy was rewritten
+# while the published page kept serving a version months out of date. A store
+# listing that links a policy contradicting the app's Data safety declaration
+# is a policy violation, so the drift was not cosmetic.
 #
 # Triggers:
 #   schedule            a daily floor, so a missed dispatch still converges
 #   workflow_dispatch   manual "sync it now"
 #   repository_dispatch the app repo can push a `legal-updated` event to make
-#                       a policy change land here within a minute
+#                       a change land here within a minute
 #   push                template or renderer changes regenerate immediately
 #
-# The push trigger cannot loop: the sync job commits only when the rendered
-# output differs, so the commit it makes produces a run that finds no change
+# The push trigger cannot loop: the sync job commits only when a rendered
+# page differs, so the commit it makes produces a run that finds no change
 # and stops.
 
 on:
@@ -30,45 +30,53 @@ on:
     paths:
       - tools/render_legal.py
       - privacy/index.html
+      - terms/index.html
       - .github/workflows/sync-legal.yml
   pull_request:
     paths:
       - tools/render_legal.py
       - privacy/index.html
+      - terms/index.html
       - .github/workflows/sync-legal.yml
 
-# Source of the policy text. Kept here rather than inline so the two jobs
-# cannot disagree about where it comes from.
+# Where the source documents live. Kept here rather than inline so the two
+# jobs cannot disagree about it.
 env:
-  POLICY_URL: https://raw.githubusercontent.com/submersion-app/submersion/main/PRIVACY.md
+  SOURCE_REPO: https://raw.githubusercontent.com/submersion-app/submersion/main
 
 permissions:
   contents: read
 
 jobs:
   # On a pull request, verify rather than write. This is what stops someone
-  # hand-editing the generated region of the page: the edit would be silently
-  # reverted by the next sync, so the PR fails instead and says why.
+  # hand-editing a generated region: the edit would be silently reverted by
+  # the next sync, so the PR fails and says why instead.
   check:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Fetch the policy from the app repository
-        run: curl -fsSL --retry 3 "$POLICY_URL" -o /tmp/PRIVACY.md
-
-      - name: Verify the page matches the policy
+      - name: Fetch the source documents
         run: |
-          if ! python3 tools/render_legal.py \
-              --source /tmp/PRIVACY.md \
-              --target privacy/index.html \
-              --check; then
-            echo "::error::privacy/index.html does not match PRIVACY.md in the app repo."
-            echo "::error::Edit PRIVACY.md there, not the generated region of this page."
-            echo "::error::To refresh locally: python3 tools/render_legal.py --source <path to PRIVACY.md> --target privacy/index.html"
-            exit 1
-          fi
+          curl -fsSL --retry 3 "$SOURCE_REPO/PRIVACY.md" -o /tmp/PRIVACY.md
+          curl -fsSL --retry 3 "$SOURCE_REPO/TERMS.md" -o /tmp/TERMS.md
+
+      - name: Verify the pages match their sources
+        run: |
+          status=0
+          check_page() {
+            local source="$1" target="$2" origin="$3"
+            if ! python3 tools/render_legal.py --source "$source" --target "$target" --check; then
+              echo "::error file=$target::$target does not match $origin in the app repo."
+              echo "::error file=$target::Edit $origin there, not the generated region of this page."
+              echo "::error file=$target::To refresh locally: python3 tools/render_legal.py --source <path to $origin> --target $target"
+              status=1
+            fi
+          }
+          check_page /tmp/PRIVACY.md privacy/index.html PRIVACY.md
+          check_page /tmp/TERMS.md terms/index.html TERMS.md
+          exit $status
 
   sync:
     if: github.event_name != 'pull_request'
@@ -78,27 +86,30 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Fetch the policy from the app repository
-        run: curl -fsSL --retry 3 "$POLICY_URL" -o /tmp/PRIVACY.md
-
-      - name: Render the page
+      - name: Fetch the source documents
         run: |
-          python3 tools/render_legal.py \
-            --source /tmp/PRIVACY.md \
-            --target privacy/index.html
+          curl -fsSL --retry 3 "$SOURCE_REPO/PRIVACY.md" -o /tmp/PRIVACY.md
+          curl -fsSL --retry 3 "$SOURCE_REPO/TERMS.md" -o /tmp/TERMS.md
 
-      - name: Commit if the page changed
+      - name: Render the pages
         run: |
-          if git diff --quiet -- privacy/index.html; then
-            echo "Policy page already current; nothing to commit."
+          python3 tools/render_legal.py --source /tmp/PRIVACY.md --target privacy/index.html
+          python3 tools/render_legal.py --source /tmp/TERMS.md --target terms/index.html
+
+      # One commit for both pages rather than a job each, so two renders
+      # cannot race each other pushing to the same branch.
+      - name: Commit if either page changed
+        run: |
+          if git diff --quiet -- privacy/index.html terms/index.html; then
+            echo "Legal pages already current; nothing to commit."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add privacy/index.html
-          git commit -m "Sync the privacy policy page with PRIVACY.md
+          git add privacy/index.html terms/index.html
+          git commit -m "Sync the legal pages with PRIVACY.md and TERMS.md
 
           Regenerated by .github/workflows/sync-legal.yml from
-          submersion-app/submersion. Edit PRIVACY.md there rather than the
-          generated region of this page."
+          submersion-app/submersion. Edit the Markdown there rather than the
+          generated regions of these pages."
           git push
