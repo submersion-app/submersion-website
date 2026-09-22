@@ -129,8 +129,40 @@ def render_table(rows: list[str]) -> list[str]:
     return out
 
 
-def parse(markdown: str) -> tuple[str, list[str]]:
+def normalize_heading(text: str) -> str:
+    """Heading text reduced to a key for matching across renders."""
+    return " ".join(re.sub(r"<[^>]+>", "", text).split()).lower()
+
+
+def existing_heading_ids(page: str) -> dict[str, str]:
+    """Map each heading's text to the id the page already gives it.
+
+    Anchors are a published interface: the site's own cross-links, and any
+    link anyone else has made, point at them. The hand-written pages used
+    short ids (`acceptance`, `warranties`) that a slug of the full heading
+    would not reproduce, so generating blind would silently break them.
+
+    Reading the ids back off the page keeps them stable without a mapping
+    file to maintain. A heading whose text has genuinely changed finds no
+    match and gets a fresh slug, which is the right outcome: it is a
+    different section.
+    """
+    start = page.find(BODY_BEGIN)
+    stop = page.find(BODY_END)
+    if start == -1 or stop == -1 or stop < start:
+        return {}
+
+    found: dict[str, str] = {}
+    for match in re.finditer(r'<h2\b[^>]*\bid="([^"]+)"[^>]*>(.*?)</h2>', page[start:stop], re.S):
+        # setdefault: if a heading somehow appears twice, the first id wins,
+        # which is the one an existing link is most likely to target.
+        found.setdefault(normalize_heading(match.group(2)), match.group(1))
+    return found
+
+
+def parse(markdown: str, legacy_ids: dict[str, str] | None = None) -> tuple[str, list[str]]:
     """Split the document into its meta line and its rendered body blocks."""
+    legacy_ids = legacy_ids or {}
     lines = markdown.replace("\r\n", "\n").split("\n")
 
     app = last_updated = ""
@@ -193,7 +225,9 @@ def parse(markdown: str) -> tuple[str, list[str]]:
             # Only H2 carries an id: those are the sections the page's
             # anchors and any inbound deep links point at.
             if level == 2:
-                body.append(f'<h2 id="{slugify(heading.group(2))}">{text}</h2>')
+                raw = heading.group(2)
+                anchor = legacy_ids.get(normalize_heading(raw)) or slugify(raw)
+                body.append(f'<h2 id="{anchor}">{text}</h2>')
             else:
                 body.append(f"<h{level}>{text}</h{level}>")
             i += 1
@@ -250,7 +284,9 @@ def splice(page: str, begin: str, end: str, replacement: str) -> str:
 
 
 def render(markdown: str, page: str) -> str:
-    meta_line, body = parse(markdown)
+    # Read the page's current anchors before replacing anything, so a
+    # regeneration keeps the ids that links already point at.
+    meta_line, body = parse(markdown, existing_heading_ids(page))
 
     meta_html = (
         "\n"
