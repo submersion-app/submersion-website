@@ -70,15 +70,17 @@
             Submersion is a local-first dive log. Your data stays on your device unless you choose
             to back it up to a service you control.
           </p>
-          <p class="legal__meta">App: Submersion · Last updated: 2026-03-06</p>
+          <!-- legal:meta:begin -->
+          <p class="legal__meta">App: Submersion · Last updated: 2026-09-19</p>
+          <!-- legal:meta:end -->
 
           <div class="legal__body">
+            <!-- Generated from PRIVACY.md in submersion-app/submersion by
+                 tools/render_legal.py. Do not edit between these markers:
+                 the next sync overwrites it and CI fails the PR. -->
+            <!-- legal:body:begin -->
             <h2 id="data-collection">Data Collection</h2>
-            <p>
-              Submersion is a local-first dive logging application. All data you enter is stored on
-              your device. The app may collect and store the following types of information based on
-              your usage:
-            </p>
+            <p>Submersion is a local-first dive logging application. All data you enter is stored on your device. The app may collect and store the following types of information based on your usage:</p>
             <ul>
               <li><strong>Dive logs:</strong> date, time, depth, duration, temperature, notes, and other dive parameters</li>
               <li><strong>Dive sites:</strong> location names, GPS coordinates, descriptions, and conditions</li>
@@ -88,26 +90,124 @@
               <li><strong>Photos and videos:</strong> media attached to dive entries, selected from your device library</li>
               <li><strong>Dive computer data:</strong> depth profiles, tank information, and telemetry downloaded via Bluetooth</li>
             </ul>
-
             <h2 id="data-storage">Data Storage</h2>
-            <p>
-              All data is stored locally on your device in a SQLite database. Submersion does not
-              operate any remote servers, and your data is not transmitted to any server owned or
-              operated by Submersion.
-            </p>
-
-            <h2 id="cloud-backup">Cloud Backup</h2>
-            <p>Submersion offers an optional backup feature using Google Drive. This backup is:</p>
+            <p>All data is stored locally on your device in a SQLite database. Submersion does not operate any remote servers. No data is ever transmitted to a server owned or operated by Submersion, because no such server exists.</p>
+            <p><strong>Encrypting that database is optional and is off unless you turn it on.</strong> You can enable encryption at rest in Settings, under Security, which protects the database with a passphrase and can unlock it with your fingerprint or face. Until you do, the database is an ordinary unencrypted file on your device, protected by your device's own lock screen and storage encryption but not by Submersion.</p>
+            <p>Data can leave your device only to storage you already own, and only when you choose to set that up. There are two separate features that do this, and they protect your data differently. The difference matters, so it is spelled out below.</p>
+            <h2 id="backup-and-sync">Backup and Sync</h2>
+            <p>Optional. Off until you configure it.</p>
+            <p>Backup and sync write your dive log to cloud storage you control: Google Drive, Dropbox, iCloud, or S3-compatible storage. You choose the provider and connect your own account.</p>
+            <p>Whatever you choose, the data is stored in your own account, under your own control, and is transmitted over HTTPS. Submersion has no access to your cloud storage beyond the files the app itself creates there.</p>
+            <h3>Encryption is optional here too, and off by default</h3>
+            <p>Sync offers end-to-end encryption, which you turn on in Settings by setting a passphrase. You are given a recovery code at that point, because without the passphrase or the recovery code the data cannot be recovered by anyone, including us.</p>
+            <p><strong>With end-to-end encryption on:</strong> the dive log is sealed with AES-256-GCM before it leaves your device, using a key derived from your passphrase. The key is never uploaded and is never sent to Submersion or to your storage provider. Google, Dropbox, Apple and any S3 operator see only encrypted files and cannot read your dive log, your notes or your locations.</p>
+            <p><strong>With end-to-end encryption off, which is the default:</strong> your dive log is uploaded as ordinary readable files. It is protected in transit by HTTPS and by whatever security your storage provider applies, but your storage provider can access its contents in the same way it can access any other file you keep there.</p>
+            <p>If your dive log matters to you, turning on end-to-end encryption before you enable sync is worth the minute it takes.</p>
+            <h2 id="photo-and-video-upload">Photo and Video Upload</h2>
+            <p>Optional. Off until you attach a media store.</p>
+            <p>Separately from backup and sync, Submersion can upload the photos and videos you attach to dives, so that your media is available on your other devices. This uses the same providers: Google Drive, Dropbox, iCloud or S3-compatible storage, in an account you connect.</p>
+            <p><strong>Photos and videos uploaded this way are not encrypted by Submersion.</strong> They are transmitted over HTTPS and stored as ordinary files in your cloud account, which means your storage provider can access them in the same way it can access any other photo you keep there. Turning on end-to-end encryption for sync does not cover them: media upload has no encryption option.</p>
+            <p>If you do not attach a media store, your photos and videos are never uploaded. Dive media is otherwise referenced in place: Submersion points at the photo in your device's own photo library rather than copying it into the app.</p>
+            <h2 id="information-about-other-people">Information About Other People</h2>
+            <p>Some of what Submersion stores is not about you. A dive log naturally records the people you dive with, and Submersion may hold the following about them:</p>
             <ul>
-              <li><strong>User-initiated:</strong> backups only occur when you explicitly choose to create one</li>
-              <li><strong>Stored in your own Google Drive:</strong> the backup file is saved to your personal Google Drive account</li>
-              <li><strong>Transmitted over HTTPS:</strong> all communication with Google Drive uses encrypted connections</li>
+              <li><strong>Name</strong>, for dive buddies, instructors and divemasters</li>
+              <li><strong>Email address and phone number</strong>, if you add them to a buddy record</li>
+              <li><strong>Profile photo</strong>, if you add one to a buddy record</li>
+              <li><strong>Handwritten signature</strong>, if an instructor or buddy signs a dive in the app</li>
+              <li><strong>Certification details</strong>, if you record them for a buddy</li>
+              <li><strong>Their presence in your photos and videos</strong></li>
             </ul>
-            <p>
-              Submersion does not have access to your Google Drive beyond the backup files you
-              explicitly create through the app.
-            </p>
-
+            <p>You may have imported some of this from your device's contacts.</p>
+            <p><strong>If you enable backup and sync, this information leaves your device along with the rest of your dive log.</strong> It goes only to storage you control. If you have also turned on end-to-end encryption, your storage provider cannot read it; if you have not, which is the default, it is uploaded in readable form. Either way it does leave your device, and the people it describes have not agreed to that, because they were never asked.</p>
+            <p>This is the strongest reason to turn on end-to-end encryption. The data you are uploading is not all yours to expose.</p>
+            <p><strong>If you attach a media store, photos and videos containing other people are uploaded without encryption,</strong> as described above, and your storage provider can access them.</p>
+            <p>Certification card images deserve a specific mention. If you photograph a certification card, yours or someone else's, that image carries a full name, a certification number, an issuing agency and a date. It is stored in your dive log and is included in backup and sync like any other part of it.</p>
+            <p>Submersion never transmits any of this to Submersion, to any other user, or to any third party for their own purposes. It travels only to the storage account you have connected. Even so, you are the one deciding to record another person's details and to sync them, so please consider:</p>
+            <ul>
+              <li>Ask before you store someone's contact details, photograph or signature</li>
+              <li>Ask before you record certification details that belong to them</li>
+              <li>Delete a buddy record, which deletes what it holds about them, if they ask you to</li>
+            </ul>
+            <h2 id="online-features-and-third-party-services">Online Features and Third-Party Services</h2>
+            <p>Several Submersion features answer questions that cannot be answered on your device: what a place is called, what the weather was on the day you dived, what lives on a reef, how deep the seafloor is. These features work by asking a public service, which means sending it a question.</p>
+            <h3>What happens without you doing anything</h3>
+            <p>One thing only. Submersion checks GitHub for a newer version of the app. This sends nothing about you or your diving. GitHub sees a request from your IP address asking what the latest version is.</p>
+            <h3>Features that send a dive site's coordinates</h3>
+            <p>If you open one of the features below, Submersion sends the relevant coordinates to the service listed beside it. Nothing else is sent: no name, no account, no device identifier, and nothing that identifies you or links one request to another. The service sees a location and the IP address the request came from.</p>
+            <div class="legal__table">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">What the feature does</th>
+                    <th scope="col">Services it asks</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Turn coordinates into a place name, or a place name into coordinates</td>
+                    <td>OpenStreetMap Nominatim</td>
+                  </tr>
+                  <tr>
+                    <td>Draw maps and satellite imagery</td>
+                    <td>OpenStreetMap, OpenTopoMap, Esri ArcGIS, swisstopo</td>
+                  </tr>
+                  <tr>
+                    <td>Look up the weather on the day of a dive, and a site's elevation</td>
+                    <td>Open-Meteo</td>
+                  </tr>
+                  <tr>
+                    <td>Find tide stations near a site</td>
+                    <td>NOAA</td>
+                  </tr>
+                  <tr>
+                    <td>Identify and suggest marine species</td>
+                    <td>iNaturalist, GBIF</td>
+                  </tr>
+                  <tr>
+                    <td>Show reef health, habitat and marine protected areas</td>
+                    <td>NOAA Coral Reef Watch, PacIOOS, UNEP-WCMC, Esri ArcGIS</td>
+                  </tr>
+                  <tr>
+                    <td>Show seafloor depth and 3D terrain</td>
+                    <td>EMODnet, NOAA NGDC, GMRT, swisstopo</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>These are independent organisations with their own privacy policies. They are not partners of Submersion, receive no payment from us and send us nothing. We ask them a question on your behalf and show you the answer.</p>
+            <p>If you would rather not contact them, do not open those features. Maps can also be used offline by downloading a region in advance, which avoids further tile requests for that area.</p>
+            <h3>Services you connect yourself</h3>
+            <p>If you choose to connect one of these accounts, Submersion communicates with that provider using credentials you supply, and only then:</p>
+            <div class="legal__table">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Service</th>
+                    <th scope="col">What it is for</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Garmin Connect</td>
+                    <td>Downloading your dives from Garmin</td>
+                  </tr>
+                  <tr>
+                    <td>Suunto (Sports Tracker)</td>
+                    <td>Downloading your dives from Suunto</td>
+                  </tr>
+                  <tr>
+                    <td>Adobe Lightroom</td>
+                    <td>Reading photos from your Lightroom library</td>
+                  </tr>
+                  <tr>
+                    <td>A network drive or server you name</td>
+                    <td>Reading media you keep on your own storage</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>Each is optional, off until you set it up, and can be disconnected at any time. Your credentials for these services are held in your device's secure keychain and are never sent to Submersion.</p>
             <h2 id="health-data">Health Data</h2>
             <p>On iOS, Submersion can optionally read dive workout data from Apple HealthKit. This data is:</p>
             <ul>
@@ -116,70 +216,81 @@
               <li><strong>Never shared with third parties</strong></li>
             </ul>
             <p>This feature is not currently available on Android.</p>
-
             <h2 id="data-sharing">Data Sharing</h2>
-            <p>Submersion does <strong>not</strong> share your data with third parties. Specifically:</p>
+            <p>Submersion does not sell your data, trade it, or hand it to anyone for their own purposes. Specifically:</p>
             <ul>
               <li>No analytics or tracking services</li>
               <li>No advertising networks</li>
               <li>No account creation required</li>
-              <li>No data transmitted to remote servers (except the optional Google Drive backup to your own account)</li>
               <li>No third-party SDKs that collect user data</li>
+              <li>No data transmitted to any Submersion server, because none exists</li>
             </ul>
-
+            <p>Your dive log leaves your device only through the optional backup, sync and media upload features described above, and only to a storage account you connect and control.</p>
+            <p>Separately from that, the online features described above send coordinates to public map, weather, tide and marine data services in order to answer a question you asked. That is a real transfer and we would rather name it than hide it behind the word "never". It is limited to coordinates, it carries nothing that identifies you, and it happens only when you open the feature that needs it.</p>
             <h2 id="device-permissions">Device Permissions</h2>
             <p>Submersion requests the following permissions only as needed for specific features:</p>
             <div class="legal__table">
               <table>
                 <thead>
-                  <tr><th scope="col">Permission</th><th scope="col">Purpose</th></tr>
+                  <tr>
+                    <th scope="col">Permission</th>
+                    <th scope="col">Purpose</th>
+                  </tr>
                 </thead>
                 <tbody>
-                  <tr><td>Bluetooth</td><td>Discover and communicate with BLE dive computers</td></tr>
-                  <tr><td>Location</td><td>Tag dive sites with GPS coordinates; required for BLE scanning on Android 11 and below</td></tr>
-                  <tr><td>Photos and media</td><td>Attach photos and videos to dive entries</td></tr>
-                  <tr><td>Media location</td><td>Read GPS data from photo EXIF metadata to suggest dive site locations</td></tr>
-                  <tr><td>Contacts</td><td>Select dive buddies from your device contacts</td></tr>
-                  <tr><td>Notifications</td><td>Send gear maintenance service reminders</td></tr>
-                  <tr><td>Exact alarms</td><td>Schedule precise gear maintenance reminders</td></tr>
+                  <tr>
+                    <td><strong>Bluetooth</strong></td>
+                    <td>Discover and communicate with BLE dive computers</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Location</strong></td>
+                    <td>Tag dive sites with GPS coordinates; required for BLE scanning on Android 11 and below</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Photos and media</strong></td>
+                    <td>Attach photos and videos to dive entries</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Media location</strong></td>
+                    <td>Read GPS data from photo EXIF metadata to suggest dive site locations</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Contacts</strong></td>
+                    <td>Select dive buddies from your device contacts</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Notifications</strong></td>
+                    <td>Send gear maintenance service reminders</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Exact alarms</strong></td>
+                    <td>Schedule precise gear maintenance reminders</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
-            <p>
-              All permissions are optional. The app will function without them, though related
-              features will be unavailable.
-            </p>
-
+            <p>All permissions are optional. The app will function without them, though related features will be unavailable.</p>
             <h2 id="data-deletion">Data Deletion</h2>
             <ul>
               <li>You can delete any or all of your data from within the app at any time.</li>
               <li>Uninstalling Submersion removes all locally stored data from your device.</li>
-              <li>Google Drive backups can be deleted directly from your Google Drive account.</li>
+              <li>Deleting a buddy deletes what Submersion holds about that person, including their photo and contact details.</li>
+              <li>Backups, synced data and uploaded media can be deleted directly from the cloud storage account you connected, whichever provider it is.</li>
             </ul>
-
             <h2 id="children">Children</h2>
-            <p>
-              Submersion is not directed at children under the age of 13. We do not knowingly collect
-              personal information from children under 13. If you believe a child under 13 has
-              provided data through the app, please contact us so we can take appropriate action.
-            </p>
-
-            <h2 id="changes">Changes to This Policy</h2>
-            <p>
-              This privacy policy may be updated from time to time. Changes will be reflected by
-              updating the "Last Updated" date at the top of this document.
-            </p>
-
+            <p>Submersion is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe a child under 13 has provided data through the app, please contact us so we can take appropriate action.</p>
+            <h2 id="changes-to-this-policy">Changes to This Policy</h2>
+            <p>This privacy policy may be updated from time to time. Changes will be reflected by updating the "Last Updated" date at the top of this document.</p>
             <h2 id="contact">Contact</h2>
             <p>If you have questions or concerns about this privacy policy, you can reach us at:</p>
             <ul>
-              <li><strong>Email:</strong> <a href="mailto:privacy@submersion.app">privacy@submersion.app</a></li>
+              <li><strong>Email:</strong> privacy@submersion.app</li>
               <li><strong>GitHub:</strong> Open an issue at <a href="https://github.com/submersion-app/submersion" target="_blank" rel="noreferrer">github.com/submersion-app/submersion</a></li>
             </ul>
-
             <h2 id="open-source">Open Source</h2>
             <p>Submersion is open-source software. The full source code is available at:</p>
             <p><a href="https://github.com/submersion-app/submersion" target="_blank" rel="noreferrer">https://github.com/submersion-app/submersion</a></p>
+            <!-- legal:body:end -->
           </div>
 
           <p class="legal__back">
