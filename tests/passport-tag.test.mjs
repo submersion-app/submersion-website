@@ -98,3 +98,18 @@ test("names and serials are cut to their limits by whole characters", () => {
 test("broken percent-encoding is no tag rather than an error", () => {
   assert.equal(parsePassportTag(`f=1&p=${id}&n=%E0%A4%A`).ok, false);
 });
+
+test("numbers follow the app's grammar, not JavaScript's", () => {
+  // The app reads v with double.tryParse and wp with int.tryParse.
+  const v = (text) => parsePassportTag(`f=1&p=${id}&v=${text}`).volumeL;
+  const wp = (text) => parsePassportTag(`f=1&p=${id}&wp=${text}`).workingPressureBar;
+  assert.equal(v("0x10"), null);
+  assert.equal(v("0b1010"), null);
+  assert.equal(v(".5"), 0.5);
+  assert.equal(v("1.2e1"), 12);
+  assert.equal(v("Infinity"), null);
+  assert.equal(wp("232.0"), null);
+  assert.equal(wp("2.32e2"), null);
+  assert.equal(wp("0xE8"), 232);
+  assert.equal(wp("%2B232"), 232);
+});

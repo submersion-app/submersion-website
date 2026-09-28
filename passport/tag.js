@@ -38,11 +38,26 @@ function parseDate(text) {
   return text;
 }
 
-// A number from text, or null for empty or unreadable text.
-function parseNumber(text) {
-  if (text == null || text.trim() === "") return null;
-  const n = Number(text);
-  return Number.isFinite(n) ? n : null;
+// Dart's double.tryParse grammar (JavaScript's Number also takes 0x10,
+// 0b1010 and the like, which the app drops). Infinity and NaN, which Dart
+// does take, fail every range check anyway.
+const DOUBLE = /^\s*[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?\s*$/;
+
+// Dart's int.tryParse grammar: decimal digits or a 0x hex literal, no point
+// and no exponent (Number would take 232.0 as the integer 232).
+const INT = /^\s*([+-]?)(?:(\d+)|0[xX]([0-9a-fA-F]+))\s*$/;
+
+// A decimal number as the app reads one, or null.
+function parseDouble(text) {
+  return text != null && DOUBLE.test(text) ? Number(text) : null;
+}
+
+// An integer as the app reads one, or null.
+function parseInteger(text) {
+  const m = text == null ? null : INT.exec(text);
+  if (!m) return null;
+  const magnitude = m[2] !== undefined ? Number.parseInt(m[2], 10) : Number.parseInt(m[3], 16);
+  return m[1] === "-" ? -magnitude : magnitude;
 }
 
 // At most max characters, counted and cut by whole code points.
@@ -66,8 +81,8 @@ export function parsePassportTag(query) {
 
   const rawFormat = pairs.get("f") ?? "";
   const format = /^\d+$/.test(rawFormat) ? Number(rawFormat) : CURRENT_FORMAT;
-  const volume = parseNumber(pairs.get("v"));
-  const pressure = parseNumber(pairs.get("wp"));
+  const volume = parseDouble(pairs.get("v"));
+  const pressure = parseInteger(pairs.get("wp"));
   const name = pairs.get("n") ?? "";
   const serial = pairs.get("sn") ?? "";
   const material = pairs.get("m");
@@ -82,10 +97,7 @@ export function parsePassportTag(query) {
     name: name === "" ? null : capCharacters(name, MAX_NAME),
     serial: serial === "" ? null : capCharacters(serial, MAX_SERIAL),
     volumeL: volume !== null && volume >= 0.5 && volume <= 50 ? volume : null,
-    workingPressureBar:
-      pressure !== null && Number.isInteger(pressure) && pressure >= 50 && pressure <= 400
-        ? pressure
-        : null,
+    workingPressureBar: pressure !== null && pressure >= 50 && pressure <= 400 ? pressure : null,
     material: MATERIALS.has(material) ? material : null,
     valve: VALVES.has(valve) ? valve : null,
     hydroTest: parseDate(pairs.get("h")),

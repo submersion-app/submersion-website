@@ -1,5 +1,8 @@
-// The /c page: reads the tag from the URL fragment (or the query, which the
-// app also accepts) in the browser. Nothing is sent anywhere.
+// The /c page: reads the tag in the browser. The written form keeps the tag
+// in the URL fragment, which a browser never sends to the server. The query
+// form, which the app also accepts, was already in the request by the time
+// this runs, so reading it here sends nothing more; dropping it would only
+// break the display of such a link.
 import { parsePassportTag } from "./tag.js";
 import { formatDate, openInAppUrl, specRows, tagTitle } from "./display.js";
 
