@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["8U3RSKF42Q.app.submersion"],
+        "components": [
+          { "/": "/c", "comment": "Cylinder passport tags" },
+          { "/": "/c/*" },
+          { "/": "/f", "comment": "Signed fill records" },
+          { "/": "/f/*" }
+        ]
+      }
+    ]
+  }
+}

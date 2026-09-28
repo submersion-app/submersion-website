@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="robots" content="noindex" />
+    <meta name="referrer" content="no-referrer" />
+
+    <title>Cylinder tag - Submersion</title>
+    <meta
+      name="description"
+      content="A cylinder passport tag from the Submersion dive logging app: the cylinder's spec and service dates as they were when the tag was written."
+    />
+
+    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/passport/page.css" />
+  </head>
+  <body>
+    <main class="card" role="main">
+      <div class="brand">
+        <picture>
+          <source srcset="/assets/brand/lockup-dark.png" media="(prefers-color-scheme: light)" />
+          <img src="/assets/brand/lockup-light.png" alt="Submersion: Dive safe. Log everything." width="185" height="64" decoding="async" />
+        </picture>
+      </div>
+
+      <!-- State: a readable tag -->
+      <section id="tag" hidden>
+        <div class="pill pill--ok">Cylinder tag</div>
+        <h1 id="title">Cylinder</h1>
+        <p class="lead">This tag belongs to a cylinder with a passport in Submersion.</p>
+        <p class="note" id="newer" hidden>This tag uses a newer format than this page knows. Some fields may not show here.</p>
+        <dl class="spec" id="spec"></dl>
+        <p class="note" id="written">Everything above is how the cylinder was when the tag was written. The passport in Submersion has the current record.</p>
+        <div class="actions">
+          <a class="button" id="open" href="submersion://c">Open in Submersion</a>
+          <a class="store" href="https://apps.apple.com/us/app/submersion-dive-log/id6757456915">
+            <img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="120" height="40" />
+          </a>
+          <a class="button button--quiet" href="/#download">Other platforms</a>
+        </div>
+      </section>
+
+      <!-- State: a link that is not a readable tag -->
+      <section id="invalid" hidden>
+        <div class="pill pill--err">Not a cylinder tag</div>
+        <h1>This link is not a cylinder tag</h1>
+        <p class="lead">The link is damaged or incomplete, so there is nothing to show.</p>
+        <p>Scan the tag again. If you printed or wrote it yourself, write it again from the cylinder's passport in Submersion.</p>
+      </section>
+
+      <!-- State: opened with no tag at all -->
+      <section id="info" hidden>
+        <h1>Cylinder tags</h1>
+        <p class="lead">A cylinder tag is a QR label or NFC tag on a scuba cylinder.</p>
+        <p>You scan it with your phone to open that cylinder's passport in Submersion: its spec, service dates and fills. Without the app, this page shows what the tag says.</p>
+        <div class="actions">
+          <a class="button" href="/#download">Get Submersion</a>
+        </div>
+      </section>
+
+      <div class="foot">
+        Submersion, open-source dive logging.
+        <a href="/">Home</a> &middot;
+        <a href="https://github.com/submersion-app/submersion/blob/main/docs/import-formats/cylinder-passport-tag.md" target="_blank" rel="noreferrer">Tag format</a>
+      </div>
+    </main>
+
+    <script type="module" src="/passport/c-page.js"></script>
+  </body>
+</html>

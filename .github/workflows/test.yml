@@ -1,0 +1,23 @@
+name: Test
+
+# The cylinder tag page reads tags in the browser with passport/tag.js, which
+# mirrors the app's decoder. These tests pin its reading rules, so a change
+# that makes the page disagree with the app fails here.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  node-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --test tests/
