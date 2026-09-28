@@ -1,6 +1,8 @@
 // How a parsed passport tag reads on the page. Labels match the app's English
 // strings, so a diver sees the same words in both.
 
+import { utcDate } from "./tag.js";
+
 const PSI_PER_BAR = 14.5038;
 
 const MATERIALS = { al: "Aluminum", st: "Steel", cf: "Carbon fiber" };
@@ -15,7 +17,7 @@ export function formatDate(isoDate, locale) {
     month: "short",
     day: "numeric",
     timeZone: "UTC",
-  }).format(new Date(Date.UTC(y, m - 1, d)));
+  }).format(utcDate(y, m, d));
 }
 
 export function tagTitle(tag) {

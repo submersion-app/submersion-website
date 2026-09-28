@@ -1,12 +1,13 @@
 [
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
     "target": {
       "namespace": "android_app",
       "package_name": "app.submersion",
       "sha256_cert_fingerprints": [
-        "6F:DE:06:CB:1A:8C:20:91:00:7A:D4:4E:8C:65:F4:01:67:15:A1:06:B1:44:35:02:90:96:8B:66:4B:9E:AC:BD",
-        "19:5A:A2:D9:88:77:87:1A:A9:7F:53:FE:70:EE:D3:A4:82:8F:F5:69:60:4C:A7:A5:23:43:F3:B0:A6:F1:67:D3"
+        "6F:DE:06:CB:1A:8C:20:91:00:7A:D4:4E:8C:65:F4:01:67:15:A1:06:B1:44:35:02:90:96:8B:66:4B:9E:AC:BD"
       ]
     }
   }

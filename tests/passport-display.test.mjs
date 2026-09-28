@@ -47,3 +47,7 @@ test("dates are calendar dates, never shifted by the viewer's time zone", () => 
 test("Open in Submersion hands the payload to the app's own scheme", () => {
   assert.equal(openInAppUrl(example), `submersion://c?${example}`);
 });
+
+test("a year below 100 is shown as that year", () => {
+  assert.equal(formatDate("0024-06-14", "en-US"), "Jun 14, 24");
+});

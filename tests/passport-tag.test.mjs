@@ -113,3 +113,20 @@ test("numbers follow the app's grammar, not JavaScript's", () => {
   assert.equal(wp("0xE8"), 232);
   assert.equal(wp("%2B232"), 232);
 });
+
+test("the format version is read as the app's int.tryParse reads it", () => {
+  const format = (text) => parsePassportTag(`f=${text}&p=${id}`);
+  assert.equal(format("%2B2").format, 2);
+  assert.equal(format("%2B2").newerFormat, true);
+  assert.equal(format("0x2").format, 2);
+  assert.equal(format("%202%20").format, 2);
+  assert.equal(format("2.0").format, 1);
+});
+
+test("years below 100 are those years, not the 1900s", () => {
+  // Date.UTC maps 0 to 99 to 1900 to 1999; the app's DateTime does not.
+  assert.equal(parsePassportTag(`f=1&p=${id}&h=0024-06-14`).hydroTest, "0024-06-14");
+  // Year 0 is a leap year in the proleptic calendar; 1900 is not.
+  assert.equal(parsePassportTag(`f=1&p=${id}&h=0000-02-29`).hydroTest, "0000-02-29");
+  assert.equal(parsePassportTag(`f=1&p=${id}&h=0001-02-29`).hydroTest, null);
+});

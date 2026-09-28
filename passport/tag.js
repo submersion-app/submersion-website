@@ -27,13 +27,21 @@ function splitQuery(query) {
   return pairs;
 }
 
+// Midnight UTC on year-month-day, month counted from 1. setUTCFullYear keeps
+// years 0 to 99 as they are; Date.UTC would make them 1900 to 1999.
+export function utcDate(year, month, day) {
+  const date = new Date(0);
+  date.setUTCFullYear(year, month - 1, day);
+  return date;
+}
+
 // A real calendar date as YYYY-MM-DD, or null.
 function parseDate(text) {
   const m = text == null ? null : DATE.exec(text);
   if (!m) return null;
   const [y, mo, d] = [Number(m[1]), Number(m[2]), Number(m[3])];
   if (mo < 1 || mo > 12 || d < 1 || d > 31) return null;
-  const date = new Date(Date.UTC(y, mo - 1, d));
+  const date = utcDate(y, mo, d);
   if (date.getUTCMonth() !== mo - 1 || date.getUTCDate() !== d) return null;
   return text;
 }
@@ -79,8 +87,7 @@ export function parsePassportTag(query) {
   const passportId = (pairs.get("p") ?? "").toLowerCase();
   if (!UUID.test(passportId)) return { ok: false };
 
-  const rawFormat = pairs.get("f") ?? "";
-  const format = /^\d+$/.test(rawFormat) ? Number(rawFormat) : CURRENT_FORMAT;
+  const format = parseInteger(pairs.get("f")) ?? CURRENT_FORMAT;
   const volume = parseDouble(pairs.get("v"));
   const pressure = parseInteger(pairs.get("wp"));
   const name = pairs.get("n") ?? "";
