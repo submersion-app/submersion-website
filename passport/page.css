@@ -1,0 +1,62 @@
+/* Passport pages: the tag's spec, the actions, the notes. */
+
+.spec {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+  gap: 10px 16px;
+  margin: 18px 0 20px;
+  padding: 16px 18px;
+  background: var(--card2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.spec dt {
+  color: var(--faint);
+  font-size: 0.9rem;
+}
+
+.spec dd {
+  margin: 0;
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+
+.note {
+  font-size: 0.9rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin: 22px 0 6px;
+}
+
+.button {
+  display: inline-block;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent2);
+  text-decoration: none;
+  transition: filter 0.15s ease;
+}
+
+.button:hover {
+  filter: brightness(1.08);
+}
+
+.button--quiet {
+  color: var(--text);
+  background: var(--card2);
+  border: 1px solid var(--line);
+}
+
+.store img {
+  display: block;
+  height: 44px;
+  width: auto;
+}

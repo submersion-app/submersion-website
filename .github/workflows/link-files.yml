@@ -1,0 +1,88 @@
+name: Link files
+
+# The files in .well-known let iOS and Android open submersion.app/c and /f
+# links in the app. A phone reads them through Apple's CDN and Google's
+# Digital Asset Links service, never from here directly, and a file those
+# services reject fails silently: links just open in the browser. This checks
+# the chain end to end so a rejection shows up here instead.
+#
+# GitHub Pages serves the extensionless apple-app-site-association as
+# application/octet-stream and cannot be told otherwise; the Apple CDN check
+# is what says whether Apple accepts it.
+#
+# Both services cache for hours, so right after a push their checks only
+# warn; the daily and manual runs fail on them.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".well-known/**"
+      - ".github/workflows/link-files.yml"
+  schedule:
+    - cron: "41 7 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      SITE: https://submersion.app
+      APP_ID: 8U3RSKF42Q.app.submersion
+      PACKAGE: app.submersion
+      STRICT: ${{ github.event_name != 'push' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: The site serves the committed files, with no redirect
+        run: |
+          set -euo pipefail
+          for file in apple-app-site-association assetlinks.json; do
+            url="$SITE/.well-known/$file"
+            # A push waits for the Pages deploy to land (up to 10 minutes).
+            for attempt in $(seq 1 20); do
+              code=$(curl -s -o served.json -w '%{http_code}' "$url" || true)
+              if [ "$code" = "200" ] && jq -S . served.json > served.norm 2>/dev/null \
+                && jq -S . ".well-known/$file" > committed.norm \
+                && cmp -s served.norm committed.norm; then
+                break
+              fi
+              if [ "$attempt" = "20" ]; then
+                echo "::error::$url answered $code or differs from the committed file"
+                exit 1
+              fi
+              sleep 30
+            done
+            type=$(curl -sI "$url" | tr -d '\r' | awk -F': ' 'tolower($1)=="content-type"{print $2}')
+            echo "$url: 200, matches the committed file, served as $type"
+          done
+
+      - name: Apple's CDN has the association file
+        run: |
+          set -uo pipefail
+          body=$(curl -s "https://app-site-association.cdn-apple.com/a/v1/submersion.app" || true)
+          if echo "$body" | jq -e --arg id "$APP_ID" \
+            '[.applinks.details[].appIDs[]] | index($id) != null' > /dev/null 2>&1; then
+            echo "Apple's CDN lists $APP_ID"
+          else
+            msg="Apple's CDN does not list $APP_ID yet. It caches for hours; if this persists, Apple rejected the file (GitHub Pages serves it as application/octet-stream)."
+            if [ "$STRICT" = "true" ]; then echo "::error::$msg"; exit 1; fi
+            echo "::warning::$msg"
+          fi
+
+      - name: Google's Digital Asset Links lists the app
+        run: |
+          set -uo pipefail
+          url="https://digitalassetlinks.googleapis.com/v1/statements:list?source.web.site=$SITE&relation=delegate_permission/common.handle_all_urls"
+          body=$(curl -s "$url" || true)
+          if echo "$body" | jq -e --arg pkg "$PACKAGE" \
+            '[.statements[]?.target.androidApp.packageName] | index($pkg) != null' > /dev/null 2>&1; then
+            echo "Digital Asset Links lists $PACKAGE"
+          else
+            msg="Digital Asset Links does not list $PACKAGE yet: $(echo "$body" | head -c 300)"
+            if [ "$STRICT" = "true" ]; then echo "::error::$msg"; exit 1; fi
+            echo "::warning::$msg"
+          fi
