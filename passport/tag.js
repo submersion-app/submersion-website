@@ -11,6 +11,14 @@ const MATERIALS = new Set(["al", "st", "cf"]);
 const VALVES = new Set(["din", "yoke", "conv"]);
 const MAX_NAME = 40;
 const MAX_SERIAL = 24;
+const MAX_FILL_TEXT = 40;
+const MAX_PRESSURE_BAR = 400;
+
+// An RFC 3339 date-time with its zone, as the app writes a fill time. The app
+// also reads a few rarer forms Dart's DateTime.tryParse takes; a fill in one
+// of those is left off this page, not misread.
+const ZONED =
+  /^(\d{4})-(\d{2})-(\d{2})[Tt ](\d{2}):(\d{2})(?::(\d{2})(?:\.\d{1,6})?)?(?:[Zz]|[+-]\d{2}:\d{2})$/;
 
 // Splits a query string as Dart's Uri.splitQueryString does: "+" is a space,
 // the last of a repeated key wins, and bad percent-encoding throws.
@@ -74,6 +82,49 @@ function capCharacters(text, max) {
   return chars.length <= max ? text : chars.slice(0, max).join("");
 }
 
+// A fill time as an ISO string in UTC, or null: a real calendar date and
+// clock time, with a zone.
+function parseFillTime(text) {
+  const m = text == null ? null : ZONED.exec(text);
+  if (!m || parseDate(`${m[1]}-${m[2]}-${m[3]}`) === null) return null;
+  if (Number(m[4]) > 23 || Number(m[5]) > 59 || Number(m[6] ?? 0) > 59) return null;
+  const at = new Date(text.replace(" ", "T"));
+  return Number.isNaN(at.getTime()) ? null : at.toISOString();
+}
+
+// Who filled it, or the analyzer: trimmed, blank as absent, at most 40
+// characters.
+function fillText(text) {
+  const trimmed = (text ?? "").trim();
+  return trimmed === "" ? null : capCharacters(trimmed, MAX_FILL_TEXT);
+}
+
+// The newest fill an NFC tag carries, or null. Mirrors the app's
+// PassportPayloadCodec: a fill missing its id, zoned time or O2, or with a
+// mix that is no mix, is dropped on its own and the tag still reads;
+// out-of-range details are dropped and the fill kept. fs, reserved for a
+// signature, is ignored.
+function parseFill(pairs) {
+  const id = (pairs.get("fi") ?? "").toLowerCase();
+  const filledAt = parseFillTime(pairs.get("ft"));
+  const o2 = parseDouble(pairs.get("fo"));
+  const he = parseDouble(pairs.get("fh")) ?? 0;
+  if (!UUID.test(id) || filledAt === null || o2 === null) return null;
+  if (o2 <= 0 || he < 0 || o2 + he > 100) return null;
+  const pressure = parseDouble(pairs.get("fp"));
+  const temperature = parseDouble(pairs.get("fc"));
+  return {
+    id,
+    filledAt,
+    o2Percent: o2,
+    hePercent: he,
+    pressureBar: pressure !== null && pressure > 0 && pressure <= MAX_PRESSURE_BAR ? pressure : null,
+    temperatureC: temperature !== null && temperature >= -40 && temperature <= 80 ? temperature : null,
+    filledBy: fillText(pairs.get("fb")),
+    analyzer: fillText(pairs.get("fa")),
+  };
+}
+
 // The tag's fields, with ok false when the payload is no tag: unreadable, or
 // a missing or malformed passport id. Everything else that does not parse is
 // dropped rather than trusted.
@@ -110,5 +161,6 @@ export function parsePassportTag(query) {
     hydroTest: parseDate(pairs.get("h")),
     visualInspection: parseDate(pairs.get("vi")),
     o2Clean: pairs.get("oc") === "1",
+    fill: parseFill(pairs),
   };
 }

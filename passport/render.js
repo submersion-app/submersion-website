@@ -1,7 +1,7 @@
 // Fills c.html for one tag. Takes the document, timer and visibility check
 // as arguments so the page's behaviour is testable without a browser.
 import { parsePassportTag } from "./tag.js";
-import { formatDate, openInAppUrl, specRows, tagTitle } from "./display.js";
+import { fillSummary, formatDate, openInAppUrl, specRows, tagTitle } from "./display.js";
 
 // How long Open in Submersion has to take the diver to the app before the
 // page suggests getting it.
@@ -37,6 +37,22 @@ export function renderTagPage({ doc, query, locale, schedule, isPageVisible }) {
     spec.append(dt, dd);
   }
   spec.hidden = rows.length === 0;
+
+  // The newest fill an NFC tag carries. Nothing on a tag is signed, so the
+  // page shows it as what the tag says; the note beside it in c.html asks
+  // the reader to analyse the gas.
+  const fill = tag.fill;
+  doc.getElementById("fill").hidden = fill === null;
+  if (fill !== null) {
+    doc.getElementById("fillSummary").textContent = fillSummary(fill, locale);
+    const line = (id, text) => {
+      const el = doc.getElementById(id);
+      el.hidden = text === null;
+      el.textContent = text ?? "";
+    };
+    line("fillBy", fill.filledBy === null ? null : `Filled by ${fill.filledBy}`);
+    line("fillAnalyzer", fill.analyzer === null ? null : `Analyzer: ${fill.analyzer}`);
+  }
 
   if (tag.writtenOn) {
     doc.getElementById("written").textContent =

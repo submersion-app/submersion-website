@@ -8,7 +8,21 @@ const id = "8f3a5c1e-1b2c-4d5e-8f90-1234567890ab";
 const example = `f=1&p=${id}&w=2026-09-25&n=Steel+12+L&sn=AB12345&wp=232`;
 
 // Every element the renderer reaches for by id.
-const PAGE_IDS = ["tag", "invalid", "info", "title", "newer", "spec", "written", "open", "notOpened"];
+const PAGE_IDS = [
+  "tag",
+  "invalid",
+  "info",
+  "title",
+  "newer",
+  "spec",
+  "fill",
+  "fillSummary",
+  "fillBy",
+  "fillAnalyzer",
+  "written",
+  "open",
+  "notOpened",
+];
 
 // Just enough of a document for the page: the elements c.html declares, each
 // hidden until shown.
@@ -75,6 +89,39 @@ test("a tag fills the title, the rows, the written line and the app link", () =>
   assert.match(doc.byId.written.textContent, /^This tag was written on Sep 25, 2026\./);
   assert.equal(doc.byId.open.href, `submersion://c?${example}`);
   assert.equal(doc.byId.newer.hidden, true);
+});
+
+test("a tag with a fill shows the last fill, who filled it and the analyzer", () => {
+  const { doc } = render(
+    `${example}&fi=3f0c2b8e-6a1d-4c47-9e2a-5b7d8c9e0f11&ft=2026-09-28T12%3A00%3A00Z` +
+      "&fo=21&fh=35&fp=232&fb=Blue+Hole&fa=Divesoft",
+  );
+  assert.equal(doc.byId.fill.hidden, false);
+  assert.equal(doc.byId.fillSummary.textContent, "Tx 21/35 · 232 bar (3,365 psi) · Sep 28, 2026");
+  assert.equal(doc.byId.fillBy.textContent, "Filled by Blue Hole");
+  assert.equal(doc.byId.fillBy.hidden, false);
+  assert.equal(doc.byId.fillAnalyzer.textContent, "Analyzer: Divesoft");
+  assert.equal(doc.byId.fillAnalyzer.hidden, false);
+});
+
+test("a tag without a fill shows no fill", () => {
+  const { doc } = render(example);
+  assert.equal(doc.byId.fill.hidden, true);
+});
+
+test("a fill with no one named hides those lines", () => {
+  const { doc } = render(
+    `${example}&fi=3f0c2b8e-6a1d-4c47-9e2a-5b7d8c9e0f11&ft=2026-09-28T12%3A00%3A00Z&fo=32`,
+  );
+  assert.equal(doc.byId.fill.hidden, false);
+  assert.equal(doc.byId.fillBy.hidden, true);
+  assert.equal(doc.byId.fillAnalyzer.hidden, true);
+});
+
+test("the fill asks the reader to analyse the gas", () => {
+  const html = readFileSync(new URL("../c.html", import.meta.url), "utf8");
+  assert.match(html, /Last fill on the tag/);
+  assert.match(html, /Analyse the gas yourself before you dive it\./);
 });
 
 test("a newer format shows its note", () => {

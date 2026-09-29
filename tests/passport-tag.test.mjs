@@ -26,6 +26,7 @@ test("reads every field of the documented example", () => {
     hydroTest: "2024-06-14",
     visualInspection: "2026-03-02",
     o2Clean: true,
+    fill: null,
   });
 });
 
@@ -129,4 +130,72 @@ test("years below 100 are those years, not the 1900s", () => {
   // Year 0 is a leap year in the proleptic calendar; 1900 is not.
   assert.equal(parsePassportTag(`f=1&p=${id}&h=0000-02-29`).hydroTest, "0000-02-29");
   assert.equal(parsePassportTag(`f=1&p=${id}&h=0001-02-29`).hydroTest, null);
+});
+
+const fillId = "3f0c2b8e-6a1d-4c47-9e2a-5b7d8c9e0f11";
+const withFill =
+  `f=1&p=${id}&fi=${fillId}&ft=2026-09-28T09%3A30%3A00Z` +
+  "&fo=32.1&fh=0&fp=232&fc=24.5&fb=Blue+Hole&fa=Divesoft";
+
+test("reads the newest fill an NFC tag carries", () => {
+  assert.deepEqual(parsePassportTag(withFill).fill, {
+    id: fillId,
+    filledAt: "2026-09-28T09:30:00.000Z",
+    o2Percent: 32.1,
+    hePercent: 0,
+    pressureBar: 232,
+    temperatureC: 24.5,
+    filledBy: "Blue Hole",
+    analyzer: "Divesoft",
+  });
+});
+
+test("a malformed fill is dropped and the tag still opens", () => {
+  const good = `fi=${fillId}&ft=2026-09-28T09:30:00Z`;
+  for (const bad of [
+    "fi=nope&ft=2026-09-28T09:30:00Z&fo=32",
+    `fi=${fillId}&ft=yesterday&fo=32`,
+    `fi=${fillId}&ft=2026-09-28T09:30:00&fo=32`,
+    `${good}&fo=80&fh=30`,
+    good,
+    `${good}&fo=0`,
+    `${good}&fo=NaN`,
+    `${good}&fo=21&fh=-1`,
+    `${good}&fo=0x20`,
+  ]) {
+    const tag = parsePassportTag(`f=1&p=${id}&${bad}`);
+    assert.equal(tag.ok, true, bad);
+    assert.equal(tag.fill, null, bad);
+  }
+});
+
+test("a fill without He is air or nitrox, He defaulting to 0", () => {
+  const tag = parsePassportTag(`f=1&p=${id}&fi=${fillId}&ft=2026-09-28T09:30:00Z&fo=32`);
+  assert.equal(tag.fill.hePercent, 0);
+  assert.equal(tag.fill.pressureBar, null);
+});
+
+test("out-of-range fill details are dropped, the fill kept, fs ignored", () => {
+  const tag = parsePassportTag(
+    `f=1&p=${id}&fi=${fillId}&ft=2026-09-28T09:30:00Z&fo=21&fp=900&fc=300&fs=abc`,
+  );
+  assert.equal(tag.fill.o2Percent, 21);
+  assert.equal(tag.fill.pressureBar, null);
+  assert.equal(tag.fill.temperatureC, null);
+  assert.equal("signature" in tag.fill, false);
+});
+
+test("a fill time with an offset reads as the same instant in UTC", () => {
+  const tag = parsePassportTag(`f=1&p=${id}&fi=${fillId}&ft=2026-09-28T11:30:00%2B02:00&fo=32`);
+  assert.equal(tag.fill.filledAt, "2026-09-28T09:30:00.000Z");
+});
+
+test("who filled it and the analyzer are trimmed and cut to 40 characters", () => {
+  const long = "\u{1F42C}".repeat(45);
+  const tag = parsePassportTag(
+    `f=1&p=${id}&fi=${fillId}&ft=2026-09-28T09:30:00Z&fo=32` +
+      `&fb=${encodeURIComponent(long)}&fa=+++`,
+  );
+  assert.equal([...tag.fill.filledBy].length, 40);
+  assert.equal(tag.fill.analyzer, null);
 });
