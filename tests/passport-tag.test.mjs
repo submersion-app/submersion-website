@@ -169,6 +169,33 @@ test("a malformed fill is dropped and the tag still opens", () => {
   }
 });
 
+test("an He the app reads as NaN or infinite drops the fill, as the app does", () => {
+  // Dart's double.tryParse takes these tokens; the app then refuses the fill.
+  for (const he of ["NaN", "Infinity", "-Infinity", "+Infinity"]) {
+    const tag = parsePassportTag(
+      `f=1&p=${id}&fi=${fillId}&ft=2026-09-28T09:30:00Z&fo=32&fh=${encodeURIComponent(he)}`,
+    );
+    assert.equal(tag.ok, true, he);
+    assert.equal(tag.fill, null, he);
+  }
+});
+
+test("fill times must be RFC 3339, as the app requires", () => {
+  const at = (ft) =>
+    parsePassportTag(`f=1&p=${id}&fi=${fillId}&ft=${encodeURIComponent(ft)}&fo=32`).fill;
+  assert.equal(at("2026-09-28T09:30:00.123456Z").filledAt, "2026-09-28T09:30:00.123Z");
+  for (const bad of [
+    "2026-09-28 09:30:00Z",
+    "2026-09-28T09:30Z",
+    "2026-09-28t09:30:00Z",
+    "2026-09-28T09:30:00z",
+    "2026-02-30T09:30:00Z",
+    "2026-09-28T24:00:00Z",
+  ]) {
+    assert.equal(at(bad), null, bad);
+  }
+});
+
 test("a fill without He is air or nitrox, He defaulting to 0", () => {
   const tag = parsePassportTag(`f=1&p=${id}&fi=${fillId}&ft=2026-09-28T09:30:00Z&fo=32`);
   assert.equal(tag.fill.hePercent, 0);
