@@ -33,8 +33,7 @@ export function specRows(tag, locale) {
   if (tag.serial) rows.push(["Serial number", tag.serial]);
   if (tag.volumeL !== null) rows.push(["Volume", `${number(tag.volumeL)} L`]);
   if (tag.workingPressureBar !== null) {
-    const psi = number(Math.round(tag.workingPressureBar * PSI_PER_BAR), 0);
-    rows.push(["Working pressure", `${number(tag.workingPressureBar, 0)} bar (${psi} psi)`]);
+    rows.push(["Working pressure", pressureText(tag.workingPressureBar, locale)]);
   }
   if (tag.material) rows.push(["Material", MATERIALS[tag.material]]);
   if (tag.valve) rows.push(["Valve", VALVES[tag.valve]]);
@@ -46,6 +45,38 @@ export function specRows(tag, locale) {
   }
   if (tag.o2Clean) rows.push(["O2 clean", "Yes, when the tag was written"]);
   return rows;
+}
+
+// A fill's mix as the app's GasMix.name gives it.
+export function fillMixName({ o2Percent: o2, hePercent: he }) {
+  const [o, h] = [Math.round(o2), Math.round(he)];
+  if (o2 >= 20 && o2 <= 22 && he === 0) return "Air";
+  if (he > 0) return `Tx ${o}/${h}`;
+  if (o2 >= 99) return "O2";
+  if (o2 > 22) return `EAN${o}`;
+  return `${o}% O2`;
+}
+
+// A pressure in bar with psi beside it, as the spec rows show one.
+function pressureText(bar, locale) {
+  const number = (n) => n.toLocaleString(locale, { maximumFractionDigits: 0 });
+  return `${number(bar)} bar (${number(Math.round(bar * PSI_PER_BAR))} psi)`;
+}
+
+// The fill on one line: mix, pressure when the tag has it, and the day it
+// was filled in the viewer's time zone (or timeZone, for tests).
+export function fillSummary(fill, locale, timeZone) {
+  const date = new Intl.DateTimeFormat(locale, {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    timeZone,
+  }).format(new Date(fill.filledAt));
+  return [
+    fillMixName(fill),
+    ...(fill.pressureBar !== null ? [pressureText(fill.pressureBar, locale)] : []),
+    date,
+  ].join(" · ");
 }
 
 // The app's own scheme, which opens Submersion where it is installed; the

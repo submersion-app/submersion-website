@@ -11,6 +11,16 @@ const MATERIALS = new Set(["al", "st", "cf"]);
 const VALVES = new Set(["din", "yoke", "conv"]);
 const MAX_NAME = 40;
 const MAX_SERIAL = 24;
+const MAX_FILL_TEXT = 40;
+const MAX_PRESSURE_BAR = 400;
+
+// An RFC 3339 date-time with its zone, as the app writes and reads a fill
+// time: T, seconds, an optional fraction, then Z or an offset.
+const ZONED = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/;
+
+// NaN and the infinities, which Dart's double.tryParse reads as numbers and
+// DOUBLE does not. Where the app then refuses a value, this page must too.
+const NON_FINITE = /^\s*(?:NaN|[+-]?Infinity)\s*$/;
 
 // Splits a query string as Dart's Uri.splitQueryString does: "+" is a space,
 // the last of a repeated key wins, and bad percent-encoding throws.
@@ -74,6 +84,52 @@ function capCharacters(text, max) {
   return chars.length <= max ? text : chars.slice(0, max).join("");
 }
 
+// A fill time as an ISO string in UTC, or null: a real calendar date and
+// clock time, with a zone.
+function parseFillTime(text) {
+  const m = text == null ? null : ZONED.exec(text);
+  if (!m || parseDate(`${m[1]}-${m[2]}-${m[3]}`) === null) return null;
+  if (Number(m[4]) > 23 || Number(m[5]) > 59 || Number(m[6]) > 59) return null;
+  const at = new Date(text);
+  return Number.isNaN(at.getTime()) ? null : at.toISOString();
+}
+
+// Who filled it, or the analyzer: trimmed, blank as absent, at most 40
+// characters.
+function fillText(text) {
+  const trimmed = (text ?? "").trim();
+  return trimmed === "" ? null : capCharacters(trimmed, MAX_FILL_TEXT);
+}
+
+// The newest fill an NFC tag carries, or null. Mirrors the app's
+// PassportPayloadCodec: a fill missing its id, zoned time or O2, or with a
+// mix that is no mix, is dropped on its own and the tag still reads;
+// out-of-range details are dropped and the fill kept. fs, reserved for a
+// signature, is ignored.
+function parseFill(pairs) {
+  const id = (pairs.get("fi") ?? "").toLowerCase();
+  const filledAt = parseFillTime(pairs.get("ft"));
+  const o2 = parseDouble(pairs.get("fo"));
+  const heText = pairs.get("fh");
+  // A He the app reads as NaN or infinite makes it refuse the whole fill.
+  if (heText != null && NON_FINITE.test(heText)) return null;
+  const he = parseDouble(heText) ?? 0;
+  if (!UUID.test(id) || filledAt === null || o2 === null) return null;
+  if (o2 <= 0 || he < 0 || o2 + he > 100) return null;
+  const pressure = parseDouble(pairs.get("fp"));
+  const temperature = parseDouble(pairs.get("fc"));
+  return {
+    id,
+    filledAt,
+    o2Percent: o2,
+    hePercent: he,
+    pressureBar: pressure !== null && pressure > 0 && pressure <= MAX_PRESSURE_BAR ? pressure : null,
+    temperatureC: temperature !== null && temperature >= -40 && temperature <= 80 ? temperature : null,
+    filledBy: fillText(pairs.get("fb")),
+    analyzer: fillText(pairs.get("fa")),
+  };
+}
+
 // The tag's fields, with ok false when the payload is no tag: unreadable, or
 // a missing or malformed passport id. Everything else that does not parse is
 // dropped rather than trusted.
@@ -104,11 +160,13 @@ export function parsePassportTag(query) {
     name: name === "" ? null : capCharacters(name, MAX_NAME),
     serial: serial === "" ? null : capCharacters(serial, MAX_SERIAL),
     volumeL: volume !== null && volume >= 0.5 && volume <= 50 ? volume : null,
-    workingPressureBar: pressure !== null && pressure >= 50 && pressure <= 400 ? pressure : null,
+    workingPressureBar:
+      pressure !== null && pressure >= 50 && pressure <= MAX_PRESSURE_BAR ? pressure : null,
     material: MATERIALS.has(material) ? material : null,
     valve: VALVES.has(valve) ? valve : null,
     hydroTest: parseDate(pairs.get("h")),
     visualInspection: parseDate(pairs.get("vi")),
     o2Clean: pairs.get("oc") === "1",
+    fill: parseFill(pairs),
   };
 }

@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 
 import { parsePassportTag } from "../passport/tag.js";
-import { openInAppUrl, specRows, tagTitle, formatDate } from "../passport/display.js";
+import { fillMixName, fillSummary, openInAppUrl, specRows, tagTitle, formatDate } from "../passport/display.js";
 
 const id = "8f3a5c1e-1b2c-4d5e-8f90-1234567890ab";
 const example =
@@ -50,4 +50,26 @@ test("Open in Submersion hands the payload to the app's own scheme", () => {
 
 test("a year below 100 is shown as that year", () => {
   assert.equal(formatDate("0024-06-14", "en-US"), "Jun 14, 24");
+});
+
+test("a fill's mix is named as the app names it", () => {
+  assert.equal(fillMixName({ o2Percent: 21, hePercent: 0 }), "Air");
+  assert.equal(fillMixName({ o2Percent: 32.1, hePercent: 0 }), "EAN32");
+  assert.equal(fillMixName({ o2Percent: 21, hePercent: 35 }), "Tx 21/35");
+  assert.equal(fillMixName({ o2Percent: 100, hePercent: 0 }), "O2");
+  assert.equal(fillMixName({ o2Percent: 18, hePercent: 0 }), "18% O2");
+});
+
+test("a fill reads as its mix, pressure and date", () => {
+  const fill = {
+    o2Percent: 32,
+    hePercent: 0,
+    pressureBar: 232,
+    filledAt: "2026-09-28T09:30:00.000Z",
+  };
+  assert.equal(fillSummary(fill, "en-US", "UTC"), "EAN32 · 232 bar (3,365 psi) · Sep 28, 2026");
+  assert.equal(
+    fillSummary({ ...fill, pressureBar: null }, "en-US", "UTC"),
+    "EAN32 · Sep 28, 2026",
+  );
 });

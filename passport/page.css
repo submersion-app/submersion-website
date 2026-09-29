@@ -26,6 +26,42 @@
   font-size: 0.9rem;
 }
 
+/* The newest fill an NFC tag carries: boxed like the spec, since it is what
+   the tag says too. */
+.fill {
+  margin: 0 0 20px;
+  padding: 14px 18px;
+  background: var(--card2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.fill h2 {
+  margin: 0 0 6px;
+  color: var(--faint);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.fill p {
+  margin: 4px 0;
+  overflow-wrap: anywhere;
+}
+
+#fillSummary {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.fill-detail {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.fill .note {
+  margin-top: 10px;
+}
+
 .actions {
   display: flex;
   flex-wrap: wrap;
