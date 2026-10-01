@@ -290,7 +290,7 @@ h2 {
   display: block; font-variant-numeric: tabular-nums; font-size: 11px;
   font-weight: 400; color: var(--ink-faint); margin-top: 2px;
 }
-.download__stores { display: flex; justify-content: center; margin-top: 20px; }
+.download__stores { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 20px; }
 .download__store { display: inline-block; border-radius: 8px; transition: opacity 150ms ease; }
 .download__store:hover { opacity: 0.8; }
 .download__secondary { margin-top: 24px; }

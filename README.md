@@ -21,7 +21,7 @@ Then visit `http://localhost:5173`.
 - `ocean.js`: scroll-driven water color, parallax, marine snow, the depth gauge, and section reveals
 - `script.js`: release lookup and platform-detecting download button
 - `screenshots/`: window captures of the macOS app at 2400 px wide, used on the page
-- `assets/`: logo, favicon, App Store badge
+- `assets/`: logo, favicon, App Store and Google Play badges
 - `lightroom/`: Adobe Lightroom integration walkthrough and OAuth callback page (self-contained styles)
 - `c.html`, `f.html`: landing pages for cylinder passport tags (`https://submersion.app/c#<payload>`) and fill records (`/f`). The tag page reads the payload from the URL fragment in the browser, so nothing reaches the server; `passport/tag.js` mirrors the app's decoder (format: `docs/import-formats/cylinder-passport-tag.md` in the app repo), including the newest fill an NFC tag carries, which the page shows with a note to analyse the gas. The fill record page only explains the link until the app ships that format.
 - `.well-known/`: `apple-app-site-association` and `assetlinks.json`, which let iOS and Android open `/c` and `/f` links in the app. `assetlinks.json` must list the SHA-256 of every certificate that signs an Android build. It lists Play's app-signing key (Play Console, Test and release, App integrity), which signs every copy installed from Google Play, and the CI release key behind the GitHub-release APK (also the Play upload key). Debug keys stay out: a debug keystore's password is the public default, so trusting one would let whoever holds it claim these links.
