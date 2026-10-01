@@ -6,13 +6,14 @@
   const RELEASES_URL = 'https://github.com/' + REPO + '/releases';
   const API_URL = 'https://api.github.com/repos/' + REPO + '/releases';
   const APP_STORE_URL = 'https://apps.apple.com/us/app/submersion-dive-log/id6757456915';
+  const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=app.submersion';
 
   const PLATFORMS = {
     macos:   { suffix: '-macOS.dmg',    label: 'macOS',   icon: 'apple' },
     windows: { suffix: '-Windows-Setup.exe',  label: 'Windows', icon: 'windows' },
     linux:   { suffix: '-Linux.tar.gz', label: 'Linux',   icon: 'linux' },
-    android: { suffix: '-Android.apk',  label: 'Android', icon: 'android' },
-    ios:     { label: 'iOS', icon: 'apple', storeUrl: APP_STORE_URL },
+    android: { label: 'Android', icon: 'android', storeUrl: PLAY_STORE_URL, storeLabel: 'Get it on Google Play' },
+    ios:     { label: 'iOS', icon: 'apple', storeUrl: APP_STORE_URL, storeLabel: 'Download on the App Store' },
   };
 
   var ICONS = {};
@@ -25,10 +26,14 @@
   function detectPlatform() {
     var ua = navigator.userAgent || '';
     var platform = navigator.platform || '';
+    // iOS first: every iPhone user agent says "like Mac OS X", so the Mac test
+    // below would claim it. iPadOS 13+ reports itself as a Mac (MacIntel and a
+    // desktop user agent); touch support is what tells it apart.
+    if (/iPhone|iPad|iPod/i.test(ua) || /iPhone|iPad|iPod/i.test(platform)) return 'ios';
+    if (platform === 'MacIntel' && navigator.maxTouchPoints > 1) return 'ios';
     if (/Macintosh|MacIntel|MacPPC|Mac68K/i.test(platform) || /Mac OS X/i.test(ua)) return 'macos';
     if (/Win32|Win64|Windows|WinCE/i.test(platform) || /Windows/i.test(ua)) return 'windows';
     if (/Android/i.test(ua)) return 'android';
-    if (/iPhone|iPad|iPod/i.test(ua)) return 'ios';
     if (/Linux/i.test(platform)) return 'linux';
     return null;
   }
@@ -73,16 +78,17 @@
 
     if (!primaryBtn || !platformsContainer) return;
 
-    if (detectedPlatform === 'ios') {
-      primaryBtn.href = APP_STORE_URL;
+    var storeConfig = detectedPlatform ? PLATFORMS[detectedPlatform] : null;
+    if (storeConfig && storeConfig.storeUrl) {
+      primaryBtn.href = storeConfig.storeUrl;
       primaryBtn.target = '_blank';
       primaryBtn.rel = 'noreferrer';
-      var appleIcon = createIconElement('apple');
-      if (appleIcon) {
+      var storeIcon = createIconElement(storeConfig.icon);
+      if (storeIcon) {
         primaryIcon.textContent = '';
-        primaryIcon.appendChild(appleIcon);
+        primaryIcon.appendChild(storeIcon);
       }
-      primaryLabel.textContent = 'Download on the App Store';
+      primaryLabel.textContent = storeConfig.storeLabel;
       primaryMeta.textContent = '';
     } else if (detectedPlatform && assetMap[detectedPlatform]) {
       var config = PLATFORMS[detectedPlatform];
