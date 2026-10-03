@@ -1,5 +1,6 @@
-// The matrix page copies the homepage's header, so its menu must stay the
-// homepage's menu: an older copy of the nav once shipped here with stale items.
+// The inner pages copy the homepage's header, so their menu must stay the
+// homepage's menu: an older copy once shipped with the retired Why, Screens,
+// Features and Support items.
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
@@ -13,10 +14,11 @@ function navLinks(html) {
   return [...links[1].matchAll(/<a href="([^"]+)"[^>]*>([^<]+)<\/a>/g)].map((m) => [m[1], m[2].trim()]);
 }
 
-test("the matrix page's menu is the homepage's menu", () => {
-  const home = navLinks(read("index.html")).map(([href, text]) => [
-    href.startsWith("#") ? `../${href}` : href,
-    text,
-  ]);
-  assert.deepEqual(navLinks(read("computers/index.html")), home);
-});
+const homeMenu = () =>
+  navLinks(read("index.html")).map(([href, text]) => [href.startsWith("#") ? `../${href}` : href, text]);
+
+for (const page of ["computers/index.html", "privacy/index.html", "terms/index.html"]) {
+  test(`${page} uses the homepage's menu`, () => {
+    assert.deepEqual(navLinks(read(page)), homeMenu());
+  });
+}
