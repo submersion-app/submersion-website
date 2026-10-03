@@ -9,7 +9,8 @@ const STATE_KEYS = ["q", "brand", "platform", "status", "transport"];
 const ENUMS = { platform: PLATFORMS, status: STATUSES, transport: FAMILIES };
 
 const byText = (a, b) => a.localeCompare(b, "en", { sensitivity: "base", numeric: true });
-const squash = (text) => text.toLowerCase().replace(/[^a-z0-9]+/g, "");
+// "+" is part of some names (Puck Pro +), so it reads as "plus", as in the ids.
+const squash = (text) => text.toLowerCase().replace(/\+/g, "plus").replace(/[^a-z0-9]+/g, "");
 
 export function buildRows(catalog, reports) {
   const byCell = new Map();
@@ -82,6 +83,16 @@ export function stateToSearch(state) {
 // query, so the path is always spelled out.
 export function urlFor(pathname, state, hash) {
   return `${pathname}${stateToSearch(state)}${hash}`;
+}
+
+// The model id in a location hash, or "" when the hash is empty or is not
+// valid percent-encoding (decodeURIComponent throws on "#%E0").
+export function hashTarget(hash) {
+  try {
+    return decodeURIComponent(hash.slice(1));
+  } catch {
+    return "";
+  }
 }
 
 // Filters to apply so the model in the hash is on screen: the current ones

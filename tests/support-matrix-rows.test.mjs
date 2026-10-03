@@ -5,6 +5,7 @@ import { readFileSync } from "node:fs";
 import {
   buildRows,
   filterRows,
+  hashTarget,
   parseState,
   revealTarget,
   stateToSearch,
@@ -73,6 +74,21 @@ test("search ignores spacing and punctuation", () => {
   assert.deepEqual(find("Perdix 3"), ["shearwater-perdix-3/bluetooth"]);
   assert.deepEqual(find("shear 3"), ["shearwater-perdix-3/bluetooth"]);
   assert.equal(find("puck pro+").length, 2);
+});
+
+// "+" is part of a product name: "puck pro+" must find the Puck Pro + and not
+// the Puck Pro. The fixture has no plain Puck Pro, so this reads the catalog.
+test("search keeps a plus sign", () => {
+  const real = JSON.parse(readFileSync(new URL("../computers/data/catalog.json", import.meta.url), "utf8"));
+  const ids = new Set(filterRows(buildRows(real, []), { ...EMPTY, q: "puck pro+" }).map((r) => r.id));
+  assert.deepEqual([...ids], ["mares-puck-pro-plus"]);
+});
+
+test("hashTarget decodes the hash and ignores a malformed one", () => {
+  assert.equal(hashTarget("#shearwater-perdix-3"), "shearwater-perdix-3");
+  assert.equal(hashTarget("#a%20b"), "a b");
+  assert.equal(hashTarget("#%E0"), "");
+  assert.equal(hashTarget(""), "");
 });
 
 test("brand and transport filters", () => {
