@@ -27,8 +27,11 @@ and the status rules are described in the app repo's spec,
 - `model`: a catalog id from `computers/data/catalog.json`. A report that names
   a family ("Suunto D-series") or an ambiguous name goes in `unmapped` with the
   text it used. Never guess.
-- `fixedBy`: when the thread or issue links a fixing PR, its number. The merge
-  step turns it into `fixedIn`.
+- `fixedBy`: when the thread or issue links a fixing PR, its number. Step 3
+  turns it into `fixedIn`. It stays on the report only while `fixedIn` is
+  `"unreleased"`, so a later sweep can find the release that ships the fix.
+  A fixing PR found for a report already in `reports.json` is still a
+  candidate: merge upgrades the stored `fixedIn` instead of skipping it.
 
 ## Reports from the form
 
@@ -74,6 +77,12 @@ the repo):
 `reports` is empty and `watermarks` leaves that source out, so its watermark
 stays where it was.
 
+A source is all or nothing. When a source is split across agents, or read in
+several parts (the two `github` rows share one watermark), the source failed
+if any part failed: every part leaves the watermark out. Only when every part
+succeeded does the combined watermark take the highest value across the parts.
+Advancing a watermark past a part that failed loses its items for good.
+
 ## Sources
 
 Read each from its watermark in `reports.json`. Split a source across
@@ -97,7 +106,7 @@ first request.
    `python3 scripts/export_support_matrix_catalog.py --previous <website>/computers/data/catalog.json --out <website>/computers/data/catalog.json`.
    Note any `removed` ids.
 2. Read every source into its candidate file (in parallel where possible).
-3. Resolve `fixedBy`: for each PR number, `gh pr view <n> --repo submersion-app/submersion --json mergeCommit -q .mergeCommit.oid`, then `node tools/support-matrix/fixed-in.mjs <app checkout> <sha>`; set `fixedIn` on that report and drop `fixedBy`.
-4. Combine the candidate files into one `sweep.json` (concatenate `reports`, merge `watermarks`), then `node tools/support-matrix/merge.mjs sweep.json`.
+3. Resolve `fixedBy`: for each PR number, `gh pr view <n> --repo submersion-app/submersion --json mergeCommit -q .mergeCommit.oid`, then `node tools/support-matrix/fixed-in.mjs <app checkout> <sha>`; set `fixedIn` on that report, and keep `fixedBy` only when the result is `unreleased`. Then re-resolve every report already in `reports.json` whose `fixedIn` is `"unreleased"` the same way from its `fixedBy`; when the fix has shipped, add a copy of that report with the new `fixedIn` as a candidate.
+4. Combine the candidate files into one `sweep.json` (concatenate `reports`; combine `watermarks` under the all-or-nothing rule above), then `node tools/support-matrix/merge.mjs sweep.json`. It prints how many reports it added and how many had `fixedIn` upgraded; the PR body lists both.
 5. `node tools/support-matrix/validate.mjs` and `node --test tests/*.test.mjs`. Fix or drop any report the validator rejects; never weaken the validator.
-6. If every source has `failed`, open no PR; report the reasons instead. Otherwise open one PR titled `data(computers): support matrix sweep <YYYY-MM-DD>` whose body lists: reports added per source; every `unmapped` item with its link; reports whose model appears in `removed`; every source with `failed` and its reason. No attribution lines.
+6. If every source has `failed`, open no PR; report the reasons instead. Otherwise open one PR titled `data(computers): support matrix sweep <YYYY-MM-DD>` whose body lists: reports added per source; reports whose `fixedIn` was upgraded, with the release; every `unmapped` item with its link; reports whose model appears in `removed`; every source with `failed` and its reason. No attribution lines.

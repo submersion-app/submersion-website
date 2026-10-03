@@ -76,6 +76,12 @@ export function validate(catalog, data) {
     if (r.fixedIn != null && r.fixedIn !== "unreleased" && !VERSION.test(String(r.fixedIn))) {
       errors.push(`${at}: fixedIn ${r.fixedIn} is not a version or "unreleased"`);
     }
+    // An unreleased fix keeps its PR number so a later sweep can find the release.
+    if (r.fixedIn === "unreleased") {
+      if (!Number.isInteger(r.fixedBy) || r.fixedBy < 1) errors.push(`${at}: an unreleased fix needs fixedBy, the fixing PR number`);
+    } else if (r.fixedBy !== undefined) {
+      errors.push(`${at}: fixedBy belongs only on a report whose fixedIn is "unreleased"`);
+    }
     if (!DATE.test(String(r.date))) errors.push(`${at}: date ${r.date} is not YYYY-MM-DD`);
     if (typeof r.note !== "string" || r.note.length === 0 || r.note.length > 120) {
       errors.push(`${at}: note must be 1 to 120 characters`);
