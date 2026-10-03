@@ -1,11 +1,26 @@
-/* The support matrix page. Colour and type tokens come from /styles.css. */
-.matrix { max-width: var(--max); margin: 0 auto; padding: 32px 16px 64px; color: var(--ink); }
+/* The support matrix page. Colour and type tokens come from /styles.css.
+   Text on the water takes its ink from ocean.js (dark near the surface, light
+   in the deep). Everything drawn on the dark panel colour (the table, the
+   inputs, the legend pills) sets its own light tokens instead, so it reads the
+   same at any depth. */
+.matrix__table,
+.matrix__controls input,
+.matrix__controls select,
+.matrix__legend .cell {
+  --ink: #eaf6fa; --ink-muted: rgba(234, 246, 250, 0.72); --ink-faint: rgba(234, 246, 250, 0.68);
+  --cyan: #8fdcec; --cyan-text: rgba(143, 220, 236, 0.85); --line: rgba(234, 246, 250, 0.16);
+}
+/* Not on the legend pills: a two-class colour rule there would outrank each
+   pill's one-class status colour. */
+.matrix__table, .matrix__controls input, .matrix__controls select { color: var(--ink); }
+.matrix__panel { margin-top: 8px; margin-bottom: 8px; }
 .matrix h1 { margin: 0 0 12px; }
 .matrix .lead { color: var(--ink-muted); max-width: 70ch; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 .matrix__legend { display: grid; gap: 6px; list-style: none; padding: 0; margin: 20px 0; color: var(--ink-muted); }
-.matrix__legend .cell { margin-right: 8px; }
+.matrix__legend .cell { margin-right: 8px; background: var(--panel); }
+.matrix__legend .cell--na { border-color: var(--panel); }
 .matrix__updated, .matrix__count { color: var(--ink-muted); font-size: 0.9rem; }
 
 .matrix__controls { display: grid; grid-template-columns: 2fr repeat(4, minmax(0, 1fr)); gap: 8px; margin: 24px 0 8px; }
@@ -14,7 +29,7 @@
   border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px;
 }
 .matrix__controls input:focus-visible, .matrix__controls select:focus-visible { outline: 2px solid var(--cyan); outline-offset: 1px; }
-.matrix__error { color: #ff9a9a; }
+.matrix__error { font-weight: 600; }
 
 .matrix__table { width: 100%; border-collapse: collapse; background: var(--panel); border-radius: 12px; overflow: hidden; }
 .matrix__table th, .matrix__table td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: middle; }

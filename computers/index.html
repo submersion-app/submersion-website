@@ -62,7 +62,11 @@
       </nav>
     </header>
 
-    <main id="content" class="matrix">
+    <main id="content">
+     <section class="zone matrix" data-ink="dark">
+      <!-- ocean.js inks each child of .zone__inner for the water behind it.
+           The table sits outside, on its own dark panel with fixed light text. -->
+      <div class="zone__inner wrap">
       <h1>Dive computer support</h1>
       <p class="lead">
         Find your dive computer to see whether Submersion downloads from it on your phone or computer. Each cell shows
@@ -100,6 +104,9 @@
       <p class="matrix__count" id="count" aria-live="polite"></p>
       <p class="matrix__error" id="error" hidden>The support matrix did not load. Reload the page to try again.</p>
 
+      </div>
+
+      <div class="wrap matrix__panel">
       <table class="matrix__table">
         <thead>
           <tr>
@@ -109,6 +116,9 @@
         </thead>
         <tbody id="rows"></tbody>
       </table>
+      </div>
+
+      <div class="zone__inner wrap">
 
       <section class="matrix__help">
         <h2>Help fill the gaps</h2>
@@ -138,6 +148,8 @@
           <a href="../terms/">Terms of Service</a>
         </div>
       </footer>
+      </div>
+     </section>
     </main>
 
     <script>
