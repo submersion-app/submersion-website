@@ -44,7 +44,7 @@ Use these phrasings. Do not strengthen them.
 | Topic | Phrasing | Basis |
 |---|---|---|
 | Computers | "350+ models supported by libdivecomputer, over Bluetooth LE and USB" | 356 descriptors, 37 vendors, libdivecomputer v0.9.0-94 bundled |
-| Tested computers | "Confirmed on Shearwater Teric, Aqualung i300C and i330R. Testers wanted for the rest." | README |
+| Tested computers | "See which models divers have verified on your platform, and which still need a tester." | `/computers/` page, data in `computers/data/` |
 | iOS | "Bluetooth only on iOS" | serial/USB is macOS-only in the Darwin plugin |
 | Download | incremental by fingerprint; duplicate review with skip / import as new / replace / consolidate | `fingerprint_utils.dart`, `dive_matcher.dart`, import review UI |
 | Imports | Subsurface XML, MacDive (XML and SQLite), Shearwater Cloud, Garmin FIT, DAN DL7, Ratio XML, UDDF, CSV with presets (MySSI, Subsurface, MacDive, Diving Log, DiveMate, Garmin Connect, Shearwater Cloud); Apple Health underwater workouts (iOS); OCR of scanned paper logbooks | `universal_import` parsers, `ocr_import`, `healthkit_service.dart` |
