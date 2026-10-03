@@ -1,11 +1,11 @@
 {
   "watermarks": {
     "appStore": {
-      "lastReviewId": 14493238631,
+      "lastReviewId": 14611913679,
       "sweptAt": "2026-10-03"
     },
     "github": {
-      "since": "2026-10-03T05:08:52Z"
+      "since": "2026-10-03T06:13:43Z"
     },
     "scubaboard": {
       "lastPostId": 10834935,
@@ -1614,6 +1614,32 @@
     },
     {
       "model": "shearwater-teric",
+      "platform": "android",
+      "transport": "bluetooth",
+      "outcome": "works",
+      "appVersion": "1.8.1",
+      "date": "2026-10-03",
+      "source": "github-issue",
+      "url": "https://github.com/submersion-app/submersion/issues/2856",
+      "sourceRef": null,
+      "fixedIn": null,
+      "note": "Reported through the form"
+    },
+    {
+      "model": "shearwater-teric",
+      "platform": "ios",
+      "transport": "bluetooth",
+      "outcome": "works",
+      "appVersion": "1.8.1",
+      "date": "2026-10-03",
+      "source": "github-issue",
+      "url": "https://github.com/submersion-app/submersion/issues/2855",
+      "sourceRef": null,
+      "fixedIn": null,
+      "note": "Reported through the form"
+    },
+    {
+      "model": "shearwater-teric",
       "platform": "macos",
       "transport": "bluetooth",
       "outcome": "caveats",
@@ -1637,6 +1663,19 @@
       "sourceRef": null,
       "fixedIn": null,
       "note": "Download completed, but the review step showed no dives to import."
+    },
+    {
+      "model": "shearwater-teric",
+      "platform": "macos",
+      "transport": "bluetooth",
+      "outcome": "works",
+      "appVersion": "1.8.1",
+      "date": "2026-10-03",
+      "source": "github-issue",
+      "url": "https://github.com/submersion-app/submersion/issues/2854",
+      "sourceRef": null,
+      "fixedIn": null,
+      "note": "Reported through the form"
     },
     {
       "model": "shearwater-teric",
