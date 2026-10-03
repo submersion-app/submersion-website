@@ -1,0 +1,86 @@
+/* The support matrix page. Colour and type tokens come from /styles.css.
+   Text on the water takes its ink from ocean.js (dark near the surface, light
+   in the deep). Everything drawn on the dark panel colour (the table, the
+   inputs, the legend pills) sets its own light tokens instead, so it reads the
+   same at any depth. */
+.matrix__table,
+.matrix__controls input,
+.matrix__controls select,
+.matrix__legend .cell {
+  --ink: #eaf6fa; --ink-muted: rgba(234, 246, 250, 0.72); --ink-faint: rgba(234, 246, 250, 0.68);
+  --cyan: #8fdcec; --cyan-text: rgba(143, 220, 236, 0.85); --line: rgba(234, 246, 250, 0.16);
+}
+/* Not on the legend pills: a two-class colour rule there would outrank each
+   pill's one-class status colour. */
+.matrix__table, .matrix__controls input, .matrix__controls select { color: var(--ink); }
+.matrix__panel { margin-top: 8px; margin-bottom: 8px; }
+.matrix h1 { margin: 0 0 12px; }
+.matrix .lead { color: var(--ink-muted); max-width: 70ch; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.matrix__legend { display: grid; gap: 6px; list-style: none; padding: 0; margin: 20px 0; color: var(--ink-muted); }
+.matrix__legend .cell { margin-right: 8px; background: var(--panel); }
+.matrix__legend .cell--na { border-color: var(--panel); }
+.matrix__updated, .matrix__count { color: var(--ink-muted); font-size: 0.9rem; }
+
+.matrix__controls { display: grid; grid-template-columns: 2fr repeat(4, minmax(0, 1fr)); gap: 8px; margin: 24px 0 8px; }
+.matrix__controls input, .matrix__controls select {
+  width: 100%; font: inherit; color: var(--ink); background: var(--panel);
+  border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px;
+}
+.matrix__controls input:focus-visible, .matrix__controls select:focus-visible { outline: 2px solid var(--cyan); outline-offset: 1px; }
+.matrix__error { font-weight: 600; }
+
+.matrix__table { width: 100%; border-collapse: collapse; background: var(--panel); border-radius: 12px; overflow: hidden; }
+.matrix__table th, .matrix__table td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: middle; }
+.matrix__table thead th { font-size: 0.85rem; color: var(--ink-muted); font-weight: 600; }
+.matrix__table tr.vendor th { background: rgba(143, 220, 236, 0.08); color: var(--cyan-text); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.matrix__table tr.is-target { outline: 2px solid var(--cyan); outline-offset: -2px; }
+.matrix__table tr.detail td { background: rgba(143, 220, 236, 0.05); }
+.detail h3 { margin: 0 0 4px; font-size: 1rem; }
+.detail ul { margin: 8px 0 0; padding-left: 18px; display: grid; gap: 8px; }
+.detail a { color: var(--cyan); }
+.report { margin-left: 8px; font-size: 0.8rem; font-weight: 400; color: var(--cyan); }
+.detail .report { margin-left: 0; }
+
+.cell {
+  display: inline-flex; align-items: center; gap: 6px; padding: 2px 8px; border-radius: 999px;
+  border: 1px solid currentColor; background: transparent; color: inherit; font: inherit; font-size: 0.85rem; white-space: nowrap;
+}
+button.cell { cursor: pointer; }
+button.cell:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+.cell::before { font-weight: 700; }
+.cell--verified { color: #7be3a0; }
+.cell--verified::before { content: "\2713"; }
+.cell--issues { color: #ffd27a; }
+.cell--issues::before { content: "!"; }
+.cell--not-working { color: #ff9a9a; }
+.cell--not-working::before { content: "\2715"; }
+.cell--untested { color: var(--ink-muted); border-style: dashed; }
+.cell--untested::before { content: "?"; }
+.cell--na { color: var(--ink-faint); border-color: transparent; }
+
+.matrix__help, .matrix__provenance { margin-top: 40px; color: var(--ink-muted); }
+.matrix__help a, .matrix__provenance a { color: var(--cyan); }
+.matrix__provenance ul { columns: 2; padding-left: 18px; }
+
+@media (max-width: 720px) {
+  .matrix__controls { grid-template-columns: 1fr 1fr; }
+  .matrix__controls .matrix__search { grid-column: 1 / -1; }
+  .matrix__table thead { display: none; }
+  .matrix__table, .matrix__table tbody { display: block; }
+  /* A card per row: model on the first line with the connection pinned to
+     its right, then one "platform + status" pair per platform, wrapping two
+     to a line on a phone. Five worded pills do not fit on one line. */
+  .matrix__table tr {
+    position: relative; display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 6px 16px; padding: 10px; border-bottom: 1px solid var(--line);
+  }
+  .matrix__table tr.vendor, .matrix__table tr.detail { display: block; padding: 0; }
+  .matrix__table tr > th[scope="row"] { grid-column: 1 / -1; border: 0; padding: 0 96px 2px 0; }
+  .matrix__table tr > td.transport { position: absolute; top: 10px; right: 10px; border: 0; padding: 0; color: var(--ink-muted); }
+  .matrix__table td.platform { border: 0; padding: 0; display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 0.8rem; min-width: 0; }
+  .matrix__table td.platform::before { content: attr(data-label); color: var(--ink-muted); }
+  .cell { font-size: 0.75rem; padding: 2px 8px; }
+  .matrix__provenance ul { columns: 1; }
+}

@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#49e8ff" />
+
+    <title>Dive computer support · Submersion Dive Log</title>
+    <meta
+      name="description"
+      content="Which dive computers Submersion downloads from over Bluetooth and USB on iOS, Android, macOS, Windows and Linux, and what divers have reported for each."
+    />
+    <link rel="canonical" href="https://submersion.app/computers/" />
+
+    <meta property="og:title" content="Dive computer support · Submersion" />
+    <meta property="og:description" content="Which dive computers Submersion downloads from, by platform and connection, and what divers have reported." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://submersion.app/assets/brand/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Submersion: Dive safe. Log everything." />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/png" href="../assets/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="/computers/page.css" />
+  </head>
+  <body id="top">
+    <a class="skip" href="#content">Skip to content</a>
+
+    <!-- Fixed decorative water column (JS-enhanced; harmless without JS) -->
+    <div class="ocean" aria-hidden="true">
+      <div class="ocean__haze" data-speed="0.04"></div>
+      <div class="ocean__rays" data-speed="0.2">
+        <div class="ocean__ray ocean__ray--1"></div>
+        <div class="ocean__ray ocean__ray--2"></div>
+        <div class="ocean__ray ocean__ray--3"></div>
+      </div>
+      <canvas id="ocean-snow" class="ocean__snow"></canvas>
+    </div>
+
+    <header class="surface">
+      <nav class="nav" aria-label="Primary">
+        <a class="nav__brand" href="../">
+          <img src="../assets/brand/lockup-dark.png" alt="Submersion: Dive safe. Log everything." width="278" height="96" decoding="async" />
+        </a>
+        <div class="nav__links">
+          <a href="../#why">Why</a>
+          <a href="../#screens">Screens</a>
+          <a href="../#features">Features</a>
+          <a href="../#support">Support</a>
+          <a href="../#download">Download</a>
+          <a href="https://github.com/submersion-app/submersion" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="content">
+     <section class="zone matrix" data-ink="dark">
+      <!-- ocean.js inks each child of .zone__inner for the water behind it.
+           The table sits outside, on its own dark panel with fixed light text. -->
+      <div class="zone__inner wrap">
+      <h1>Dive computer support</h1>
+      <p class="lead">
+        Find your dive computer to see whether Submersion downloads from it on your phone or computer. Each cell shows
+        what divers have reported for one model, one connection and one platform.
+      </p>
+      <ul class="matrix__legend" aria-label="Legend">
+        <li><span class="cell cell--verified">Verified</span>A diver downloaded dives this way.</li>
+        <li><span class="cell cell--issues">Issues</span>It works with a caveat, or a fix is waiting for a diver to confirm it.</li>
+        <li><span class="cell cell--not-working">Not working</span>A diver reported a failure that is not fixed yet.</li>
+        <li><span class="cell cell--untested">Untested</span>Submersion supports this connection, and nobody has reported on it yet.</li>
+        <li><span class="cell cell--na">n/a</span>This platform cannot use this connection.</li>
+      </ul>
+      <p class="matrix__updated" id="updated"></p>
+
+      <form class="matrix__controls" role="search" onsubmit="return false">
+        <label class="matrix__search"><span class="sr-only">Search models</span>
+          <input id="q" type="search" placeholder="Search, for example Perdix 3" autocomplete="off" /></label>
+        <label><span class="sr-only">Brand</span>
+          <select id="brand"><option value="">All brands</option></select></label>
+        <label><span class="sr-only">Platform</span>
+          <select id="platform">
+            <option value="">All platforms</option><option value="ios">iOS</option><option value="android">Android</option>
+            <option value="macos">macOS</option><option value="windows">Windows</option><option value="linux">Linux</option>
+          </select></label>
+        <label><span class="sr-only">Status</span>
+          <select id="status">
+            <option value="">Any status</option><option value="verified">Verified</option><option value="issues">Issues</option>
+            <option value="not-working">Not working</option><option value="untested">Untested</option>
+          </select></label>
+        <label><span class="sr-only">Connection</span>
+          <select id="transport">
+            <option value="">Any connection</option><option value="bluetooth">Bluetooth</option><option value="usb">USB</option>
+          </select></label>
+      </form>
+      <p class="matrix__count" id="count" aria-live="polite"></p>
+      <p class="matrix__error" id="error" hidden>The support matrix did not load. Reload the page to try again.</p>
+
+      </div>
+
+      <div class="wrap matrix__panel">
+      <table class="matrix__table">
+        <thead>
+          <tr>
+            <th scope="col">Model</th><th scope="col">Connection</th><th scope="col">iOS</th><th scope="col">Android</th>
+            <th scope="col">macOS</th><th scope="col">Windows</th><th scope="col">Linux</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+      </div>
+
+      <div class="zone__inner wrap">
+
+      <section class="matrix__help">
+        <h2>Help fill the gaps</h2>
+        <p>
+          Tried Submersion with your computer?
+          <a href="https://github.com/submersion-app/submersion/issues/new?template=computer-report.yml&amp;labels=computer-report" target="_blank" rel="noreferrer">Report your result</a>
+          (it takes a free GitHub account), or post what happened in the
+          <a href="https://scubaboard.com/community/threads/submersion-free-open-source-dive-log-app-all-platforms-looking-for-dive-computer-testers.667061/">ScubaBoard thread</a>
+          or on <a href="https://www.reddit.com/r/submersion/">r/submersion</a>. Include the model, your phone or
+          computer and its operating system, Bluetooth or USB, and your Submersion version. Reports are added to this page
+          each month.
+        </p>
+      </section>
+
+      <section class="matrix__provenance">
+        <h2>Where this comes from</h2>
+        <p id="provenance"></p>
+        <p>
+          Bluetooth Classic and infrared are not supported on any platform. These models use only infrared, or a raw USB
+          connection Submersion does not implement:
+        </p>
+        <ul id="unsupported"></ul>
+      </section>
+      <footer class="footer">
+        © <span data-year></span> Submersion · GPL-3.0
+        <div class="footer__links">
+          <a href="../privacy/">Privacy Policy</a>
+          <a href="../terms/">Terms of Service</a>
+        </div>
+      </footer>
+      </div>
+     </section>
+    </main>
+
+    <script>
+      (function () {
+        var y = document.querySelector('[data-year]');
+        if (y) y.textContent = String(new Date().getFullYear());
+      })();
+    </script>
+    <script src="../ocean.js" defer></script>
+    <script type="module" src="/computers/page.js"></script>
+  </body>
+</html>

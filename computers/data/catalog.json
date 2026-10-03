@@ -1,0 +1,8318 @@
+{
+  "generatedFrom": {
+    "appCommit": "d235257149f6bc4fa6d3032150551150d4bf8e57",
+    "libdcCommit": "2010fadd32ba1a5d557c566a9e09d10448958382",
+    "generatedAt": "2026-10-03T03:45:26Z"
+  },
+  "models": [
+    {
+      "id": "aeris-500-ai",
+      "vendor": "Aeris",
+      "product": "500 AI",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "aeris-a300",
+      "vendor": "Aeris",
+      "product": "A300",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "aeris-a300-ai",
+      "vendor": "Aeris",
+      "product": "A300 AI",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "aeris-a300cs",
+      "vendor": "Aeris",
+      "product": "A300CS",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "aeris-atmos-2",
+      "vendor": "Aeris",
+      "product": "Atmos 2",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "aeris-atmos-ai",
+      "vendor": "Aeris",
+      "product": "Atmos AI",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "aeris-atmos-ai-2",
+      "vendor": "Aeris",
+      "product": "Atmos AI 2",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "aeris-compumask",
+      "vendor": "Aeris",
+      "product": "Compumask",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "aeris-elite",
+      "vendor": "Aeris",
+      "product": "Elite",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "aeris-elite-t3",
+      "vendor": "Aeris",
+      "product": "Elite T3",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "aeris-epic",
+      "vendor": "Aeris",
+      "product": "Epic",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "aeris-f10",
+      "vendor": "Aeris",
+      "product": "F10",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "aeris-f11",
+      "vendor": "Aeris",
+      "product": "F11",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "aeris-manta",
+      "vendor": "Aeris",
+      "product": "Manta",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "aeris-xr-1-nx",
+      "vendor": "Aeris",
+      "product": "XR-1 NX",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "aeris-xr-2",
+      "vendor": "Aeris",
+      "product": "XR-2",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "apeks-dsx",
+      "vendor": "Apeks",
+      "product": "DSX",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "apeks-quantum-x",
+      "vendor": "Apeks",
+      "product": "Quantum X",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "aqualung-i100",
+      "vendor": "Aqualung",
+      "product": "i100",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "aqualung-i200",
+      "vendor": "Aqualung",
+      "product": "i200",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "aqualung-i200c",
+      "vendor": "Aqualung",
+      "product": "i200C",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "aqualung-i300",
+      "vendor": "Aqualung",
+      "product": "i300",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "aqualung-i300c",
+      "vendor": "Aqualung",
+      "product": "i300C",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "aqualung-i330r",
+      "vendor": "Aqualung",
+      "product": "i330R",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "aqualung-i330r-console",
+      "vendor": "Aqualung",
+      "product": "i330R Console",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "aqualung-i450t",
+      "vendor": "Aqualung",
+      "product": "i450T",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "aqualung-i470tc",
+      "vendor": "Aqualung",
+      "product": "i470TC",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "aqualung-i550",
+      "vendor": "Aqualung",
+      "product": "i550",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "aqualung-i550c",
+      "vendor": "Aqualung",
+      "product": "i550C",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "aqualung-i750tc",
+      "vendor": "Aqualung",
+      "product": "i750TC",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "aqualung-i770r",
+      "vendor": "Aqualung",
+      "product": "i770R",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "beuchat-mundial-2",
+      "vendor": "Beuchat",
+      "product": "Mundial 2",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "beuchat-mundial-3",
+      "vendor": "Beuchat",
+      "product": "Mundial 3",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "beuchat-voyager-2g",
+      "vendor": "Beuchat",
+      "product": "Voyager 2G",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "citizen-hyper-aqualand",
+      "vendor": "Citizen",
+      "product": "Hyper Aqualand",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "cochran-commander-i",
+      "vendor": "Cochran",
+      "product": "Commander I",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "cochran-commander-ii",
+      "vendor": "Cochran",
+      "product": "Commander II",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "cochran-commander-tm",
+      "vendor": "Cochran",
+      "product": "Commander TM",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "cochran-emc-14",
+      "vendor": "Cochran",
+      "product": "EMC-14",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "cochran-emc-16",
+      "vendor": "Cochran",
+      "product": "EMC-16",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "cochran-emc-20h",
+      "vendor": "Cochran",
+      "product": "EMC-20H",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "cressi-archimede",
+      "vendor": "Cressi",
+      "product": "Archimede",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "cressi-cartesio",
+      "vendor": "Cressi",
+      "product": "Cartesio",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "cressi-donatello",
+      "vendor": "Cressi",
+      "product": "Donatello",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "cressi-drake",
+      "vendor": "Cressi",
+      "product": "Drake",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "cressi-edy",
+      "vendor": "Cressi",
+      "product": "Edy",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "cressi-giotto",
+      "vendor": "Cressi",
+      "product": "Giotto",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "cressi-goa",
+      "vendor": "Cressi",
+      "product": "Goa",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "cressi-leonardo",
+      "vendor": "Cressi",
+      "product": "Leonardo",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "cressi-leonardo-2-0",
+      "vendor": "Cressi",
+      "product": "Leonardo 2.0",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "cressi-michelangelo",
+      "vendor": "Cressi",
+      "product": "Michelangelo",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "cressi-neon",
+      "vendor": "Cressi",
+      "product": "Neon",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "cressi-nepto",
+      "vendor": "Cressi",
+      "product": "Nepto",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "cressi-newton",
+      "vendor": "Cressi",
+      "product": "Newton",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "crest-cr-4",
+      "vendor": "Crest",
+      "product": "CR-4",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "deep-six-excursion",
+      "vendor": "Deep Six",
+      "product": "Excursion",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "deepblu-cosmiq-plus",
+      "vendor": "Deepblu",
+      "product": "Cosmiq+",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "dive-rite-nitek-q",
+      "vendor": "Dive Rite",
+      "product": "NiTek Q",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "dive-rite-nitek-trio",
+      "vendor": "Dive Rite",
+      "product": "NiTek Trio",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "divesoft-freedom",
+      "vendor": "Divesoft",
+      "product": "Freedom",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "divesoft-liberty",
+      "vendor": "Divesoft",
+      "product": "Liberty",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "divesystem-idive-dan",
+      "vendor": "DiveSystem",
+      "product": "iDive DAN",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "divesystem-idive-deep",
+      "vendor": "DiveSystem",
+      "product": "iDive Deep",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "divesystem-idive-easy",
+      "vendor": "DiveSystem",
+      "product": "iDive Easy",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "divesystem-idive-free",
+      "vendor": "DiveSystem",
+      "product": "iDive Free",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "divesystem-idive-pro",
+      "vendor": "DiveSystem",
+      "product": "iDive Pro",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "divesystem-idive-reb",
+      "vendor": "DiveSystem",
+      "product": "iDive Reb",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "divesystem-idive-stealth",
+      "vendor": "DiveSystem",
+      "product": "iDive Stealth",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "divesystem-idive-tech",
+      "vendor": "DiveSystem",
+      "product": "iDive Tech",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "divesystem-idive-x3m",
+      "vendor": "DiveSystem",
+      "product": "iDive X3M",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "divesystem-orca",
+      "vendor": "DiveSystem",
+      "product": "Orca",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "genesis-centauri",
+      "vendor": "Genesis",
+      "product": "Centauri",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "genesis-react-pro",
+      "vendor": "Genesis",
+      "product": "React Pro",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "genesis-react-pro-white",
+      "vendor": "Genesis",
+      "product": "React Pro White",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "halcyon-symbios-handset",
+      "vendor": "Halcyon",
+      "product": "Symbios Handset",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "halcyon-symbios-hud",
+      "vendor": "Halcyon",
+      "product": "Symbios HUD",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "heinrichs-weikamp-frog",
+      "vendor": "Heinrichs Weikamp",
+      "product": "Frog",
+      "libdc": [
+        "bluetooth",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "heinrichs-weikamp-ostc",
+      "vendor": "Heinrichs Weikamp",
+      "product": "OSTC",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "heinrichs-weikamp-ostc-2",
+      "vendor": "Heinrichs Weikamp",
+      "product": "OSTC 2",
+      "libdc": [
+        "ble",
+        "bluetooth",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "heinrichs-weikamp-ostc-2-tr",
+      "vendor": "Heinrichs Weikamp",
+      "product": "OSTC 2 TR",
+      "libdc": [
+        "ble",
+        "bluetooth",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "heinrichs-weikamp-ostc-2c",
+      "vendor": "Heinrichs Weikamp",
+      "product": "OSTC 2C",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "heinrichs-weikamp-ostc-2n",
+      "vendor": "Heinrichs Weikamp",
+      "product": "OSTC 2N",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "heinrichs-weikamp-ostc-3",
+      "vendor": "Heinrichs Weikamp",
+      "product": "OSTC 3",
+      "libdc": [
+        "ble",
+        "bluetooth",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "heinrichs-weikamp-ostc-4",
+      "vendor": "Heinrichs Weikamp",
+      "product": "OSTC 4",
+      "libdc": [
+        "ble",
+        "bluetooth",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "heinrichs-weikamp-ostc-5",
+      "vendor": "Heinrichs Weikamp",
+      "product": "OSTC 5",
+      "libdc": [
+        "ble",
+        "bluetooth",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "heinrichs-weikamp-ostc-cr",
+      "vendor": "Heinrichs Weikamp",
+      "product": "OSTC cR",
+      "libdc": [
+        "ble",
+        "bluetooth",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "heinrichs-weikamp-ostc-mk2",
+      "vendor": "Heinrichs Weikamp",
+      "product": "OSTC Mk2",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "heinrichs-weikamp-ostc-nano",
+      "vendor": "Heinrichs Weikamp",
+      "product": "OSTC Nano",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "heinrichs-weikamp-ostc-plus",
+      "vendor": "Heinrichs Weikamp",
+      "product": "OSTC Plus",
+      "libdc": [
+        "ble",
+        "bluetooth",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "heinrichs-weikamp-ostc-sport",
+      "vendor": "Heinrichs Weikamp",
+      "product": "OSTC Sport",
+      "libdc": [
+        "ble",
+        "bluetooth",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "hollis-dg02",
+      "vendor": "Hollis",
+      "product": "DG02",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "hollis-dg03",
+      "vendor": "Hollis",
+      "product": "DG03",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "hollis-tx1",
+      "vendor": "Hollis",
+      "product": "TX1",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "liquivision-kaon",
+      "vendor": "Liquivision",
+      "product": "Kaon",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "liquivision-lynx",
+      "vendor": "Liquivision",
+      "product": "Lynx",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "liquivision-xen",
+      "vendor": "Liquivision",
+      "product": "Xen",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "liquivision-xeo",
+      "vendor": "Liquivision",
+      "product": "Xeo",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "mares-airlab",
+      "vendor": "Mares",
+      "product": "Airlab",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "mares-darwin",
+      "vendor": "Mares",
+      "product": "Darwin",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "mares-darwin-air",
+      "vendor": "Mares",
+      "product": "Darwin Air",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "mares-genius",
+      "vendor": "Mares",
+      "product": "Genius",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "mares-horizon",
+      "vendor": "Mares",
+      "product": "Horizon",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "mares-icon-hd",
+      "vendor": "Mares",
+      "product": "Icon HD",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "mares-icon-hd-net-ready",
+      "vendor": "Mares",
+      "product": "Icon HD Net Ready",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "mares-m1",
+      "vendor": "Mares",
+      "product": "M1",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "mares-m2",
+      "vendor": "Mares",
+      "product": "M2",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "mares-matrix",
+      "vendor": "Mares",
+      "product": "Matrix",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "mares-nemo",
+      "vendor": "Mares",
+      "product": "Nemo",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "mares-nemo-air",
+      "vendor": "Mares",
+      "product": "Nemo Air",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "mares-nemo-apneist",
+      "vendor": "Mares",
+      "product": "Nemo Apneist",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "mares-nemo-excel",
+      "vendor": "Mares",
+      "product": "Nemo Excel",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "mares-nemo-steel",
+      "vendor": "Mares",
+      "product": "Nemo Steel",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "mares-nemo-titanium",
+      "vendor": "Mares",
+      "product": "Nemo Titanium",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "mares-nemo-wide",
+      "vendor": "Mares",
+      "product": "Nemo Wide",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "mares-nemo-wide-2",
+      "vendor": "Mares",
+      "product": "Nemo Wide 2",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "mares-puck",
+      "vendor": "Mares",
+      "product": "Puck",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "mares-puck-2",
+      "vendor": "Mares",
+      "product": "Puck 2",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "mares-puck-4",
+      "vendor": "Mares",
+      "product": "Puck 4",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "mares-puck-air",
+      "vendor": "Mares",
+      "product": "Puck Air",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "mares-puck-air-2",
+      "vendor": "Mares",
+      "product": "Puck Air 2",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "mares-puck-lite",
+      "vendor": "Mares",
+      "product": "Puck Lite",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "mares-puck-pro",
+      "vendor": "Mares",
+      "product": "Puck Pro",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "mares-puck-pro-plus",
+      "vendor": "Mares",
+      "product": "Puck Pro +",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "mares-puck-pro-ez",
+      "vendor": "Mares",
+      "product": "Puck Pro EZ",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "mares-puck-pro-ultra",
+      "vendor": "Mares",
+      "product": "Puck Pro Ultra",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "mares-quad",
+      "vendor": "Mares",
+      "product": "Quad",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "mares-quad-2",
+      "vendor": "Mares",
+      "product": "Quad 2",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "mares-quad-air",
+      "vendor": "Mares",
+      "product": "Quad Air",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "mares-quad-ci",
+      "vendor": "Mares",
+      "product": "Quad Ci",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "mares-sirius",
+      "vendor": "Mares",
+      "product": "Sirius",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "mares-sirius-l",
+      "vendor": "Mares",
+      "product": "Sirius L",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "mares-smart",
+      "vendor": "Mares",
+      "product": "Smart",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "mares-smart-air",
+      "vendor": "Mares",
+      "product": "Smart Air",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "mares-smart-apnea",
+      "vendor": "Mares",
+      "product": "Smart Apnea",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "mclean-extreme",
+      "vendor": "McLean",
+      "product": "Extreme",
+      "libdc": [
+        "ble",
+        "bluetooth",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-atom-1-0",
+      "vendor": "Oceanic",
+      "product": "Atom 1.0",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-atom-2-0",
+      "vendor": "Oceanic",
+      "product": "Atom 2.0",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-atom-3-0",
+      "vendor": "Oceanic",
+      "product": "Atom 3.0",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-atom-3-1",
+      "vendor": "Oceanic",
+      "product": "Atom 3.1",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-datamask",
+      "vendor": "Oceanic",
+      "product": "Datamask",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-f10",
+      "vendor": "Oceanic",
+      "product": "F10",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-f11",
+      "vendor": "Oceanic",
+      "product": "F11",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-geo",
+      "vendor": "Oceanic",
+      "product": "Geo",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-geo-2-0",
+      "vendor": "Oceanic",
+      "product": "Geo 2.0",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-geo-4-0",
+      "vendor": "Oceanic",
+      "product": "Geo 4.0",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-geo-air",
+      "vendor": "Oceanic",
+      "product": "Geo Air",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-oc1",
+      "vendor": "Oceanic",
+      "product": "OC1",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-oci",
+      "vendor": "Oceanic",
+      "product": "OCi",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-ocs",
+      "vendor": "Oceanic",
+      "product": "OCS",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-pro-plus-2",
+      "vendor": "Oceanic",
+      "product": "Pro Plus 2",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-pro-plus-2-1",
+      "vendor": "Oceanic",
+      "product": "Pro Plus 2.1",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-pro-plus-3",
+      "vendor": "Oceanic",
+      "product": "Pro Plus 3",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-pro-plus-4",
+      "vendor": "Oceanic",
+      "product": "Pro Plus 4",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-pro-plus-x",
+      "vendor": "Oceanic",
+      "product": "Pro Plus X",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-veo-1-0",
+      "vendor": "Oceanic",
+      "product": "Veo 1.0",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-veo-180",
+      "vendor": "Oceanic",
+      "product": "Veo 180",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-veo-2-0",
+      "vendor": "Oceanic",
+      "product": "Veo 2.0",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-veo-200",
+      "vendor": "Oceanic",
+      "product": "Veo 200",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-veo-250",
+      "vendor": "Oceanic",
+      "product": "Veo 250",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-veo-3-0",
+      "vendor": "Oceanic",
+      "product": "Veo 3.0",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-veo-4-0",
+      "vendor": "Oceanic",
+      "product": "Veo 4.0",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-versa-pro",
+      "vendor": "Oceanic",
+      "product": "Versa Pro",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-vt-4-1",
+      "vendor": "Oceanic",
+      "product": "VT 4.1",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-vt-pro",
+      "vendor": "Oceanic",
+      "product": "VT Pro",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-vt3",
+      "vendor": "Oceanic",
+      "product": "VT3",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-vt4",
+      "vendor": "Oceanic",
+      "product": "VT4",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceanic-vtx",
+      "vendor": "Oceanic",
+      "product": "VTX",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "oceans-s1",
+      "vendor": "Oceans",
+      "product": "S1",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "ratio-atom",
+      "vendor": "Ratio",
+      "product": "ATOM",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-idive-2-deep",
+      "vendor": "Ratio",
+      "product": "iDive 2 Deep",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-idive-2-easy",
+      "vendor": "Ratio",
+      "product": "iDive 2 Easy",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-idive-2-fancy",
+      "vendor": "Ratio",
+      "product": "iDive 2 Fancy",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-idive-2-free",
+      "vendor": "Ratio",
+      "product": "iDive 2 Free",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-idive-2-pro",
+      "vendor": "Ratio",
+      "product": "iDive 2 Pro",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-idive-2-reb",
+      "vendor": "Ratio",
+      "product": "iDive 2 Reb",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-idive-2-tech",
+      "vendor": "Ratio",
+      "product": "iDive 2 Tech",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-idive-color-deep",
+      "vendor": "Ratio",
+      "product": "iDive Color Deep",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-idive-color-easy",
+      "vendor": "Ratio",
+      "product": "iDive Color Easy",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-idive-color-fancy",
+      "vendor": "Ratio",
+      "product": "iDive Color Fancy",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-idive-color-free",
+      "vendor": "Ratio",
+      "product": "iDive Color Free",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-idive-color-pro",
+      "vendor": "Ratio",
+      "product": "iDive Color Pro",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-idive-color-reb",
+      "vendor": "Ratio",
+      "product": "iDive Color Reb",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-idive-color-tech-plus",
+      "vendor": "Ratio",
+      "product": "iDive Color Tech+",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-idive-deep",
+      "vendor": "Ratio",
+      "product": "iDive Deep",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-idive-easy",
+      "vendor": "Ratio",
+      "product": "iDive Easy",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-idive-fancy",
+      "vendor": "Ratio",
+      "product": "iDive Fancy",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-idive-free",
+      "vendor": "Ratio",
+      "product": "iDive Free",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-idive-pro",
+      "vendor": "Ratio",
+      "product": "iDive Pro",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-idive-reb",
+      "vendor": "Ratio",
+      "product": "iDive Reb",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-idive-tech-plus",
+      "vendor": "Ratio",
+      "product": "iDive Tech+",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-2-deep",
+      "vendor": "Ratio",
+      "product": "iX3M 2 Deep",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-2-easy",
+      "vendor": "Ratio",
+      "product": "iX3M 2 Easy",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-2-gauge",
+      "vendor": "Ratio",
+      "product": "iX3M 2 Gauge",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-2-gps-deep",
+      "vendor": "Ratio",
+      "product": "iX3M 2 GPS Deep",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-2-gps-easy",
+      "vendor": "Ratio",
+      "product": "iX3M 2 GPS Easy",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-2-gps-gauge",
+      "vendor": "Ratio",
+      "product": "iX3M 2 GPS Gauge",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-2-gps-pro",
+      "vendor": "Ratio",
+      "product": "iX3M 2 GPS Pro",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-2-gps-reb",
+      "vendor": "Ratio",
+      "product": "iX3M 2 GPS Reb",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-2-gps-tech",
+      "vendor": "Ratio",
+      "product": "iX3M 2 GPS Tech",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-2-pro",
+      "vendor": "Ratio",
+      "product": "iX3M 2 Pro",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-2-tech-plus",
+      "vendor": "Ratio",
+      "product": "iX3M 2 Tech+",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-2021-gps-deep",
+      "vendor": "Ratio",
+      "product": "iX3M 2021 GPS Deep",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-2021-gps-easy",
+      "vendor": "Ratio",
+      "product": "iX3M 2021 GPS Easy",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-2021-gps-fancy",
+      "vendor": "Ratio",
+      "product": "iX3M 2021 GPS Fancy",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-2021-gps-pro",
+      "vendor": "Ratio",
+      "product": "iX3M 2021 GPS Pro ",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-2021-gps-reb",
+      "vendor": "Ratio",
+      "product": "iX3M 2021 GPS Reb",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-2021-gps-tech-plus",
+      "vendor": "Ratio",
+      "product": "iX3M 2021 GPS Tech+",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-2021-pro-deep",
+      "vendor": "Ratio",
+      "product": "iX3M 2021 Pro Deep",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-2021-pro-easy",
+      "vendor": "Ratio",
+      "product": "iX3M 2021 Pro Easy",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-2021-pro-fancy",
+      "vendor": "Ratio",
+      "product": "iX3M 2021 Pro Fancy",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-2021-pro-pro",
+      "vendor": "Ratio",
+      "product": "iX3M 2021 Pro Pro",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-2021-pro-reb",
+      "vendor": "Ratio",
+      "product": "iX3M 2021 Pro Reb",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-2021-pro-tech-plus",
+      "vendor": "Ratio",
+      "product": "iX3M 2021 Pro Tech+",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-gps-deep",
+      "vendor": "Ratio",
+      "product": "iX3M GPS Deep",
+      "libdc": [
+        "bluetooth",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-gps-easy",
+      "vendor": "Ratio",
+      "product": "iX3M GPS Easy",
+      "libdc": [
+        "bluetooth",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-gps-fancy",
+      "vendor": "Ratio",
+      "product": "iX3M GPS Fancy",
+      "libdc": [
+        "bluetooth",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-gps-pro",
+      "vendor": "Ratio",
+      "product": "iX3M GPS Pro ",
+      "libdc": [
+        "bluetooth",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-gps-reb",
+      "vendor": "Ratio",
+      "product": "iX3M GPS Reb",
+      "libdc": [
+        "bluetooth",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-gps-tech-plus",
+      "vendor": "Ratio",
+      "product": "iX3M GPS Tech+",
+      "libdc": [
+        "bluetooth",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-pro-deep",
+      "vendor": "Ratio",
+      "product": "iX3M Pro Deep",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-pro-easy",
+      "vendor": "Ratio",
+      "product": "iX3M Pro Easy",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-pro-fancy",
+      "vendor": "Ratio",
+      "product": "iX3M Pro Fancy",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-pro-pro",
+      "vendor": "Ratio",
+      "product": "iX3M Pro Pro",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-pro-reb",
+      "vendor": "Ratio",
+      "product": "iX3M Pro Reb",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "ratio-ix3m-pro-tech-plus",
+      "vendor": "Ratio",
+      "product": "iX3M Pro Tech+",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "reefnet-sensus",
+      "vendor": "Reefnet",
+      "product": "Sensus",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "reefnet-sensus-pro",
+      "vendor": "Reefnet",
+      "product": "Sensus Pro",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "reefnet-sensus-ultra",
+      "vendor": "Reefnet",
+      "product": "Sensus Ultra",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "scorpena-alpha",
+      "vendor": "Scorpena",
+      "product": "Alpha",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "scubapro-aladin-a1",
+      "vendor": "Scubapro",
+      "product": "Aladin A1",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "scubapro-aladin-a2",
+      "vendor": "Scubapro",
+      "product": "Aladin A2",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "scubapro-aladin-h-matrix",
+      "vendor": "Scubapro",
+      "product": "Aladin H Matrix",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "scubapro-aladin-sport-matrix",
+      "vendor": "Scubapro",
+      "product": "Aladin Sport Matrix",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "scubapro-aladin-square",
+      "vendor": "Scubapro",
+      "product": "Aladin Square",
+      "libdc": [
+        "usbhid"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "scubapro-chromis",
+      "vendor": "Scubapro",
+      "product": "Chromis",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "scubapro-g2",
+      "vendor": "Scubapro",
+      "product": "G2",
+      "libdc": [
+        "ble",
+        "usbhid"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "scubapro-g2-console",
+      "vendor": "Scubapro",
+      "product": "G2 Console",
+      "libdc": [
+        "ble",
+        "usbhid"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "scubapro-g2-hud",
+      "vendor": "Scubapro",
+      "product": "G2 HUD",
+      "libdc": [
+        "ble",
+        "usbhid"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "scubapro-g2-tek",
+      "vendor": "Scubapro",
+      "product": "G2 TEK",
+      "libdc": [
+        "ble",
+        "usbhid"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "scubapro-g3",
+      "vendor": "Scubapro",
+      "product": "G3",
+      "libdc": [
+        "ble",
+        "usbhid"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "scubapro-luna-2-0",
+      "vendor": "Scubapro",
+      "product": "Luna 2.0",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "scubapro-luna-2-0-ai",
+      "vendor": "Scubapro",
+      "product": "Luna 2.0 AI",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "scubapro-mantis",
+      "vendor": "Scubapro",
+      "product": "Mantis",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "scubapro-mantis-2",
+      "vendor": "Scubapro",
+      "product": "Mantis 2",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "scubapro-meridian",
+      "vendor": "Scubapro",
+      "product": "Meridian",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "scubapro-xtender-5",
+      "vendor": "Scubapro",
+      "product": "XTender 5",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "seac-action",
+      "vendor": "Seac",
+      "product": "Action",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "seac-guru",
+      "vendor": "Seac",
+      "product": "Guru",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "seac-jack",
+      "vendor": "Seac",
+      "product": "Jack",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "seac-screen",
+      "vendor": "Seac",
+      "product": "Screen",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "seac-tablet",
+      "vendor": "Seac",
+      "product": "Tablet",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "seemann-xp5",
+      "vendor": "Seemann",
+      "product": "XP5",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "shearwater-nerd",
+      "vendor": "Shearwater",
+      "product": "Nerd",
+      "libdc": [
+        "bluetooth",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "shearwater-nerd-2",
+      "vendor": "Shearwater",
+      "product": "Nerd 2",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "shearwater-perdix",
+      "vendor": "Shearwater",
+      "product": "Perdix",
+      "libdc": [
+        "ble",
+        "bluetooth",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "shearwater-perdix-2",
+      "vendor": "Shearwater",
+      "product": "Perdix 2",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "shearwater-perdix-3",
+      "vendor": "Shearwater",
+      "product": "Perdix 3",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "shearwater-perdix-ai",
+      "vendor": "Shearwater",
+      "product": "Perdix AI",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "shearwater-peregrine",
+      "vendor": "Shearwater",
+      "product": "Peregrine",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "shearwater-peregrine-tx",
+      "vendor": "Shearwater",
+      "product": "Peregrine TX",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "shearwater-petrel",
+      "vendor": "Shearwater",
+      "product": "Petrel",
+      "libdc": [
+        "bluetooth",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "shearwater-petrel-2",
+      "vendor": "Shearwater",
+      "product": "Petrel 2",
+      "libdc": [
+        "ble",
+        "bluetooth",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "shearwater-petrel-3",
+      "vendor": "Shearwater",
+      "product": "Petrel 3",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "shearwater-predator",
+      "vendor": "Shearwater",
+      "product": "Predator",
+      "libdc": [
+        "bluetooth",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "shearwater-teric",
+      "vendor": "Shearwater",
+      "product": "Teric",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "shearwater-tern",
+      "vendor": "Shearwater",
+      "product": "Tern",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "shearwater-tern-tx",
+      "vendor": "Shearwater",
+      "product": "Tern TX",
+      "libdc": [
+        "ble"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth"
+        ],
+        "windows": [
+          "bluetooth"
+        ],
+        "linux": [
+          "bluetooth"
+        ]
+      }
+    },
+    {
+      "id": "sherwood-amphos",
+      "vendor": "Sherwood",
+      "product": "Amphos",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "sherwood-amphos-2-0",
+      "vendor": "Sherwood",
+      "product": "Amphos 2.0",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "sherwood-amphos-air",
+      "vendor": "Sherwood",
+      "product": "Amphos Air",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "sherwood-amphos-air-2-0",
+      "vendor": "Sherwood",
+      "product": "Amphos Air 2.0",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "sherwood-beacon",
+      "vendor": "Sherwood",
+      "product": "Beacon",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "sherwood-insight",
+      "vendor": "Sherwood",
+      "product": "Insight",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "sherwood-insight-2",
+      "vendor": "Sherwood",
+      "product": "Insight 2",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "sherwood-sage",
+      "vendor": "Sherwood",
+      "product": "Sage",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "sherwood-vision",
+      "vendor": "Sherwood",
+      "product": "Vision",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "sherwood-wisdom",
+      "vendor": "Sherwood",
+      "product": "Wisdom",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "sherwood-wisdom-2",
+      "vendor": "Sherwood",
+      "product": "Wisdom 2",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "sherwood-wisdom-3",
+      "vendor": "Sherwood",
+      "product": "Wisdom 3",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "sherwood-wisdom-4",
+      "vendor": "Sherwood",
+      "product": "Wisdom 4",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "sporasub-sp2",
+      "vendor": "Sporasub",
+      "product": "SP2",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "subgear-xp-air",
+      "vendor": "Subgear",
+      "product": "XP-Air",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-cobra",
+      "vendor": "Suunto",
+      "product": "Cobra",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-cobra-2",
+      "vendor": "Suunto",
+      "product": "Cobra 2",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-cobra-3",
+      "vendor": "Suunto",
+      "product": "Cobra 3",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-d3",
+      "vendor": "Suunto",
+      "product": "D3",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-d4",
+      "vendor": "Suunto",
+      "product": "D4",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-d4f",
+      "vendor": "Suunto",
+      "product": "D4f",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-d4i",
+      "vendor": "Suunto",
+      "product": "D4i",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-d5",
+      "vendor": "Suunto",
+      "product": "D5",
+      "libdc": [
+        "ble",
+        "usbhid"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-d6",
+      "vendor": "Suunto",
+      "product": "D6",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-d6i",
+      "vendor": "Suunto",
+      "product": "D6i",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-d9",
+      "vendor": "Suunto",
+      "product": "D9",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-d9tx",
+      "vendor": "Suunto",
+      "product": "D9tx",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-dx",
+      "vendor": "Suunto",
+      "product": "DX",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-eon",
+      "vendor": "Suunto",
+      "product": "Eon",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-eon-core",
+      "vendor": "Suunto",
+      "product": "EON Core",
+      "libdc": [
+        "ble",
+        "usbhid"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-eon-steel",
+      "vendor": "Suunto",
+      "product": "EON Steel",
+      "libdc": [
+        "ble",
+        "usbhid"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-eon-steel-black",
+      "vendor": "Suunto",
+      "product": "EON Steel Black",
+      "libdc": [
+        "ble",
+        "usbhid"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-gekko",
+      "vendor": "Suunto",
+      "product": "Gekko",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-helo2",
+      "vendor": "Suunto",
+      "product": "HelO2",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-mosquito",
+      "vendor": "Suunto",
+      "product": "Mosquito",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-solution",
+      "vendor": "Suunto",
+      "product": "Solution",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-solution-alpha",
+      "vendor": "Suunto",
+      "product": "Solution Alpha",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-solution-nitrox",
+      "vendor": "Suunto",
+      "product": "Solution Nitrox",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-spyder",
+      "vendor": "Suunto",
+      "product": "Spyder",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-stinger",
+      "vendor": "Suunto",
+      "product": "Stinger",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-vyper",
+      "vendor": "Suunto",
+      "product": "Vyper",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-vyper-2",
+      "vendor": "Suunto",
+      "product": "Vyper 2",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-vyper-air",
+      "vendor": "Suunto",
+      "product": "Vyper Air",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-vyper-novo",
+      "vendor": "Suunto",
+      "product": "Vyper Novo",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-vytec",
+      "vendor": "Suunto",
+      "product": "Vytec",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-zoop",
+      "vendor": "Suunto",
+      "product": "Zoop",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "suunto-zoop-novo",
+      "vendor": "Suunto",
+      "product": "Zoop Novo",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "tecdiving-divecomputer-eu",
+      "vendor": "Tecdiving",
+      "product": "DiveComputer.eu",
+      "libdc": [
+        "bluetooth",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "tusa-element-ii-iq-750",
+      "vendor": "Tusa",
+      "product": "Element II (IQ-750)",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "tusa-iq-700",
+      "vendor": "Tusa",
+      "product": "IQ-700",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "tusa-talis",
+      "vendor": "Tusa",
+      "product": "Talis",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "tusa-zen-iq-900",
+      "vendor": "Tusa",
+      "product": "Zen (IQ-900)",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "tusa-zen-air-iq-950",
+      "vendor": "Tusa",
+      "product": "Zen Air (IQ-950)",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "uwatec-aladin-air-twin",
+      "vendor": "Uwatec",
+      "product": "Aladin Air Twin",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "uwatec-aladin-air-z",
+      "vendor": "Uwatec",
+      "product": "Aladin Air Z",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "uwatec-aladin-air-z-nitrox",
+      "vendor": "Uwatec",
+      "product": "Aladin Air Z Nitrox",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "uwatec-aladin-air-z-o2",
+      "vendor": "Uwatec",
+      "product": "Aladin Air Z O2",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "uwatec-aladin-pro",
+      "vendor": "Uwatec",
+      "product": "Aladin Pro",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "uwatec-aladin-pro-ultra",
+      "vendor": "Uwatec",
+      "product": "Aladin Pro Ultra",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "uwatec-aladin-sport-plus",
+      "vendor": "Uwatec",
+      "product": "Aladin Sport Plus",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "uwatec-memomouse",
+      "vendor": "Uwatec",
+      "product": "Memomouse",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "zeagle-n2ition3",
+      "vendor": "Zeagle",
+      "product": "N2iTiON3",
+      "libdc": [
+        "serial"
+      ],
+      "platforms": {
+        "ios": [],
+        "android": [
+          "usb"
+        ],
+        "macos": [
+          "usb"
+        ],
+        "windows": [
+          "usb"
+        ],
+        "linux": [
+          "usb"
+        ]
+      }
+    }
+  ],
+  "unsupported": [
+    {
+      "id": "atomic-aquatics-cobalt",
+      "vendor": "Atomic Aquatics",
+      "product": "Cobalt",
+      "reason": "raw-usb-only"
+    },
+    {
+      "id": "atomic-aquatics-cobalt-2",
+      "vendor": "Atomic Aquatics",
+      "product": "Cobalt 2",
+      "reason": "raw-usb-only"
+    },
+    {
+      "id": "subgear-xp-air-irda",
+      "vendor": "Subgear",
+      "product": "XP Air",
+      "reason": "irda-only"
+    },
+    {
+      "id": "subgear-xp-10",
+      "vendor": "Subgear",
+      "product": "XP-10",
+      "reason": "irda-only"
+    },
+    {
+      "id": "subgear-xp-3g",
+      "vendor": "Subgear",
+      "product": "XP-3G",
+      "reason": "irda-only"
+    },
+    {
+      "id": "uwatec-aladin-2g",
+      "vendor": "Uwatec",
+      "product": "Aladin 2G",
+      "reason": "irda-only"
+    },
+    {
+      "id": "uwatec-aladin-one",
+      "vendor": "Uwatec",
+      "product": "Aladin One",
+      "reason": "irda-only"
+    },
+    {
+      "id": "uwatec-aladin-prime",
+      "vendor": "Uwatec",
+      "product": "Aladin Prime",
+      "reason": "irda-only"
+    },
+    {
+      "id": "uwatec-aladin-sport",
+      "vendor": "Uwatec",
+      "product": "Aladin Sport",
+      "reason": "irda-only"
+    },
+    {
+      "id": "uwatec-aladin-tec",
+      "vendor": "Uwatec",
+      "product": "Aladin Tec",
+      "reason": "irda-only"
+    },
+    {
+      "id": "uwatec-aladin-tec-2g",
+      "vendor": "Uwatec",
+      "product": "Aladin Tec 2G",
+      "reason": "irda-only"
+    },
+    {
+      "id": "uwatec-aladin-tec-3g",
+      "vendor": "Uwatec",
+      "product": "Aladin Tec 3G",
+      "reason": "irda-only"
+    },
+    {
+      "id": "uwatec-galileo-luna",
+      "vendor": "Uwatec",
+      "product": "Galileo Luna",
+      "reason": "irda-only"
+    },
+    {
+      "id": "uwatec-galileo-sol",
+      "vendor": "Uwatec",
+      "product": "Galileo Sol",
+      "reason": "irda-only"
+    },
+    {
+      "id": "uwatec-galileo-terra",
+      "vendor": "Uwatec",
+      "product": "Galileo Terra",
+      "reason": "irda-only"
+    },
+    {
+      "id": "uwatec-galileo-trimix",
+      "vendor": "Uwatec",
+      "product": "Galileo Trimix",
+      "reason": "irda-only"
+    },
+    {
+      "id": "uwatec-smart-com",
+      "vendor": "Uwatec",
+      "product": "Smart Com",
+      "reason": "irda-only"
+    },
+    {
+      "id": "uwatec-smart-pro",
+      "vendor": "Uwatec",
+      "product": "Smart Pro",
+      "reason": "irda-only"
+    },
+    {
+      "id": "uwatec-smart-tec",
+      "vendor": "Uwatec",
+      "product": "Smart Tec",
+      "reason": "irda-only"
+    },
+    {
+      "id": "uwatec-smart-z",
+      "vendor": "Uwatec",
+      "product": "Smart Z",
+      "reason": "irda-only"
+    }
+  ],
+  "removed": []
+}
