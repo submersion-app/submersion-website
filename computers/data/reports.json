@@ -804,7 +804,8 @@
       "url": "https://github.com/submersion-app/submersion/issues/2507",
       "sourceRef": null,
       "fixedIn": "unreleased",
-      "note": "App crashed on opening Connect New Computer while trying a USB download, so no dives could be fetched"
+      "note": "App crashed on opening Connect New Computer while trying a USB download, so no dives could be fetched",
+      "fixedBy": 2758
     },
     {
       "model": "seac-tablet",

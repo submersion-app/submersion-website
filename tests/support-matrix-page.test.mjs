@@ -22,3 +22,11 @@ for (const page of ["computers/index.html", "privacy/index.html", "terms/index.h
     assert.deepEqual(navLinks(read(page)), homeMenu());
   });
 }
+
+// The sweep reads ScubaBoard, GitHub and the App Store only, so the page must
+// not ask divers to report anywhere the sweep never looks.
+test("the matrix page invites reports only where the sweep reads", () => {
+  const help = /<section class="matrix__help">([\s\S]*?)<\/section>/.exec(read("computers/index.html"));
+  assert.ok(help, "no matrix__help section");
+  assert.doesNotMatch(help[1], /reddit|google play/i);
+});

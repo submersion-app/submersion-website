@@ -59,6 +59,13 @@ test("appVersion must be present", () => {
   assert.match(problems(r)[0], /appVersion/);
 });
 test("fixedIn must be a version or unreleased", () => one({ fixedIn: "soon" }, /fixedIn/));
+// fixedBy is how the next sweep re-resolves a fix that has not shipped yet.
+test("an unreleased fix needs the fixing PR number", () => one({ outcome: "fails", fixedIn: "unreleased" }, /fixedBy/));
+test("fixedBy is a PR number", () => one({ outcome: "fails", fixedIn: "unreleased", fixedBy: "#2758" }, /fixedBy/));
+test("fixedBy rides only on an unreleased fix", () => one({ outcome: "fails", fixedIn: "1.8.2", fixedBy: 2758 }, /fixedBy/));
+test("an unreleased fix with its PR number is valid", () => {
+  assert.deepEqual(problems(report({ outcome: "fails", fixedIn: "unreleased", fixedBy: 2758 })), []);
+});
 test("date must be YYYY-MM-DD", () => one({ date: "Sept 1" }, /date/));
 test("note length", () => one({ note: "x".repeat(121) }, /note must be 1 to 120/));
 test("note without an em dash", () => one({ note: "works \u2014 mostly" }, /em dash/));
