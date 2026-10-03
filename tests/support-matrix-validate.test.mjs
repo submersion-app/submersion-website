@@ -67,6 +67,13 @@ test("an unreleased fix with its PR number is valid", () => {
   assert.deepEqual(problems(report({ outcome: "fails", fixedIn: "unreleased", fixedBy: 2758 })), []);
 });
 test("date must be YYYY-MM-DD", () => one({ date: "Sept 1" }, /date/));
+test("date must be a real day", () => one({ date: "2026-13-40" }, /date/));
+test("date must not be in the future", () => {
+  const errors = validate(catalog, data(report({ date: "2062-09-01" })), "2026-10-03");
+  assert.equal(errors.length, 1, errors.join("\n"));
+  assert.match(errors[0], /after/);
+  assert.deepEqual(validate(catalog, data(report({ date: "2026-10-03" })), "2026-10-03"), []);
+});
 test("note length", () => one({ note: "x".repeat(121) }, /note must be 1 to 120/));
 test("note without an em dash", () => one({ note: "works \u2014 mostly" }, /em dash/));
 test("duplicates", () => {

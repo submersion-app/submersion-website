@@ -48,8 +48,9 @@ it:
 - `transport`: "Connection", `Bluetooth` gives `bluetooth`, `USB` gives `usb`.
 - `outcome`: "What happened", `Downloaded dives` gives `works`,
   `Downloaded with problems` gives `caveats`, `Did not work` gives `fails`.
-- `appVersion`: "Submersion version" when it is dotted numbers (a leading `v`
-  dropped), otherwise `null`.
+- `appVersion`: the first dotted number in "Submersion version" (two to four
+  parts, so "1.8.1 (8404)", "v1.8.1" and "Version 1.8.1" all give `1.8.1`),
+  or `null` when it has none.
 - `date`: the issue's `createdAt` date.
 - `source`: `github-issue`; `url`: the issue's `url`; `sourceRef`: `null`.
 - `note`: a paraphrase of "Details" in our own words, at most 120 characters,
@@ -102,11 +103,11 @@ first request.
 
 ## Steps
 
-1. In an app repo checkout (`git submodule update --init packages/libdivecomputer_plugin/third_party/libdivecomputer`, `git fetch --tags`), regenerate the catalog:
+1. In an app repo checkout of `main` (`git switch main && git pull`, `git submodule update --init packages/libdivecomputer_plugin/third_party/libdivecomputer`, `git fetch --tags`), regenerate the catalog:
    `python3 scripts/export_support_matrix_catalog.py --previous <website>/computers/data/catalog.json --out <website>/computers/data/catalog.json`.
    Note any `removed` ids.
 2. Read every source into its candidate file (in parallel where possible).
 3. Resolve `fixedBy`: for each PR number, `gh pr view <n> --repo submersion-app/submersion --json mergeCommit -q .mergeCommit.oid`, then `node tools/support-matrix/fixed-in.mjs <app checkout> <sha>`; set `fixedIn` on that report, and keep `fixedBy` only when the result is `unreleased`. Then re-resolve every report already in `reports.json` whose `fixedIn` is `"unreleased"` the same way from its `fixedBy`; when the fix has shipped, add a copy of that report with the new `fixedIn` as a candidate.
 4. Combine the candidate files into one `sweep.json` (concatenate `reports`; combine `watermarks` under the all-or-nothing rule above), then `node tools/support-matrix/merge.mjs sweep.json`. It prints how many reports it added and how many had `fixedIn` upgraded; the PR body lists both.
-5. `node tools/support-matrix/validate.mjs` and `node --test tests/*.test.mjs`. Fix or drop any report the validator rejects; never weaken the validator.
-6. If every source has `failed`, open no PR; report the reasons instead. Otherwise open one PR titled `data(computers): support matrix sweep <YYYY-MM-DD>` whose body lists: reports added per source; reports whose `fixedIn` was upgraded, with the release; every `unmapped` item with its link; reports whose model appears in `removed`; every source with `failed` and its reason. No attribution lines.
+5. `node tools/support-matrix/validate.mjs` and `node --test tests/*.test.mjs`. Fix or drop any report the validator rejects; never weaken the validator. A report whose model is in `removed` fails validation: take it out of `reports.json` and list it, with its link, in the PR body under removed models. It is never deleted without that listing.
+6. If every source has `failed`, open no PR; report the reasons instead. Otherwise, from the website checkout, push the branch and open one PR with `gh pr create --repo submersion-app/submersion-website --base main`, titled `data(computers): support matrix sweep <YYYY-MM-DD>`, whose body lists: reports added per source; reports whose `fixedIn` was upgraded, with the release; every `unmapped` item with its link; reports whose model appears in `removed`; every source with `failed` and its reason. No attribution lines.

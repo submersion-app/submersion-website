@@ -1,7 +1,7 @@
 // Browser glue for the support matrix: loads the data, keeps the address bar
 // in step with the controls, opens a cell's reports, and follows #model deep
 // links. The rules live in status.js, rows.js and render.js.
-import { buildRows, filterRows, parseState, revealTarget, urlFor, vendorsOf } from "./rows.js";
+import { buildRows, filterRows, hashTarget, parseState, revealTarget, urlFor, vendorsOf } from "./rows.js";
 import { renderBrandOptions, renderDetail, renderProvenance, renderRows, renderUnsupported } from "./render.js";
 
 const CONTROLS = ["q", "brand", "platform", "status", "transport"];
@@ -35,7 +35,7 @@ function start(catalog, reports) {
   }
 
   function followHash() {
-    const id = decodeURIComponent(location.hash.slice(1));
+    const id = hashTarget(location.hash);
     const state = id ? revealTarget(allRows, readControls(), id) : null;
     if (!state) return;
     writeControls(state);

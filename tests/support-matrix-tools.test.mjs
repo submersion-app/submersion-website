@@ -29,7 +29,7 @@ test("merge adds new reports and skips ones already recorded", () => {
 });
 
 test("merge keeps only report fields and fills nullable ones", () => {
-  const candidate = { ...report({ platform: "ios" }), modelText: "Perdix 3", fixedBy: 1465 };
+  const candidate = { ...report({ platform: "ios" }), modelText: "Perdix 3" };
   delete candidate.sourceRef;
   delete candidate.fixedIn;
   const [merged] = mergeReports({ watermarks: {}, reports: [] }, { reports: [candidate] }).data.reports;
@@ -72,7 +72,8 @@ test("merge upgrades fixedIn on a report already recorded", () => {
 test("merge never downgrades a resolved fixedIn", () => {
   const stored = report({ outcome: "fails", fixedIn: "1.8.2" });
   for (const fixedIn of [null, "unreleased"]) {
-    const result = mergeReports({ watermarks: {}, reports: [stored] }, { reports: [{ ...stored, fixedIn, fixedBy: 1 }] });
+    const candidate = fixedIn === "unreleased" ? { ...stored, fixedIn, fixedBy: 1 } : { ...stored, fixedIn };
+    const result = mergeReports({ watermarks: {}, reports: [stored] }, { reports: [candidate] });
     assert.equal(result.upgraded, 0);
     assert.equal(result.data.reports[0].fixedIn, "1.8.2");
   }
@@ -91,6 +92,14 @@ test("merge keeps fixedBy only while the fix is unreleased", () => {
   const byPlatform = Object.fromEntries(reports.map((r) => [r.platform, r]));
   assert.equal(byPlatform.android.fixedBy, 2758);
   assert.equal("fixedBy" in byPlatform.ios, false);
+});
+
+// A fixedBy with no fixedIn means step 3 never ran; dropping it would hide the fix.
+test("merge refuses a candidate whose fixedBy was never resolved", () => {
+  assert.throws(
+    () => mergeReports({ watermarks: {}, reports: [] }, { reports: [report({ outcome: "fails", fixedBy: 2758 })] }),
+    /fixedBy 2758 .*step 3/,
+  );
 });
 
 test("firstRelease picks the lowest version tag and drops the build", () => {

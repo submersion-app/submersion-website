@@ -16,6 +16,9 @@ const ORDER = ["model", "transport", "platform", "date", "url", "sourceRef"];
 // fixedBy (the fixing PR) is kept only while the fix is unreleased, so a later
 // sweep can resolve it to the release that ships it.
 function pick(r) {
+  if (r.fixedBy != null && r.fixedIn == null) {
+    throw new Error(`${r.url}: fixedBy ${r.fixedBy} was never resolved to fixedIn; run SWEEP.md step 3 first`);
+  }
   const report = Object.fromEntries(FIELDS.map((f) => [f, r[f] ?? (NULLABLE.has(f) ? null : r[f])]));
   return report.fixedIn === "unreleased" ? { ...report, fixedBy: r.fixedBy ?? null } : report;
 }

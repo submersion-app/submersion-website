@@ -36,7 +36,15 @@ function httpsHost(url) {
   }
 }
 
-export function validate(catalog, data) {
+// A calendar day that exists: "2026-13-40" has the shape but no date.
+const isRealDay = (text) => {
+  const parsed = new Date(`${text}T00:00:00Z`);
+  return !Number.isNaN(parsed.getTime()) && parsed.toISOString().slice(0, 10) === text;
+};
+
+// today (YYYY-MM-DD, UTC) bounds report dates: a mistyped future year would
+// rank a report newest within its version.
+export function validate(catalog, data, today = new Date().toISOString().slice(0, 10)) {
   const errors = [];
   const models = new Map();
   for (const m of [...catalog.models, ...(catalog.unsupported ?? [])]) {
@@ -82,7 +90,8 @@ export function validate(catalog, data) {
     } else if (r.fixedBy !== undefined) {
       errors.push(`${at}: fixedBy belongs only on a report whose fixedIn is "unreleased"`);
     }
-    if (!DATE.test(String(r.date))) errors.push(`${at}: date ${r.date} is not YYYY-MM-DD`);
+    if (!DATE.test(String(r.date)) || !isRealDay(r.date)) errors.push(`${at}: date ${r.date} is not a YYYY-MM-DD day`);
+    else if (r.date > today) errors.push(`${at}: date ${r.date} is after today (${today})`);
     if (typeof r.note !== "string" || r.note.length === 0 || r.note.length > 120) {
       errors.push(`${at}: note must be 1 to 120 characters`);
     } else if (r.note.includes(EM_DASH)) {
