@@ -10,6 +10,7 @@ import {
   renderProvenance,
   renderRows,
   renderUnsupported,
+  reportUrl,
   sourceText,
 } from "../computers/render.js";
 
@@ -97,4 +98,48 @@ test("brand options, unsupported list and provenance", () => {
   assert.match(html, /href="https:\/\/github\.com\/submersion-app\/libdivecomputer\/commit\/b{40}"/);
   assert.match(html, /href="https:\/\/github\.com\/submersion-app\/submersion\/commit\/a{40}"/);
   assert.match(html, /2026-10-02/);
+});
+
+const form = (url) => new URL(url);
+const perdix = { id: "shearwater-perdix-3", vendor: "Shearwater", product: "Perdix 3", family: "bluetooth" };
+
+test("a row's report link fills in the model and connection", () => {
+  const url = form(reportUrl(perdix));
+  assert.equal(url.origin + url.pathname, "https://github.com/submersion-app/submersion/issues/new");
+  assert.equal(url.searchParams.get("template"), "computer-report.yml");
+  assert.equal(url.searchParams.get("labels"), "computer-report");
+  assert.equal(url.searchParams.get("title"), "Computer report: Shearwater Perdix 3, Bluetooth");
+  assert.equal(url.searchParams.get("model"), "shearwater-perdix-3 (Shearwater Perdix 3)");
+  assert.equal(url.searchParams.get("connection"), "Bluetooth");
+  assert.equal(url.searchParams.has("platform"), false);
+});
+
+test("a cell's report link fills in the platform too", () => {
+  const url = form(reportUrl({ ...perdix, platform: "android" }));
+  assert.equal(url.searchParams.get("title"), "Computer report: Shearwater Perdix 3, Android, Bluetooth");
+  assert.equal(url.searchParams.get("platform"), "Android");
+});
+
+test("report links encode spaces as %20, not +", () => {
+  const url = reportUrl(perdix);
+  assert.match(url, /Shearwater%20Perdix%203/);
+  assert.ok(!url.includes("+"));
+});
+
+test("the blank report link opens the form with nothing filled in", () => {
+  const url = form(reportUrl());
+  assert.equal(url.searchParams.get("template"), "computer-report.yml");
+  assert.equal(url.searchParams.has("title"), false);
+  assert.equal(url.searchParams.has("model"), false);
+});
+
+test("every row and every detail panel links to the form", () => {
+  const rows = buildRows(catalog, [report()]);
+  const html = renderRows(rows);
+  assert.equal(html.match(/<a class="report"/g).length, rows.length);
+  assert.ok(html.includes(`href="${escapeHtml(reportUrl(rows[0]))}"`));
+  assert.match(html, /aria-label="Report your result for Mares Puck Pro \+, Bluetooth"/);
+  const perdixRow = rows.find((r) => r.id === "shearwater-perdix-3");
+  const detail = renderDetail(perdixRow, "android");
+  assert.ok(detail.includes(`href="${escapeHtml(reportUrl({ ...perdixRow, platform: "android" }))}"`));
 });

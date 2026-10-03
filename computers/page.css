@@ -40,6 +40,8 @@
 .detail h3 { margin: 0 0 4px; font-size: 1rem; }
 .detail ul { margin: 8px 0 0; padding-left: 18px; display: grid; gap: 8px; }
 .detail a { color: var(--cyan); }
+.report { margin-left: 8px; font-size: 0.8rem; font-weight: 400; color: var(--cyan); }
+.detail .report { margin-left: 0; }
 
 .cell {
   display: inline-flex; align-items: center; gap: 6px; padding: 2px 8px; border-radius: 999px;
