@@ -19,11 +19,9 @@ and the status rules are described in the app repo's spec,
   report out when it cannot be told on another platform.
 - `appVersion`: the Submersion version the diver ran, `X.Y.Z`, or `null`.
 - `date`: the post or comment date, `YYYY-MM-DD`.
-- `url`: the permalink to the exact post or comment. Store reviews use the
-  listing (App Store
-  `https://apps.apple.com/us/app/submersion-dive-log/id6757456915`, Google Play
-  `https://play.google.com/store/apps/details?id=app.submersion`) and put the
-  review id in `sourceRef` (`appstore:<country>:<id>`, `play:<submit millis>`).
+- `url`: the permalink to the exact post or comment. App Store reviews use the
+  listing `https://apps.apple.com/us/app/submersion-dive-log/id6757456915` and
+  put the review id in `sourceRef` (`appstore:<country>:<id>`).
 - `note`: at most 120 characters, our own words, no quotes, no usernames, no
   em dash. Say what happened ("Downloaded 40 dives after re-pairing").
 - `model`: a catalog id from `computers/data/catalog.json`. A report that names
@@ -88,7 +86,9 @@ parallel agents when it has more than about 10 pages or 100 items to read.
 | `github` (issues, PRs, discussions) | `gh api --paginate "repos/submersion-app/submersion/issues?state=all&per_page=100&since=<since>"` (issues and PRs), `gh api --paginate "repos/submersion-app/submersion/issues/comments?per_page=100&since=<since>"`, and discussions with comments over GraphQL. Dump to files and grep locally for catalog vendor and product names; never use the search API in a loop (it rate-limits). Issue and comment permalinks are their `html_url`. Skip issues labelled `computer-report`; the form row reads them. | `{ "since": "<sweep start, ISO 8601 UTC>" }` |
 | `reddit` | The subreddit-wide Atom feeds, a few requests in all: posts from `https://www.reddit.com/r/submersion/new/.rss?limit=100` and comments from `https://www.reddit.com/r/submersion/comments/.rss?limit=100`, each followed with `after` until items reach `lastCreatedUtc`. Fetch with `curl -s` and a browser user agent (Reddit's JSON endpoints answer 403 to scripts). Never fetch a feed per post: that is one request per thread and trips Reddit's rate limit. On HTTP 429, stop this source and set `failed` (the watermark stays) rather than retrying in a loop, which keeps the limit in force. Permalinks are the entries' `link` on `https://www.reddit.com`. | `{ "lastCreatedUtc": <newest item read, Unix seconds> }` |
 | `appStore` | `https://itunes.apple.com/<cc>/rss/customerreviews/page=<1..10>/id=6757456915/sortby=mostrecent/json` for `cc` in us gb ca au nz ie de at ch fr be nl es it pt se no dk fi pl cz jp mx br sg za; stop a country at the first empty page or the first review at or below `lastReviewId`. | `{ "lastReviewId": <highest numeric id read>, "sweptAt": "<today>" }` |
-| `playStore` | Play Console review exports: `gcloud storage ls gs://$PLAY_REVIEWS_BUCKET/reviews/` then `gcloud storage cp` each `reviews_app.submersion_<YYYYMM>.csv` after `lastExportMonth` (UTF-16; read with `iconv -f UTF-16 -t UTF-8`). Use the `Device`, `App Version Name`, `Review Submit Date and Time`, `Review Submit Millis Since Epoch` and `Review Text` columns. Needs `PLAY_REVIEWS_BUCKET` and a service account key in `GOOGLE_APPLICATION_CREDENTIALS`; without them, set `failed`. | `{ "lastExportMonth": "<YYYYMM of the newest file read>" }` |
+
+Google Play is not swept: its reviews can only be read from a Play Console
+export bucket, which needs a service account. Do not add it as a source.
 
 ## Steps
 
