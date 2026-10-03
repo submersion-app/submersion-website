@@ -1,0 +1,59 @@
+{
+  "generatedFrom": {
+    "appCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "libdcCommit": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "generatedAt": "2026-10-02T00:00:00Z"
+  },
+  "models": [
+    {
+      "id": "scubapro-aladin-square",
+      "vendor": "Scubapro",
+      "product": "Aladin Square",
+      "libdc": ["usbhid"],
+      "platforms": { "ios": [], "android": [], "macos": ["usb"], "windows": ["usb"], "linux": ["usb"] }
+    },
+    {
+      "id": "scubapro-g2",
+      "vendor": "Scubapro",
+      "product": "G2",
+      "libdc": ["ble", "usbhid"],
+      "platforms": {
+        "ios": ["bluetooth"],
+        "android": ["bluetooth"],
+        "macos": ["bluetooth", "usb"],
+        "windows": ["bluetooth", "usb"],
+        "linux": ["bluetooth", "usb"]
+      }
+    },
+    {
+      "id": "shearwater-perdix-3",
+      "vendor": "Shearwater",
+      "product": "Perdix 3",
+      "libdc": ["ble"],
+      "platforms": {
+        "ios": ["bluetooth"],
+        "android": ["bluetooth"],
+        "macos": ["bluetooth"],
+        "windows": ["bluetooth"],
+        "linux": ["bluetooth"]
+      }
+    },
+    {
+      "id": "mares-puck-pro-plus",
+      "vendor": "Mares",
+      "product": "Puck Pro +",
+      "libdc": ["ble", "serial"],
+      "platforms": {
+        "ios": ["bluetooth"],
+        "android": ["bluetooth", "usb"],
+        "macos": ["bluetooth", "usb"],
+        "windows": ["bluetooth", "usb"],
+        "linux": ["bluetooth", "usb"]
+      }
+    }
+  ],
+  "unsupported": [
+    { "id": "uwatec-aladin-2g", "vendor": "Uwatec", "product": "Aladin 2G", "reason": "irda-only" }
+  ],
+  "removed": []
+}
