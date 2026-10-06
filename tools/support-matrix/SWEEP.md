@@ -4,7 +4,7 @@ How `computers/data/reports.json` gets new evidence. The same procedure runs
 the first time (every watermark empty, so every source is read in full) and
 monthly (each source read from its own watermark). The page, the validator
 and the status rules are described in the app repo's spec,
-`docs/superpowers/specs/2026-10-02-dive-computer-support-matrix-design.md`.
+`docs/design/specs/2026-10-02-dive-computer-support-matrix-design.md`.
 
 ## Rules for every report
 

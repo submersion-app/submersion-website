@@ -1,6 +1,6 @@
 // Cell status for the support matrix: the one place that decides what a cell
 // shows. The rules are in the app repo's spec,
-// docs/superpowers/specs/2026-10-02-dive-computer-support-matrix-design.md.
+// docs/design/specs/2026-10-02-dive-computer-support-matrix-design.md.
 
 export const STATUS = Object.freeze({
   VERIFIED: "verified",
