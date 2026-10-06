@@ -1,7 +1,7 @@
 // Reads a cylinder passport tag payload, the query string after
 // https://submersion.app/c#. Mirrors PassportPayloadCodec.decode in the app
-// repo (docs/import-formats/cylinder-passport-tag.md is the format), so this
-// page and the app agree on what a tag says.
+// repo (docs/developer/reference/formats/cylinder-passport-tag.md is the
+// format), so this page and the app agree on what a tag says.
 
 export const CURRENT_FORMAT = 1;
 
