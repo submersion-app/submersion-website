@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <!-- The guide's text is Markdown from another repository, inserted as HTML.
+         This policy keeps any script in it from running: only files from the
+         two exact package versions below (immutable on jsDelivr) and the
+         inline configuration (allowed by its SHA-256 hash) may execute, so an
+         onerror attribute or a script tag in the Markdown is blocked. Frames
+         from any URL are refused, and an inline (srcdoc) frame inherits this
+         policy, so its scripts are blocked the same way. Editing the inline configuration changes its hash; the
+         failing test in tests/guide-page.test.mjs prints the new value. -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/docsify@5.0.0/dist/ https://cdn.jsdelivr.net/npm/docsify-plugin-flexible-alerts@1.3.0/dist/ 'sha256-apqBws53Ln2XqcavutQAEKIpzLBwdlLbp9tX9Wa4hLo='; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/docsify@5.0.0/dist/ https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://raw.githubusercontent.com; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'none'"
+    />
+    <meta name="theme-color" content="#49e8ff" />
+    <title>User Guide · Submersion Dive Log</title>
+    <meta
+      name="description"
+      content="The Submersion user guide: logging dives, dive computers, sites, gear, planning, sync and backup."
+    />
+    <link rel="canonical" href="https://submersion.app/guide/" />
+    <link rel="icon" type="image/png" href="../assets/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- The guide's scripts and its Markdown come from these two origins. -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- docsify and its plugins are pinned to exact versions with subresource
+         integrity: the browser refuses any file whose bytes differ. To upgrade,
+         change the version in every URL and recompute each hash with
+         curl -s URL | openssl dgst -sha384 -binary | openssl base64 -A -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/docsify@5.0.0/dist/themes/core.min.css"
+      integrity="sha384-u1ltA0BWEetQbGokjUjglT9sN702RQwy8JESh3Ha4GNlyzMU57usk6duY0/BOTMj"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/docsify@5.0.0/dist/themes/addons/core-dark.min.css"
+      integrity="sha384-g9crfHW8IcGuSHfca3iTqOPPx2uRbodq5uKkC9CiXVqnNVszeNEYKIs5nYc8wUXY"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="guide.css" />
+  </head>
+  <body>
+    <!-- The guide's text lives in the app repository under docs/user/ and is
+         read from main at view time, so nothing here goes out of date. Edit it
+         there: https://github.com/submersion-app/submersion/tree/main/docs/user -->
+    <nav class="guide-nav" aria-label="Primary">
+      <a href="../">Home</a>
+      <a href="../#download">Download</a>
+      <a href="https://github.com/submersion-app/submersion" target="_blank" rel="noreferrer">GitHub</a>
+    </nav>
+    <div id="app">Loading the guide...</div>
+    <noscript>
+      <p class="guide-noscript">
+        The guide needs JavaScript. You can read it on GitHub instead:
+        <a href="https://github.com/submersion-app/submersion/tree/main/docs/user">docs/user</a>.
+      </p>
+    </noscript>
+    <script>
+      window.$docsify = {
+        name: '<img src="../assets/favicon.png" alt="" width="28" height="28" /> Submersion Guide',
+        nameLink: '#/',
+        basePath: 'https://raw.githubusercontent.com/submersion-app/submersion/main/docs/user/',
+        homepage: 'README.md',
+        loadSidebar: true,
+        relativePath: false,
+        routerMode: 'hash',
+        // Never run a script tag found in the Markdown.
+        executeScript: false,
+        auto2top: true,
+        subMaxLevel: 2,
+        // docsify caches its search index in the browser for a day by default;
+        // an hour keeps search close behind the pages, which update within
+        // minutes of a merge.
+        search: { paths: 'auto', placeholder: 'Search the guide', noData: 'No matches', maxAge: 3600000 },
+        'flexible-alerts': { style: 'callout' },
+        plugins: [
+          function editLink(hook, vm) {
+            hook.afterEach(function (html) {
+              // A page that failed to load (a 404) has no file to edit.
+              if ((vm.route.response || {}).status >= 400) return html;
+              var file = vm.route.file || 'README.md';
+              var page = file.split('/').pop();
+              var url = 'https://github.com/submersion-app/submersion/edit/main/docs/user/' + page;
+              return (
+                html +
+                '<p class="guide-edit"><a href="' + url + '" target="_blank" rel="noreferrer">' +
+                'Edit this page on GitHub</a></p>'
+              );
+            });
+          },
+        ],
+      };
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/docsify@5.0.0/dist/docsify.min.js"
+      integrity="sha384-w6yZXzkazsxmservgGooUY9zjEHzIFHubRNZMLJ3enj/JD+Z8BvAGBqdrjfnLNhu"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/docsify@5.0.0/dist/plugins/search.min.js"
+      integrity="sha384-wZGyhbW44GtFpUJG1z6siOX84RFRDAht5UTeOlV/LlRP6T2GXj3LrLwcUHTyzfby"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/docsify-plugin-flexible-alerts@1.3.0/dist/docsify-plugin-flexible-alerts.min.js"
+      integrity="sha384-62mB0esH4v+xjk8v2AlYluN29nnWLddo1FVuCmZJQJE3ULtg6NbWOPGyX4TWutgu"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+/* The user guide: docsify 5's core theme with its dark add-on, recoloured to
+   the site's palette. These are docsify 5's variable names (its 4.x names,
+   such as --base-background-color, are ignored). The values mirror the
+   tokens at the top of ../styles.css; keep them in step if the palette
+   changes. */
+:root {
+  --theme-color: #8fdcec;
+  --color-bg: #04182a;
+  --color-text: #eaf6fa;
+  --color-text-muted: rgba(234, 246, 250, 0.72);
+  --font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --sidebar-bg: #021120;
+  --sidebar-link-color: var(--color-text-muted);
+  --link-color: var(--theme-color);
+  --heading-color: var(--color-text);
+}
+
+/* Absolute rather than fixed: docsify scrolls the page itself, so a fixed
+   bar would sit on top of the text as it scrolls past. */
+.guide-nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 30;
+  display: flex;
+  gap: 1.25rem;
+  padding: 0.9rem 1.5rem;
+  font-family: var(--font-family);
+  font-size: 0.9rem;
+}
+
+.guide-nav a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.guide-nav a:hover,
+.guide-nav a:focus-visible {
+  color: var(--theme-color);
+}
+
+.guide-edit {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(234, 246, 250, 0.16);
+  font-size: 0.9rem;
+}
+
+.guide-noscript {
+  max-width: 40rem;
+  margin: 4rem auto;
+  padding: 0 1rem;
+  color: var(--color-text);
+}
