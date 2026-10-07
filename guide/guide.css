@@ -1,0 +1,49 @@
+/* The user guide: docsify's core theme with its dark add-on, recoloured to
+   the site's palette. The values mirror the tokens at the top of
+   ../styles.css; keep them in step if the palette changes. */
+:root {
+  --theme-color: #8fdcec;
+  --base-background-color: #04182a;
+  --base-color: #eaf6fa;
+  --base-font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --sidebar-background: #021120;
+  --sidebar-nav-link-color: rgba(234, 246, 250, 0.72);
+  --link-color: #8fdcec;
+  --heading-color: #eaf6fa;
+}
+
+.guide-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 30;
+  display: flex;
+  gap: 1.25rem;
+  padding: 0.9rem 1.5rem;
+  font-family: var(--base-font-family);
+  font-size: 0.9rem;
+}
+
+.guide-nav a {
+  color: rgba(234, 246, 250, 0.72);
+  text-decoration: none;
+}
+
+.guide-nav a:hover,
+.guide-nav a:focus-visible {
+  color: #8fdcec;
+}
+
+.guide-edit {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(234, 246, 250, 0.16);
+  font-size: 0.9rem;
+}
+
+.guide-noscript {
+  max-width: 40rem;
+  margin: 4rem auto;
+  padding: 0 1rem;
+  color: #eaf6fa;
+}

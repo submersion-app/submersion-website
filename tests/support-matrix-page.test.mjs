@@ -14,8 +14,17 @@ function navLinks(html) {
   return [...links[1].matchAll(/<a href="([^"]+)"[^>]*>([^<]+)<\/a>/g)].map((m) => [m[1], m[2].trim()]);
 }
 
-const homeMenu = () =>
-  navLinks(read("index.html")).map(([href, text]) => [href.startsWith("#") ? `../${href}` : href, text]);
+// The homepage's site-relative links ("#log", "guide/") gain "../" on an inner
+// page; absolute ones (https:, mailto:, /...) are the same everywhere.
+const fromInnerPage = (href) => (/^([a-z]+:|\/)/i.test(href) ? href : `../${href}`);
+
+const homeMenu = () => navLinks(read("index.html")).map(([href, text]) => [fromInnerPage(href), text]);
+
+test("homepage links are rebased for inner pages", () => {
+  assert.equal(fromInnerPage("#log"), "../#log");
+  assert.equal(fromInnerPage("guide/"), "../guide/");
+  assert.equal(fromInnerPage("https://github.com/x"), "https://github.com/x");
+});
 
 for (const page of ["computers/index.html", "privacy/index.html", "terms/index.html"]) {
   test(`${page} uses the homepage's menu`, () => {
