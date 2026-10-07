@@ -120,9 +120,27 @@ test("the policy allows the inline configuration by its current hash", () => {
   assert.ok(directive("script-src").includes(hash), `script-src lacks the inline configuration's hash; set it to ${hash}`);
 });
 
-test("the policy lets the guide load its scripts, styles, fonts and Markdown", () => {
-  assert.ok(directive("script-src").includes("https://cdn.jsdelivr.net"));
-  assert.ok(directive("style-src").includes("https://cdn.jsdelivr.net"));
+// A source ending in "/" allows every URL under that path.
+const allows = (sources, url) => sources.some((s) => (s.endsWith("/") ? url.startsWith(s) : url === s));
+
+test("the policy allows jsDelivr only at the pinned package versions, not the whole CDN", () => {
+  for (const name of ["script-src", "style-src"]) {
+    for (const source of directive(name)) {
+      if (!source.startsWith("https://cdn.jsdelivr.net")) continue;
+      assert.match(source, /^https:\/\/cdn\.jsdelivr\.net\/npm\/[^/]+@\d+\.\d+\.\d+\/dist\/$/, `${name} allows more of jsDelivr than one pinned package: ${source}`);
+    }
+  }
+  for (const [tag, , url] of externalTags.filter(([, , u]) => u.startsWith("https://cdn.jsdelivr.net/"))) {
+    const name = tag.startsWith("<script") ? "script-src" : "style-src";
+    assert.ok(allows(directive(name), url), `${name} does not allow ${url}`);
+  }
+});
+
+test("the policy refuses framed pages from any URL", () => {
+  assert.deepEqual(directive("frame-src"), ["'none'"]);
+});
+
+test("the policy lets the guide load its styles, fonts and Markdown", () => {
   assert.ok(directive("style-src").includes("https://fonts.googleapis.com"));
   assert.ok(directive("font-src").includes("https://fonts.gstatic.com"));
   assert.ok(directive("connect-src").includes("https://raw.githubusercontent.com"));
