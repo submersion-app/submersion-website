@@ -66,6 +66,18 @@ def slugify(text: str) -> str:
     return slug.strip("-")
 
 
+# The legal files link to each other by file name, which works on GitHub; on
+# the site each one is a page of its own.
+LEGAL_PAGES = {"PRIVACY.md": "../privacy/", "TERMS.md": "../terms/"}
+
+
+def site_href(href: str) -> str:
+    """Map a link to one of the legal files onto its page, keeping the anchor."""
+    path, hash_mark, fragment = href.partition("#")
+    page = LEGAL_PAGES.get(path)
+    return page + hash_mark + fragment if page else href
+
+
 def render_inline(text: str) -> str:
     """Bold, links and escaping for a run of Markdown text.
 
@@ -77,7 +89,7 @@ def render_inline(text: str) -> str:
     # Links before bold: a link label may contain bold, but a bold run that
     # swallowed a link's brackets would leave the URL rendered as text.
     def link(match: re.Match[str]) -> str:
-        label, href = match.group(1), match.group(2)
+        label, href = match.group(1), site_href(match.group(2))
         external = href.startswith("http")
         attrs = ' target="_blank" rel="noreferrer"' if external else ""
         return f'<a href="{href}"{attrs}>{label}</a>'
