@@ -64,11 +64,17 @@ jobs:
         run: |
           set -uo pipefail
           body=$(curl -s "https://app-site-association.cdn-apple.com/a/v1/submersion.app" || true)
+          # Every path the committed file gives the app, not only the app
+          # ID: a cached copy from before a path was added lists the app
+          # and still sends that path's links to the browser.
           if echo "$body" | jq -e --arg id "$APP_ID" \
-            '[.applinks.details[].appIDs[]] | index($id) != null' > /dev/null 2>&1; then
-            echo "Apple's CDN lists $APP_ID"
+            --slurpfile want .well-known/apple-app-site-association '
+              def paths: [.applinks.details[] | select(.appIDs | index($id)) | .components[]["/"]];
+              (paths | length > 0) and (($want[0] | paths) - paths | length == 0)
+            ' > /dev/null 2>&1; then
+            echo "Apple's CDN lists $APP_ID with every committed path"
           else
-            msg="Apple's CDN does not list $APP_ID yet. It caches for hours; if this persists, Apple rejected the file (GitHub Pages serves it as application/octet-stream)."
+            msg="Apple's CDN does not list $APP_ID with every committed path yet. It caches for hours; if this persists, Apple rejected the file (GitHub Pages serves it as application/octet-stream)."
             if [ "$STRICT" = "true" ]; then echo "::error::$msg"; exit 1; fi
             echo "::warning::$msg"
           fi

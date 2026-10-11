@@ -23,6 +23,7 @@ const TYPE_NAMES = {
   undersuit: "Undersuit",
   baselayer: "Base Layer",
   rashGuard: "Rash Guard",
+  vest: "Vest",
   fins: "Fins",
   mask: "Mask",
   snorkel: "Snorkel",
