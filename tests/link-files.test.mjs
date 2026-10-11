@@ -17,12 +17,12 @@ const CI_RELEASE =
 const PLAY_APP_SIGNING =
   "C1:3F:06:30:B1:24:D3:71:21:7A:57:FA:0A:D4:6D:BB:D0:1E:C7:71:DD:FF:0C:C7:F9:C6:AB:DF:0D:55:1D:66";
 
-test("iOS: the app handles /c and /f links", () => {
+test("iOS: the app handles /c, /g and /f links", () => {
   const [detail] = read(".well-known/apple-app-site-association").applinks.details;
   assert.deepEqual(detail.appIDs, ["8U3RSKF42Q.app.submersion"]);
   assert.deepEqual(
     detail.components.map((c) => c["/"]),
-    ["/c", "/c/*", "/f", "/f/*"],
+    ["/c", "/c/*", "/g", "/g/*", "/f", "/f/*"],
   );
 });
 

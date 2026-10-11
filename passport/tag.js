@@ -5,7 +5,7 @@
 
 export const CURRENT_FORMAT = 1;
 
-const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
+export const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 const DATE = /^(\d{4})-(\d{2})-(\d{2})$/;
 const MATERIALS = new Set(["al", "st", "cf"]);
 const VALVES = new Set(["din", "yoke", "conv"]);
@@ -24,7 +24,7 @@ const NON_FINITE = /^\s*(?:NaN|[+-]?Infinity)\s*$/;
 
 // Splits a query string as Dart's Uri.splitQueryString does: "+" is a space,
 // the last of a repeated key wins, and bad percent-encoding throws.
-function splitQuery(query) {
+export function splitQuery(query) {
   const pairs = new Map();
   for (const part of query.split("&")) {
     if (part === "") continue;
@@ -46,7 +46,7 @@ export function utcDate(year, month, day) {
 }
 
 // A real calendar date as YYYY-MM-DD, or null.
-function parseDate(text) {
+export function parseDate(text) {
   const m = text == null ? null : DATE.exec(text);
   if (!m) return null;
   const [y, mo, d] = [Number(m[1]), Number(m[2]), Number(m[3])];
@@ -71,7 +71,7 @@ function parseDouble(text) {
 }
 
 // An integer as the app reads one, or null.
-function parseInteger(text) {
+export function parseInteger(text) {
   const m = text == null ? null : INT.exec(text);
   if (!m) return null;
   const magnitude = m[2] !== undefined ? Number.parseInt(m[2], 10) : Number.parseInt(m[3], 16);
@@ -79,7 +79,7 @@ function parseInteger(text) {
 }
 
 // At most max characters, counted and cut by whole code points.
-function capCharacters(text, max) {
+export function capCharacters(text, max) {
   const chars = [...text];
   return chars.length <= max ? text : chars.slice(0, max).join("");
 }
