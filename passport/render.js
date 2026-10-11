@@ -7,6 +7,31 @@ import { fillSummary, formatDate, openInAppUrl, specRows, tagTitle } from "./dis
 // page suggests getting it.
 export const OPEN_APP_WAIT_MS = 1500;
 
+// Appends [label, value] rows to a definition list.
+export function appendRows(doc, list, rows) {
+  for (const [label, value] of rows) {
+    const dt = doc.createElement("dt");
+    dt.textContent = label;
+    const dd = doc.createElement("dd");
+    dd.textContent = value;
+    list.append(dt, dd);
+  }
+}
+
+// Points Open in Submersion at href. Without the app the scheme goes nowhere,
+// silently or with a browser error; the page is then still in front, so it
+// suggests getting the app. The wording holds even when a desktop browser
+// stays in view as the app opens beside it.
+export function wireOpenInApp({ doc, href, schedule, isPageVisible }) {
+  const open = doc.getElementById("open");
+  open.href = href;
+  open.addEventListener("click", () => {
+    schedule(() => {
+      if (isPageVisible()) doc.getElementById("notOpened").hidden = false;
+    }, OPEN_APP_WAIT_MS);
+  });
+}
+
 export function renderTagPage({ doc, query, locale, schedule, isPageVisible }) {
   const show = (id) => {
     doc.getElementById(id).hidden = false;
@@ -29,13 +54,7 @@ export function renderTagPage({ doc, query, locale, schedule, isPageVisible }) {
 
   const spec = doc.getElementById("spec");
   const rows = specRows(tag, locale);
-  for (const [label, value] of rows) {
-    const dt = doc.createElement("dt");
-    dt.textContent = label;
-    const dd = doc.createElement("dd");
-    dd.textContent = value;
-    spec.append(dt, dd);
-  }
+  appendRows(doc, spec, rows);
   spec.hidden = rows.length === 0;
 
   // The newest fill an NFC tag carries. Nothing on a tag is signed, so the
@@ -61,17 +80,7 @@ export function renderTagPage({ doc, query, locale, schedule, isPageVisible }) {
       "The passport in Submersion has the current record.";
   }
 
-  // Without the app the scheme goes nowhere, silently or with a browser
-  // error; the page is then still in front, so it suggests getting the app.
-  // The wording holds even when a desktop browser stays in view as the app
-  // opens beside it.
-  const open = doc.getElementById("open");
-  open.href = openInAppUrl(query);
-  open.addEventListener("click", () => {
-    schedule(() => {
-      if (isPageVisible()) show("notOpened");
-    }, OPEN_APP_WAIT_MS);
-  });
+  wireOpenInApp({ doc, href: openInAppUrl(query), schedule, isPageVisible });
 
   show("tag");
 }

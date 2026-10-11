@@ -1,9 +1,9 @@
 // Fills g.html for one gear tag. Takes the document, timer and visibility
 // check as arguments so the page's behaviour is testable without a browser.
 import { parseGearTag } from "./gear-tag.js";
-import { formatDate } from "./display.js";
-import { gearOpenInAppUrl, gearRows, gearTitle } from "./gear-display.js";
-import { OPEN_APP_WAIT_MS } from "./render.js";
+import { formatDate, openInAppUrl } from "./display.js";
+import { gearRows, gearTitle } from "./gear-display.js";
+import { appendRows, wireOpenInApp } from "./render.js";
 
 export function renderGearTagPage({ doc, query, locale, schedule, isPageVisible }) {
   const show = (id) => {
@@ -25,14 +25,7 @@ export function renderGearTagPage({ doc, query, locale, schedule, isPageVisible 
   doc.title = `${title} - Submersion`;
   doc.getElementById("newer").hidden = !tag.newerFormat;
 
-  const spec = doc.getElementById("spec");
-  for (const [label, value] of gearRows(tag, locale)) {
-    const dt = doc.createElement("dt");
-    dt.textContent = label;
-    const dd = doc.createElement("dd");
-    dd.textContent = value;
-    spec.append(dt, dd);
-  }
+  appendRows(doc, doc.getElementById("spec"), gearRows(tag, locale));
 
   if (tag.writtenOn) {
     doc.getElementById("written").textContent =
@@ -41,15 +34,7 @@ export function renderGearTagPage({ doc, query, locale, schedule, isPageVisible 
       "The gear passport in Submersion has the current record.";
   }
 
-  // As on the cylinder page: without the app the scheme goes nowhere, and
-  // the page, still in front, suggests getting it.
-  const open = doc.getElementById("open");
-  open.href = gearOpenInAppUrl(query);
-  open.addEventListener("click", () => {
-    schedule(() => {
-      if (isPageVisible()) show("notOpened");
-    }, OPEN_APP_WAIT_MS);
-  });
+  wireOpenInApp({ doc, href: openInAppUrl(query, "g"), schedule, isPageVisible });
 
   show("tag");
 }

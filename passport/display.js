@@ -80,7 +80,8 @@ export function fillSummary(fill, locale, timeZone) {
 }
 
 // The app's own scheme, which opens Submersion where it is installed; the
-// payload rides in the query, a form the app accepts.
-export function openInAppUrl(query) {
-  return `submersion://c?${query}`;
+// payload rides in the query, a form the app accepts. kind is the tag's path:
+// c for a cylinder, g for gear.
+export function openInAppUrl(query, kind = "c") {
+  return `submersion://${kind}?${query}`;
 }

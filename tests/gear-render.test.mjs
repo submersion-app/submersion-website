@@ -97,6 +97,16 @@ test("an unnamed item is titled by its type, an unknown type as Gear", () => {
   assert.deepEqual(rows(doc), [["Type", "Gear"]]);
 });
 
+test("renders on a browser without Object.hasOwn (Safari before 15.4)", () => {
+  const hasOwn = Object.hasOwn;
+  delete Object.hasOwn;
+  try {
+    assert.equal(render(`p=${id}&t=bcd`).doc.byId.title.textContent, "BCD");
+  } finally {
+    Object.hasOwn = hasOwn;
+  }
+});
+
 test("a newer format shows the note", () => {
   assert.equal(render(`f=2&p=${id}&t=fins`).doc.byId.newer.hidden, false);
 });
