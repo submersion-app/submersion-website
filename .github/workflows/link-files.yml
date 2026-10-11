@@ -1,6 +1,6 @@
 name: Link files
 
-# The files in .well-known let iOS and Android open submersion.app/c and /f
+# The files in .well-known let iOS and Android open submersion.app/c, /g and /f
 # links in the app. A phone reads them through Apple's CDN and Google's
 # Digital Asset Links service, never from here directly, and a file those
 # services reject fails silently: links just open in the browser. This checks

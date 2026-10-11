@@ -6,6 +6,8 @@
         "components": [
           { "/": "/c", "comment": "Cylinder passport tags" },
           { "/": "/c/*" },
+          { "/": "/g", "comment": "Gear tags" },
+          { "/": "/g/*" },
           { "/": "/f", "comment": "Signed fill records" },
           { "/": "/f/*" }
         ]
