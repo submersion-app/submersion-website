@@ -51,6 +51,7 @@ const TYPE_NAMES = new Map([
   ["hood", "Hood"],
   ["gloves", "Gloves"],
   ["boots", "Boots"],
+  ["socks", "Socks"],
   ["dpv", "DPV"],
   ["bag", "Bag"],
   ["o2Cell", "O2 cell"],

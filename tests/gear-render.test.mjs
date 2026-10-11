@@ -92,6 +92,8 @@ test("an unnamed item is titled by its type, an unknown type as Gear", () => {
   assert.equal(render(`p=${id}&t=bcd`).doc.byId.title.textContent, "BCD");
   // The newest type in the app (submersion-app/submersion#3234).
   assert.equal(render(`p=${id}&t=vest`).doc.byId.title.textContent, "Vest");
+  // Added in submersion-app/submersion#3241.
+  assert.equal(render(`p=${id}&t=socks`).doc.byId.title.textContent, "Socks");
   const { doc } = render(`p=${id}&t=jetpack`);
   assert.equal(doc.byId.title.textContent, "Gear");
   assert.deepEqual(rows(doc), [["Type", "Gear"]]);
