@@ -4,7 +4,11 @@
 // and the app agree on what a tag says. The text rules are the cylinder
 // tag's, shared from tag.js.
 
-import { CURRENT_FORMAT, UUID, capCharacters, parseDate, parseInteger, splitQuery } from "./tag.js";
+import { UUID, capCharacters, parseDate, parseInteger, splitQuery } from "./tag.js";
+
+// The gear tag's own format version (GearTagPayload.currentFormatVersion in
+// the app), versioned apart from the cylinder tag's.
+export const GEAR_FORMAT = 1;
 
 const MAX_NAME = 40;
 const MAX_SHORT_TEXT = 24;
@@ -36,11 +40,11 @@ export function parseGearTag(query) {
   const typeCode = cap(pairs.get("t"), MAX_TYPE_CODE);
   if (typeCode === null || typeCode === TANK) return { ok: false };
 
-  const format = parseInteger(pairs.get("f")) ?? CURRENT_FORMAT;
+  const format = parseInteger(pairs.get("f")) ?? GEAR_FORMAT;
   return {
     ok: true,
     format,
-    newerFormat: format > CURRENT_FORMAT,
+    newerFormat: format > GEAR_FORMAT,
     passportId,
     typeCode,
     writtenOn: parseDate(pairs.get("w")),
