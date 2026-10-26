@@ -70,12 +70,29 @@ def slugify(text: str) -> str:
 # the site each one is a page of its own.
 LEGAL_PAGES = {"PRIVACY.md": "../privacy/", "TERMS.md": "../terms/"}
 
+# Any other bare relative link names a file beside the legal files in the app
+# repo (LICENSE). Left as is, it resolves under the page (/terms/LICENSE), which
+# the site does not have, so it goes to the file on GitHub instead.
+APP_REPO_FILES = "https://github.com/submersion-app/submersion/blob/main/"
+
+# Links the site already understands: absolute URLs (any scheme), anchors on
+# the same page, site-absolute paths and site pages reached with ../.
+SITE_HREF = re.compile(r"^(?:[a-z][a-z0-9+.-]*:|#|/|\.\./)", re.IGNORECASE)
+
 
 def site_href(href: str) -> str:
-    """Map a link to one of the legal files onto its page, keeping the anchor."""
+    """Map a link in the legal Markdown onto the site, keeping any anchor.
+
+    A legal file becomes its page, another repo file becomes its GitHub URL,
+    and a link the site already understands is left alone.
+    """
     path, hash_mark, fragment = href.partition("#")
     page = LEGAL_PAGES.get(path)
-    return page + hash_mark + fragment if page else href
+    if page:
+        return page + hash_mark + fragment
+    if SITE_HREF.match(href):
+        return href
+    return APP_REPO_FILES + path.removeprefix("./") + hash_mark + fragment
 
 
 def render_inline(text: str) -> str:
