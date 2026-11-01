@@ -145,6 +145,12 @@
     platformsContainer.appendChild(fragment);
   }
 
+  // The app repo also publishes releases with no installers, such as demo-data,
+  // and those can be the newest.
+  function hasInstallers(release) {
+    return Object.keys(matchAssets(release.assets)).length > 0;
+  }
+
   async function fetchLatestRelease() {
     var controller = new AbortController();
     var timeout = setTimeout(function() { controller.abort(); }, 5000);
@@ -161,7 +167,7 @@
       var releases = await res.json();
       var release = null;
       for (var i = 0; i < releases.length; i++) {
-        if (!releases[i].draft && !releases[i].prerelease) { release = releases[i]; break; }
+        if (!releases[i].draft && !releases[i].prerelease && hasInstallers(releases[i])) { release = releases[i]; break; }
       }
       if (!release) throw new Error('No published release found');
 
