@@ -24,8 +24,13 @@ export function trendPoints(history, { width, height, pad }) {
   }));
 }
 
+const ends = (history) => [history[0], history[history.length - 1]];
+
+// The line fills the chart whatever the range, so both ends carry their value.
+export const trendEnds = (history) =>
+  ends(history).map((entry) => `${entry.date}: ${formatCount(entry.total)}`);
+
 export function trendText(history) {
-  const first = history[0];
-  const last = history[history.length - 1];
+  const [first, last] = ends(history);
   return `From ${formatCount(first.total)} downloads on ${first.date} to ${formatCount(last.total)} on ${last.date}.`;
 }

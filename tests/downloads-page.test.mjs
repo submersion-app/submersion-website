@@ -55,6 +55,11 @@ test("the page explains itself without JavaScript", () => {
   assert.match(page(), /<noscript>[\s\S]*github\.com\/submersion-app\/submersion\/releases[\s\S]*<\/noscript>/);
 });
 
+test("the page says it is loading, and announces the result", () => {
+  assert.match(page(), /id="loading"[^>]*\shidden/);
+  assert.match(page(), /class="downloads__sheet" aria-live="polite"/);
+});
+
 test("the page has its canonical address", () => {
   assert.match(page(), /<link rel="canonical" href="https:\/\/submersion\.app\/downloads\/" \/>/);
 });

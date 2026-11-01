@@ -2,8 +2,8 @@
 // script.js so that neither the count nor the release lookup can break the other.
 import { formatCount, loadSummary } from "./data.js";
 
-const summary = await loadSummary();
-if (summary) {
+loadSummary().then((summary) => {
+  if (!summary) return;
   document.getElementById("download-count-number").textContent = formatCount(summary.total);
   document.getElementById("download-count").hidden = false;
-}
+});

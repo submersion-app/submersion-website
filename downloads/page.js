@@ -2,7 +2,7 @@
 // Everything goes in through textContent or SVG attributes, never as HTML. The
 // rules live in data.js and trend.js.
 import { PLATFORMS, TREND_MIN_SNAPSHOTS, formatCount, loadSummary, shortTag } from "./data.js";
-import { trendPoints, trendText } from "./trend.js";
+import { trendEnds, trendPoints, trendText } from "./trend.js";
 
 const $ = (id) => document.getElementById(id);
 const SVG_NS = "http://www.w3.org/2000/svg";
@@ -41,9 +41,9 @@ function axis(history) {
   const row = document.createElement("p");
   row.className = "downloads__axis";
   row.setAttribute("aria-hidden", "true");
-  for (const entry of [history[0], history[history.length - 1]]) {
+  for (const label of trendEnds(history)) {
     const end = document.createElement("span");
-    end.textContent = entry.date;
+    end.textContent = label;
     row.append(end);
   }
   return row;
@@ -71,6 +71,8 @@ function show(summary) {
   $("numbers").hidden = false;
 }
 
+$("loading").hidden = false;
+
 // Anything that goes wrong here still has to leave the visitor a message.
 loadSummary()
   .then((summary) => {
@@ -80,4 +82,7 @@ loadSummary()
   .catch((error) => {
     console.error("Failed to show download counts:", error);
     $("unavailable").hidden = false;
+  })
+  .finally(() => {
+    $("loading").hidden = true;
   });

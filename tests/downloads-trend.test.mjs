@@ -3,7 +3,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 
-import { trendPoints, trendText } from "../downloads/trend.js";
+import { trendEnds, trendPoints, trendText } from "../downloads/trend.js";
 
 const entry = (date, total) => ({ date, total, platforms: {} });
 const size = { width: 100, height: 50, pad: 0 };
@@ -45,6 +45,13 @@ test("padding insets the chart", () => {
     { width: 100, height: 50, pad: 5 },
   );
   assert.deepEqual(points, [{ x: 5, y: 45 }, { x: 95, y: 5 }]);
+});
+
+test("trendEnds labels both ends with their date and total", () => {
+  assert.deepEqual(trendEnds([entry("2026-11-01", 11452), entry("2026-11-15", 12000)]), [
+    "2026-11-01: 11,452",
+    "2026-11-15: 12,000",
+  ]);
 });
 
 test("trendText states both ends without claiming a direction", () => {

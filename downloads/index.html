@@ -73,7 +73,8 @@
 
       <!-- On its own dark panel with fixed light text, like the support matrix table. -->
       <div class="wrap downloads__panel">
-      <div class="downloads__sheet">
+      <div class="downloads__sheet" aria-live="polite">
+        <p class="downloads__unavailable" id="loading" hidden>Loading download numbers.</p>
         <div id="numbers" hidden>
           <p class="downloads__total" id="total"></p>
           <p class="downloads__label">downloads from GitHub, including app updates</p>

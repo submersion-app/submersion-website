@@ -39,11 +39,36 @@ for (const [name, raw] of [
   ["a missing platform", good({ platforms: { macos: 225 } })],
   ["platforms that do not add up", good({ total: 226 })],
   ["a bad generated_at", good({ generated_at: "soon" })],
+  ["a generated_at that is not text", good({ generated_at: ["2026-11-01T04:23:00Z"] })],
   ["no recent releases", good({ recent_releases: [] })],
   ["a bad release", good({ recent_releases: [{ tag: 3 }] })],
   ["no history", good({ history: [] })],
   ["a bad history entry", good({ history: [{ date: "x" }] })],
   ["a bad history date", good({ history: [{ date: "2026-11", total: 225, platforms }] })],
+  [
+    "history out of date order",
+    good({
+      history: [
+        { date: "2026-11-02", total: 225, platforms },
+        { date: "2026-11-01", total: 225, platforms },
+      ],
+    }),
+  ],
+  [
+    "a repeated history date",
+    good({
+      history: [
+        { date: "2026-11-01", total: 225, platforms },
+        { date: "2026-11-01", total: 225, platforms },
+      ],
+    }),
+  ],
+  [
+    "history that ends on a different total",
+    good({
+      history: [{ date: "2026-11-01", total: 200, platforms: { ...platforms, macos: 85 } }],
+    }),
+  ],
 ]) {
   test(`rejects ${name}`, () => {
     assert.equal(parseSummary(raw, NOW), null);
@@ -70,7 +95,7 @@ test("shortTag drops the build number", () => {
   assert.equal(shortTag("demo"), "demo");
 });
 
-test("loadSummary asks for the summary without caching and returns good data", async () => {
+test("loadSummary asks for the summary and returns good data", async () => {
   const calls = [];
   const fetchFn = async (url, options) => {
     calls.push([url, options]);
@@ -78,7 +103,7 @@ test("loadSummary asks for the summary without caching and returns good data", a
   };
   assert.deepEqual(await loadSummary({ fetchFn, now: NOW }), good());
   assert.equal(calls[0][0], SUMMARY_URL);
-  assert.equal(calls[0][1].cache, "no-cache");
+  assert.equal(calls[0][1].cache, undefined);
 });
 
 test("the summary address is the metrics branch", () => {
