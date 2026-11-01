@@ -26,7 +26,7 @@ test("homepage links are rebased for inner pages", () => {
   assert.equal(fromInnerPage("https://github.com/x"), "https://github.com/x");
 });
 
-for (const page of ["computers/index.html", "privacy/index.html", "terms/index.html"]) {
+for (const page of ["computers/index.html", "downloads/index.html", "privacy/index.html", "terms/index.html"]) {
   test(`${page} uses the homepage's menu`, () => {
     assert.deepEqual(navLinks(read(page)), homeMenu());
   });

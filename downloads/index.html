@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#49e8ff" />
+
+    <title>Downloads · Submersion Dive Log</title>
+    <meta
+      name="description"
+      content="How many times Submersion has been downloaded from GitHub, by platform and release."
+    />
+    <link rel="canonical" href="https://submersion.app/downloads/" />
+
+    <meta property="og:title" content="Downloads · Submersion" />
+    <meta property="og:description" content="How many times Submersion has been downloaded from GitHub, by platform and release." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://submersion.app/assets/brand/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Submersion: Dive safe. Log everything." />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/png" href="../assets/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="/downloads/page.css" />
+  </head>
+  <body id="top">
+    <a class="skip" href="#content">Skip to content</a>
+
+    <!-- Fixed decorative water column (JS-enhanced; harmless without JS) -->
+    <div class="ocean" aria-hidden="true">
+      <div class="ocean__haze" data-speed="0.04"></div>
+      <div class="ocean__rays" data-speed="0.2">
+        <div class="ocean__ray ocean__ray--1"></div>
+        <div class="ocean__ray ocean__ray--2"></div>
+        <div class="ocean__ray ocean__ray--3"></div>
+      </div>
+      <canvas id="ocean-snow" class="ocean__snow"></canvas>
+    </div>
+
+    <header class="surface">
+      <nav class="nav" aria-label="Primary">
+        <a class="nav__brand" href="../">
+          <img src="../assets/brand/lockup-dark.png" alt="Submersion: Dive safe. Log everything." width="278" height="96" decoding="async" />
+        </a>
+        <div class="nav__links">
+          <a href="../#computer">Computer</a>
+          <a href="../#log">Log</a>
+          <a href="../#sites">Sites</a>
+          <a href="../#analyze">Analyze</a>
+          <a href="../#plan">Plan</a>
+          <a href="../#data">Data</a>
+          <a href="../guide/">Guide</a>
+          <a href="../#download">Download</a>
+          <a href="https://github.com/submersion-app/submersion" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="content">
+     <section class="zone downloads" data-ink="dark">
+      <div class="zone__inner wrap">
+      <h1>Downloads</h1>
+      </div>
+
+      <!-- On its own dark panel with fixed light text, like the support matrix table. -->
+      <div class="wrap downloads__panel">
+      <div class="downloads__sheet" aria-live="polite">
+        <p class="downloads__unavailable" id="loading" hidden>Loading download numbers.</p>
+        <div id="numbers" hidden>
+          <p class="downloads__total" id="total"></p>
+          <p class="downloads__label">downloads from GitHub, including app updates</p>
+          <div class="downloads__boxes">
+            <section class="downloads__box">
+              <h2>By platform</h2>
+              <ul class="downloads__list" id="platforms"></ul>
+            </section>
+            <section class="downloads__box">
+              <h2>Recent releases</h2>
+              <ul class="downloads__list" id="releases"></ul>
+            </section>
+          </div>
+          <section class="downloads__trend" id="trend"></section>
+          <p class="downloads__note">App Store and Google Play installs are not counted.</p>
+          <p class="downloads__note" id="updated"></p>
+        </div>
+        <p class="downloads__unavailable" id="unavailable" hidden>
+          Download numbers aren't available right now.
+          <a href="https://github.com/submersion-app/submersion/releases" target="_blank" rel="noreferrer">See the releases on GitHub</a>.
+        </p>
+        <noscript>
+          <p class="downloads__unavailable">
+            Download numbers need JavaScript.
+            <a href="https://github.com/submersion-app/submersion/releases" target="_blank" rel="noreferrer">See the releases on GitHub</a>.
+          </p>
+        </noscript>
+      </div>
+      </div>
+
+      <div class="zone__inner wrap">
+      <footer class="footer">
+        © <span data-year></span> Submersion · GPL-3.0
+        <div class="footer__links">
+          <a href="../guide/">User Guide</a>
+          <a href="../privacy/">Privacy Policy</a>
+          <a href="../terms/">Terms of Service</a>
+        </div>
+      </footer>
+      </div>
+     </section>
+    </main>
+
+    <script>
+      (function () {
+        var y = document.querySelector('[data-year]');
+        if (y) y.textContent = String(new Date().getFullYear());
+      })();
+    </script>
+    <script src="../ocean.js" defer></script>
+    <script type="module" src="/downloads/page.js"></script>
+  </body>
+</html>
