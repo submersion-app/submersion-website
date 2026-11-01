@@ -62,14 +62,22 @@ function showTrend(section, history) {
   section.replaceChildren(heading, chart(history), axis(history));
 }
 
-const summary = await loadSummary();
-if (summary) {
+function show(summary) {
   $("total").textContent = formatCount(summary.total);
   fillList($("platforms"), PLATFORMS.map(([key, label]) => [label, summary.platforms[key]]));
   fillList($("releases"), summary.recent_releases.map((release) => [shortTag(release.tag), release.downloads]));
   showTrend($("trend"), summary.history);
   $("updated").textContent = `Last updated ${summary.generated_at.slice(0, 10)}.`;
   $("numbers").hidden = false;
-} else {
-  $("unavailable").hidden = false;
 }
+
+// Anything that goes wrong here still has to leave the visitor a message.
+loadSummary()
+  .then((summary) => {
+    if (!summary) throw new Error("no download summary");
+    show(summary);
+  })
+  .catch((error) => {
+    console.error("Failed to show download counts:", error);
+    $("unavailable").hidden = false;
+  });
