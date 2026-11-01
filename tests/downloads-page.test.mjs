@@ -31,3 +31,34 @@ test("the home page adds nothing to the top menu", () => {
   const links = /<div class="nav__links">([\s\S]*?)<\/div>/.exec(read("index.html"));
   assert.doesNotMatch(links[1], /downloads\//);
 });
+
+const page = () => read("downloads/index.html");
+
+test("the page carries the required copy", () => {
+  assert.match(page(), /downloads from GitHub, including app updates/);
+  assert.match(page(), /App Store and Google Play installs are not counted\./);
+});
+
+test("the trend placeholder is the approved wording", () => {
+  assert.match(
+    read("downloads/page.js"),
+    /The trend will appear here once a few weeks of daily snapshots have built up\. GitHub keeps no history, so it starts from the first snapshot\./,
+  );
+});
+
+test("numbers and the unavailable message both start hidden", () => {
+  assert.match(page(), /id="numbers"[^>]*\shidden/);
+  assert.match(page(), /id="unavailable"[^>]*\shidden/);
+});
+
+test("the page explains itself without JavaScript", () => {
+  assert.match(page(), /<noscript>[\s\S]*github\.com\/submersion-app\/submersion\/releases[\s\S]*<\/noscript>/);
+});
+
+test("the page has its canonical address", () => {
+  assert.match(page(), /<link rel="canonical" href="https:\/\/submersion\.app\/downloads\/" \/>/);
+});
+
+test("page.js never writes data as HTML", () => {
+  assert.doesNotMatch(read("downloads/page.js"), /innerHTML|insertAdjacentHTML/);
+});

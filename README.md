@@ -20,6 +20,7 @@ Then visit `http://localhost:5173`.
 - `styles.css`: the visual system (dark-only, zone layouts, feature grids, gauge)
 - `ocean.js`: scroll-driven water color, parallax, marine snow, the depth gauge, and section reveals
 - `script.js`: release lookup and platform-detecting download button
+- `downloads/`: the public download count. The page and the line under the home page's download button read `downloads/summary.json` from the app repo's `metrics` branch, and show nothing if it is missing, invalid or more than 7 days old. `scripts/snapshot_downloads.py` in the app repo has the counting rules.
 - `screenshots/`: window captures of the macOS app at 2400 px wide, used on the page
 - `assets/`: logo, favicon, App Store and Google Play badges
 - `lightroom/`: Adobe Lightroom integration walkthrough and OAuth callback page (self-contained styles)
