@@ -45,6 +45,18 @@ for (const [name, raw] of [
   ["no history", good({ history: [] })],
   ["a bad history entry", good({ history: [{ date: "x" }] })],
   ["a bad history date", good({ history: [{ date: "2026-11", total: 225, platforms }] })],
+  ["an impossible history day", good({ history: [{ date: "2026-10-32", total: 225, platforms }] })],
+  ["an impossible day in a short month", good({ history: [{ date: "2026-02-30", total: 225, platforms }] })],
+  ["an impossible history month", good({ history: [{ date: "2026-13-01", total: 225, platforms }] })],
+  [
+    "recent releases that add up to more than the total",
+    good({
+      recent_releases: [
+        { tag: "v1.8.3.9095", downloads: 200 },
+        { tag: "v1.8.2.8916", downloads: 200 },
+      ],
+    }),
+  ],
   [
     "history out of date order",
     good({
@@ -74,6 +86,16 @@ for (const [name, raw] of [
     assert.equal(parseSummary(raw, NOW), null);
   });
 }
+
+test("a leap day is a real date", () => {
+  const history = [{ date: "2028-02-29", total: 225, platforms }];
+  assert.ok(parseSummary(good({ history }), NOW));
+});
+
+test("recent releases may add up to exactly the total", () => {
+  const recent_releases = [{ tag: "v1.8.3.9095", downloads: 225 }];
+  assert.ok(parseSummary(good({ recent_releases }), NOW));
+});
 
 test("stale data is rejected after 7 days", () => {
   const generated_at = "2026-11-01T00:00:00Z";

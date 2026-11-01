@@ -16,7 +16,13 @@ export const PLATFORMS = [
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 const isCount = (value) => Number.isInteger(value) && value >= 0;
-const isDay = (value) => typeof value === "string" && /^\d{4}-\d{2}-\d{2}$/.test(value);
+
+// A real calendar day: Date.UTC rolls 2026-10-32 over, so it would not come back.
+function isDay(value) {
+  if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+  const [year, month, day] = value.split("-").map(Number);
+  return new Date(Date.UTC(year, month - 1, day)).toISOString().slice(0, 10) === value;
+}
 
 function validTotals({ total, platforms }) {
   if (!isCount(total) || platforms === null || typeof platforms !== "object") return false;
@@ -48,6 +54,8 @@ export function parseSummary(raw, now = new Date()) {
   if (Number.isNaN(generated) || now.getTime() - generated > MAX_AGE_DAYS * DAY_MS) return null;
   const { recent_releases: releases } = raw;
   if (!Array.isArray(releases) || releases.length === 0 || !releases.every(validRelease)) return null;
+  // Recent releases are part of the total, so together they can never exceed it.
+  if (releases.reduce((sum, release) => sum + release.downloads, 0) > raw.total) return null;
   return validHistory(raw.history, raw.total) ? raw : null;
 }
 
