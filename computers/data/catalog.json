@@ -1,8 +1,8 @@
 {
   "generatedFrom": {
-    "appCommit": "fc4f6d03667bd2a95b7aa4fffd53b1010d50a99a",
-    "libdcCommit": "2010fadd32ba1a5d557c566a9e09d10448958382",
-    "generatedAt": "2026-10-03T06:15:25Z"
+    "appCommit": "8dc1c4be9120a03ef42fb2f3d03f7c0ccc0b6218",
+    "libdcCommit": "ccdbab52d9ae82f820d355246c57dc75437dd707",
+    "generatedAt": "2026-11-01T13:05:50Z"
   },
   "models": [
     {
@@ -1340,6 +1340,36 @@
           "usb"
         ],
         "linux": [
+          "usb"
+        ]
+      }
+    },
+    {
+      "id": "cressi-raffaello",
+      "vendor": "Cressi",
+      "product": "Raffaello",
+      "libdc": [
+        "ble",
+        "serial"
+      ],
+      "platforms": {
+        "ios": [
+          "bluetooth"
+        ],
+        "android": [
+          "bluetooth",
+          "usb"
+        ],
+        "macos": [
+          "bluetooth",
+          "usb"
+        ],
+        "windows": [
+          "bluetooth",
+          "usb"
+        ],
+        "linux": [
+          "bluetooth",
           "usb"
         ]
       }

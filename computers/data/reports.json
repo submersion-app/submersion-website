@@ -2,14 +2,14 @@
   "watermarks": {
     "appStore": {
       "lastReviewId": 14611913679,
-      "sweptAt": "2026-10-03"
+      "sweptAt": "2026-11-01"
     },
     "github": {
-      "since": "2026-10-03T06:13:43Z"
+      "since": "2026-11-01T13:03:31Z"
     },
     "scubaboard": {
-      "lastPostId": 10834935,
-      "sweptAt": "2026-10-03"
+      "lastPostId": 10846682,
+      "sweptAt": "2026-11-01"
     }
   },
   "reports": [
@@ -40,6 +40,71 @@
       "note": "No USB serial port found for the FTDI cable, so the app could not connect"
     },
     {
+      "model": "apeks-dsx",
+      "platform": "android",
+      "transport": "bluetooth",
+      "outcome": "fails",
+      "appVersion": "1.8.2",
+      "date": "2026-10-20",
+      "source": "github-issue",
+      "url": "https://github.com/submersion-app/submersion/issues/3546",
+      "sourceRef": null,
+      "fixedIn": "1.8.3",
+      "note": "Pairing stalled: the app asked for a 4 digit PIN that the computer never showed"
+    },
+    {
+      "model": "aqualung-i300c",
+      "platform": "android",
+      "transport": "bluetooth",
+      "outcome": "works",
+      "appVersion": "1.5.0",
+      "date": "2026-10-03",
+      "source": "github-issue",
+      "url": "https://github.com/submersion-app/submersion/issues/2861",
+      "sourceRef": null,
+      "fixedIn": null,
+      "note": "Reported through the form"
+    },
+    {
+      "model": "aqualung-i300c",
+      "platform": "ios",
+      "transport": "bluetooth",
+      "outcome": "works",
+      "appVersion": "1.5.0",
+      "date": "2026-10-03",
+      "source": "github-issue",
+      "url": "https://github.com/submersion-app/submersion/issues/2860",
+      "sourceRef": null,
+      "fixedIn": null,
+      "note": "Reported through the form"
+    },
+    {
+      "model": "aqualung-i300c",
+      "platform": "macos",
+      "transport": "bluetooth",
+      "outcome": "works",
+      "appVersion": "1.5.0",
+      "date": "2026-10-03",
+      "source": "github-issue",
+      "url": "https://github.com/submersion-app/submersion/issues/2862",
+      "sourceRef": null,
+      "fixedIn": null,
+      "note": "Reported through the form"
+    },
+    {
+      "model": "aqualung-i330r",
+      "platform": "android",
+      "transport": "bluetooth",
+      "outcome": "works",
+      "appVersion": "1.5.0",
+      "date": "2026-10-03",
+      "source": "github-issue",
+      "url": "https://github.com/submersion-app/submersion/issues/2864",
+      "sourceRef": null,
+      "fixedIn": null,
+      "note": "Reported through the form"
+    },
+    {
       "model": "aqualung-i330r",
       "platform": "ios",
       "transport": "bluetooth",
@@ -51,6 +116,19 @@
       "sourceRef": null,
       "fixedIn": null,
       "note": "Bluetooth download failed repeatedly on iPhone, losing partial progress each time; never completed there"
+    },
+    {
+      "model": "aqualung-i330r",
+      "platform": "ios",
+      "transport": "bluetooth",
+      "outcome": "works",
+      "appVersion": "1.5.0",
+      "date": "2026-10-03",
+      "source": "github-issue",
+      "url": "https://github.com/submersion-app/submersion/issues/2863",
+      "sourceRef": null,
+      "fixedIn": null,
+      "note": "Reported through the form"
     },
     {
       "model": "aqualung-i330r",
@@ -66,6 +144,32 @@
       "note": "Bluetooth download failed several times on Mac, restarting from scratch, before finally getting the dives"
     },
     {
+      "model": "aqualung-i330r",
+      "platform": "macos",
+      "transport": "bluetooth",
+      "outcome": "works",
+      "appVersion": "1.5.0",
+      "date": "2026-10-03",
+      "source": "github-issue",
+      "url": "https://github.com/submersion-app/submersion/issues/2865",
+      "sourceRef": null,
+      "fixedIn": null,
+      "note": "Reported through the form"
+    },
+    {
+      "model": "aqualung-i470tc",
+      "platform": "ios",
+      "transport": "bluetooth",
+      "outcome": "fails",
+      "appVersion": null,
+      "date": "2026-10-21",
+      "source": "scubaboard",
+      "url": "https://scubaboard.com/community/threads/submersion-free-open-source-dive-log-app-all-platforms-looking-for-dive-computer-testers.667061/post-10843433",
+      "sourceRef": null,
+      "fixedIn": null,
+      "note": "An older unit pairs, but a second new unit with no dive history is never found in pairing mode"
+    },
+    {
       "model": "cressi-donatello",
       "platform": "android",
       "transport": "bluetooth",
@@ -75,7 +179,7 @@
       "source": "github-issue",
       "url": "https://github.com/submersion-app/submersion/issues/422",
       "sourceRef": null,
-      "fixedIn": null,
+      "fixedIn": "1.8.3",
       "note": "Detected as Cartesio and pairing was refused, so no dives downloaded."
     },
     {
@@ -803,9 +907,8 @@
       "source": "github-issue",
       "url": "https://github.com/submersion-app/submersion/issues/2507",
       "sourceRef": null,
-      "fixedIn": "unreleased",
-      "note": "App crashed on opening Connect New Computer while trying a USB download, so no dives could be fetched",
-      "fixedBy": 2758
+      "fixedIn": "1.8.1",
+      "note": "App crashed on opening Connect New Computer while trying a USB download, so no dives could be fetched"
     },
     {
       "model": "seac-tablet",
@@ -832,6 +935,45 @@
       "sourceRef": null,
       "fixedIn": null,
       "note": "Beta build found and paired it, but the download communication still failed."
+    },
+    {
+      "model": "seac-tablet",
+      "platform": "android",
+      "transport": "bluetooth",
+      "outcome": "fails",
+      "appVersion": "1.8.1",
+      "date": "2026-10-03",
+      "source": "github-issue",
+      "url": "https://github.com/submersion-app/submersion/issues/1454#issuecomment-5970995375",
+      "sourceRef": null,
+      "fixedIn": "1.8.1",
+      "note": "Connected over the read-poll link but the Tablet rejected the first command, so no dives came down"
+    },
+    {
+      "model": "seac-tablet",
+      "platform": "android",
+      "transport": "bluetooth",
+      "outcome": "fails",
+      "appVersion": "1.8.1",
+      "date": "2026-10-04",
+      "source": "github-issue",
+      "url": "https://github.com/submersion-app/submersion/issues/1454#issuecomment-5978071016",
+      "sourceRef": null,
+      "fixedIn": "1.8.1",
+      "note": "Retried on a newer beta build and the download still could not open the device"
+    },
+    {
+      "model": "seac-tablet",
+      "platform": "android",
+      "transport": "bluetooth",
+      "outcome": "works",
+      "appVersion": null,
+      "date": "2026-10-04",
+      "source": "github-issue",
+      "url": "https://github.com/submersion-app/submersion/issues/1454#issuecomment-5982312658",
+      "sourceRef": null,
+      "fixedIn": null,
+      "note": "Download worked on a build with the Seac service selection fix"
     },
     {
       "model": "seac-tablet",
@@ -897,6 +1039,32 @@
       "sourceRef": null,
       "fixedIn": null,
       "note": "Downloads worked but EAN32 came in as air, Swift GPS was missing and duplicate detection missed dives"
+    },
+    {
+      "model": "shearwater-perdix-2",
+      "platform": "android",
+      "transport": "bluetooth",
+      "outcome": "caveats",
+      "appVersion": null,
+      "date": "2026-10-09",
+      "source": "github-issue",
+      "url": "https://github.com/submersion-app/submersion/issues/3106#issuecomment-6089193763",
+      "sourceRef": null,
+      "fixedIn": null,
+      "note": "Bluetooth download worked but left a second Perdix 2 entry with a different serial"
+    },
+    {
+      "model": "shearwater-perdix-2",
+      "platform": "android",
+      "transport": "bluetooth",
+      "outcome": "caveats",
+      "appVersion": "1.8.3",
+      "date": "2026-10-15",
+      "source": "github-issue",
+      "url": "https://github.com/submersion-app/submersion/issues/3369",
+      "sourceRef": null,
+      "fixedIn": "1.8.3",
+      "note": "Download from a saved computer aborted; adding it again as a new computer downloaded fine"
     },
     {
       "model": "shearwater-perdix-2",
@@ -1521,6 +1689,19 @@
       "sourceRef": null,
       "fixedIn": "1.7.6",
       "note": "Download from the saved computer entry errored; starting as an unknown computer downloaded fine."
+    },
+    {
+      "model": "shearwater-petrel-3",
+      "platform": "android",
+      "transport": "bluetooth",
+      "outcome": "caveats",
+      "appVersion": "1.8.3",
+      "date": "2026-10-15",
+      "source": "github-issue",
+      "url": "https://github.com/submersion-app/submersion/issues/3369",
+      "sourceRef": null,
+      "fixedIn": "1.8.3",
+      "note": "Download from a saved computer aborted; adding it again as a new computer downloaded fine"
     },
     {
       "model": "shearwater-petrel-3",
