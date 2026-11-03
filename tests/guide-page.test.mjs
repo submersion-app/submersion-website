@@ -50,7 +50,7 @@ test("without JavaScript the reader is sent to the Markdown on GitHub", () => {
 
 // The pages with the site's header and footer. lightroom/ is a standalone
 // integration overview with its own minimal footer and no site header.
-const sitePages = ["index.html", "computers/index.html", "privacy/index.html", "terms/index.html"];
+const sitePages = ["index.html", "computers/index.html", "downloads/index.html", "privacy/index.html", "terms/index.html"];
 
 test("every header nav links to the guide", () => {
   for (const page of sitePages) {
@@ -58,6 +58,19 @@ test("every header nav links to the guide", () => {
     assert.ok(nav, `${page}: no header nav found`);
     assert.match(nav[1], /href="(?:\.\.\/)?guide\/">Guide<\/a>/, `${page}: header nav has no Guide link`);
   }
+});
+
+// Phones hide the header links for space, but the Guide link stays: the footer
+// one is a long scroll away (issue submersion-app/submersion#4145).
+test("phones keep the header Guide link", () => {
+  for (const page of sitePages) {
+    const nav = read(page).match(/<div class="nav__links">([\s\S]*?)<\/div>/);
+    assert.match(nav[1], /<a class="nav__guide" href="(?:\.\.\/)?guide\/">Guide<\/a>/, `${page}: Guide link is not marked nav__guide`);
+  }
+  const styles = read("styles.css");
+  const phone = [...styles.matchAll(/@media \(max-width: 700px\) \{([^\n]*)\}/g)].map((m) => m[1]).join("\n");
+  assert.doesNotMatch(phone, /\.nav__links \{ display: none; \}/, "phones hide every header link");
+  assert.match(phone, /\.nav__links a:not\(\.nav__guide\) \{ display: none; \}/, "phones do not hide the other header links");
 });
 
 test("every footer link row links to the guide", () => {
