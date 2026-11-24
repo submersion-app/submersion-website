@@ -112,7 +112,7 @@ test("the product is a dive application, never a dive log", () => {
   assert.doesNotMatch(page(), /dive log(?!book)/i);
 });
 
-test("the hero shows a dive profile chart", () => {
+test("the hero shows the dive details page with its profile", () => {
   const hero = /<figure class="hero__art">([\s\S]*?)<\/figure>/.exec(page())[1];
-  assert.match(hero, /src="screenshots\/profile\.png"/);
+  assert.match(hero, /src="screenshots\/dive-detail\.png"/);
 });
