@@ -1,6 +1,9 @@
 (() => {
   'use strict';
 
+  // The page's no-script styles (home.css) apply only until this runs
+  document.documentElement.classList.remove('no-js');
+
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   const root = document.documentElement;
@@ -334,6 +337,14 @@
       { threshold: 0.25 }
     );
     clips.forEach(function (video) { io.observe(video); });
+    // Reduced motion turned on while the page is open stops the clips for good
+    const stop = function (e) {
+      if (!e.matches) return;
+      io.disconnect();
+      clips.forEach(function (video) { video.pause(); });
+    };
+    if (reducedMotion.addEventListener) reducedMotion.addEventListener('change', stop);
+    else if (reducedMotion.addListener) reducedMotion.addListener(stop);
   }
   setupClips();
 

@@ -2,7 +2,7 @@
 // what it must never say, and what it no longer carries.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync, readdirSync } from "node:fs";
+import { readFileSync, readdirSync, statSync } from "node:fs";
 
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
 
@@ -85,7 +85,9 @@ const RETIRED = [
 ];
 
 test("no retired or unsafe phrasing", () => {
-  const text = page().replace(/<[^>]+>/g, " ");
+  // Body text plus the attribute text people see or hear: alt, aria-label, meta content
+  const attrs = [...page().matchAll(/\s(?:alt|aria-label|content)="([^"]*)"/g)].map((m) => m[1]).join(" ");
+  const text = page().replace(/<[^>]+>/g, " ") + " " + attrs;
   assert.doesNotMatch(text, /\u2014|real time|keeps you safe|prevent|guarantee/i);
   for (const phrase of RETIRED) assert.ok(!text.toLowerCase().includes(phrase.toLowerCase()), phrase);
 });
@@ -121,11 +123,41 @@ test("the hero shows the dive details page with its profile", () => {
 test("the species clip is quiet, looped and starts only when motion is allowed", () => {
   const video = /<video\b[^>]*>/.exec(page());
   assert.ok(video, "no video element");
-  for (const attr of [/\smuted\b/, /\sloop\b/, /\splaysinline\b/, /\spreload="none"/, /\sposter="screenshots\/video-species\.png"/, /\ssrc="screenshots\/video-species\.mp4"/]) {
+  for (const attr of [/\smuted\b/, /\sloop\b/, /\splaysinline\b/, /\spreload="none"/, /\sposter="screenshots\/video-species\.jpg"/, /\ssrc="screenshots\/video-species\.mp4"/]) {
     assert.match(video[0], attr, video[0]);
   }
   assert.doesNotMatch(video[0], /\sautoplay\b/, "autoplay would ignore reduced motion");
   const ocean = read("ocean.js");
   assert.match(ocean, /video\[data-play-in-view\]/, "ocean.js does not start the clip");
   assert.match(ocean, /reducedMotion\.matches[\s\S]{0,200}video|video[\s\S]{0,400}reducedMotion\.matches/, "clip start ignores reduced motion");
+});
+
+test("the hero does not promise the data never leaves the device", () => {
+  const lead = /<p class="lead">([\s\S]*?)<\/p>/.exec(page())[1];
+  assert.doesNotMatch(lead, /stays on your devices/i, "sync copies the logbook to the user's storage");
+});
+
+test("the clip's poster is light enough to load up front", () => {
+  const bytes = statSync(new URL("../screenshots/video-species.jpg", import.meta.url)).size;
+  assert.ok(bytes < 300 * 1024, `poster is ${bytes} bytes`);
+});
+
+test("the no-script inks apply only while the page has no script", () => {
+  assert.match(page(), /<html lang="en" class="no-js">/);
+  assert.match(read("ocean.js"), /classList\.remove\('no-js'\)/);
+  const css = read("home.css").replace(/\/\*[\s\S]*?\*\//g, "");
+  const blocks = [...css.matchAll(/([^{}]+)\{[^}]*--ink-muted:/g)].map((m) => m[1].trim());
+  assert.ok(blocks.length >= 2, "no-script ink rules missing");
+  for (const sel of blocks) for (const part of sel.split(",")) assert.match(part.trim(), /^html\.no-js /, part);
+});
+
+test("paired images stack in one grid cell, not on margins tuned to one aspect", () => {
+  const css = read("home.css");
+  assert.match(css, /\.feature-visual--pair \{[^}]*display: grid/);
+  assert.match(css, /\.feature-visual--pair > \* \{[^}]*grid-area: 1 \/ 1/);
+  assert.doesNotMatch(css, /margin(?:-top)?:\s*-\d+%/, "negative percentage margins depend on the first image's aspect");
+});
+
+test("the clip stops when reduced motion is turned on later", () => {
+  assert.match(read("ocean.js"), /reducedMotion\.addEventListener\('change'/);
 });

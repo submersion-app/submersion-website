@@ -49,14 +49,19 @@
 /* The video clip has no window chrome, so it gets a plain card edge */
 .feature-visual .showcase-img--bare { border-radius: 12px; }
 
-/* Two captures, the second overlapping the first's lower right */
-.feature-visual--pair .showcase-img:first-child { width: 82%; }
-.feature-visual--pair .showcase-img:last-child { width: 62%; margin: -34% 0 0 auto; position: relative; }
-/* The video still sits low on the seascape's empty corner, clear of the terrain */
-.feature-visual--pair .showcase-img--bare:last-child { width: 50%; margin-top: -20%; }
+/* Two captures in one grid cell: the first at the top left, the second at the
+   bottom right. The first's bottom margin sets how far the second hangs below
+   it, so the overlap follows the images' real heights. */
+.feature-visual--pair { display: grid; }
+.feature-visual--pair > * { grid-area: 1 / 1; }
+.feature-visual--pair .showcase-img:first-child { width: 82%; justify-self: start; align-self: start; margin-bottom: 14%; }
+.feature-visual--pair .showcase-img:last-child { width: 62%; justify-self: end; align-self: end; position: relative; }
+/* The video clip sits on the seascape's empty corner, clear of the terrain */
+.feature-visual--pair .showcase-img--bare:last-child { width: 50%; }
 /* A single tall card (the buoyancy card) stands narrow beside the first capture */
-.feature-visual--pair .showcase-img.showcase-img--card { width: 30%; margin: -52% 0 0 auto; border-radius: 14px; }
+.feature-visual--pair .showcase-img.showcase-img--card { width: 30%; border-radius: 14px; }
 @media (max-width: 560px) {
+  .feature-visual--pair { display: block; }
   .feature-visual--pair .showcase-img:first-child,
   .feature-visual--pair .showcase-img:last-child { width: 100%; margin: 16px 0 0; }
   .feature-visual--pair .showcase-img.showcase-img--card { width: 64%; margin: 16px auto 0; }
@@ -110,11 +115,11 @@
    ocean.js inks every block for the water behind it. Without it, blocks take
    their section's static ink, and the muted tones (tuned for clearer water)
    fall short where the water turns from cyan to navy. These section-level
-   defaults run them at full strength; with script the per-block tokens set
-   by ocean.js take over. */
-main .zone[data-ink="dark"], main .act__head[data-ink="dark"] {
+   defaults run them at full strength. ocean.js removes the no-js class as it
+   starts, so they never apply once the solver runs. */
+html.no-js main .zone[data-ink="dark"], html.no-js main .act__head[data-ink="dark"] {
   --ink: #000000; --ink-muted: #000000; --ink-faint: #000000; --cyan-text: #000000;
 }
-main .act .zone:not([data-ink]), main .act__head:not([data-ink]) {
+html.no-js main .act .zone:not([data-ink]), html.no-js main .act__head:not([data-ink]) {
   --ink: #ffffff; --ink-muted: #ffffff; --ink-faint: #ffffff; --cyan-text: #ffffff;
 }
