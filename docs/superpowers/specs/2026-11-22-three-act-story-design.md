@@ -34,7 +34,7 @@ The homepage was last rewritten in August against 1.7.5. It lists features from 
 - **Claiming Submersion makes diving safe.** It is not a dive computer and does not replace training, a buddy or a computer. Safety copy says what the app checks, tracks or calculates, and lets the diver draw the conclusion. "Helps you" is the strongest verb; never "keeps you safe", "prevents", "guarantees".
 - **Claims stronger than the app.** Every feature named must be reachable in the 1.8.5 build. If a screen cannot be opened there (unshipped, behind a switch, desktop-only when the copy implies all platforms), it is not advertised, or its platform limit is stated.
 - **Slogans in body copy.** The August copy rules stay in force (below).
-- **Private details on the site.** Screenshots come from Eric's own logbook (his decision, 2026-11-24), so every shot gets a privacy pass: no person's name, email address, phone number, card number, medical note, emergency contact, account name, bucket or key in frame.
+- **Private details on the site.** Screenshots come from Eric's own logbook (his decision, 2026-11-24), so every shot gets a privacy pass: no real person's name, email address, phone number, card number, medical note, emergency contact, account name, bucket or key in frame.
 - **Losing `main`'s fixes** by copying the redesign's files wholesale.
 - **Unreadable text on the water.** Every text block meets 4.5:1 against the water behind it, at every scroll position and width.
 
@@ -170,3 +170,17 @@ The redesign branched on 7 October. Since then `main` gained: the downloads page
 - Whether the pillars band uses icons.
 - Button styling on the water, per the visual system note.
 - The phone layout of feature rows (stacked, screenshot first or text first).
+
+## Changes after review (2026-11-24)
+
+Eric reviewed the built page and changed these; where they differ from the sections above, these govern.
+
+- **Copy voice:** concise and technical. Headings name the feature ("Dive planning", "Post-dive safety review"), and each card says what it does in one or two plain sentences, with no jokes, rhetorical questions or sales lines. No clipped comma phrases ("Your data, open"). The product is a "dive application", never a "dive log"; "logbook" is the record. A test fails the page on "dive log".
+- **Headline:** "Dive logging, analysis and planning for recreational and technical divers."
+- **Act headings:** Logging and analysis, Safety, Your data (eyebrows: The whole dive, A safer diver, Your data stays yours). The menu keeps The dive, Safety, Your data.
+- **Rows:** Act 1 gains an Insights row (`insights`) for Progression and Connections. Some rows show two images, the second overlapping the first: Insights, the safety review with the buoyancy card, and the seascape with the species clip.
+- **Hero:** the uncropped dive details page with its profile.
+- **Screenshots:** Eric set up each scene himself in the installed app (1.8.5) on the sample logbook, which replaced his own as the app's database with no demo mode, and each was captured from that window. The dive computers screen is the one exception (taken earlier from his logbook). Window captures at 1440 × 900, or 1440 × 1228 for the tall dive-detail and certification shots, are trimmed to the window and resized to 2400 px. The buoyancy card is cropped to the card.
+- **Species tracking:** a 14-second muted, looping H.264 clip cut from Eric's screen recording (`screenshots/video-species.mp4`, 3.4 MB, poster `video-species.png`). It plays only while on screen and keeps its poster under reduced motion.
+- **Privacy:** no real person's name in frame. The sample's made-up divers and instructor may appear (Eric kept the "Trips and people" Connections map).
+- **Without script:** every row above the mid-water crossover carries static dark ink, and without `ocean.js` the section inks run at full strength, so text meets 4.5:1 with or without script.

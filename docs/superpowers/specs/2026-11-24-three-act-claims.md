@@ -30,8 +30,8 @@ Every feature the homepage names is in this table. Code paths are in `submersion
 | The seafloor around a site in 3D | `site_seascape_section.dart`, `spatial_site_page.dart` | Site > 3D view | Bathymetry downloads per site; coverage varies |
 | Photos and videos matched to the profile by time; colour correction | `dive_photo_matcher.dart`, `auto_correction.dart` | | |
 | Species identified on the device in photos, and followed through video | `media_identification_service.dart`, `video_tracker.dart`, `feature_flags.dart` | Media viewer, Eric's recording 2026-11-23 | Photos on iPhone, iPad, Mac, Android, Windows and Linux; video not on Linux; Android needs 8 GB of memory; the model pack is a separate download |
-| Profile playback, Bühlmann ZH-L16C tissue loading, CNS and OTU, two computers on one chart, 3D | `buhlmann_algorithm.dart`, `compact_tissue_loading_card.dart`, `o2_toxicity_calculator.dart`, `dive_3d_page.dart` | Dive detail | |
-| A buoyancy model of the dive, with "What if?" for other lead, water or suit | `buoyancy_section.dart`, `lib/core/buoyancy` | Dive detail | Shown only for dives it can model |
+| Profile playback, Bühlmann ZH-L16C tissue loading, CNS and OTU, every computer worn on a dive attached to it and overlaid on one chart, 3D | `buhlmann_algorithm.dart`, `compact_tissue_loading_card.dart`, `o2_toxicity_calculator.dart`, `dive_3d_page.dart` | Dive detail | |
+| A buoyancy model of the dive, a suggested lead weight for the next dive, and "What if?" for other lead, water or suit | `buoyancy_section.dart`, `lib/core/buoyancy` | Dive detail, "Lead for next time" with the last 11 dives | Shown only for dives it can model |
 | Insights: 12 pages, from progression to Connections, a map of who and what you dive with | `insights_list_content.dart`, `connection_presets.dart` | Insights > Progression, Connections | |
 | Equipment sets drawn on a diver figure | `diver_figure.dart`, `gear_figure.dart` | Equipment > Sets | |
 
