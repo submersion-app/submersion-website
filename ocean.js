@@ -54,7 +54,12 @@
   // until its main text reaches 7:1 (or as close as it can get), with the muted
   // and faint tones eased back toward the water only as far as 4.5:1 allows.
   const INK_BLOCKS = [
-    'main .zone__inner > :not(.features):not(.shots):not(.legal__body)',
+    'main .zone__inner > :not(.features):not(.shots):not(.legal__body):not(.feature-row):not(.feature-cards):not(.pillars)',
+    // The homepage's rows and cards: each text block and card on its own, so a
+    // card is inked for the water behind it rather than for its whole grid
+    'main .feature-text > *',
+    'main .feature-cards > *',
+    'main .pillars > *',
     'main .features > *',
     'main .shots > *',
     'main .legal__body > :not(.callout)',

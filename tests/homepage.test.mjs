@@ -95,3 +95,14 @@ test("the shallow rows read without script", () => {
     assert.match(page(), new RegExp(`<section[^>]*id="${id}"[^>]*data-ink="dark"|<section[^>]*data-ink="dark"[^>]*id="${id}"`), id);
   }
 });
+
+test("the solver inks every new text block on its own", () => {
+  const blocks = /const INK_BLOCKS = \[([\s\S]*?)\]/.exec(read("ocean.js"))[1];
+  for (const sel of ["main .feature-text > *", "main .feature-cards > *", "main .pillars > *"]) {
+    assert.ok(blocks.includes(`'${sel}'`), `INK_BLOCKS lacks ${sel}`);
+  }
+  const first = /'([^']+)'/.exec(blocks)[1];
+  for (const cls of [".feature-row", ".feature-cards", ".pillars"]) {
+    assert.ok(first.includes(`:not(${cls})`), `first selector still inks ${cls} as one block`);
+  }
+});
