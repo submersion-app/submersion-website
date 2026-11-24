@@ -40,6 +40,8 @@
 /* The captures carry their own window frame, so the image needs no bezel:
    a shadow that follows the window's rounded corners is enough. */
 .feature-visual { margin: 0; }
+/* The species clip sizes like the screenshots beside it */
+.feature-visual video { display: block; max-width: 100%; height: auto; }
 .feature-visual .showcase-img {
   width: 100%; box-shadow: none; border-radius: 10px;
   filter: drop-shadow(0 24px 48px rgba(1, 6, 14, 0.38));

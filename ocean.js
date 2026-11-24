@@ -312,6 +312,31 @@
 
   setupReveals();
 
+  // ---- Clips ----
+  // A clip marked data-play-in-view plays, muted and looped, only while it is
+  // on screen, and never under reduced motion: there it keeps its poster.
+  function setupClips() {
+    const clips = Array.prototype.slice.call(document.querySelectorAll('video[data-play-in-view]'));
+    if (!clips.length || reducedMotion.matches || !('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          const video = entry.target;
+          if (entry.isIntersecting) {
+            const played = video.play();
+            // A browser that refuses to play leaves the poster up, which is fine
+            if (played && played.catch) played.catch(function () {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+    clips.forEach(function (video) { io.observe(video); });
+  }
+  setupClips();
+
   // Reduced motion: no loop, so the water stays still.
   if (!reducedMotion.matches) window.requestAnimationFrame(frame);
 })();

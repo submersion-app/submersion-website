@@ -56,7 +56,7 @@ test("the h1 names the three ideas, not the lockup tagline", () => {
 });
 
 test("screenshots and files match", () => {
-  const used = new Set([...page().matchAll(/src="screenshots\/([^"]+)"/g)].map((m) => m[1]));
+  const used = new Set([...page().matchAll(/(?:src|poster)="screenshots\/([^"]+)"/g)].map((m) => m[1]));
   const files = new Set(readdirSync(new URL("../screenshots/", import.meta.url)));
   assert.deepEqual([...used].sort(), [...files].sort());
 });
@@ -115,4 +115,16 @@ test("the product is a dive application, never a dive log", () => {
 test("the hero shows the dive details page with its profile", () => {
   const hero = /<figure class="hero__art">([\s\S]*?)<\/figure>/.exec(page())[1];
   assert.match(hero, /src="screenshots\/dive-detail\.png"/);
+});
+
+test("the species clip is quiet, looped and starts only when motion is allowed", () => {
+  const video = /<video\b[^>]*>/.exec(page());
+  assert.ok(video, "no video element");
+  for (const attr of [/\smuted\b/, /\sloop\b/, /\splaysinline\b/, /\spreload="none"/, /\sposter="screenshots\/video-species\.png"/, /\ssrc="screenshots\/video-species\.mp4"/]) {
+    assert.match(video[0], attr, video[0]);
+  }
+  assert.doesNotMatch(video[0], /\sautoplay\b/, "autoplay would ignore reduced motion");
+  const ocean = read("ocean.js");
+  assert.match(ocean, /video\[data-play-in-view\]/, "ocean.js does not start the clip");
+  assert.match(ocean, /reducedMotion\.matches[\s\S]{0,200}video|video[\s\S]{0,400}reducedMotion\.matches/, "clip start ignores reduced motion");
 });
