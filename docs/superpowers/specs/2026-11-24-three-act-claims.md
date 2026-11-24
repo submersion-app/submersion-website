@@ -40,7 +40,7 @@ Every feature the homepage names is in this table. Code paths are in `submersion
 | Claim | Code | Seen | Limit |
 |---|---|---|---|
 | A safety review of every dive: fast ascents, missed deco and safety stops, sawtooth profiles, high surfacing gradient factor, late gas switches, isobaric counterdiffusion | `safety_review_service.dart`, `SafetyRuleId` | Dive detail > Safety review | On by default; each rule can be turned off |
-| Each metric from your computer or from the app's own calculation, your choice | `chart_options_dialog_rows.dart`, deco source settings | | One source at a time, never "side by side" |
+| NDL, deco stops, TTS and CNS from your computer or from the app's own calculation, your choice (the ceiling is always calculated) | `chart_options_dialog_rows.dart`, deco source settings | | One source at a time, never "side by side" |
 | Oxygen exposure for the day and the week | `cns_otu_page.dart` | | |
 | Ascent rate coloured on the profile | `ascent_rate_calculator.dart`, `dive_profile_chart.dart` | | Off until turned on |
 | Plans for open circuit, CCR, SCR and pSCR | `PlanMode` | Planning > saved plan | |
@@ -52,7 +52,7 @@ Every feature the homepage names is in this table. Code paths are in `submersion
 | Gas tools: MOD, best mix, MND, consumption, rock bottom, density, a blender | `gas_calculator_tools.dart` | Planning > Gas Calculators | |
 | Service clocks by date, dives, hours and exposure (salt, cold, oxygen) | `service_due_engine.dart`, `exposure_unit.dart` | Equipment > Service Due | Reminders are date based and on phones |
 | Condition checks that read the trend in your gear | `equipment_condition_engine.dart` | | Quiet until enough dives |
-| Cylinder and gear passports with QR and NFC tags, and fill records | `cylinder_passports`, `gear_passports` | | NFC on iPhone and Android phones |
+| Cylinder and gear passports with QR and NFC tags, and fill records; a scan without the app opens the passport or item page here | `cylinder_passports`, `gear_passports` | | NFC on iPhone and Android phones |
 | Transmitters tied to cylinders | `transmitters` | | |
 | Service and inventory reports as PDF | `service_report_pdf_export_service.dart`, `equipment_inventory_pdf_export_service.dart` | | |
 | Certification currency: when each card was last used and when a refresher is due | `certification_currency_engine.dart` | Training > certification > Currency | |
@@ -67,8 +67,8 @@ Every feature the homepage names is in this table. Code paths are in `submersion
 | The database can be encrypted on the device, behind an app lock | `sqlcipher_setup.dart`, `security_settings_page.dart` | | Off until you turn it on |
 | Sync through your own Google Drive, Dropbox, S3 or WebDAV server, or Git; iCloud on iPhone and iPad | `CloudProviderType`, `account_group_providers.dart` | Sync > Add an account | End-to-end encryption is a setting you turn on |
 | Sync between nearby devices over Bluetooth, with no cloud | `lib/core/services/nearby/` | "Sync nearby automatically" | Not on Linux to Linux |
-| A backup before every upgrade; encrypted backups you schedule | `pre_migration_backup_service.dart`, `backup_crypto.dart` | | Scheduled backups and their encryption are settings |
-| Export UDDF 3.2, CSV, Excel, KML and PDF logbooks | `core/services/export/` | | GPX is for GPS tracks only |
+| A backup before every database upgrade; encrypted backups you schedule | `pre_migration_backup_service.dart`, `backup_crypto.dart` | | Scheduled backups and their encryption are settings |
+| Export dives as UDDF 3.2, CSV, Excel and PDF logbooks, and sites as KML | `core/services/export/` | | GPX is for GPS tracks only |
 | Raw computer data kept and re-read when the parser improves | `reparse_service.dart` | | Dives downloaded with raw data |
 | A change log of every edit, which you can revert | `change_log_page.dart`, `ChangeLogRevertService` | Settings > Data > Change log | Kept 12 months by default |
 | A data quality check that compares records with the sensor data and offers repairs | `data_quality` detectors and repairs | Data quality inbox | |

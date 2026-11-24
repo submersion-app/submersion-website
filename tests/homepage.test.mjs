@@ -161,3 +161,12 @@ test("paired images stack in one grid cell, not on margins tuned to one aspect",
 test("the clip stops when reduced motion is turned on later", () => {
   assert.match(read("ocean.js"), /reducedMotion\.addEventListener\('change'/);
 });
+
+// Claims the app does not back (code review round 2, checked against the app at 1.8.5)
+test("no claim stronger than the app", () => {
+  const html = page();
+  assert.doesNotMatch(html, /NDL, ceiling, deco stops/, "the ceiling is always calculated");
+  assert.doesNotMatch(html, /Dives export as [^.]*KML/, "KML exports sites, not dives");
+  assert.doesNotMatch(html, /backup is made before every upgrade/, "backups run before schema migrations");
+  assert.doesNotMatch(html, /opens the fill record/, "the /f page only explains the link");
+});
