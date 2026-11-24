@@ -51,9 +51,14 @@
 /* Two captures, the second overlapping the first's lower right */
 .feature-visual--pair .showcase-img:first-child { width: 82%; }
 .feature-visual--pair .showcase-img:last-child { width: 62%; margin: -34% 0 0 auto; position: relative; }
+/* The video still sits low on the seascape's empty corner, clear of the terrain */
+.feature-visual--pair .showcase-img--bare:last-child { width: 50%; margin-top: -20%; }
+/* A single tall card (the buoyancy card) stands narrow beside the first capture */
+.feature-visual--pair .showcase-img.showcase-img--card { width: 30%; margin: -52% 0 0 auto; border-radius: 14px; }
 @media (max-width: 560px) {
   .feature-visual--pair .showcase-img:first-child,
   .feature-visual--pair .showcase-img:last-child { width: 100%; margin: 16px 0 0; }
+  .feature-visual--pair .showcase-img.showcase-img--card { width: 64%; margin: 16px auto 0; }
 }
 
 /* ---------- Feature cards ---------- */
@@ -86,4 +91,12 @@
 @media (prefers-reduced-motion: reduce) {
   .pillar { transition: none; }
   .pillar:hover { transform: none; }
+}
+
+/* ---------- Hero on the homepage ----------
+   The headline is one sentence, so it runs smaller than styles.css's display
+   size, and the profile chart gets the wider column. */
+.hero h1 { font-size: clamp(34px, 3.6vw, 50px); line-height: 1.08; }
+@media (min-width: 1000px) {
+  .hero__inner { grid-template-columns: minmax(0, 9fr) minmax(0, 11fr); gap: 56px; }
 }

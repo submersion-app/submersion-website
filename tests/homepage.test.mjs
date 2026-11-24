@@ -106,3 +106,13 @@ test("the solver inks every new text block on its own", () => {
     assert.ok(first.includes(`:not(${cls})`), `first selector still inks ${cls} as one block`);
   }
 });
+
+// Eric, 2026-11-24: Submersion is a dive application; "logbook" is the record.
+test("the product is a dive application, never a dive log", () => {
+  assert.doesNotMatch(page(), /dive log(?!book)/i);
+});
+
+test("the hero shows a dive profile chart", () => {
+  const hero = /<figure class="hero__art">([\s\S]*?)<\/figure>/.exec(page())[1];
+  assert.match(hero, /src="screenshots\/profile\.png"/);
+});
