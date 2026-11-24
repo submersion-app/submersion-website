@@ -11,3 +11,20 @@ test("the depth gauge is gone", () => {
   assert.doesNotMatch(read("ocean.js"), /gauge|readout|tick/i);
   assert.doesNotMatch(read("styles.css"), /\.gauge|--gauge-w/);
 });
+
+const navLinks = (html) => {
+  const links = /<div class="nav__links">([\s\S]*?)<\/div>/.exec(html);
+  assert.ok(links, "no nav__links block");
+  return [...links[1].matchAll(/<a [^>]*href="([^"]+)"[^>]*>([^<]+)<\/a>/g)].map((m) => [m[1], m[2].trim()]);
+};
+
+test("the menu names the three acts", () => {
+  assert.deepEqual(navLinks(read("index.html")), [
+    ["#dive", "The dive"],
+    ["#safety", "Safety"],
+    ["#data", "Your data"],
+    ["guide/", "Guide"],
+    ["https://github.com/submersion-app/submersion", "GitHub"],
+    ["#download", "Download"],
+  ]);
+});
