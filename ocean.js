@@ -1,12 +1,9 @@
 (() => {
   'use strict';
 
-  const MAX_DEPTH_M = 60;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   const root = document.documentElement;
-  const readout = document.getElementById('depth-readout');
-  const ticks = Array.prototype.slice.call(document.querySelectorAll('.gauge__tick'));
   const rays = Array.prototype.slice.call(document.querySelectorAll('.ocean__ray'));
   const parallaxEls = Array.prototype.slice.call(document.querySelectorAll('[data-speed]'));
 
@@ -184,26 +181,8 @@
       if (tokens.reach >= AA) applyInk(blocks[i], tokens);
       else applyTwilight(blocks[i], r.top + scrollY, r.bottom + scrollY);
     }
-    measureTicks();
-    inkTicks(scrollY);
   }
 
-  // The depth gauge is fixed, so the water behind each of its ticks changes as
-  // the page scrolls; they are re-inked on every scroll update.
-  let tickY = [];
-  function measureTicks() {
-    tickY = ticks.map(function (tick) {
-      const r = tick.getBoundingClientRect();
-      return (r.top + r.bottom) / 2;
-    });
-  }
-  function inkTicks(scrollY) {
-    for (let i = 0; i < ticks.length; i++) {
-      const water = waterAt((scrollY + tickY[i]) / pageH);
-      applyInk(ticks[i], solve(water, water));
-    }
-  }
-  window.addEventListener('resize', measureTicks);
 
   solveInk();
   // Re-solve when anything changes the page's height or a block's position
@@ -303,13 +282,6 @@
     const maxScroll = root.scrollHeight - window.innerHeight;
     depthFrac = maxScroll > 0 ? Math.min(1, Math.max(0, y / maxScroll)) : 0;
 
-    const depth = depthFrac * MAX_DEPTH_M;
-    if (readout) readout.textContent = depth.toFixed(1) + ' m';
-    for (let i = 0; i < ticks.length; i++) {
-      ticks[i].classList.toggle('gauge__tick--passed', Number(ticks[i].dataset.depth) <= depth);
-    }
-    inkTicks(y);
-
     if (!reducedMotion.matches) {
       for (let i = 0; i < parallaxEls.length; i++) {
         const el = parallaxEls[i];
@@ -324,7 +296,7 @@
     }
   }
 
-  // Full motion: one continuous rAF loop drives parallax, gauge, snow.
+  // Full motion: one continuous rAF loop drives parallax and snow.
   function frame() {
     if (!document.hidden) {
       if ((window.scrollY || 0) !== lastY) update();
@@ -335,22 +307,6 @@
 
   setupReveals();
 
-  if (reducedMotion.matches) {
-    // Reduced motion: no continuous loop. Keep the depth readout and tick
-    // states current by coalescing scroll/resize events into a single rAF.
-    let queued = false;
-    const schedule = function () {
-      if (queued) return;
-      queued = true;
-      window.requestAnimationFrame(function () {
-        queued = false;
-        update();
-      });
-    };
-    window.addEventListener('scroll', schedule, { passive: true });
-    window.addEventListener('resize', schedule);
-    update();
-  } else {
-    window.requestAnimationFrame(frame);
-  }
+  // Reduced motion: no loop, so the water stays still.
+  if (!reducedMotion.matches) window.requestAnimationFrame(frame);
 })();
