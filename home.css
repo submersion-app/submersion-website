@@ -46,9 +46,8 @@
   width: 100%; box-shadow: none; border-radius: 10px;
   filter: drop-shadow(0 24px 48px rgba(1, 6, 14, 0.38));
 }
-/* Cropped captures (no window chrome on some edge) get a plain card edge */
-.feature-visual .showcase-img--bare,
-.feature-visual .showcase-img--top { border-radius: 12px; }
+/* The video clip has no window chrome, so it gets a plain card edge */
+.feature-visual .showcase-img--bare { border-radius: 12px; }
 
 /* Two captures, the second overlapping the first's lower right */
 .feature-visual--pair .showcase-img:first-child { width: 82%; }
