@@ -91,7 +91,8 @@ test("no retired or unsafe phrasing", () => {
 });
 
 test("the shallow rows read without script", () => {
-  for (const id of ["computer", "log", "sites"]) {
+  // Every row above the mid-water crossover, where light ink would fall below 4.5:1 without the solver
+  for (const id of ["computer", "log", "sites", "analyze", "insights"]) {
     assert.match(page(), new RegExp(`<section[^>]*id="${id}"[^>]*data-ink="dark"|<section[^>]*data-ink="dark"[^>]*id="${id}"`), id);
   }
 });

@@ -105,3 +105,16 @@
 @media (min-width: 1000px) {
   .hero__inner { grid-template-columns: minmax(0, 9fr) minmax(0, 11fr); gap: 56px; }
 }
+
+/* ---------- Without script ----------
+   ocean.js inks every block for the water behind it. Without it, blocks take
+   their section's static ink, and the muted tones (tuned for clearer water)
+   fall short where the water turns from cyan to navy. These section-level
+   defaults run them at full strength; with script the per-block tokens set
+   by ocean.js take over. */
+main .zone[data-ink="dark"], main .act__head[data-ink="dark"] {
+  --ink: #000000; --ink-muted: #000000; --ink-faint: #000000; --cyan-text: #000000;
+}
+main .act .zone:not([data-ink]), main .act__head:not([data-ink]) {
+  --ink: #ffffff; --ink-muted: #ffffff; --ink-faint: #ffffff; --cyan-text: #ffffff;
+}
