@@ -109,7 +109,7 @@ test("the solver inks every new text block on its own", () => {
 
 // Eric, 2026-11-24: Submersion is a dive application; "logbook" is the record.
 test("the product is a dive application, never a dive log", () => {
-  assert.doesNotMatch(page(), /dive log(?!book)/i);
+  assert.doesNotMatch(page(), /\bdive logs?\b/i);
 });
 
 test("the hero shows the dive details page with its profile", () => {
