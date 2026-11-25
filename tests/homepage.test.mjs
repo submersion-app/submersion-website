@@ -170,3 +170,17 @@ test("no claim stronger than the app", () => {
   assert.doesNotMatch(html, /backup is made before every upgrade/, "backups run before schema migrations");
   assert.doesNotMatch(html, /opens the fill record/, "the /f page only explains the link");
 });
+
+// WCAG 2.2.2: moving content that runs longer than 5 seconds needs a way to pause it
+test("the clip has a pause control that the auto-play respects", () => {
+  const fig = /<figure[^>]*>((?:(?!<\/figure>)[\s\S])*<video[\s\S]*?)<\/figure>/.exec(page());
+  assert.ok(fig, "no figure around the clip");
+  const button = /<button\b[^>]*data-clip-toggle[^>]*>[\s\S]*?<\/button>/.exec(fig[1]);
+  assert.ok(button, "no pause control beside the clip");
+  assert.match(button[0], /\stype="button"/);
+  assert.match(button[0], /\shidden\b/, "hidden until script can drive it");
+  const ocean = read("ocean.js");
+  assert.match(ocean, /data-clip-toggle/, "ocean.js does not wire the control");
+  assert.match(ocean, /userPaused/, "auto-play does not remember a user's pause");
+  assert.match(ocean, /aria-pressed|aria-label/, "the control does not announce its state");
+});

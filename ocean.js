@@ -317,34 +317,65 @@
 
   // ---- Clips ----
   // A clip marked data-play-in-view plays, muted and looped, only while it is
-  // on screen, and never under reduced motion: there it keeps its poster.
+  // on screen. Its Pause button (data-clip-toggle, WCAG 2.2.2) stops it for
+  // good until pressed again. Under reduced motion it starts paused, on its
+  // poster, and plays only from the button.
   function setupClips() {
     const clips = Array.prototype.slice.call(document.querySelectorAll('video[data-play-in-view]'));
-    if (!clips.length || reducedMotion.matches || !('IntersectionObserver' in window)) return;
-    const io = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          const video = entry.target;
-          if (entry.isIntersecting) {
-            const played = video.play();
-            // A browser that refuses to play leaves the poster up, which is fine
-            if (played && played.catch) played.catch(function () {});
+    clips.forEach(function (video) {
+      const button = video.parentElement && video.parentElement.querySelector('[data-clip-toggle]');
+      let userPaused = reducedMotion.matches;
+
+      const play = function () {
+        const played = video.play();
+        // A browser that refuses to play leaves the poster up, which is fine
+        if (played && played.catch) played.catch(function () {});
+      };
+      const label = function () {
+        if (!button) return;
+        const paused = video.paused;
+        button.textContent = paused ? 'Play' : 'Pause';
+        button.setAttribute('aria-label', paused ? 'Play the clip' : 'Pause the clip');
+        button.setAttribute('aria-pressed', paused ? 'true' : 'false');
+      };
+      video.addEventListener('play', label);
+      video.addEventListener('pause', label);
+
+      if (button) {
+        button.hidden = false;
+        label();
+        button.addEventListener('click', function () {
+          if (video.paused) {
+            userPaused = false;
+            play();
           } else {
+            userPaused = true;
             video.pause();
           }
         });
-      },
-      { threshold: 0.25 }
-    );
-    clips.forEach(function (video) { io.observe(video); });
-    // Reduced motion turned on while the page is open stops the clips for good
-    const stop = function (e) {
-      if (!e.matches) return;
-      io.disconnect();
-      clips.forEach(function (video) { video.pause(); });
-    };
-    if (reducedMotion.addEventListener) reducedMotion.addEventListener('change', stop);
-    else if (reducedMotion.addListener) reducedMotion.addListener(stop);
+      }
+
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (!entry.isIntersecting) video.pause();
+              else if (!userPaused) play();
+            });
+          },
+          { threshold: 0.25 }
+        ).observe(video);
+      }
+
+      // Reduced motion turned on while the page is open stops the clip
+      const stop = function (e) {
+        if (!e.matches) return;
+        userPaused = true;
+        video.pause();
+      };
+      if (reducedMotion.addEventListener) reducedMotion.addEventListener('change', stop);
+      else if (reducedMotion.addListener) reducedMotion.addListener(stop);
+    });
   }
   setupClips();
 

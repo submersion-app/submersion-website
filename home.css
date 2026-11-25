@@ -55,16 +55,32 @@
 .feature-visual--pair { display: grid; }
 .feature-visual--pair > * { grid-area: 1 / 1; }
 .feature-visual--pair .showcase-img:first-child { width: 82%; justify-self: start; align-self: start; margin-bottom: 14%; }
-.feature-visual--pair .showcase-img:last-child { width: 62%; justify-self: end; align-self: end; position: relative; }
+.feature-visual--pair .showcase-img:nth-child(2) { width: 62%; justify-self: end; align-self: end; position: relative; }
 /* The video clip sits on the seascape's empty corner, clear of the terrain */
-.feature-visual--pair .showcase-img--bare:last-child { width: 50%; }
+.feature-visual--pair .showcase-img--bare:nth-child(2) { width: 50%; }
 /* A single tall card (the buoyancy card) stands narrow beside the first capture */
 .feature-visual--pair .showcase-img.showcase-img--card { width: 30%; border-radius: 14px; }
 @media (max-width: 560px) {
   .feature-visual--pair { display: block; }
   .feature-visual--pair .showcase-img:first-child,
-  .feature-visual--pair .showcase-img:last-child { width: 100%; margin: 16px 0 0; }
+  .feature-visual--pair .showcase-img:nth-child(2) { width: 100%; margin: 16px 0 0; }
   .feature-visual--pair .showcase-img.showcase-img--card { width: 64%; margin: 16px auto 0; }
+}
+
+/* The clip's pause control: on the clip's lower right corner in the grid cell,
+   and pinned to the figure's corner once the pair stacks on phones */
+.clip-toggle {
+  justify-self: end; align-self: end; position: relative; z-index: 1;
+  margin: 0 10px 10px 0; padding: 6px 14px; border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.5); background: rgba(1, 6, 14, 0.72);
+  color: #ffffff; font: 500 13px/1.2 var(--font); cursor: pointer;
+}
+.clip-toggle:hover { background: rgba(1, 6, 14, 0.88); }
+.clip-toggle:focus-visible { outline: 2px solid #ffffff; outline-offset: 2px; }
+.clip-toggle[hidden] { display: none; }
+@media (max-width: 560px) {
+  .feature-visual--pair { position: relative; }
+  .clip-toggle { position: absolute; right: 0; bottom: 0; }
 }
 
 /* ---------- Feature cards ---------- */
