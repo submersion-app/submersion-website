@@ -192,8 +192,11 @@ test("photos and species have their own row after sites", () => {
   const html = page();
   const media = /<section class="zone" id="media"[^>]*>([\s\S]*?)<\/section>/.exec(html);
   assert.ok(media, "no media row");
-  // Eric, 2026-11-25: a paused video with the virtual dive computer and mini profile leads the row
-  assert.match(media[1], /<figure[^>]*>\s*<img class="showcase-img" src="screenshots\/playback\.jpg"/);
+  // Eric, 2026-11-25: the library leads, with the species identification clip inset
+  const order = ["media-browser.jpg", "video-species.mp4"].map((f) => media[1].indexOf(f));
+  assert.ok(order.every((i) => i > 0) && order[0] < order[1], String(order));
+  assert.match(media[1], /<figure class="feature-visual feature-visual--pair">/);
+  assert.doesNotMatch(media[1], /playback\.jpg/);
   assert.match(media[1], /<video\b/);
   assert.ok(html.indexOf('id="sites"') < html.indexOf('id="media"') && html.indexOf('id="media"') < html.indexOf('id="analyze"'));
   const sites = /<section class="zone" id="sites"[^>]*>([\s\S]*?)<\/section>/.exec(html)[1];
