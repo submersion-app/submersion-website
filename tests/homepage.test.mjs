@@ -53,6 +53,8 @@ test("the h1 names the three ideas, not the lockup tagline", () => {
   const h1 = /<h1[^>]*>([\s\S]*?)<\/h1>/.exec(page());
   assert.ok(h1 && h1[1].trim(), "no h1");
   assert.doesNotMatch(h1[1], /Dive safe/i);
+  // Eric's choice (2026-11-25): the live site's headline stays
+  assert.equal(h1[1].trim(), "The complete dive app, free and open.");
 });
 
 test("screenshots and files match", () => {

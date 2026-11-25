@@ -176,7 +176,7 @@ The redesign branched on 7 October. Since then `main` gained: the downloads page
 Eric reviewed the built page and changed these; where they differ from the sections above, these govern.
 
 - **Copy voice:** concise and technical. Headings name the feature ("Dive planning", "Post-dive safety review"), and each card says what it does in one or two plain sentences, with no jokes, rhetorical questions or sales lines. No clipped comma phrases ("Your data, open"). The product is a "dive application", never a "dive log"; "logbook" is the record. A test fails the page on "dive log".
-- **Headline:** "Dive logging, analysis and planning for recreational and technical divers."
+- **Headline:** the live site's "The complete dive app, free and open." stays (Eric, 2026-11-25, after reviewing shorter and slogan options); the lead opens with "For recreational and technical divers".
 - **Act headings:** Logging and analysis, Safety, Your data (eyebrows: The whole dive, A safer diver, Your data stays yours). The menu keeps The dive, Safety, Your data.
 - **Rows:** Act 1 gains an Insights row (`insights`) for Progression and Connections. Some rows show two images, the second overlapping the first: Insights, the safety review with the buoyancy card, and the seascape with the species clip.
 - **Hero:** the uncropped dive details page with its profile.
