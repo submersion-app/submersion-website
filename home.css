@@ -63,6 +63,22 @@
   .feature-visual--pair .showcase-img.showcase-img--card { width: 64%; margin: 16px auto 0; }
 }
 
+/* Devices in one grid cell: the Mac window at the back, an iPad at the lower
+   left and an iPhone at the lower right, both in a thin dark bezel */
+.feature-visual--devices { display: grid; }
+.feature-visual--devices > * { grid-area: 1 / 1; }
+.feature-visual--devices .showcase-img:nth-child(1) { width: 84%; justify-self: end; align-self: start; margin-bottom: 26%; }
+.feature-visual--devices .showcase-img:nth-child(2) { width: 50%; justify-self: start; align-self: end; position: relative; }
+.feature-visual--devices .showcase-img:nth-child(3) { width: 20%; justify-self: end; align-self: end; margin-right: 4%; position: relative; }
+.feature-visual .showcase-img--device { border: 5px solid #0b0f14; background: #0b0f14; }
+.feature-visual--devices .showcase-img--device:nth-child(2) { border-radius: 18px; }
+.feature-visual--devices .showcase-img--device:nth-child(3) { border-radius: 22px; }
+@media (max-width: 560px) {
+  .feature-visual--devices .showcase-img:nth-child(1) { width: 100%; margin-bottom: 30%; }
+  .feature-visual--devices .showcase-img:nth-child(2) { width: 62%; }
+  .feature-visual--devices .showcase-img:nth-child(3) { width: 26%; margin-right: 2%; }
+}
+
 /* The clip's pause control: on the clip's lower right corner in the grid cell,
    and pinned to the figure's corner once the pair stacks on phones */
 .clip-toggle {

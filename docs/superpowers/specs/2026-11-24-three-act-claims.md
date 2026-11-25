@@ -76,6 +76,15 @@ Every feature the homepage names is in this table. Code paths are in `submersion
 | A data quality check that compares records with the sensor data and offers repairs | `data_quality` detectors and repairs | Data quality inbox | |
 | Agent access on desktop: a local server an AI assistant can use, with a token, showing each change before it is written | `agent_access_server_io.dart`, `preview_changes_tool.dart` | | Desktop only; off by default |
 
+## Platforms row
+
+| Claim | Code | Seen | Limit |
+|---|---|---|---|
+| iPhone and iPad from the App Store, dive computers over Bluetooth | download section links; libdivecomputer Darwin plugin | iPhone 17 Pro and iPad Pro 11-inch simulators (debug build of `main` at 20da100) | Bluetooth only on iOS |
+| Android from Google Play or as an APK from GitHub Releases | download section links | | |
+| Desktop layouts with side-by-side panes and keyboard shortcuts; agent access on desktop only | keyboard shortcuts (August table); `agentAccess: hasDesktopWindow()` | Mac app, list beside detail | |
+| Sync or nearby Bluetooth sync keeps dives, equipment and settings the same on each device | sync providers; `lib/core/services/nearby/`; synced `diver_settings` | | |
+
 ## Not to be advertised
 
 - Everything on the August list.

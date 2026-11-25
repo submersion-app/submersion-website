@@ -214,3 +214,13 @@ test("species identification is described for all media", () => {
   assert.doesNotMatch(row, /<h4>Species in photos<\/h4>/);
   assert.match(row, /<h4>Species in all media<\/h4>/);
 });
+
+// Eric, 2026-11-25: a section before Download showing the same dive on Mac, iPad and iPhone
+test("a platforms row shows the same app on Mac, iPad and iPhone before Download", () => {
+  const html = page();
+  const row = /<section class="zone" id="platforms"[^>]*>([\s\S]*?)<\/section>/.exec(html);
+  assert.ok(row, "no platforms row");
+  assert.ok(html.indexOf('id="data"') < html.indexOf('id="platforms"') && html.indexOf('id="platforms"') < html.indexOf('id="download"'));
+  for (const f of ["platform-mac.png", "platform-ipad.png", "platform-iphone.png"]) assert.match(row[1], new RegExp(`src="screenshots/${f.replace(".", "\\.")}"`), f);
+  assert.match(row[1], /<figure class="feature-visual feature-visual--devices">/);
+});
