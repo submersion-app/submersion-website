@@ -224,3 +224,12 @@ test("a platforms row shows the same app on Mac, iPad and iPhone before Download
   for (const f of ["platform-mac.png", "platform-ipad.png", "platform-iphone.png"]) assert.match(row[1], new RegExp(`src="screenshots/${f.replace(".", "\\.")}"`), f);
   assert.match(row[1], /<figure class="feature-visual feature-visual--devices">/);
 });
+
+// Eric, 2026-11-25: the sites row shows the site map with every catalogue site, and the seascape
+test("the sites row pairs the site map with the 3D seascape", () => {
+  const row = /<section class="zone" id="sites"[^>]*>([\s\S]*?)<\/section>/.exec(page())[1];
+  // The inset sits lower left, over the site list, so the map stays in view
+  assert.match(row, /<figure class="feature-visual feature-visual--pair feature-visual--inset-left">/);
+  const order = ["site-map.", "seascape.png"].map((f) => row.indexOf(f));
+  assert.ok(order.every((i) => i > 0) && order[0] < order[1], String(order));
+});

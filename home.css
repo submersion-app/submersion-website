@@ -54,6 +54,9 @@
 .feature-visual--pair > * { grid-area: 1 / 1; }
 .feature-visual--pair .showcase-img:first-child { width: 82%; justify-self: start; align-self: start; margin-bottom: 14%; }
 .feature-visual--pair .showcase-img:nth-child(2) { width: 62%; justify-self: end; align-self: end; position: relative; }
+/* Inset at the lower left, for a first capture whose detail is on its right */
+.feature-visual--inset-left .showcase-img:first-child { justify-self: end; }
+.feature-visual--inset-left .showcase-img:nth-child(2) { justify-self: start; }
 /* A single tall card (the buoyancy card) stands narrow beside the first capture */
 .feature-visual--pair .showcase-img.showcase-img--card { width: 30%; border-radius: 14px; }
 @media (max-width: 560px) {
