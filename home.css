@@ -46,8 +46,6 @@
   width: 100%; box-shadow: none; border-radius: 10px;
   filter: drop-shadow(0 24px 48px rgba(1, 6, 14, 0.38));
 }
-/* The video clip has no window chrome, so it gets a plain card edge */
-.feature-visual .showcase-img--bare { border-radius: 12px; }
 
 /* Two captures in one grid cell: the first at the top left, the second at the
    bottom right. The first's bottom margin sets how far the second hangs below
@@ -56,8 +54,6 @@
 .feature-visual--pair > * { grid-area: 1 / 1; }
 .feature-visual--pair .showcase-img:first-child { width: 82%; justify-self: start; align-self: start; margin-bottom: 14%; }
 .feature-visual--pair .showcase-img:nth-child(2) { width: 62%; justify-self: end; align-self: end; position: relative; }
-/* The video clip sits on the seascape's empty corner, clear of the terrain */
-.feature-visual--pair .showcase-img--bare:nth-child(2) { width: 50%; }
 /* A single tall card (the buoyancy card) stands narrow beside the first capture */
 .feature-visual--pair .showcase-img.showcase-img--card { width: 30%; border-radius: 14px; }
 @media (max-width: 560px) {

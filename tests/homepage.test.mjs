@@ -96,7 +96,7 @@ test("no retired or unsafe phrasing", () => {
 
 test("the shallow rows read without script", () => {
   // Every row above the mid-water crossover, where light ink would fall below 4.5:1 without the solver
-  for (const id of ["computer", "log", "sites", "analyze", "insights"]) {
+  for (const id of ["computer", "log", "sites", "media", "analyze", "insights"]) {
     assert.match(page(), new RegExp(`<section[^>]*id="${id}"[^>]*data-ink="dark"|<section[^>]*data-ink="dark"[^>]*id="${id}"`), id);
   }
 });
@@ -185,4 +185,29 @@ test("the clip has a pause control that the auto-play respects", () => {
   assert.match(ocean, /data-clip-toggle/, "ocean.js does not wire the control");
   assert.match(ocean, /userPaused/, "auto-play does not remember a user's pause");
   assert.match(ocean, /aria-pressed|aria-label/, "the control does not announce its state");
+});
+
+// Eric, 2026-11-25: the sites row splits into sites, and photos and species
+test("photos and species have their own row after sites", () => {
+  const html = page();
+  const media = /<section class="zone" id="media"[^>]*>([\s\S]*?)<\/section>/.exec(html);
+  assert.ok(media, "no media row");
+  // Eric, 2026-11-25: a paused video with the virtual dive computer and mini profile leads the row
+  assert.match(media[1], /<figure[^>]*>\s*<img class="showcase-img" src="screenshots\/playback\.jpg"/);
+  assert.match(media[1], /<video\b/);
+  assert.ok(html.indexOf('id="sites"') < html.indexOf('id="media"') && html.indexOf('id="media"') < html.indexOf('id="analyze"'));
+  const sites = /<section class="zone" id="sites"[^>]*>([\s\S]*?)<\/section>/.exec(html)[1];
+  assert.doesNotMatch(sites, /<video\b/);
+});
+
+test("the download row shows the duplicate review", () => {
+  const row = /<section class="zone" id="computer"[^>]*>([\s\S]*?)<\/section>/.exec(page())[1];
+  assert.match(row, /src="screenshots\/duplicate-review\.png"/);
+});
+
+// Eric, 2026-11-25: identification covers all media, not photos alone
+test("species identification is described for all media", () => {
+  const row = /<section class="zone" id="media"[^>]*>([\s\S]*?)<\/section>/.exec(page())[1];
+  assert.doesNotMatch(row, /<h4>Species in photos<\/h4>/);
+  assert.match(row, /<h4>Species in all media<\/h4>/);
 });

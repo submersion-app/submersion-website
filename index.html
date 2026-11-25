@@ -131,7 +131,7 @@
                 <p>Submersion downloads over Bluetooth LE and USB. After the first download only new dives transfer, and known computers connect automatically.</p>
               </div>
               <figure class="feature-visual">
-                <img class="showcase-img" src="screenshots/computer-download.png" alt="Transfer, Dive Computers: clock sync and auto-connect switches above three known computers, each with its dive count and last download" width="2400" height="1500" loading="lazy" decoding="async" />
+                <img class="showcase-img" src="screenshots/duplicate-review.png" alt="The import review step: a downloaded dive that matches one already in the logbook, both profiles overlaid, a 100% match, what is the same and what differs, and the choice to skip it or import it as new" width="2400" height="1500" loading="lazy" decoding="async" />
               </figure>
             </div>
             <div class="feature-cards">
@@ -190,32 +190,64 @@
         </section>
 
         <section class="zone" id="sites" data-ink="dark">
-          <span id="media"></span>
           <div class="zone__inner wrap">
             <div class="feature-row">
               <div class="feature-text">
-                <p class="zone__tag">Sites and species</p>
-                <h3>Sites and species identification</h3>
-                <p>Species are identified on the device in photos, and tracked through video with labels.</p>
+                <p class="zone__tag">Sites</p>
+                <h3>Dive sites and maps</h3>
+                <p>A bundled catalogue covers 20,999 dive sites and 3,593 dive centers. Site terrain is shown in 3D where bathymetry is available.</p>
               </div>
-              <figure class="feature-visual feature-visual--pair">
+              <figure class="feature-visual">
                 <img class="showcase-img" src="screenshots/seascape.png" alt="The seafloor around a dive site in 3D from EMODnet bathymetry, seen from the sea toward the shore, with depth contours stepping down past 2,000 feet" width="2400" height="1500" loading="lazy" decoding="async" />
-                <video class="showcase-img showcase-img--bare" src="screenshots/video-species.mp4" poster="screenshots/video-species.jpg" width="1280" height="906" muted loop playsinline preload="none" data-play-in-view aria-label="A reef video with species labels following the fish: Sergeant Majors, Schoolmaster Snapper, Spanish Hogfish and Black margate"></video>
-                <button class="clip-toggle" type="button" data-clip-toggle aria-pressed="false" hidden>Pause</button>
               </figure>
             </div>
             <div class="feature-cards">
               <article class="feature-card">
                 <h4>20,999 sites</h4>
-                <p>The bundled catalogue includes 20,999 sites and 3,593 dive centers from OpenStreetMap and other open sources. Map regions can be saved for offline use.</p>
+                <p>Sites and dive centers come from OpenStreetMap and other open sources, with depth range, access and hazards where known.</p>
               </article>
               <article class="feature-card">
                 <h4>3D seafloor</h4>
                 <p>Site terrain is shown in 3D with depth contours and steep walls, where bathymetry is available.</p>
               </article>
               <article class="feature-card">
+                <h4>Offline maps</h4>
+                <p>Map regions can be downloaded before a trip and used without a connection.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Tracks</h4>
+                <p>GPS tracks recorded on your phone or imported from GPX, KML, CSV or FIT files are matched to your dives. Underwater navigation tracks import from Seacraft ENC logs.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="zone" id="media" data-ink="dark">
+          <div class="zone__inner wrap">
+            <div class="feature-row feature-row--reverse">
+              <div class="feature-text">
+                <p class="zone__tag">Photos and species</p>
+                <h3>Media and species identification</h3>
+                <p>Photos and videos are linked from your library and matched to each dive. Video plays back with a virtual dive computer and a mini profile showing the dive at that moment. Species are identified on the device in photos and videos, with a label tracking each fish in video.</p>
+              </div>
+              <figure class="feature-visual feature-visual--pair">
+                <img class="showcase-img" src="screenshots/playback.jpg" alt="A dive video paused on a wreck, with a virtual dive computer showing depth, NDL, dive time, gas, tank pressure and ppO2 at that moment, and a mini dive profile in the corner" width="2400" height="1500" loading="lazy" decoding="async" />
+                <video class="showcase-img" src="screenshots/video-species.mp4" poster="screenshots/video-species.jpg" width="1600" height="1038" muted loop playsinline preload="none" data-play-in-view aria-label="Submersion playing a reef video, with species labels following the fish: Sergeant Majors, Black margate and Spanish Hogfish"></video>
+                <button class="clip-toggle" type="button" data-clip-toggle aria-pressed="false" hidden>Pause</button>
+              </figure>
+            </div>
+            <div class="feature-cards">
+              <article class="feature-card">
                 <h4>Photos on the profile</h4>
                 <p>Photos and video are matched to the dive by capture time and placed on the profile at their depth. Underwater colour correction is built in.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Species in all media</h4>
+                <p>Photos and videos get species suggestions with a confidence score, to accept or dismiss. In video, each fish is tracked with its own label.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Media sources</h4>
+                <p>Media can be linked from the device gallery, local folders, network URLs, or iCloud, Google Drive, Dropbox and S3 storage.</p>
               </article>
               <article class="feature-card">
                 <h4>Platforms</h4>
