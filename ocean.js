@@ -88,6 +88,10 @@
   }
   // AA asks for 4.5:1; aim a little above it so rounding never lands under
   const AA = 4.6;
+  // The background home.css gives a card in light ink, used when a card's water
+  // alone cannot carry either ink
+  const CARD_SHADE = [1, 6, 14];
+  const CARD_SHADE_ALPHA = 0.45;
 
   // `color` eased toward `bg` by up to `amount`, keeping at least AA on it
   function soften(color, bg, amount) {
@@ -185,9 +189,16 @@
       // Sample a little beyond the block: the reveal animation shifts it 12px
       const top = r.top + scrollY - INK_PAD;
       const bottom = r.bottom + scrollY + INK_PAD;
-      const tokens = solve(waterAt(top / pageH), waterAt(bottom / pageH));
+      const waterTop = waterAt(top / pageH);
+      const waterBottom = waterAt(bottom / pageH);
+      const tokens = solve(waterTop, waterBottom);
       if (tokens.reach >= AA) applyInk(blocks[i], tokens);
-      else applyTwilight(blocks[i], r.top + scrollY, r.bottom + scrollY);
+      else if (blocks[i].matches('.feature-card, .pillar')) {
+        // A card is never split into black and white lines. It takes the ink
+        // solved against the water under its own dark background (home.css),
+        // which always reaches AA for light ink.
+        applyInk(blocks[i], solve(mix(waterTop, CARD_SHADE, CARD_SHADE_ALPHA), mix(waterBottom, CARD_SHADE, CARD_SHADE_ALPHA)));
+      } else applyTwilight(blocks[i], r.top + scrollY, r.bottom + scrollY);
     }
   }
 

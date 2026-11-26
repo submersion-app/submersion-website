@@ -263,3 +263,15 @@ test("downloads are described as from dive computers", () => {
   assert.doesNotMatch(page(), /downloads 358/);
   assert.match(page(), /downloads from 358 dive computer models/);
 });
+
+// Eric, 2026-11-25: a card never splits into black and white lines. Where the
+// water alone cannot carry one ink, a card takes light ink over its own dark
+// background, and the solver checks that against the same shade home.css uses.
+test("cards are inked in one colour, against their own background", () => {
+  const ocean = read("ocean.js");
+  assert.match(ocean, /matches\('\.feature-card, \.pillar'\)/, "the solver does not treat cards apart");
+  const shade = /CARD_SHADE = \[(\d+), (\d+), (\d+)\];\s*const CARD_SHADE_ALPHA = ([\d.]+);/.exec(ocean);
+  assert.ok(shade, "no card shade in ocean.js");
+  const css = read("home.css");
+  assert.match(css, new RegExp(`\\.feature-card\\[data-ink="light"\\], \\.pillar\\[data-ink="light"\\] \\{\\s*background: rgba\\(${shade[1]}, ${shade[2]}, ${shade[3]}, ${shade[4]}\\)`));
+});
