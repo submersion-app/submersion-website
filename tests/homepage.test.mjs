@@ -257,3 +257,9 @@ test("video tracking is described for each creature", () => {
   assert.doesNotMatch(row, /each fish/);
   assert.match(row, /each creature/);
 });
+
+// Eric, 2026-11-25: it downloads dives from computers, not the computers themselves
+test("downloads are described as from dive computers", () => {
+  assert.doesNotMatch(page(), /downloads 358/);
+  assert.match(page(), /downloads from 358 dive computer models/);
+});
