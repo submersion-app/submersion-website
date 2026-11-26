@@ -20,7 +20,7 @@ const navLinks = (html) => {
 
 test("the menu names the three acts", () => {
   assert.deepEqual(navLinks(read("index.html")), [
-    ["#dive", "The dive"],
+    ["#dive", "Logbook"],
     ["#safety", "Safety"],
     ["#data", "Your data"],
     ["guide/", "Guide"],
@@ -232,4 +232,21 @@ test("the sites row pairs the site map with the 3D seascape", () => {
   assert.match(row, /<figure class="feature-visual feature-visual--pair feature-visual--inset-left">/);
   const order = ["site-map.", "seascape.png"].map((f) => row.indexOf(f));
   assert.ok(order.every((i) => i > 0) && order[0] < order[1], String(order));
+});
+
+// Eric, 2026-11-25: Act 1 is "Logbook" (menu and heading), labelled "Logging and analysis"
+test("act 1 is named Logbook", () => {
+  const html = page();
+  assert.doesNotMatch(html, /The whole dive|>The dive</);
+  const head = /<section class="act" id="dive">\s*<div[^>]*act__head[^>]*>([\s\S]*?)<\/div>/.exec(html)[1];
+  assert.match(head, /<p class="zone__tag">Logging and analysis<\/p>/);
+  assert.match(head, /<h2>Logbook<\/h2>/);
+  assert.match(html, /<a class="pillar" href="#dive">\s*<h2 class="pillar__title">Logging and analysis<\/h2>/);
+});
+
+// Eric, 2026-11-25: importing from other apps' formats is part of the row's lead, not only a card
+test("the download row leads with importing as well as downloading", () => {
+  const text = /<section class="zone" id="computer"[^>]*>[\s\S]*?<div class="feature-text">([\s\S]*?)<\/div>/.exec(page())[1];
+  assert.match(text, /<h3>[^<]*[Ii]mport[^<]*<\/h3>/);
+  for (const name of ["UDDF", "Subsurface", "MacDive"]) assert.match(text, new RegExp(name));
 });
