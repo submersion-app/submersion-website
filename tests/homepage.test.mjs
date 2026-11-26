@@ -281,3 +281,11 @@ test("the profile card names all media", () => {
   assert.doesNotMatch(page(), /<h4>Photos on the profile<\/h4>/);
   assert.match(page(), /<h4>Photos and videos on the profile<\/h4>/);
 });
+
+// Copilot review on #33: nearby Bluetooth sync does not work between two Linux devices
+test("every nearby Bluetooth sync claim states the Linux limit", () => {
+  const cards = [...page().matchAll(/<article class="feature-card">([\s\S]*?)<\/article>/g)].map((m) => m[1]);
+  const nearby = cards.filter((c) => /nearby/i.test(c) && /Bluetooth/.test(c));
+  assert.ok(nearby.length >= 2, `found ${nearby.length} nearby sync cards`);
+  for (const c of nearby) assert.match(c, /Linux/, c);
+});
