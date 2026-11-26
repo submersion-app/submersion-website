@@ -250,3 +250,10 @@ test("the download row leads with importing as well as downloading", () => {
   assert.match(text, /<h3>[^<]*[Ii]mport[^<]*<\/h3>/);
   for (const name of ["UDDF", "Subsurface", "MacDive"]) assert.match(text, new RegExp(name));
 });
+
+// Eric, 2026-11-25: video tracking follows any creature, not only fish
+test("video tracking is described for each creature", () => {
+  const row = /<section class="zone" id="media"[^>]*>([\s\S]*?)<\/section>/.exec(page())[1].replace(/<[^>]+>/g, " ");
+  assert.doesNotMatch(row, /each fish/);
+  assert.match(row, /each creature/);
+});
