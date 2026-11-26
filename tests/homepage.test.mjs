@@ -279,5 +279,5 @@ test("cards are inked in one colour, against their own background", () => {
 // Eric, 2026-11-25: photos and video both sit on the profile
 test("the profile card names all media", () => {
   assert.doesNotMatch(page(), /<h4>Photos on the profile<\/h4>/);
-  assert.match(page(), /<h4>Media on the profile<\/h4>/);
+  assert.match(page(), /<h4>Photos and videos on the profile<\/h4>/);
 });
