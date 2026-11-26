@@ -275,3 +275,9 @@ test("cards are inked in one colour, against their own background", () => {
   const css = read("home.css");
   assert.match(css, new RegExp(`\\.feature-card\\[data-ink="light"\\], \\.pillar\\[data-ink="light"\\] \\{\\s*background: rgba\\(${shade[1]}, ${shade[2]}, ${shade[3]}, ${shade[4]}\\)`));
 });
+
+// Eric, 2026-11-25: photos and video both sit on the profile
+test("the profile card names all media", () => {
+  assert.doesNotMatch(page(), /<h4>Photos on the profile<\/h4>/);
+  assert.match(page(), /<h4>Media on the profile<\/h4>/);
+});
