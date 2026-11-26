@@ -1,0 +1,151 @@
+/* Homepage only: the three acts, their feature rows and cards. Loaded after
+   styles.css by index.html; the inner pages never load it. */
+
+/* The homepage runs wider than the inner pages (the nav follows --max). */
+:root { --max: 1280px; }
+
+/* ---------- Pillars: one card per act ---------- */
+.pillars-band { padding-top: 24px; }
+.pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.pillar {
+  display: block; padding: 26px 26px 24px; border-radius: 16px;
+  border: 1px solid var(--line); color: var(--ink);
+  transition: transform 200ms ease;
+}
+/* A pillar is one link: no underline, though styles.css underlines links in dark ink */
+.pillars .pillar, .pillars .pillar:hover { text-decoration: none; }
+.pillar:hover { transform: translateY(-2px); }
+.pillar__title { font-size: 22px; line-height: 1.25; margin: 0 0 10px; }
+.pillar p { margin: 0; color: var(--ink-muted); font-size: 15px; }
+
+/* ---------- Acts ---------- */
+.act__head { padding-top: clamp(72px, 10vh, 120px); }
+.act__head h2 { font-size: clamp(34px, 4.4vw, 56px); max-width: 22ch; }
+.act .zone { padding: clamp(48px, 7vh, 88px) 0; }
+
+/* ---------- Feature rows: text beside a screenshot ---------- */
+.feature-row {
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; align-items: center;
+}
+.feature-text h3 {
+  font-weight: 700; letter-spacing: -0.015em;
+  font-size: clamp(24px, 2.6vw, 34px); line-height: 1.15; margin: 0;
+}
+.feature-text p:not(.zone__tag) { color: var(--ink-muted); margin: 16px 0 0; max-width: 46ch; }
+@media (min-width: 900px) {
+  .feature-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 56px; }
+  .feature-row--reverse .feature-text { order: 2; }
+}
+
+/* The captures carry their own window frame, so the image needs no bezel:
+   a shadow that follows the window's rounded corners is enough. */
+.feature-visual { margin: 0; }
+/* The species clip sizes like the screenshots beside it */
+.feature-visual video { display: block; max-width: 100%; height: auto; }
+.feature-visual .showcase-img {
+  width: 100%; box-shadow: none; border-radius: 10px;
+  filter: drop-shadow(0 24px 48px rgba(1, 6, 14, 0.38));
+}
+
+/* Two captures in one grid cell: the first at the top left, the second at the
+   bottom right. The first's bottom margin sets how far the second hangs below
+   it, so the overlap follows the images' real heights. */
+.feature-visual--pair { display: grid; }
+.feature-visual--pair > * { grid-area: 1 / 1; }
+.feature-visual--pair .showcase-img:first-child { width: 82%; justify-self: start; align-self: start; margin-bottom: 14%; }
+.feature-visual--pair .showcase-img:nth-child(2) { width: 62%; justify-self: end; align-self: end; position: relative; }
+/* Inset at the lower left, for a first capture whose detail is on its right */
+.feature-visual--inset-left .showcase-img:first-child { justify-self: end; }
+.feature-visual--inset-left .showcase-img:nth-child(2) { justify-self: start; }
+/* A single tall card (the buoyancy card) stands narrow beside the first capture */
+.feature-visual--pair .showcase-img.showcase-img--card { width: 30%; border-radius: 14px; }
+@media (max-width: 560px) {
+  .feature-visual--pair { display: block; }
+  .feature-visual--pair .showcase-img:first-child,
+  .feature-visual--pair .showcase-img:nth-child(2) { width: 100%; margin: 16px 0 0; }
+  .feature-visual--pair .showcase-img.showcase-img--card { width: 64%; margin: 16px auto 0; }
+}
+
+/* Devices in one grid cell: the Mac window at the back, an iPad at the lower
+   left and an iPhone at the lower right, both in a thin dark bezel */
+.feature-visual--devices { display: grid; }
+.feature-visual--devices > * { grid-area: 1 / 1; }
+.feature-visual--devices .showcase-img:nth-child(1) { width: 84%; justify-self: end; align-self: start; margin-bottom: 26%; }
+.feature-visual--devices .showcase-img:nth-child(2) { width: 50%; justify-self: start; align-self: end; position: relative; }
+.feature-visual--devices .showcase-img:nth-child(3) { width: 20%; justify-self: end; align-self: end; margin-right: 4%; position: relative; }
+.feature-visual .showcase-img--device { border: 5px solid #0b0f14; background: #0b0f14; }
+.feature-visual--devices .showcase-img--device:nth-child(2) { border-radius: 18px; }
+.feature-visual--devices .showcase-img--device:nth-child(3) { border-radius: 22px; }
+@media (max-width: 560px) {
+  .feature-visual--devices .showcase-img:nth-child(1) { width: 100%; margin-bottom: 30%; }
+  .feature-visual--devices .showcase-img:nth-child(2) { width: 62%; }
+  .feature-visual--devices .showcase-img:nth-child(3) { width: 26%; margin-right: 2%; }
+}
+
+/* The clip's pause control: on the clip's lower right corner in the grid cell,
+   and pinned to the figure's corner once the pair stacks on phones */
+.clip-toggle {
+  justify-self: end; align-self: end; position: relative; z-index: 1;
+  margin: 0 10px 10px 0; padding: 6px 14px; border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.5); background: rgba(1, 6, 14, 0.72);
+  color: #ffffff; font: 500 13px/1.2 var(--font); cursor: pointer;
+}
+.clip-toggle:hover { background: rgba(1, 6, 14, 0.88); }
+.clip-toggle:focus-visible { outline: 2px solid #ffffff; outline-offset: 2px; }
+.clip-toggle[hidden] { display: none; }
+@media (max-width: 560px) {
+  .feature-visual--pair { position: relative; }
+  .clip-toggle { position: absolute; right: 0; bottom: 0; }
+}
+
+/* ---------- Feature cards ---------- */
+.feature-cards {
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; margin-top: 40px;
+}
+@media (min-width: 560px) { .feature-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1120px) { .feature-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.feature-card {
+  padding: 20px 20px 22px; border-radius: 14px; border: 1px solid var(--line);
+  color: var(--ink);
+}
+.feature-card h4 { font-size: 16px; font-weight: 600; line-height: 1.3; margin: 0 0 8px; }
+.feature-card p { margin: 0; color: var(--ink-muted); font-size: 14.5px; line-height: 1.6; }
+
+/* Cards are translucent over the water: pale behind dark ink, deep behind light
+   ink, so the card only ever adds contrast to what ocean.js solved. Without
+   script, a card takes its section's static ink. */
+.feature-card, .pillar { background: rgba(1, 6, 14, 0.4); }
+[data-ink="dark"] .feature-card, [data-ink="dark"] .pillar { background: rgba(255, 255, 255, 0.2); }
+.feature-card[data-ink="dark"], .pillar[data-ink="dark"] { background: rgba(255, 255, 255, 0.2); }
+.feature-card[data-ink="light"], .pillar[data-ink="light"] {
+  background: rgba(1, 6, 14, 0.45);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+
+@media (max-width: 900px) { .pillars { grid-template-columns: minmax(0, 1fr); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .pillar { transition: none; }
+  .pillar:hover { transform: none; }
+}
+
+/* ---------- Hero on the homepage ----------
+   The headline is one sentence, so it runs smaller than styles.css's display
+   size, and the profile chart gets the wider column. */
+.hero h1 { font-size: clamp(34px, 3.6vw, 50px); line-height: 1.08; }
+@media (min-width: 1000px) {
+  .hero__inner { grid-template-columns: minmax(0, 9fr) minmax(0, 11fr); gap: 56px; }
+}
+
+/* ---------- Without script ----------
+   ocean.js inks every block for the water behind it. Without it, blocks take
+   their section's static ink, and the muted tones (tuned for clearer water)
+   fall short where the water turns from cyan to navy. These section-level
+   defaults run them at full strength. ocean.js removes the no-js class as it
+   starts, so they never apply once the solver runs. */
+html.no-js main .zone[data-ink="dark"], html.no-js main .act__head[data-ink="dark"] {
+  --ink: #000000; --ink-muted: #000000; --ink-faint: #000000; --cyan-text: #000000;
+}
+html.no-js main .act .zone:not([data-ink]), html.no-js main .act__head:not([data-ink]) {
+  --ink: #ffffff; --ink-muted: #ffffff; --ink-faint: #ffffff; --cyan-text: #ffffff;
+}

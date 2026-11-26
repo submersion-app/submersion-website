@@ -1,12 +1,12 @@
 (() => {
   'use strict';
 
-  const MAX_DEPTH_M = 60;
+  // The page's no-script styles (home.css) apply only until this runs
+  document.documentElement.classList.remove('no-js');
+
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   const root = document.documentElement;
-  const readout = document.getElementById('depth-readout');
-  const ticks = Array.prototype.slice.call(document.querySelectorAll('.gauge__tick'));
   const rays = Array.prototype.slice.call(document.querySelectorAll('.ocean__ray'));
   const parallaxEls = Array.prototype.slice.call(document.querySelectorAll('[data-speed]'));
 
@@ -57,7 +57,12 @@
   // until its main text reaches 7:1 (or as close as it can get), with the muted
   // and faint tones eased back toward the water only as far as 4.5:1 allows.
   const INK_BLOCKS = [
-    'main .zone__inner > :not(.features):not(.shots):not(.legal__body)',
+    'main .zone__inner > :not(.features):not(.shots):not(.legal__body):not(.feature-row):not(.feature-cards):not(.pillars)',
+    // The homepage's rows and cards: each text block and card on its own, so a
+    // card is inked for the water behind it rather than for its whole grid
+    'main .feature-text > *',
+    'main .feature-cards > *',
+    'main .pillars > *',
     'main .features > *',
     'main .shots > *',
     'main .legal__body > :not(.callout)',
@@ -83,6 +88,10 @@
   }
   // AA asks for 4.5:1; aim a little above it so rounding never lands under
   const AA = 4.6;
+  // The background home.css gives a card in light ink, used when a card's water
+  // alone cannot carry either ink
+  const CARD_SHADE = [1, 6, 14];
+  const CARD_SHADE_ALPHA = 0.45;
 
   // `color` eased toward `bg` by up to `amount`, keeping at least AA on it
   function soften(color, bg, amount) {
@@ -180,30 +189,19 @@
       // Sample a little beyond the block: the reveal animation shifts it 12px
       const top = r.top + scrollY - INK_PAD;
       const bottom = r.bottom + scrollY + INK_PAD;
-      const tokens = solve(waterAt(top / pageH), waterAt(bottom / pageH));
+      const waterTop = waterAt(top / pageH);
+      const waterBottom = waterAt(bottom / pageH);
+      const tokens = solve(waterTop, waterBottom);
       if (tokens.reach >= AA) applyInk(blocks[i], tokens);
-      else applyTwilight(blocks[i], r.top + scrollY, r.bottom + scrollY);
+      else if (blocks[i].matches('.feature-card, .pillar')) {
+        // A card is never split into black and white lines. It takes the ink
+        // solved against the water under its own dark background (home.css),
+        // which always reaches AA for light ink.
+        applyInk(blocks[i], solve(mix(waterTop, CARD_SHADE, CARD_SHADE_ALPHA), mix(waterBottom, CARD_SHADE, CARD_SHADE_ALPHA)));
+      } else applyTwilight(blocks[i], r.top + scrollY, r.bottom + scrollY);
     }
-    measureTicks();
-    inkTicks(scrollY);
   }
 
-  // The depth gauge is fixed, so the water behind each of its ticks changes as
-  // the page scrolls; they are re-inked on every scroll update.
-  let tickY = [];
-  function measureTicks() {
-    tickY = ticks.map(function (tick) {
-      const r = tick.getBoundingClientRect();
-      return (r.top + r.bottom) / 2;
-    });
-  }
-  function inkTicks(scrollY) {
-    for (let i = 0; i < ticks.length; i++) {
-      const water = waterAt((scrollY + tickY[i]) / pageH);
-      applyInk(ticks[i], solve(water, water));
-    }
-  }
-  window.addEventListener('resize', measureTicks);
 
   solveInk();
   // Re-solve when anything changes the page's height or a block's position
@@ -303,13 +301,6 @@
     const maxScroll = root.scrollHeight - window.innerHeight;
     depthFrac = maxScroll > 0 ? Math.min(1, Math.max(0, y / maxScroll)) : 0;
 
-    const depth = depthFrac * MAX_DEPTH_M;
-    if (readout) readout.textContent = depth.toFixed(1) + ' m';
-    for (let i = 0; i < ticks.length; i++) {
-      ticks[i].classList.toggle('gauge__tick--passed', Number(ticks[i].dataset.depth) <= depth);
-    }
-    inkTicks(y);
-
     if (!reducedMotion.matches) {
       for (let i = 0; i < parallaxEls.length; i++) {
         const el = parallaxEls[i];
@@ -324,7 +315,7 @@
     }
   }
 
-  // Full motion: one continuous rAF loop drives parallax, gauge, snow.
+  // Full motion: one continuous rAF loop drives parallax and snow.
   function frame() {
     if (!document.hidden) {
       if ((window.scrollY || 0) !== lastY) update();
@@ -335,22 +326,70 @@
 
   setupReveals();
 
-  if (reducedMotion.matches) {
-    // Reduced motion: no continuous loop. Keep the depth readout and tick
-    // states current by coalescing scroll/resize events into a single rAF.
-    let queued = false;
-    const schedule = function () {
-      if (queued) return;
-      queued = true;
-      window.requestAnimationFrame(function () {
-        queued = false;
-        update();
-      });
-    };
-    window.addEventListener('scroll', schedule, { passive: true });
-    window.addEventListener('resize', schedule);
-    update();
-  } else {
-    window.requestAnimationFrame(frame);
+  // ---- Clips ----
+  // A clip marked data-play-in-view plays, muted and looped, only while it is
+  // on screen. Its Pause button (data-clip-toggle, WCAG 2.2.2) stops it for
+  // good until pressed again. Under reduced motion it starts paused, on its
+  // poster, and plays only from the button.
+  function setupClips() {
+    const clips = Array.prototype.slice.call(document.querySelectorAll('video[data-play-in-view]'));
+    clips.forEach(function (video) {
+      const button = video.parentElement && video.parentElement.querySelector('[data-clip-toggle]');
+      let userPaused = reducedMotion.matches;
+
+      const play = function () {
+        const played = video.play();
+        // A browser that refuses to play leaves the poster up, which is fine
+        if (played && played.catch) played.catch(function () {});
+      };
+      const label = function () {
+        if (!button) return;
+        const paused = video.paused;
+        button.textContent = paused ? 'Play' : 'Pause';
+        button.setAttribute('aria-label', paused ? 'Play the clip' : 'Pause the clip');
+        button.setAttribute('aria-pressed', paused ? 'true' : 'false');
+      };
+      video.addEventListener('play', label);
+      video.addEventListener('pause', label);
+
+      if (button) {
+        button.hidden = false;
+        label();
+        button.addEventListener('click', function () {
+          if (video.paused) {
+            userPaused = false;
+            play();
+          } else {
+            userPaused = true;
+            video.pause();
+          }
+        });
+      }
+
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (!entry.isIntersecting) video.pause();
+              else if (!userPaused) play();
+            });
+          },
+          { threshold: 0.25 }
+        ).observe(video);
+      }
+
+      // Reduced motion turned on while the page is open stops the clip
+      const stop = function (e) {
+        if (!e.matches) return;
+        userPaused = true;
+        video.pause();
+      };
+      if (reducedMotion.addEventListener) reducedMotion.addEventListener('change', stop);
+      else if (reducedMotion.addListener) reducedMotion.addListener(stop);
+    });
   }
+  setupClips();
+
+  // Reduced motion: no loop, so the water stays still.
+  if (!reducedMotion.matches) window.requestAnimationFrame(frame);
 })();

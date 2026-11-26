@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,13 +9,13 @@
     <title>Submersion</title>
     <meta
       name="description"
-      content="Submersion is free, open-source dive software for recreational and technical divers: dive computer download, logging, profile analysis with Bühlmann tissue loading, OC and rebreather planning, gas calculators, sites and maps, gear, photos, and encrypted sync through your own cloud. iOS, Android, macOS, Windows, Linux."
+      content="Submersion is a free and open-source dive application for recreational and technical divers. It downloads dive computers, analyses profiles with Bühlmann ZH-L16C, plans open-circuit and rebreather dives and tracks equipment service. It runs on iOS, Android, macOS, Windows and Linux."
     />
 
     <meta property="og:title" content="Submersion: the complete dive app, free and open" />
     <meta
       property="og:description"
-      content="Free, open-source dive software. 350+ dive computers, Bühlmann ZH-L16C with gradient factors, OC/CCR/SCR planning, UDDF 3.2 and nine other import formats, end-to-end encrypted sync through your own cloud. No accounts."
+      content="Free and open-source dive application. It downloads from 358 dive computer models, reviews each dive for safety, plans open-circuit and rebreather dives and syncs through your own storage."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://submersion.app/" />
@@ -33,6 +33,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="home.css" />
   </head>
   <body id="top">
     <a class="skip" href="#content">Skip to content</a>
@@ -58,35 +59,18 @@
       <canvas id="ocean-snow" class="ocean__snow"></canvas>
     </div>
 
-    <!-- Fixed depth gauge -->
-    <div class="gauge" id="depth-gauge">
-      <div class="gauge__ticks" aria-hidden="true">
-        <span class="gauge__tick" data-depth="0">0 m</span>
-        <span class="gauge__tick" data-depth="10">10</span>
-        <span class="gauge__tick" data-depth="20">20</span>
-        <span class="gauge__tick" data-depth="30">30</span>
-        <span class="gauge__tick" data-depth="40">40</span>
-        <span class="gauge__tick" data-depth="50">50</span>
-        <span class="gauge__tick" data-depth="60">60 m</span>
-      </div>
-      <div class="gauge__readout" id="depth-readout">0.0 m</div>
-    </div>
-
     <header class="surface">
       <nav class="nav" aria-label="Primary">
         <a class="nav__brand" href="#top">
           <img src="assets/brand/lockup-dark.png" alt="Submersion: Dive safe. Log everything." width="278" height="96" decoding="async" />
         </a>
         <div class="nav__links">
-          <a href="#computer">Computer</a>
-          <a href="#log">Log</a>
-          <a href="#sites">Sites</a>
-          <a href="#analyze">Analyze</a>
-          <a href="#plan">Plan</a>
-          <a href="#data">Data</a>
+          <a href="#dive">Logbook</a>
+          <a href="#safety">Safety</a>
+          <a href="#data">Your data</a>
           <a class="nav__guide" href="guide/">Guide</a>
-          <a href="#download">Download</a>
           <a href="https://github.com/submersion-app/submersion" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="#download">Download</a>
         </div>
       </nav>
 
@@ -96,10 +80,7 @@
             <p class="eyebrow">Free&nbsp;· Open source&nbsp;· iOS&nbsp;· Android&nbsp;· macOS&nbsp;· Windows&nbsp;· Linux</p>
             <h1>The complete dive app, free and open.</h1>
             <p class="lead">
-              Download your computer, check the deco on the profile, plan tomorrow's dive with the
-              gas you actually have, log who you dove with and what you saw, and keep every bit of
-              it on your own hardware. Rec or tech, single tank or rebreather, it all fits in the
-              same logbook.
+              For recreational and technical divers, Submersion downloads from 358 dive computer models, analyses each profile with Bühlmann ZH-L16C, plans open-circuit and rebreather dives and tracks equipment service. It is free and open source under GPL-3.0. Your data is stored on your devices and synced only through storage you choose.
             </p>
             <div class="cta-row">
               <a class="btn" href="#download">Download</a>
@@ -107,394 +88,493 @@
             </div>
           </div>
           <figure class="hero__art">
-            <img src="screenshots/dive_detail.png" alt="Submersion on macOS: the dive list beside a dive's detail with its profile, deco status and tissue loading" width="2228" height="1392" fetchpriority="high" decoding="async" />
+            <img src="screenshots/dive-detail.png" alt="Submersion on macOS: a 130-foot deco dive in Guadeloupe in the dive list and its details, with the profile showing the deco ceiling and stops, the gas switch to EAN50 and a photo, and the deco status, oxygen and tissue loading cards below" width="2400" height="1500" fetchpriority="high" decoding="async" />
           </figure>
         </div>
       </section>
     </header>
 
     <main id="content">
-      <section class="zone" id="computer" data-ink="dark">
+      <section class="zone pillars-band" id="why" data-ink="dark">
         <div class="zone__inner wrap">
-          <p class="zone__tag">6 m · From your computer</p>
-          <h2>Start with what your computer recorded.</h2>
-          <p class="zone__intro">
-            Pair over Bluetooth or plug in over USB, download, review what came in, done. After the
-            first time, only new dives come across.
-          </p>
-          <figure class="shot--wide">
-            <img src="screenshots/computer_import.png" alt="Dive computer download review step showing a 70 percent match against an existing dive, both profiles overlaid, and four resolution actions" width="2240" height="1559" loading="lazy" decoding="async" />
-            <figcaption>The review step of a download: a likely duplicate shown against the existing dive, both profiles overlaid, and the four ways to resolve it.</figcaption>
-          </figure>
-          <div class="features">
-            <div class="feature">
-              <h3>350+ models</h3>
-              <p>Submersion bundles libdivecomputer. That gives it the 350+ models supported by libdivecomputer, from 37 manufacturers, over Bluetooth LE and USB. <a href="/computers/">See which models divers have verified on your platform</a>, and which still need a tester. Bluetooth only on iOS.</p>
-            </div>
-            <div class="feature">
-              <h3>Incremental downloads</h3>
-              <p>Submersion remembers the last dive it took from each computer and fetches only what is new.</p>
-            </div>
-            <div class="feature">
-              <h3>Duplicate review</h3>
-              <p>A download that looks like a dive you already have is shown next to it. Skip it, import it as a new dive, replace the earlier source, or keep both computers' readings on one dive.</p>
-            </div>
-            <div class="feature">
-              <h3>Two computers, one dive</h3>
-              <p>Wear a backup? Both downloads attach to the same dive, and you can put their profiles on one chart.</p>
-            </div>
-          </div>
-          <h3 class="subhead">Already have a logbook somewhere else?</h3>
-          <div class="features">
-            <div class="feature">
-              <h3>Import files</h3>
-              <p>Subsurface, MacDive, Shearwater Cloud, Garmin FIT, DAN DL7, Ratio and UDDF files import directly. CSV comes with presets for MySSI, Diving Log, DiveMate, Garmin Connect and Shearwater Cloud, or map the columns yourself.</p>
-            </div>
-            <div class="feature">
-              <h3>Apple Health</h3>
-              <p>Underwater workouts recorded by an Apple Watch import on iOS with depth, temperature and heart rate.</p>
-            </div>
-            <div class="feature">
-              <h3>Paper logbooks</h3>
-              <p>Scan the pages and Submersion reads the entries with OCR so you can check them and import them.</p>
-            </div>
-            <div class="feature">
-              <h3>Open formats</h3>
-              <p>Everything you import can leave again as UDDF 3.2, CSV, Excel or PDF.</p>
-            </div>
+          <div class="pillars">
+            <a class="pillar" href="#dive">
+              <h2 class="pillar__title">Logging and analysis</h2>
+              <p>Submersion downloads, logs and analyses every dive, and keeps sites, trips, photos and equipment together.</p>
+            </a>
+            <a class="pillar" href="#safety">
+              <h2 class="pillar__title">A safer diver</h2>
+              <p>Each dive gets a safety review. The planner handles open circuit and rebreathers, and every item of equipment has a service schedule.</p>
+            </a>
+            <a class="pillar" href="#data">
+              <h2 class="pillar__title">Your data stays yours</h2>
+              <p>Submersion has no accounts or servers. Sync uses your own storage, and all data exports to open formats.</p>
+            </a>
           </div>
         </div>
       </section>
 
-      <section class="zone" id="log" data-ink="dark">
-        <span id="screens"></span>
-        <div class="zone__inner wrap">
-          <p class="zone__tag">12 m · The log</p>
-          <h2>A record with room for everything.</h2>
-          <p class="zone__intro">
-            Every field is optional. A quick reef dive needs a site, a depth and a time. A staged
-            decompression dive can carry every gas switch, setpoint and signature.
-          </p>
-          <div class="shots shots--2">
-            <figure>
-              <img src="screenshots/dive_detail.png" alt="Dive list beside a dive detail pane with header statistics, the dive profile with events, deco status, oxygen exposure and tissue loading" width="2228" height="1392" loading="lazy" decoding="async" />
-              <figcaption>A dive's detail pane: header stats, the profile with events, deco status, oxygen exposure and tissue loading.</figcaption>
-            </figure>
-            <figure>
-              <img src="screenshots/dive_table.png" alt="Dive log in table view beside a dive's details, environment, weather and tide sections" width="2228" height="1392" loading="lazy" decoding="async" />
-              <figcaption>The table view beside a dive's details: conditions, weather for the day, entry and exit, and the tide.</figcaption>
-            </figure>
-          </div>
-          <div class="features">
-            <div class="feature">
-              <h3>Conditions</h3>
-              <p>Visibility, current, swell, water and air temperature, entry and exit method, altitude. Weather is fetched for the date and place. Tides come from a bundled global model and work offline.</p>
-            </div>
-            <div class="feature">
-              <h3>People</h3>
-              <p>Buddies, divemaster, your own role on the dive, dive center, operator and boat. A buddy or instructor can sign the dive on your screen.</p>
-            </div>
-            <div class="feature">
-              <h3>Gases and cylinders</h3>
-              <p>Any number of cylinders per dive, each with its oxygen and helium fraction, start and end pressure, and the pressure trace from an air-integrated transmitter. Gas switches are marked on the profile.</p>
-            </div>
-            <div class="feature">
-              <h3>Weights</h3>
-              <p>What you carried, where you put it, and whether it felt right. The weight planner learns from this.</p>
-            </div>
-            <div class="feature">
-              <h3>Your own fields</h3>
-              <p>Tags with colors, star ratings, favorites, dive types you define, and custom fields for whatever your agency or your habits call for.</p>
-            </div>
-            <div class="feature">
-              <h3>Views</h3>
-              <p>Cards, or a table with the columns you choose, sortable and saved. Bulk edit fixes a whole trip's entries at once.</p>
-            </div>
-            <div class="feature">
-              <h3>Safety review</h3>
-              <p>After each dive Submersion checks the profile for fast ascents, sawtooth patterns and missed safety stops, and lists what it found.</p>
-            </div>
-            <div class="feature">
-              <h3>Several divers</h3>
-              <p>Separate profiles for each diver who uses the app, each with emergency contacts, medical notes and insurance details.</p>
-            </div>
-          </div>
+      <!-- Act 1: logbook -->
+      <section class="act" id="dive">
+        <div class="zone__inner wrap act__head" data-ink="dark">
+          <p class="zone__tag">Logging and analysis</p>
+          <h2>Logbook</h2>
+          <p class="zone__intro">Submersion covers a dive from the computer download to long-term statistics. Every field is optional.</p>
         </div>
+
+        <section class="zone" id="computer" data-ink="dark">
+          <div class="zone__inner wrap">
+            <div class="feature-row">
+              <div class="feature-text">
+                <p class="zone__tag">Download and import</p>
+                <h3>Dive computer download and import</h3>
+                <p>Submersion downloads over Bluetooth LE and USB. After the first download only new dives transfer, and known computers connect automatically. Existing logbooks import from UDDF, Subsurface, MacDive, Shearwater Cloud, Diving Log, DAN DL7, Garmin FIT and CSV files.</p>
+              </div>
+              <figure class="feature-visual">
+                <img class="showcase-img" src="screenshots/duplicate-review.png" alt="The import review step: a downloaded dive that matches one already in the logbook, both profiles overlaid, a 100% match, what is the same and what differs, and the choice to skip it or import it as new" width="2400" height="1500" loading="lazy" decoding="async" />
+              </figure>
+            </div>
+            <div class="feature-cards">
+              <article class="feature-card">
+                <h4>358 supported models</h4>
+                <p>Support comes from libdivecomputer and covers 38 manufacturers. iOS supports Bluetooth only. <a href="/computers/">See the tested models by platform</a>.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Duplicate review</h4>
+                <p>A download that matches an existing dive is shown beside it. You can skip it, import it as a new dive, replace the earlier source or merge both computers into one dive.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Online accounts and CSV</h4>
+                <p>Suunto, Garmin Connect and divelogs.de import by signing in. CSV comes with presets for common apps, or columns can be mapped by hand.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Paper logs and Apple Health</h4>
+                <p>Scanned logbook pages are read with OCR for review. On iOS, Apple Watch underwater workouts import with depth, temperature and heart rate.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="zone" id="log" data-ink="dark">
+          <span id="screens"></span>
+          <div class="zone__inner wrap">
+            <div class="feature-row feature-row--reverse">
+              <div class="feature-text">
+                <p class="zone__tag">The log</p>
+                <h3>Trips and itineraries</h3>
+                <p>Each trip has an itinerary and a page per day, with the day's dives on a map, a timeline and the photos.</p>
+              </div>
+              <figure class="feature-visual">
+                <img class="showcase-img" src="screenshots/trip-day.png" alt="A trip's day page: three dives on a map, the day's timeline from sunrise to sunset, water conditions, a photo and the species seen that day" width="2400" height="1500" loading="lazy" decoding="async" />
+              </figure>
+            </div>
+            <div class="feature-cards">
+              <article class="feature-card">
+                <h4>Home</h4>
+                <p>The Home page shows totals, recent trips, overdue service and the latest profile.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Conditions</h4>
+                <p>Weather is added for the date and location. Tides are calculated offline from a global model.</p>
+              </article>
+              <article class="feature-card">
+                <h4>People</h4>
+                <p>Each dive records buddies and their roles, with signatures.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Search</h4>
+                <p>Search accepts plain words, for example "Bonaire last year".</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="zone" id="sites" data-ink="dark">
+          <div class="zone__inner wrap">
+            <div class="feature-row">
+              <div class="feature-text">
+                <p class="zone__tag">Sites</p>
+                <h3>Dive sites and maps</h3>
+                <p>A bundled catalogue covers 20,999 dive sites and 3,593 dive centers. Site terrain is shown in 3D where bathymetry is available.</p>
+              </div>
+              <figure class="feature-visual feature-visual--pair feature-visual--inset-left">
+                <img class="showcase-img" src="screenshots/site-map.png" alt="The site map: the dive site list beside a map of Bonaire with catalogue sites clustered along the coast and a heat map of the sites dived" width="2400" height="1500" loading="lazy" decoding="async" />
+                <img class="showcase-img" src="screenshots/seascape.png" alt="The seafloor around a dive site in 3D from EMODnet bathymetry, seen from the sea toward the shore, with depth contours stepping down past 2,000 feet" width="2400" height="1500" loading="lazy" decoding="async" />
+              </figure>
+            </div>
+            <div class="feature-cards">
+              <article class="feature-card">
+                <h4>20,999 sites</h4>
+                <p>Sites and dive centers come from OpenStreetMap and other open sources, with depth range, access and hazards where known.</p>
+              </article>
+              <article class="feature-card">
+                <h4>3D seafloor</h4>
+                <p>Site terrain is shown in 3D with depth contours and steep walls, where bathymetry is available.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Offline maps</h4>
+                <p>Map regions can be downloaded before a trip and used without a connection.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Tracks</h4>
+                <p>GPS tracks recorded on your phone or imported from GPX, KML, CSV or FIT files are matched to your dives. Underwater navigation tracks import from Seacraft ENC logs.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="zone" id="media" data-ink="dark">
+          <div class="zone__inner wrap">
+            <div class="feature-row feature-row--reverse">
+              <div class="feature-text">
+                <p class="zone__tag">Photos and species</p>
+                <h3>Media and species identification</h3>
+                <p>Photos and videos are linked from your library and matched to each dive. Video plays back with a virtual dive computer and a mini profile showing the dive at that moment. Species are identified on the device in photos and videos, with a label tracking each creature in video.</p>
+              </div>
+              <figure class="feature-visual feature-visual--pair">
+                <img class="showcase-img" src="screenshots/media-browser.jpg" alt="The media library: a grid of reef photos and video clips from a dive trip, with durations on the videos" width="2400" height="1500" loading="lazy" decoding="async" />
+                <video class="showcase-img" src="screenshots/video-species.mp4" poster="screenshots/video-species.jpg" width="1600" height="1038" muted loop playsinline preload="none" data-play-in-view aria-label="Submersion playing a reef video, with species labels following the fish: Sergeant Majors, Black margate and Spanish Hogfish"></video>
+                <button class="clip-toggle" type="button" data-clip-toggle aria-pressed="false" hidden>Pause</button>
+              </figure>
+            </div>
+            <div class="feature-cards">
+              <article class="feature-card">
+                <h4>Photos and videos on the profile</h4>
+                <p>Photos and video are matched to the dive by capture time and placed on the profile at their depth. Underwater colour correction is built in.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Species in all media</h4>
+                <p>Photos and videos get species suggestions with a confidence score, to accept or dismiss. In video, each creature is tracked with its own label.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Media sources</h4>
+                <p>Media can be linked from the device gallery, local folders, network URLs, or iCloud, Google Drive, Dropbox and S3 storage.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Platforms</h4>
+                <p>Photo identification runs on iPhone, iPad, Mac, Android, Windows and Linux, and video identification on all except Linux. It needs a one-time model download, and 8 GB of memory on Android.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="zone" id="analyze" data-ink="dark">
+          <span id="features"></span>
+          <div class="zone__inner wrap">
+            <div class="feature-row feature-row--reverse">
+              <div class="feature-text">
+                <p class="zone__tag">Analysis</p>
+                <h3>Profile analysis</h3>
+                <p>Any point on the profile shows the deco status, oxygen exposure and loading of all 16 tissue compartments, calculated from the profile.</p>
+              </div>
+              <figure class="feature-visual">
+                <img class="showcase-img" src="screenshots/tissue-cylinders.png" alt="A rebreather dive's details: the profile, deco status, an oxygen toxicity warning, tissue loading with its heat map, and the diluent, bailout and oxygen cylinders" width="2400" height="2047" loading="lazy" decoding="async" />
+              </figure>
+            </div>
+            <div class="feature-cards">
+              <article class="feature-card">
+                <h4>Bühlmann ZH-L16C</h4>
+                <p>The model uses gradient factors and tracks nitrogen and helium. A heat map shows all 16 compartments over the dive.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Cylinders and gas</h4>
+                <p>Each cylinder lists its mix, start and end pressure, gas used, SAC, RMV and MOD.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Multiple computers per dive</h4>
+                <p>Downloads from every computer worn on a dive attach to that dive and can be overlaid on one chart.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Playback and 3D</h4>
+                <p>Playback supports about twenty overlays, from ppO2 to gas density. The profile can also be viewed in 3D.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="zone" id="insights" data-ink="dark">
+          <div class="zone__inner wrap">
+            <div class="feature-row">
+              <div class="feature-text">
+                <p class="zone__tag">Insights</p>
+                <h3>Statistics and connections</h3>
+                <p>Twelve pages of statistics cover depth and time trends, air consumption and conditions. Connections maps how sites, trips, equipment, species and buddies relate.</p>
+              </div>
+              <figure class="feature-visual feature-visual--pair">
+                <img class="showcase-img" src="screenshots/insights-connections.png" alt="Connections with the trips and people preset: a diver at the centre linked to their trips and the buddies on each" width="2400" height="1500" loading="lazy" decoding="async" />
+                <img class="showcase-img" src="screenshots/insights-progression.png" alt="Insights, Progression: maximum depth and runtime for 700 dives from 2020 to 2026, each with a rolling average" width="2400" height="1500" loading="lazy" decoding="async" />
+              </figure>
+            </div>
+            <div class="feature-cards">
+              <article class="feature-card">
+                <h4>Progression</h4>
+                <p>Maximum depth, runtime and bottom time are charted per dive with a rolling average.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Connections</h4>
+                <p>There are nine built-in maps, such as trips and people or sites by species. Any site, buddy or item of equipment can be placed at the centre.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Observations</h4>
+                <p>Observations note changes such as dives getting deeper or longer than the previous year.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Records</h4>
+                <p>Personal records such as the deepest and longest dives have their own page.</p>
+              </article>
+            </div>
+          </div>
+        </section>
       </section>
 
-      <section class="zone" id="sites" data-ink="dark">
-        <div class="zone__inner wrap">
-          <p class="zone__tag">18 m · Where you dove</p>
-          <h2>Sites, trips, and the map between them.</h2>
-          <p class="zone__intro">
-            Submersion ships with 3,600 dive sites and 3,600 dive centers from OpenStreetMap, so most
-            places you dive are already on the map. Add your own with a tap.
-          </p>
-          <div class="shots">
-            <figure>
-              <img src="screenshots/sites_map.png" alt="Dive site list beside an interactive map with clustered markers and a dive heat map" width="2224" height="1301" loading="lazy" decoding="async" />
-              <figcaption>Sites beside the map, with clustering and the heat map on.</figcaption>
-            </figure>
-            <figure>
-              <img src="screenshots/site_detail.png" alt="Three-dimensional seafloor terrain of a dive site with the dive's estimated path drawn on it" width="2228" height="1392" loading="lazy" decoding="async" />
-              <figcaption>A site's 3D seafloor from bathymetry data, with the dive's estimated path.</figcaption>
-            </figure>
-            <figure>
-              <img src="screenshots/marine_life.png" alt="Marine life statistics with species sightings" width="2228" height="1392" loading="lazy" decoding="async" />
-              <figcaption>Species sightings across the log.</figcaption>
-            </figure>
-          </div>
-          <div class="features features--3">
-            <div class="feature">
-              <h3>Site records</h3>
-              <p>GPS with reverse geocoding, depth range, difficulty, water type, hazards, access notes, mooring and parking. Dives logged at the same spot are matched to one site, and duplicates can be merged.</p>
-            </div>
-            <div class="feature">
-              <h3>Maps</h3>
-              <p>Marker clustering, a heat map of where you dive most, and downloadable regions so the map works on the boat without a signal.</p>
-            </div>
-            <div class="feature">
-              <h3>Underwater terrain</h3>
-              <p>Bathymetry overlays on the map, and a 3D terrain view of a site with the features you place on it.</p>
-            </div>
-            <div class="feature">
-              <h3>Reef data</h3>
-              <p>Protection status, habitat, bleaching alerts and reef health for the sites you visit.</p>
-            </div>
-            <div class="feature">
-              <h3>Marine life</h3>
-              <p>511 species built in. Record sightings per dive, see what lives at each site, and tag species in photos.</p>
-            </div>
-            <div class="feature">
-              <h3>Trips</h3>
-              <p>Dates, resort or liveaboard, an itinerary by day, preparation checklists, and a gallery for the whole trip.</p>
-            </div>
-          </div>
+      <!-- Act 2: a safer diver -->
+      <section class="act" id="safety">
+        <div class="zone__inner wrap act__head">
+          <p class="zone__tag">A safer diver</p>
+          <h2>Safety</h2>
+          <p class="zone__intro">Submersion reviews dives, calculates plans and tracks equipment. It is not a dive computer and does not replace training, a buddy or your computer.</p>
         </div>
+
+        <section class="zone" id="review">
+          <div class="zone__inner wrap">
+            <div class="feature-row feature-row--reverse">
+              <div class="feature-text">
+                <p class="zone__tag">After the dive</p>
+                <h3>Post-dive safety review</h3>
+                <p>Each dive is checked for fast ascents, missed deco and safety stops, sawtooth profiles, a high surfacing gradient factor, late gas switches and isobaric counterdiffusion. Findings show the time and the value.</p>
+              </div>
+              <figure class="feature-visual feature-visual--pair">
+                <img class="showcase-img" src="screenshots/safety-review.png" alt="A trimix rebreather dive with its safety review listing two isobaric counterdiffusion findings, marked on the profile, beside a critical oxygen toxicity card and tissue loading for nitrogen and helium" width="2400" height="2047" loading="lazy" decoding="async" />
+                <img class="showcase-img showcase-img--card" src="screenshots/buoyancy.png" alt="The buoyancy card: the pull of gear, lead, body, suit and cylinders, net buoyancy from start to final stop, and the lead suggested for next time from the last eleven dives" width="753" height="1859" loading="lazy" decoding="async" />
+              </figure>
+            </div>
+            <div class="feature-cards">
+              <article class="feature-card">
+                <h4>Severity</h4>
+                <p>Findings are graded info, caution or significant. Each rule can be turned off.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Buoyancy</h4>
+                <p>Net buoyancy is modelled across the dive, with a suggested lead weight for the next one. What if recalculates for different lead, water or exposure suit.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Oxygen exposure</h4>
+                <p>CNS and OTU are totalled per dive, per day and over seven days.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Data source</h4>
+                <p>NDL, deco stops, TTS and CNS can each come from the dive computer or from Submersion's calculation.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="zone" id="plan">
+          <div class="zone__inner wrap">
+            <div class="feature-row">
+              <div class="feature-text">
+                <p class="zone__tag">Before the dive</p>
+                <h3>Dive planning</h3>
+                <p>Plans for OC, CCR, SCR and pSCR are built segment by segment. The deco schedule, gas consumption and contingencies update with each change.</p>
+              </div>
+              <figure class="feature-visual">
+                <img class="showcase-img" src="screenshots/planner.png" alt="A two-dive plan to 132 feet: segments and decompression settings, the profile with its ceiling and stops, the decompression schedule, gas consumption, warnings and the range table" width="2400" height="1500" loading="lazy" decoding="async" />
+              </figure>
+            </div>
+            <div class="feature-cards">
+              <article class="feature-card">
+                <h4>Bailout</h4>
+                <p>On loop plans, bailout gas is checked against the worst point of the dive, which is marked on the chart.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Contingencies</h4>
+                <p>Deeper, longer and lost-gas variants are calculated, along with a range table.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Repetitive dives</h4>
+                <p>Dives planned as a series carry tissues, CNS, OTU and cylinder pressures forward.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Gas calculators</h4>
+                <p>Calculators cover MOD, best mix, MND, consumption, rock bottom and gas density. The blender uses real-gas fills.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="zone" id="gear">
+          <div class="zone__inner wrap">
+            <div class="feature-row feature-row--reverse">
+              <div class="feature-text">
+                <p class="zone__tag">Equipment</p>
+                <h3>Equipment and service</h3>
+                <p>Each item has service intervals by date, dives, hours and exposure to salt, cold and oxygen. Equipment sets are shown on a diver figure with numbered items.</p>
+              </div>
+              <figure class="feature-visual">
+                <img class="showcase-img" src="screenshots/gear-figure.png" alt="A technical diving equipment set drawn on a diver figure, front and back, with 23 numbered items including double HP100 cylinders, a stage, lights and regulators" width="2400" height="1500" loading="lazy" decoding="async" />
+              </figure>
+            </div>
+            <div class="feature-cards">
+              <article class="feature-card">
+                <h4>Regulator and O2 service</h4>
+                <p>Regulator service is due at 365 days or 100 dives, or after 50 cold dives. O2-clean intervals count hours on high oxygen.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Condition checks</h4>
+                <p>A short post-dive check-in feeds ten rules that flag equipment trends.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Passports and tags</h4>
+                <p>Cylinders and equipment can carry QR or NFC tags. Without the app, a scan opens the cylinder's passport or the item's details on this site.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Transmitters and reports</h4>
+                <p>Transmitters are linked to their cylinders. Service and inventory reports export as PDF.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="zone" id="ready">
+          <div class="zone__inner wrap">
+            <div class="feature-row">
+              <div class="feature-text">
+                <p class="zone__tag">Ready to dive</p>
+                <h3>Certifications and checklists</h3>
+                <p>Each certification shows its last use and when a refresher is due. Pre-dive checklists run from templates, and the emergency card works offline.</p>
+              </div>
+              <figure class="feature-visual">
+                <img class="showcase-img" src="screenshots/ready.png" alt="A CCR certification with its currency: rebreather currency and a TDI refresher, each current with its due date, and the last refresher" width="2400" height="2047" loading="lazy" decoding="async" />
+              </figure>
+            </div>
+            <div class="feature-cards">
+              <article class="feature-card">
+                <h4>Currency</h4>
+                <p>Built-in rules cover rebreather, decompression and other certifications. Custom rules can be added.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Checklists</h4>
+                <p>Templates include a BWRAF check, GUE EDGE, a CCR build with O2 cell linearity checks and gear packing.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Emergency card</h4>
+                <p>The card holds emergency numbers, nearby chambers, contacts and medical notes, and works offline.</p>
+              </article>
+              <article class="feature-card">
+                <h4>No-fly time</h4>
+                <p>A no-fly countdown runs from the last dive using the selected published guideline.</p>
+              </article>
+            </div>
+          </div>
+        </section>
       </section>
 
-      <section class="zone" id="media">
-        <div class="zone__inner wrap">
-          <p class="zone__tag">24 m · Photos, gear and paperwork</p>
-          <h2>The rest of what a dive leaves behind.</h2>
-          <p class="zone__intro">
-            Photos and video, the gear you wore, and the cards that say you are allowed to.
-          </p>
-          <div class="shots">
-            <figure>
-              <img src="screenshots/photo_gallery.png" alt="A dive video shown full screen with a dive computer face overlay reading depth, NDL, time, gas and tank pressure, and a small dive profile marking the moment it was taken" width="2208" height="1435" loading="lazy" decoding="async" />
-              <figcaption>A photo or video full screen, with what your computer read at that moment and where it sits on the profile.</figcaption>
-            </figure>
-            <figure>
-              <img src="screenshots/equipment_sets.png" alt="Equipment sets screen showing a warm water gear configuration" width="2224" height="1460" loading="lazy" decoding="async" />
-              <figcaption>Equipment sets: build a configuration once, apply it to a dive.</figcaption>
-            </figure>
-            <figure>
-              <img src="screenshots/certifications.png" alt="Certifications list showing agency, level and validity for each card" width="2228" height="1392" loading="lazy" decoding="async" />
-              <figcaption>Certifications, with agency, level and validity.</figcaption>
-            </figure>
-          </div>
-          <div class="features features--3">
-            <div class="feature">
-              <h3>Photos and video</h3>
-              <p>Import from the device gallery, watched folders, a network share, or your own iCloud, Google Drive, Dropbox or S3 bucket. Each shot is matched to a dive by capture time and shown as a marker at its depth on the profile.</p>
-            </div>
-            <div class="feature">
-              <h3>Equipment</h3>
-              <p>Every item with brand, model, serial, purchase date and cost. Service schedules with reminders, and a service log of what was done and what it cost.</p>
-            </div>
-            <div class="feature">
-              <h3>Equipment sets</h3>
-              <p>Warm water, cold water, sidemount: build sets and apply one to a dive. A set can select itself by location.</p>
-            </div>
-            <div class="feature">
-              <h3>Certifications</h3>
-              <p>A wallet of your cards with photos of front and back, agency, level, number and expiry.</p>
-            </div>
-            <div class="feature">
-              <h3>Courses</h3>
-              <p>Track a course's requirements and link each one to the dive that satisfied it.</p>
-            </div>
-            <div class="feature">
-              <h3>Pre-dive checklists</h3>
-              <p>Run a checklist from a template before the dive and attach the session to the log.</p>
-            </div>
-          </div>
+      <!-- Act 3: your data -->
+      <section class="act" id="data">
+        <div class="zone__inner wrap act__head">
+          <p class="zone__tag">Your data stays yours</p>
+          <h2>Your data</h2>
+          <p class="zone__intro">Submersion is free and open source under GPL-3.0. It has no account, ads or subscription.</p>
         </div>
+
+        <section class="zone" id="storage">
+          <div class="zone__inner wrap">
+            <div class="feature-row feature-row--reverse">
+              <div class="feature-text">
+                <p class="zone__tag">Storage</p>
+                <h3>Storage and sync</h3>
+                <p>Data is stored on your devices. Sync runs through Google Drive, Dropbox, S3, WebDAV or Git, or iCloud on iPhone and iPad, with optional end-to-end encryption.</p>
+              </div>
+              <figure class="feature-visual">
+                <img class="showcase-img" src="screenshots/sync-storage.png" alt="Sync between devices, connected to S3-compatible storage on Cloudflare R2: sync complete, with automatic sync, nearby Bluetooth sync, sync at launch and on return, and encryption settings" width="2400" height="1500" loading="lazy" decoding="async" />
+              </figure>
+            </div>
+            <div class="feature-cards">
+              <article class="feature-card">
+                <h4>Nearby devices</h4>
+                <p>Paired devices sync over Bluetooth without a cloud service. Two Linux devices cannot find each other this way and sync through storage instead.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Encryption</h4>
+                <p>The database can be encrypted at rest, and the app locked with a password, Face ID, Touch ID or Windows Hello.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Backups</h4>
+                <p>A backup is made before every database upgrade. Scheduled backups can go to a folder or cloud storage, optionally encrypted.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Photos</h4>
+                <p>Photos and videos are linked from your library or folders, not copied.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="zone" id="open">
+          <div class="zone__inner wrap">
+            <div class="feature-row">
+              <div class="feature-text">
+                <p class="zone__tag">Export</p>
+                <h3>Export and data quality</h3>
+                <p>Dives export as UDDF 3.2, CSV, Excel or PDF logbooks, and sites as KML. The data quality check flags records that disagree with sensor data and offers a repair.</p>
+              </div>
+              <figure class="feature-visual">
+                <img class="showcase-img" src="screenshots/data-quality.png" alt="The data quality inbox: pressure records that disagree with the sensor data, each with a fix, a gas and MOD inconsistency, and transmitter serial mismatches" width="2400" height="1500" loading="lazy" decoding="async" />
+              </figure>
+            </div>
+            <div class="feature-cards">
+              <article class="feature-card">
+                <h4>Raw data</h4>
+                <p>Raw dive computer data is kept, so dives can be re-parsed when the parser improves.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Change log</h4>
+                <p>Every edit is logged with its previous value and can be reverted by field or by operation.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Agent access</h4>
+                <p>On desktop, an AI assistant can access the logbook through a local server with a token. Proposed changes are previewed before they are written.</p>
+              </article>
+              <article class="feature-card">
+                <h4>Open source</h4>
+                <p>The source code is on <a href="https://github.com/submersion-app/submersion" target="_blank" rel="noreferrer">GitHub</a> under GPL-3.0.</p>
+              </article>
+            </div>
+          </div>
+        </section>
       </section>
 
-      <section class="zone" id="analyze">
-        <span id="features"></span>
+      <section class="zone" id="platforms">
         <div class="zone__inner wrap">
-          <p class="zone__tag">32 m · Reading the profile</p>
-          <h2>Every sample, and what it means.</h2>
-          <p class="zone__intro">
-            Your computer recorded a depth every few seconds. Submersion turns that into
-            decompression state, gas exposure and ascent behaviour, computed from the profile, that
-            you can scrub through second by second.
-          </p>
-          <figure class="shot--wide">
-            <img src="screenshots/profile_player.png" alt="Full-screen dive profile playback with depth, temperature, NDL, ppO2 and tank pressure over time" width="2248" height="1516" loading="lazy" decoding="async" />
-            <figcaption>Full-screen playback with depth, temperature, NDL, ppO₂ and tank pressure on one timeline.</figcaption>
-          </figure>
-          <div class="shots shots--2">
-            <figure>
-              <img src="screenshots/tissue_loading.png" alt="Tissue loading panel with a bar per compartment and a heat map of on-gassing and off-gassing over the dive" width="2228" height="1392" loading="lazy" decoding="async" />
-              <figcaption>Tissue loading for all 16 compartments, and how each one loaded and unloaded through the dive.</figcaption>
-            </figure>
-            <figure>
-              <img src="screenshots/dive_3d.png" alt="Three-dimensional landscape of the 16 tissue compartments over the course of a dive" width="2228" height="1392" loading="lazy" decoding="async" />
-              <figcaption>The 16 tissue compartments as a landscape that rises and falls through the dive.</figcaption>
+          <div class="feature-row">
+            <div class="feature-text">
+              <p class="zone__tag">Platforms</p>
+              <h3>iPhone, iPad, Android, Mac, Windows and Linux</h3>
+              <p>The same application and logbook on phones, tablets and desktops. Each layout fits its screen, and sync keeps your devices in step.</p>
+            </div>
+            <figure class="feature-visual feature-visual--devices">
+              <img class="showcase-img" src="screenshots/platform-mac.png" alt="Submersion on a Mac: the dive list beside a wreck dive's details, with its profile, deco status and tissue loading" width="2400" height="1500" loading="lazy" decoding="async" />
+              <img class="showcase-img showcase-img--device" src="screenshots/platform-ipad.png" alt="The same dive on an iPad in landscape, with the dive list beside its details and profile" width="1600" height="1103" loading="lazy" decoding="async" />
+              <img class="showcase-img showcase-img--device" src="screenshots/platform-iphone.png" alt="The same dive on an iPhone, with its summary and profile" width="720" height="1565" loading="lazy" decoding="async" />
             </figure>
           </div>
-          <div class="features">
-            <div class="feature">
-              <h3>Playback</h3>
-              <p>Play or scrub the profile. Overlay temperature, tank pressure, heart rate, SAC, ppO₂, ppN₂ and ppHe, gas density, gradient factor, surface GF, TTS, ceiling, NDL and deco stops, and choose which of them you want to see.</p>
-            </div>
-            <div class="feature">
-              <h3>Bühlmann ZH-L16C</h3>
-              <p>Tissue loading for all 16 compartments, nitrogen and helium, computed from the profile with the gradient factors you set. Watch the leading compartment change as the dive goes on.</p>
-            </div>
-            <div class="feature">
-              <h3>Oxygen exposure</h3>
-              <p>CNS and OTU for the dive, plus running totals for the day and the week, using the calculation method you prefer.</p>
-            </div>
-            <div class="feature">
-              <h3>Computer versus model</h3>
-              <p>Show the NDL, ceiling and TTS your computer reported next to what the model says, and switch between them.</p>
-            </div>
-            <div class="feature">
-              <h3>Two computers</h3>
-              <p>Overlay the profiles from two computers on one chart and see where they disagree.</p>
-            </div>
-            <div class="feature">
-              <h3>Edit</h3>
-              <p>Trim a profile that started on the boat, with undo if you get it wrong.</p>
-            </div>
-            <div class="feature">
-              <h3>3D</h3>
-              <p>Move through the dive in three dimensions, or view the 16 tissue compartments as a surface that rises and falls with the dive.</p>
-            </div>
-            <div class="feature">
-              <h3>Ascent rate</h3>
-              <p>Ascent speed is drawn on the profile and colored where it exceeds the limits.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="zone" id="plan">
-        <div class="zone__inner wrap">
-          <p class="zone__tag">40 m · Planning</p>
-          <h2>Plan with the gas, gear and tissues you'll actually have.</h2>
-          <p class="zone__intro">
-            The same decompression model as the analysis, run forward. Recreational divers get an
-            NDL solver. Technical divers get segments, setpoints and bailout.
-          </p>
-          <div class="shots shots--2">
-            <figure>
-              <img src="screenshots/planner.png" alt="Dive planner with a multi-segment profile, gas list and decompression schedule" width="2228" height="1392" loading="lazy" decoding="async" />
-              <figcaption>A plan as segments, with the schedule the model produces.</figcaption>
-            </figure>
-            <figure>
-              <img src="screenshots/gas_blender.png" alt="Trimix blender showing the partial-pressure fill procedure and fill cost" width="2228" height="1392" loading="lazy" decoding="async" />
-              <figcaption>The blender: fill procedure for the target mix, and what the fill costs.</figcaption>
-            </figure>
-          </div>
-          <div class="features">
-            <div class="feature">
-              <h3>The planner</h3>
-              <p>Build the dive as segments, or drag the profile into shape. Cylinders, gases and switches come from your own tank presets and cylinder configurations.</p>
-            </div>
-            <div class="feature">
-              <h3>Open circuit and rebreathers</h3>
-              <p>OC, CCR, SCR and PSCR, with setpoints by depth, and the mode switchable partway through the plan for a bailout.</p>
-            </div>
-            <div class="feature">
-              <h3>Bailout check</h3>
-              <p>For a CCR plan, Submersion works out open-circuit demand along the whole profile and checks your bailout cylinders against the worst moment, with real-gas correction.</p>
-            </div>
-            <div class="feature">
-              <h3>Contingencies</h3>
-              <p>Contingency scenarios next to the main plan, and a range table of depth against time.</p>
-            </div>
-            <div class="feature">
-              <h3>Repetitive dives</h3>
-              <p>Seed the plan with the tissues from the dive you just logged, or use the surface interval tool to see how long to wait.</p>
-            </div>
-            <div class="feature">
-              <h3>Weighting</h3>
-              <p>The weight planner builds a buoyancy model from your logged dives and predicts what to carry for a new suit, cylinder or water type.</p>
-            </div>
-            <div class="feature">
-              <h3>Gas calculators</h3>
-              <p>MOD, best mix, maximum narcotic depth, consumption and rock bottom. The blender works out partial-pressure fills with a real-gas equation and prints the invoice.</p>
-            </div>
-            <div class="feature">
-              <h3>On the slate</h3>
-              <p>Export the plan as a PDF for your wet notes.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="zone" id="data">
-        <span id="why"></span>
-        <div class="zone__inner wrap">
-          <p class="zone__tag">50 m · Your data</p>
-          <h2>On your devices, encrypted, in formats you can leave with.</h2>
-          <p class="zone__intro">
-            Submersion has no server and no accounts. Your logbook is a database on your own
-            hardware. Sync and backup go through cloud storage you already own.
-          </p>
-          <div class="shots">
-            <figure>
-              <img src="screenshots/statistics.png" alt="Dive statistics overview in dark mode with totals, personal records and most visited sites" width="2224" height="1460" loading="lazy" decoding="async" />
-              <figcaption>Statistics: totals, records, and nine more pages behind them.</figcaption>
-            </figure>
-            <figure>
-              <img src="screenshots/sync_settings.png" alt="Data settings with backup and restore, database cloud sync, photo and media sources, database storage, offline maps and data quality" width="2228" height="1392" loading="lazy" decoding="async" />
-              <figcaption>Backup, sync, storage and offline maps, all under one settings page.</figcaption>
-            </figure>
-            <figure>
-              <img src="screenshots/themes.png" alt="Theme gallery showing the five app themes" width="2228" height="1392" loading="lazy" decoding="async" />
-              <figcaption>Five themes, each in light and dark.</figcaption>
-            </figure>
-          </div>
-          <div class="features">
-            <div class="feature">
-              <h3>Local and encrypted</h3>
-              <p>An SQLite database encrypted at rest, with Face ID, Touch ID or a passphrase to open the app.</p>
-            </div>
-            <div class="feature">
-              <h3>Sync</h3>
-              <p>End-to-end encrypted sync between your devices through your own iCloud, Google Drive, Dropbox or S3-compatible storage. A recovery code unlocks it on a new device.</p>
-            </div>
-            <div class="feature">
-              <h3>Backups</h3>
-              <p>Encrypted backups to the same places, an automatic backup before every upgrade, and restore from any of them.</p>
-            </div>
-            <div class="feature">
-              <h3>Export</h3>
-              <p>UDDF 3.2, CSV, Excel, KML and GPX, and printable PDF logbooks in Simple, Detailed, Professional, PADI and NAUI layouts.</p>
-            </div>
-            <div class="feature">
-              <h3>Data quality</h3>
-              <p>An assistant that finds duplicates and anomalies across the log and walks you through fixing them.</p>
-            </div>
-            <div class="feature">
-              <h3>Your units, your language</h3>
-              <p>Independent units for depth, temperature, pressure, volume, weight, altitude and SAC. 11 languages. Five themes in light and dark. Keyboard shortcuts on the desktop.</p>
-            </div>
-            <div class="feature">
-              <h3>Statistics</h3>
-              <p>Ten pages: totals and records, progression, conditions, gas, marine life, geography, social, time patterns, equipment and profile analysis.</p>
-            </div>
-            <div class="feature">
-              <h3>Open source</h3>
-              <p>GPL-3.0, with the whole source on GitHub. No ads, no subscription, no in-app purchases.</p>
-            </div>
+          <div class="feature-cards">
+            <article class="feature-card">
+              <h4>iPhone and iPad</h4>
+              <p>From the App Store. Dive computers connect over Bluetooth.</p>
+            </article>
+            <article class="feature-card">
+              <h4>Android</h4>
+              <p>Phones and tablets, from Google Play or as an APK from GitHub Releases.</p>
+            </article>
+            <article class="feature-card">
+              <h4>Mac, Windows and Linux</h4>
+              <p>Desktop layouts with side-by-side panes and keyboard shortcuts. Agent access is desktop only.</p>
+            </article>
+            <article class="feature-card">
+              <h4>One logbook</h4>
+              <p>Sync through your own storage, or between nearby devices over Bluetooth, keeps dives, equipment and settings the same on each. Between two Linux devices, sync runs through storage.</p>
+            </article>
           </div>
         </div>
       </section>
@@ -502,7 +582,7 @@
       <section class="zone abyss" id="download">
         <div class="zone__inner wrap">
           <span id="support"></span>
-          <p class="zone__tag">60 m · Download</p>
+          <p class="zone__tag">Download</p>
           <div class="orb" aria-hidden="true"></div>
           <h2>Get Submersion.</h2>
           <p class="zone__intro">
@@ -535,7 +615,7 @@
               target="_blank"
               rel="noreferrer"
             >
-              <img src="assets/app-store-badge.svg" alt="Download on the App Store" width="120" height="40" />
+              <img src="assets/app-store-badge.svg" alt="Download on the App Store" width="120" height="40" loading="lazy" decoding="async" />
             </a>
             <a
               class="download__store"
@@ -543,7 +623,7 @@
               target="_blank"
               rel="noreferrer"
             >
-              <img src="assets/google-play-badge.png" alt="Get it on Google Play" width="134" height="40" />
+              <img src="assets/google-play-badge.png" alt="Get it on Google Play" width="134" height="40" loading="lazy" decoding="async" />
             </a>
           </div>
 
