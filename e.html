@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="robots" content="noindex" />
+    <meta name="referrer" content="no-referrer" />
+    <!-- The details in the fragment stay in the browser: the page may load
+         its own files and the fonts, and may not open any other connection. -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; connect-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; form-action 'none'; base-uri 'none'"
+    />
+
+    <title>Emergency info - Submersion</title>
+    <meta
+      name="description"
+      content="An emergency tag from the Submersion dive logging app: a diver's allergies, emergency contacts and dive insurance, read in your browser."
+    />
+
+    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/card.css" />
+    <link rel="stylesheet" href="/passport/page.css" />
+  </head>
+  <body>
+    <main class="card" role="main">
+      <div class="brand">
+        <picture>
+          <source srcset="/assets/brand/lockup-dark.png" media="(prefers-color-scheme: light)" />
+          <img src="/assets/brand/lockup-light.png" alt="Submersion: Dive safe. Log everything." width="185" height="64" decoding="async" />
+        </picture>
+      </div>
+
+      <!-- State: a readable tag. The sections follow the tag's text record,
+           so what a responder needs comes first. -->
+      <section id="tag" hidden>
+        <div class="pill pill--alert">Emergency info</div>
+        <h1 id="name">Diver</h1>
+        <p class="lead" id="born" hidden></p>
+        <p class="note" id="newer" hidden>This tag uses a newer format than this page knows. Some details may not show here.</p>
+
+        <div class="alert" id="allergiesBlock" hidden>
+          <h2>Allergies</h2>
+          <p class="alert-value" id="allergies"></p>
+        </div>
+
+        <div class="block" id="contactsBlock" hidden>
+          <h2>Emergency contacts</h2>
+          <div id="contacts"></div>
+        </div>
+
+        <div class="block" id="insuranceBlock" hidden>
+          <h2>Dive insurance</h2>
+          <div id="insurance"></div>
+        </div>
+
+        <dl class="spec" id="details" hidden></dl>
+
+        <p class="note" id="written">Written by the diver.</p>
+        <p class="note" id="trimmed" hidden>Some details were left off to fit the tag.</p>
+      </section>
+
+      <!-- State: a link that is not a readable tag -->
+      <section id="invalid" hidden>
+        <div class="pill pill--err">Not an emergency tag</div>
+        <h1>This link is not an emergency tag</h1>
+        <p class="lead">The link is damaged or incomplete, so there is nothing to show.</p>
+        <p>Tap the tag again. The tag also holds the same details as text, which an NFC reader app shows.</p>
+      </section>
+
+      <!-- State: opened with no tag at all -->
+      <section id="info" hidden>
+        <h1>Emergency tags</h1>
+        <p class="lead">An emergency tag is an NFC tag or a printed card that a diver carries on their gear.</p>
+        <p>It holds their allergies, emergency contacts and dive insurance. Whoever helps the diver taps the tag with their own phone and reads the details on this page.</p>
+        <p>The details are in the link itself. This page reads them in your browser and sends nothing to a server.</p>
+        <p>You write your own emergency tag from your emergency card in Submersion.</p>
+        <div class="actions">
+          <a class="button" href="/#download">Get Submersion</a>
+        </div>
+      </section>
+
+      <div class="foot">
+        Submersion, open-source dive logging.
+        <a href="/">Home</a> &middot;
+        <a href="https://github.com/submersion-app/submersion/blob/main/docs/developer/reference/formats/emergency-tag.md" target="_blank" rel="noreferrer">Tag format</a>
+      </div>
+    </main>
+
+    <script type="module" src="/passport/e-page.js"></script>
+  </body>
+</html>

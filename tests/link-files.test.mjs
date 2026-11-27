@@ -26,6 +26,17 @@ test("iOS: the app handles /c, /g and /f links", () => {
   );
 });
 
+test("iOS: the app never takes /e links", () => {
+  // An emergency tag's /e link is read by whoever helps the diver, usually a
+  // stranger. It must always open this site's page in the browser, never
+  // Submersion, even on a phone that has the app.
+  const [detail] = read(".well-known/apple-app-site-association").applinks.details;
+  const paths = detail.components.map((c) => c["/"]);
+  for (const path of ["/e", "/e/*", "/e*", "/*", "*"]) {
+    assert.equal(paths.includes(path), false, path);
+  }
+});
+
 test("Android: only release signing keys are trusted", () => {
   // A debug key would let anyone holding that debug keystore (whose password
   // is the public default) ship an app Android verifies for these links.
