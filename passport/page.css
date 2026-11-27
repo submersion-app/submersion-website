@@ -33,6 +33,13 @@
   margin-top: 10px;
 }
 
+.spec a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--accent2);
+  text-underline-offset: 3px;
+}
+
 .note {
   font-size: 0.9rem;
 }

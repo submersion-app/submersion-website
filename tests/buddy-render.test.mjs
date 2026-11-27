@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 
-import { renderBuddyCardPage } from "../passport/buddy-render.js";
+import { emailHref, phoneHref, renderBuddyCardPage } from "../passport/buddy-render.js";
 
 const encode = (json) => Buffer.from(JSON.stringify(json), "utf8").toString("base64url");
 const now = new Date(Date.UTC(2026, 10, 27));
@@ -32,6 +32,7 @@ function fakeDocument() {
     hidden: true,
     textContent: "",
     className: "",
+    href: "",
     children: [],
     append(...nodes) {
       this.children.push(...nodes);
@@ -52,8 +53,9 @@ function render(fragment) {
   return doc;
 }
 
+const cellText = (c) => (c.children.length ? c.children[0].textContent : c.textContent);
 const rows = (doc) => {
-  const cells = doc.byId.spec.children.map((c) => c.textContent);
+  const cells = doc.byId.spec.children.map(cellText);
   const pairs = [];
   for (let i = 0; i < cells.length; i += 2) pairs.push([cells[i], cells[i + 1]]);
   return pairs;
@@ -89,6 +91,51 @@ test("a card shows the diver's details with the app's labels", () => {
   ]);
   assert.equal(doc.byId.newer.hidden, true);
   assert.equal(doc.byId.trimmed.hidden, true);
+});
+
+// The link inside a row's value, by the row's label.
+const linkIn = (doc, label) => {
+  const cells = doc.byId.spec.children;
+  const dd = cells[cells.findIndex((c) => c.textContent === label) + 1];
+  return dd.children[0];
+};
+
+test("phone and email are links that call and write to the diver", () => {
+  const doc = render(example);
+  const phone = linkIn(doc, "Phone");
+  assert.equal(phone.tag, "a");
+  assert.equal(phone.href, "tel:+447700900123");
+  assert.equal(phone.textContent, "+44 7700 900123");
+  const email = linkIn(doc, "Email");
+  assert.equal(email.tag, "a");
+  assert.equal(email.href, "mailto:sam@example.com");
+  assert.equal(email.textContent, "sam@example.com");
+  assert.equal(linkIn(doc, "Social handle"), undefined);
+});
+
+test("a phone link keeps only what a dialler reads", () => {
+  assert.equal(phoneHref("+1 (555) 010-0123"), "tel:+15550100123");
+  assert.equal(phoneHref("555 0100 ext. 12"), "tel:555010012");
+  assert.equal(phoneHref("*31#"), "tel:*31%23");
+  assert.equal(phoneHref("call me"), null);
+});
+
+test("an email link is only made from something shaped like an address", () => {
+  assert.equal(emailHref("sam@example.com"), "mailto:sam@example.com");
+  assert.equal(emailHref("o'neil+dive@example.co.uk"), "mailto:o'neil%2Bdive@example.co.uk");
+  assert.equal(emailHref("sam@example.com?subject=hi&bcc=x@y.z"), null);
+  assert.equal(emailHref("not an email"), null);
+  assert.equal(emailHref("a@b@c"), null);
+});
+
+test("a phone or email that cannot be a link stays text", () => {
+  const doc = render(encode({ v: 1, i: "x", n: "Sam", p: "call me", e: "not an email" }));
+  assert.deepEqual(rows(doc), [
+    ["Phone", "call me"],
+    ["Email", "not an email"],
+  ]);
+  assert.equal(linkIn(doc, "Phone"), undefined);
+  assert.equal(linkIn(doc, "Email"), undefined);
 });
 
 test("certifications are listed highest first, with their details when shared", () => {
