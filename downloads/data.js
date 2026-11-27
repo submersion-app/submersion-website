@@ -1,5 +1,5 @@
 // Loads and checks the download summary that the app repo's daily job writes to
-// its metrics branch (scripts/snapshot_downloads.py has the counting rules).
+// its metrics branch (scripts/bots/snapshot_downloads.py has the counting rules).
 // Both the home page line and the downloads page read through here, and anything
 // wrong with the data reads as null, so neither can show a bad or stale number.
 export const SUMMARY_URL =

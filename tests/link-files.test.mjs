@@ -8,7 +8,7 @@ const read = (path) => JSON.parse(readFileSync(new URL(`../${path}`, import.meta
 
 // The CI release keystore, which signs the APK attached to GitHub Releases
 // (its SHA-1 is the one the app repo registers in
-// scripts/check_apk_signing_cert.py).
+// scripts/checks/check_apk_signing_cert.py).
 const CI_RELEASE =
   "6F:DE:06:CB:1A:8C:20:91:00:7A:D4:4E:8C:65:F4:01:67:15:A1:06:B1:44:35:02:90:96:8B:66:4B:9E:AC:BD";
 
