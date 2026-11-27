@@ -24,8 +24,6 @@
     <link rel="stylesheet" href="/passport/page.css" />
   </head>
   <body>
-    <!-- No script on this page: the card is in the link's fragment, which the
-         browser never sends here, and nothing on the page reads it. -->
     <main class="card" role="main">
       <div class="brand">
         <picture>
@@ -34,12 +32,19 @@
         </picture>
       </div>
 
-      <section>
+      <!-- State: a readable card -->
+      <section id="card" hidden>
         <div class="pill pill--ok">Buddy card</div>
-        <h1>A diver shared their buddy card with you</h1>
-        <p class="lead">A buddy card holds a diver's name, contact details and certifications, so you can add them as a buddy in Submersion.</p>
-        <p>Get Submersion, then scan the code or tap the tag again. The card opens in the app, where you choose what to keep.</p>
-        <p class="note">This page does not show the card. Its details stay in the link on your phone and are never sent to this site.</p>
+        <h1 id="title">Buddy</h1>
+        <p class="lead">A diver shared their buddy card with you.</p>
+        <p class="note" id="newer" hidden>This card is from a newer version of Submersion. Some details may be missing.</p>
+        <p class="note" id="trimmed" hidden>Some details were left out to fit the code.</p>
+        <dl class="spec spec--stacked" id="spec"></dl>
+        <div class="certs" id="certs" hidden>
+          <h2>Certifications</h2>
+          <ul id="certList"></ul>
+        </div>
+        <p>To add them as a buddy, scan the code or tap the tag with Submersion.</p>
         <div class="actions">
           <a class="store" href="https://apps.apple.com/us/app/submersion-dive-log/id6757456915">
             <img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="120" height="40" />
@@ -49,6 +54,25 @@
           </a>
           <a class="button button--quiet" href="/#download">Other platforms</a>
         </div>
+        <p class="note">Your browser read this card from the link. Nothing on it was sent to this site.</p>
+      </section>
+
+      <!-- State: a link that is not a readable card -->
+      <section id="invalid" hidden>
+        <div class="pill pill--err">Not a buddy card</div>
+        <h1>This link is not a buddy card</h1>
+        <p class="lead">The link is damaged or incomplete, so there is nothing to show.</p>
+        <p>Scan the code or tap the tag again. If it still fails, ask your buddy to share their card again from Submersion.</p>
+      </section>
+
+      <!-- State: opened with no card at all -->
+      <section id="info" hidden>
+        <h1>Buddy cards</h1>
+        <p class="lead">A buddy card holds a diver's name, contact details and certifications, so a dive buddy can add them in Submersion.</p>
+        <p>Divers share their card as a code, an NFC tag or a file. Without the app, this page shows what a card says.</p>
+        <div class="actions">
+          <a class="button" href="/#download">Get Submersion</a>
+        </div>
       </section>
 
       <div class="foot">
@@ -56,5 +80,6 @@
         <a href="/">Home</a>
       </div>
     </main>
+    <script type="module" src="/passport/b-page.js"></script>
   </body>
 </html>

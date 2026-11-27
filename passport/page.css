@@ -22,6 +22,17 @@
   overflow-wrap: anywhere;
 }
 
+/* A buddy card's contact details: each label above its value, so an email
+   address or phone number keeps the card's full width on a phone. */
+.spec--stacked {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2px;
+}
+
+.spec--stacked dd + dt {
+  margin-top: 10px;
+}
+
 .note {
   font-size: 0.9rem;
 }
@@ -60,6 +71,47 @@
 
 .fill .note {
   margin-top: 10px;
+}
+
+/* A buddy card's certifications: boxed like the spec, highest first. */
+.certs {
+  margin: 0 0 20px;
+  padding: 14px 18px;
+  background: var(--card2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.certs h2 {
+  margin: 0 0 6px;
+  color: var(--faint);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.certs ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.certs li + li {
+  margin-top: 10px;
+}
+
+.certs p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.cert-name {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.cert-detail {
+  color: var(--muted);
+  font-size: 0.9rem;
 }
 
 .actions {
