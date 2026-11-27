@@ -9,7 +9,9 @@
           { "/": "/g", "comment": "Gear tags" },
           { "/": "/g/*" },
           { "/": "/f", "comment": "Signed fill records" },
-          { "/": "/f/*" }
+          { "/": "/f/*" },
+          { "/": "/b", "comment": "Buddy cards" },
+          { "/": "/b/*" }
         ]
       }
     ]

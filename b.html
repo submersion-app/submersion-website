@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="robots" content="noindex" />
+    <meta name="referrer" content="no-referrer" />
+
+    <title>Buddy card - Submersion</title>
+    <meta
+      name="description"
+      content="A buddy card from the Submersion dive logging app: a diver's contact details and certifications, shared with a dive buddy."
+    />
+
+    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/card.css" />
+    <link rel="stylesheet" href="/passport/page.css" />
+  </head>
+  <body>
+    <!-- No script on this page: the card is in the link's fragment, which the
+         browser never sends here, and nothing on the page reads it. -->
+    <main class="card" role="main">
+      <div class="brand">
+        <picture>
+          <source srcset="/assets/brand/lockup-dark.png" media="(prefers-color-scheme: light)" />
+          <img src="/assets/brand/lockup-light.png" alt="Submersion: Dive safe. Log everything." width="185" height="64" decoding="async" />
+        </picture>
+      </div>
+
+      <section>
+        <div class="pill pill--ok">Buddy card</div>
+        <h1>A diver shared their buddy card with you</h1>
+        <p class="lead">A buddy card holds a diver's name, contact details and certifications, so you can add them as a buddy in Submersion.</p>
+        <p>Get Submersion, then scan the code or tap the tag again. The card opens in the app, where you choose what to keep.</p>
+        <p class="note">This page does not show the card. Its details stay in the link on your phone and are never sent to this site.</p>
+        <div class="actions">
+          <a class="store" href="https://apps.apple.com/us/app/submersion-dive-log/id6757456915">
+            <img src="/assets/app-store-badge.svg" alt="Download on the App Store" width="120" height="40" />
+          </a>
+          <a class="store" href="https://play.google.com/store/apps/details?id=app.submersion">
+            <img src="/assets/google-play-badge.png" alt="Get it on Google Play" width="134" height="40" />
+          </a>
+          <a class="button button--quiet" href="/#download">Other platforms</a>
+        </div>
+      </section>
+
+      <div class="foot">
+        Submersion, open-source dive logging.
+        <a href="/">Home</a>
+      </div>
+    </main>
+  </body>
+</html>
