@@ -96,3 +96,92 @@
   height: 44px;
   width: auto;
 }
+
+/* The emergency tag page (/e), read under stress by whoever helps the diver:
+   the header pill and the allergies stand out in red, and every phone number
+   is a large tap target. --accent is the red of both themes. */
+
+.pill--alert {
+  color: #fff;
+  background: var(--accent);
+}
+
+.alert,
+.block {
+  margin: 18px 0;
+  padding: 14px 18px;
+  border-radius: 12px;
+}
+
+.alert {
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  border: 2px solid var(--accent);
+}
+
+.block {
+  background: var(--card2);
+  border: 1px solid var(--line);
+}
+
+.alert h2,
+.block h2 {
+  margin: 0 0 8px;
+  color: var(--faint);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.alert h2 {
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.alert .alert-value {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.contact + .contact {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.contact-name,
+.insurer,
+.policy,
+.phone {
+  margin: 0 0 8px;
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+
+.contact-name,
+.insurer {
+  font-weight: 600;
+}
+
+.call {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  color: #fff;
+  background: var(--accent2);
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.call:hover {
+  filter: brightness(1.08);
+}
