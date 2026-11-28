@@ -21,7 +21,7 @@ Then visit `http://localhost:5173`.
 - `home.css`: the homepage's own layout (pillars, acts, feature rows and cards, the hero's sizes); only `index.html` loads it
 - `ocean.js`: the water's light rays, bubbles and marine snow, section reveals, the ink solver that picks dark or light text for the water behind each block, and the homepage clip, which plays only while on screen and never under reduced motion
 - `script.js`: release lookup and platform-detecting download button
-- `downloads/`: the public download count. The page and the line under the home page's download button read `downloads/summary.json` from the app repo's `metrics` branch, and show nothing if it is missing, invalid or more than 7 days old. `scripts/snapshot_downloads.py` in the app repo has the counting rules.
+- `downloads/`: the public download count. The page and the line under the home page's download button read `downloads/summary.json` from the app repo's `metrics` branch, and show nothing if it is missing, invalid or more than 7 days old. `scripts/bots/snapshot_downloads.py` in the app repo has the counting rules.
 - `screenshots/`: window captures of the macOS app in light mode, trimmed to the window (no shadow) and resized to 2400 px wide, then compressed with `pngquant --quality 70-90`; the buoyancy card is a crop at its native size, and `video-species.mp4` is a 14-second muted H.264 clip (poster `video-species.jpg`)
 - `assets/`: logo, favicon, App Store and Google Play badges
 - `lightroom/`: Adobe Lightroom integration walkthrough and OAuth callback page (self-contained styles)

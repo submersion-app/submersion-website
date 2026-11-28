@@ -104,7 +104,7 @@ first request.
 ## Steps
 
 1. In an app repo checkout of `main` (`git switch main && git pull`, `git submodule update --init packages/libdivecomputer_plugin/third_party/libdivecomputer`, `git fetch --tags`), regenerate the catalog:
-   `python3 scripts/export_support_matrix_catalog.py --previous <website>/computers/data/catalog.json --out <website>/computers/data/catalog.json`.
+   `python3 scripts/bots/export_support_matrix_catalog.py --previous <website>/computers/data/catalog.json --out <website>/computers/data/catalog.json`.
    Note any `removed` ids.
 2. Read every source into its candidate file (in parallel where possible).
 3. Resolve `fixedBy`: for each PR number, `gh pr view <n> --repo submersion-app/submersion --json mergeCommit -q .mergeCommit.oid`, then `node tools/support-matrix/fixed-in.mjs <app checkout> <sha>`; set `fixedIn` on that report, and keep `fixedBy` only when the result is `unreleased`. Then re-resolve every report already in `reports.json` whose `fixedIn` is `"unreleased"` the same way from its `fixedBy`; when the fix has shipped, add a copy of that report with the new `fixedIn` as a candidate.
